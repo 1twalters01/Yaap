@@ -1,0 +1,88 @@
+[DOCUMENT]
+TITLE: Business Requirements
+UID: YAAP-BR
+DATE: @GIT_COMMIT_DATETIME
+PREFIX: BR-
+
+[[SECTION]]
+TITLE: Introduction
+
+[TEXT]
+STATEMENT: >>>
+This document defines the business requirements for Yet Another Audio Player (YAAP),
+a time accurate desktop audio player.
+
+It is to provide users with music library and playback experience.
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Audio Playback
+
+[[SECTION]]
+TITLE: Supported Audio Playback
+
+[REQUIREMENT]
+UID: BR-001
+TITLE: Local Audio Playback
+STATEMENT: >>>
+Yaap shall provide the ability to play supported audio files stored locally on their
+devices.
+<<<
+
+[REQUIREMENT]
+UID: BR-002
+TITLE: Cloud Audio Playback
+STATEMENT: >>>
+Yaap shall provide the ability to play supported audio files stored on supported,
+linked Cloud providers.
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Audio Playback Functionality
+
+[REQUIREMENT]
+UID: BR-003
+TITLE: High-Quality Audio Playback
+STATEMENT: >>>
+Yaap shall provide accurate audio playback appropriate for high-quality music
+collections.
+<<<
+
+[REQUIREMENT]
+UID: BR-004
+TITLE: Accurate Audio Position
+STATEMENT: >>>
+Yaap shall provide an accurate representation of the current or requested playback
+position of an audio track.
+<<<
+
+[[/SECTION]]
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Music Organisation
+
+[REQUIREMENT]
+UID: BR-005
+TITLE: Music Library
+STATEMENT: Yaap shall be able to maintain and access a library of audio files.
+
+[REQUIREMENT]
+UID: BR-006
+TITLE: Music Organisation
+STATEMENT: >>>
+Yaap shall be able to organise audio tracks into playlists and collections.
+<<<
+
+[TEXT]
+STATEMENT: >>>
+A playlist is a list of songs. 
+A collection is a list of playlists or collections.
+<<<
+
+[[/SECTION]]

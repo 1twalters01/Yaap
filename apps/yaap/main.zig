@@ -1,3 +1,6 @@
+//
+// @relation(BR-001, scope=file)
+//
 const std = @import("std");
 const Io = std.Io;
 
