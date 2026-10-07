@@ -9,10 +9,10 @@ TITLE: Introduction
 
 [TEXT]
 STATEMENT: >>>
-This document defines the business requirements for Yet Another Audio Player (YAAP),
+This document defines the business requirements for Yet Another Audio Player (Yaap),
 a time accurate desktop audio player.
 
-It is to provide users with music library and playback experience.
+Yaap provides users with an audio library and playback experience.
 <<<
 
 [[/SECTION]]
@@ -25,18 +25,25 @@ TITLE: Supported Audio Playback
 
 [REQUIREMENT]
 UID: BR-001
-TITLE: Local Audio Playback
+TITLE: Supported audio
+STATEMENT: >>>
+Yaap shall support playback of a range of audio formats and codecs.
+<<<
+
+[REQUIREMENT]
+UID: BR-002
+TITLE: Audio Playback Stored Locally
 STATEMENT: >>>
 Yaap shall provide the ability to play supported audio files stored locally on their
 devices.
 <<<
 
 [REQUIREMENT]
-UID: BR-002
-TITLE: Cloud Audio Playback
+UID: BR-003
+TITLE: Audio Playback Stored Externally
 STATEMENT: >>>
 Yaap shall provide the ability to play supported audio files stored on supported,
-linked Cloud providers.
+linked cloud providers.
 <<<
 
 [[/SECTION]]
@@ -45,19 +52,27 @@ linked Cloud providers.
 TITLE: Audio Playback Functionality
 
 [REQUIREMENT]
-UID: BR-003
-TITLE: High-Quality Audio Playback
+UID: BR-004
+TITLE: Audio Playback Quality
 STATEMENT: >>>
-Yaap shall provide accurate audio playback appropriate for high-quality music
+Yaap shall provide accurate audio playback appropriate for high-quality audio
 collections.
 <<<
 
 [REQUIREMENT]
-UID: BR-004
-TITLE: Accurate Audio Position
+UID: BR-005
+TITLE: Audio Playback Position
 STATEMENT: >>>
 Yaap shall provide an accurate representation of the current or requested playback
 position of an audio track.
+<<<
+
+[REQUIREMENT]
+UID: BR-006
+TITLE: Audio Playback Customization
+STATEMENT: >>>
+Yaap shall allow for playback characteristic customizations such as speed, pitch,
+volume, and audio processing.
 <<<
 
 [[/SECTION]]
@@ -65,24 +80,134 @@ position of an audio track.
 [[/SECTION]]
 
 [[SECTION]]
-TITLE: Music Organisation
+TITLE: Organisation
+
+[[SECTION]]
+TITLE: Audio Library
 
 [REQUIREMENT]
-UID: BR-005
-TITLE: Music Library
-STATEMENT: Yaap shall be able to maintain and access a library of audio files.
+UID: BR-007
+TITLE: Audio Library
+STATEMENT: Yaap shall provide a persistent library containing supported audio tracks.
 
 [REQUIREMENT]
-UID: BR-006
-TITLE: Music Organisation
+UID: BR-008
+TITLE: Searching, Sorting and Filtering
+STATEMENT: Yaap shall allow for searching, sorting and filtering of tracks.
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Track Metadata
+
+[REQUIREMENT]
+UID: BR-009
+TITLE: Audio Metadata
 STATEMENT: >>>
-Yaap shall be able to organise audio tracks into playlists and collections.
+Yaap shall allow for the viewing, managing, and where appropriate modification of
+track metadata.
 <<<
 
-[TEXT]
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Library Activity
+
+[REQUIREMENT]
+UID: BR-010
+TITLE: Activity
+STATEMENT: Yaap shall provide library activity information.
+
+[[/SECTION]]
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Queue, Playlist and Collection Management
+
+[REQUIREMENT]
+UID: BR-011
+TITLE: Playlist and Collection Organisation
 STATEMENT: >>>
-A playlist is a list of songs. 
-A collection is a list of playlists or collections.
+Yaap shall allow for the creation, modification and organisation of
+playlists and collections.
 <<<
+
+[REQUIREMENT]
+UID: BR-012
+TITLE: Playback Queue
+STATEMENT: Yaap shall be able to create and modify its playback queue.
+
+[REQUIREMENT]
+UID: BR-013
+TITLE: Playback Control
+STATEMENT: Yaap shall allow users to control the order of tracks being played.
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Personalisation
+
+[REQUIREMENT]
+UID: BR-014
+TITLE: User Preferences
+STATEMENT: >>>
+Yaap shall allow users to configure application and playback settings.
+<<<
+
+[REQUIREMENT]
+UID: BR-015
+TITLE: Internationalisation
+STATEMENT: Yaap shall allow for the application language to be changed.
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Analytics
+
+[REQUIREMENT]
+UID: BR-016
+TITLE: Listening Analytics
+STATEMENT: >>>
+Yaap shall allow for the analysis of listening behaviour and audio consumption.
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Interoperability
+
+[REQUIREMENT]
+UID: BR-017
+TITLE: Sharing 
+STATEMENT: Yaap shall allow for the sharing of playlists and collections.
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: User Interaction
+
+[REQUIREMENT]
+UID: BR-018
+TITLE: Interaction Modes
+STATEMENT: >>>
+Yaap shall provide access to functionality through graphical, terminal,
+and command-line interfaces.
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Data Management
+
+[REQUIREMENT]
+UID: BR-019
+TITLE: Operation Recovery
+STATEMENT: Yaap shall allow reversible modifications to be undone and redone.
+
+[REQUIREMENT]
+UID: BR-020
+TITLE: User Data Persistence
+STATEMENT: Yaap shall persist user-created information between sessions.
 
 [[/SECTION]]
