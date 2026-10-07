@@ -102,7 +102,7 @@ TITLE: Track Metadata
 
 [REQUIREMENT]
 UID: BR-009
-TITLE: Audio Metadata
+TITLE: Track Metadata
 STATEMENT: >>>
 Yaap shall allow for the viewing, managing, and where appropriate modification of
 track metadata.
@@ -180,7 +180,10 @@ TITLE: Interoperability
 [REQUIREMENT]
 UID: BR-017
 TITLE: Sharing 
-STATEMENT: Yaap shall allow for the sharing of playlists and collections.
+STATEMENT: >>>
+Yaap shall support interoperability with external applications, services,
+and devices.
+<<<
 
 [[/SECTION]]
 
