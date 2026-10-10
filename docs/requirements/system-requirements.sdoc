@@ -1,0 +1,15 @@
+[DOCUMENT]
+TITLE: System Requirements
+UID: YAAP-SR
+DATE: @GIT_COMMIT_DATETIME
+PREFIX: SR-
+
+[[SECTION]]
+TITLE: Introduction
+
+[TEXT]
+STATEMENT: >>>
+<<<
+
+[[/STATEMENT]]
+
