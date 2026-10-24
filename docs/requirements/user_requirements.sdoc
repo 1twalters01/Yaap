@@ -1,0 +1,521 @@
+[DOCUMENT]
+TITLE: User Requirements
+UID: YAAP-UR
+DATE: @GIT_COMMIT_DATETIME
+PREFIX: UR-
+
+[[SECTION]]
+TITLE: Introduction
+
+[TEXT]
+STATEMENT: >>>
+This document defines the user requirements for Yet Another Audio Player (Yaap),
+a time accurate desktop audio player.
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Audio Playback
+
+[[SECTION]]
+TITLE: Supported Audio Playback
+
+[REQUIREMENT]
+UID: UR-001
+TITLE: Supported Audio Formats
+STATEMENT: The user shall be able to play audio tracks in supported audio formats.
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-001
+
+[REQUIREMENT]
+UID: UR-002
+TITLE: Unsupported Audio Formats
+STATEMENT: The user shall be able to identify audio files that Yaap cannot play.
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-001
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Playing files
+
+[REQUIREMENT]
+UID: UR-003
+TITLE: Playing local files
+STATEMENT: >>>
+The user shall be able to play supported audio files stored on their device.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-002
+
+[REQUIREMENT]
+UID: UR-004
+TITLE: Cloud storage Connections
+STATEMENT: >>>
+The user shall be able to connect Yaap to supported cloud storage providers.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-003
+
+[REQUIREMENT]
+UID: UR-005
+TITLE: Playing Remote files
+STATEMENT: >>>
+The user shall be able to play supported audio files stored with a connected cloud
+provider.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-003
+
+[REQUIREMENT]
+UID: UR-006
+TITLE: Audio Quality
+STATEMENT: >>>
+The user shall be able to play supported audio tracks at the quality provided 
+by the source audio.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-004
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Audio Playback Position
+
+[REQUIREMENT]
+UID: UR-007
+TITLE: View Playback Position
+STATEMENT: >>>
+The user shall be able to view the current playback position of an audio track.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-005
+
+[REQUIREMENT]
+UID: UR-008
+TITLE: Seek Playback Position
+STATEMENT: >>>
+The user shall be able to seek to a requested position within an audio track.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-005
+
+[REQUIREMENT]
+UID: UR-009
+TITLE: Elapsed Playback Time
+STATEMENT: >>>
+The user shall be able to determine the elapsed playback time of an audio track.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-005
+
+[REQUIREMENT]
+UID: UR-010
+TITLE: Remaining Playback Time
+STATEMENT: >>>
+The user shall be able to determine the remaining playback time of an audio track.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-005
+
+[REQUIREMENT]
+UID: UR-011
+TITLE: Remaining Playback Time
+STATEMENT: >>>
+The user shall be able to access and submit playback information at the quality 
+provided by the source audio.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-005
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Audio Playback Customization
+
+[REQUIREMENT]
+UID: UR-012
+TITLE: Playback Speed
+STATEMENT: The user shall be able to adjust playback speed.
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-006
+
+[REQUIREMENT]
+UID: UR-013
+TITLE: Playback Pitch
+STATEMENT: >>>
+The user shall be able to adjust playback pitch independently of playback speed.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-006
+
+[REQUIREMENT]
+UID: UR-014
+TITLE: Remaining Playback Time
+STATEMENT: The user shall be able to adjust playback volume.
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-006
+
+[REQUIREMENT]
+UID: UR-015
+TITLE: Remaining Playback Time
+STATEMENT: The user shall be able to configure available audio processing options.
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-006
+
+[REQUIREMENT]
+UID: UR-016
+TITLE: Remaining Playback Time
+STATEMENT: >>>
+The user shall be able to determine which playback customizations are 
+currently active.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-006
+
+[[/SECTION]]
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Organisation
+
+[[SECTION]]
+TITLE: Audio Library
+
+[REQUIREMENT]
+UID: UR-017
+TITLE: Adding local files
+STATEMENT: >>>
+The user shall be able to add audio files stored on their devices to their library.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-002
+- TYPE: Parent
+  VALUE: BR-007
+
+[REQUIREMENT]
+UID: UR-018
+TITLE: Adding Remote files
+STATEMENT: >>>
+The user shall be able to add audio files stored stored with a connected cloud
+provider to their library.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-003
+- TYPE: Parent
+  VALUE: BR-007
+
+[REQUIREMENT]
+UID: UR-019
+TITLE: Remove files
+STATEMENT: The user shall be able to remove audio files from their library.
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-007
+
+[REQUIREMENT]
+UID: UR-020
+TITLE: Accessing Files
+STATEMENT: >>>
+The user shall be able to locate, access and view audio files in their library.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-007
+
+[REQUIREMENT]
+UID: UR-021
+TITLE: Library Percistence
+STATEMENT: >>>
+The user shall be able to access their library across application sessions.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-007
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Searching, Sorting and Filtering
+
+[REQUIREMENT]
+UID: UR-022
+TITLE: Library Searching
+STATEMENT: >>>
+The user shall be able to search their library using tags or supported track
+attributes.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-008
+
+[REQUIREMENT]
+UID: UR-023
+TITLE: Library Sorting
+STATEMENT: >>>
+The user shall be able to sort library tracks using tags or supported track 
+attributes.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-008
+
+[REQUIREMENT]
+UID: UR-024
+TITLE: Library Filtering
+STATEMENT: >>>
+The user shall be able to filter library tracks using tags or supported track 
+attributes.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-008
+
+[REQUIREMENT]
+UID: UR-025
+TITLE: No Filter/Sorting Results
+STATEMENT: >>>
+The user shall be able to identify when a search or filter produces no matching 
+results.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-008
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Track Metadata
+
+[REQUIREMENT]
+UID: UR-026
+TITLE: Viewing Track Metadata
+STATEMENT: >>>
+The user shall be able to view the available metadata for an audio track. 
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-009
+
+[REQUIREMENT]
+UID: UR-027
+TITLE: Modifying Track Metadata
+STATEMENT: >>>
+The user shall be able to modify the available metadata for an audio track.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-009
+
+[REQUIREMENT]
+UID: UR-028
+TITLE: Saving Track Metadata
+STATEMENT: >>>
+The user shall be able to save metadata changes for an audio track.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-009
+
+[REQUIREMENT]
+UID: UR-029
+TITLE: Immutable Metadata
+STATEMENT: >>>
+The user shall be able to identify metadata fields that cannot be modified.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-009
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Library Activity
+
+[REQUIREMENT]
+UID: UR-030
+TITLE: Viewing Library Activity
+STATEMENT: >>>
+The user shall be able to view information about relevant library activity.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-010
+
+[REQUIREMENT]
+UID: UR-031
+TITLE: Deleting Library Activity
+STATEMENT: >>>
+The user shall be able to delete information about library activity.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-010
+
+[[/SECTION]]
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Queues, Playlists and Collections
+
+[[SECTION]]
+TITLE: Playlist and Collection Management
+
+[REQUIREMENT]
+UID: UR-032
+TITLE: Playlist and Collection Creation
+STATEMENT: >>>
+The user shall be able to create playlists and collections of audio tracks.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-011
+
+[REQUIREMENT]
+UID: UR-033
+TITLE: Adding to Playlists and Collections
+STATEMENT: >>>
+The user shall be able to add tracks to playlists and collections.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-011
+
+[REQUIREMENT]
+UID: UR-034
+TITLE: Removing form Playlists and Collections
+STATEMENT: >>>
+The user shall be able to remove tracks to playlists and collections.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-011
+
+[REQUIREMENT]
+UID: UR-035
+TITLE: Playlist Organisation
+STATEMENT: >>>
+The user shall be able to organise tracks inside of playlists and collections.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-011
+
+[REQUIREMENT]
+UID: UR-036
+TITLE: Playlist Metadata Modification
+STATEMENT: >>>
+The user shall be able to metadata of playlists and collections.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-011
+
+[REQUIREMENT]
+UID: UR-037
+TITLE: Playlist Metadata Persistence
+STATEMENT: >>>
+The user shall be able to access their saved playlists and collections across 
+application sessions.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-011
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Playback Queue
+
+[[/SECTION]]
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Personalisation
+
+[[SECTION]]
+TITLE: User Preferences
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Internationalization
+
+[[/SECTION]]
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Analytics
+
+[[SECTION]]
+TITLE: Listening Analytics
+
+[[/SECTION]]
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Interoperability
+
+[[SECTION]]
+TITLE: Sharing
+
+[[/SECTION]]
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: User Interaction
+
+[[SECTION]]
+TITLE: User Interface Types
+
+[REQUIREMENT]
+UID: UR-0
+TITLE: TUI Interface
+STATEMENT: Yaap shall provide a TUI interface.
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-018
+
+[[/SECTION]]
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Data Management
+
+[[SECTION]]
+TITLE: Operation Recovery
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: User Data Persistence
+
+[[/SECTION]]
+
+[[/SECTION]]

@@ -25,7 +25,7 @@ TITLE: Supported Audio Playback
 
 [REQUIREMENT]
 UID: BR-001
-TITLE: Supported audio
+TITLE: Supported audio Formats
 STATEMENT: >>>
 Yaap shall support playback of a range of audio formats and codecs.
 <<<
@@ -194,8 +194,7 @@ TITLE: User Interaction
 UID: BR-018
 TITLE: Interaction Modes
 STATEMENT: >>>
-Yaap shall provide access to functionality through graphical, terminal,
-and command-line interfaces.
+Yaap shall provide access to functionality through intuitive interfaces.
 <<<
 
 [[/SECTION]]

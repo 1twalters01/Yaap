@@ -24,6 +24,7 @@ def create_config() -> ProjectConfig:
         source_root_path="../..",
         include_doc_paths=[
             "business_requirements.sdoc",
+            "user_requirements.sdoc",
         ],
         include_source_paths=[
             "/libs/**",
