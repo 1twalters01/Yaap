@@ -131,10 +131,10 @@ RELATIONS:
 
 [REQUIREMENT]
 UID: UR-011
-TITLE: Remaining Playback Time
+TITLE: Playback Information
 STATEMENT: >>>
-The user shall be able to access and submit playback information at the quality 
-provided by the source audio.
+The user shall be able to access and receive playback through the operating 
+system's supported media-control interface, where available.
 <<<
 RELATIONS:
 - TYPE: Parent
@@ -165,7 +165,7 @@ RELATIONS:
 
 [REQUIREMENT]
 UID: UR-014
-TITLE: Remaining Playback Time
+TITLE: Playback Volume
 STATEMENT: The user shall be able to adjust playback volume.
 RELATIONS:
 - TYPE: Parent
@@ -173,7 +173,7 @@ RELATIONS:
 
 [REQUIREMENT]
 UID: UR-015
-TITLE: Remaining Playback Time
+TITLE: Audio Processing Configurations
 STATEMENT: The user shall be able to configure available audio processing options.
 RELATIONS:
 - TYPE: Parent
@@ -181,7 +181,7 @@ RELATIONS:
 
 [REQUIREMENT]
 UID: UR-016
-TITLE: Remaining Playback Time
+TITLE: Active Playback Customisations
 STATEMENT: >>>
 The user shall be able to determine which playback customizations are 
 currently active.
@@ -216,8 +216,8 @@ RELATIONS:
 UID: UR-018
 TITLE: Adding Remote files
 STATEMENT: >>>
-The user shall be able to add audio files stored stored with a connected cloud
-provider to their library.
+The user shall be able to add audio files stored with a connected cloud provider
+to their library.
 <<<
 RELATIONS:
 - TYPE: Parent
@@ -245,7 +245,7 @@ RELATIONS:
 
 [REQUIREMENT]
 UID: UR-021
-TITLE: Library Percistence
+TITLE: Library Persistence
 STATEMENT: >>>
 The user shall be able to access their library across application sessions.
 <<<
@@ -349,31 +349,6 @@ RELATIONS:
 
 [[/SECTION]]
 
-[[SECTION]]
-TITLE: Library Activity
-
-[REQUIREMENT]
-UID: UR-030
-TITLE: Viewing Library Activity
-STATEMENT: >>>
-The user shall be able to view information about relevant library activity.
-<<<
-RELATIONS:
-- TYPE: Parent
-  VALUE: BR-010
-
-[REQUIREMENT]
-UID: UR-031
-TITLE: Deleting Library Activity
-STATEMENT: >>>
-The user shall be able to delete information about library activity.
-<<<
-RELATIONS:
-- TYPE: Parent
-  VALUE: BR-010
-
-[[/SECTION]]
-
 [[/SECTION]]
 
 [[SECTION]]
@@ -383,7 +358,7 @@ TITLE: Queues, Playlists and Collections
 TITLE: Playlist and Collection Management
 
 [REQUIREMENT]
-UID: UR-032
+UID: UR-030
 TITLE: Playlist and Collection Creation
 STATEMENT: >>>
 The user shall be able to create playlists and collections of audio tracks.
@@ -393,7 +368,7 @@ RELATIONS:
   VALUE: BR-011
 
 [REQUIREMENT]
-UID: UR-033
+UID: UR-031
 TITLE: Adding to Playlists and Collections
 STATEMENT: >>>
 The user shall be able to add tracks to playlists and collections.
@@ -403,17 +378,17 @@ RELATIONS:
   VALUE: BR-011
 
 [REQUIREMENT]
-UID: UR-034
-TITLE: Removing form Playlists and Collections
+UID: UR-032
+TITLE: Removing from Playlists and Collections
 STATEMENT: >>>
-The user shall be able to remove tracks to playlists and collections.
+The user shall be able to remove tracks from playlists and collections.
 <<<
 RELATIONS:
 - TYPE: Parent
   VALUE: BR-011
 
 [REQUIREMENT]
-UID: UR-035
+UID: UR-033
 TITLE: Playlist Organisation
 STATEMENT: >>>
 The user shall be able to organise tracks inside of playlists and collections.
@@ -423,17 +398,17 @@ RELATIONS:
   VALUE: BR-011
 
 [REQUIREMENT]
-UID: UR-036
+UID: UR-034
 TITLE: Playlist Metadata Modification
 STATEMENT: >>>
-The user shall be able to metadata of playlists and collections.
+The user shall be able to view and modify playlist and collection metadata.
 <<<
 RELATIONS:
 - TYPE: Parent
   VALUE: BR-011
 
 [REQUIREMENT]
-UID: UR-037
+UID: UR-035
 TITLE: Playlist Metadata Persistence
 STATEMENT: >>>
 The user shall be able to access their saved playlists and collections across 
@@ -449,7 +424,7 @@ RELATIONS:
 TITLE: Playback Queue
 
 [REQUIREMENT]
-UID: UR-038
+UID: UR-036
 TITLE: View Playback Queue
 STATEMENT: The user shall be able to view the current playback queue.
 RELATIONS:
@@ -457,7 +432,7 @@ RELATIONS:
   VALUE: BR-012
 
 [REQUIREMENT]
-UID: UR-039
+UID: UR-037
 TITLE: Add to Playback Queue
 STATEMENT: The user shall be able to add tracks to the playback queue.
 RELATIONS:
@@ -465,7 +440,7 @@ RELATIONS:
   VALUE: BR-012
 
 [REQUIREMENT]
-UID: UR-040
+UID: UR-038
 TITLE: Remove from Playback Queue
 STATEMENT: The user shall be able to remove tracks from the playback queue.
 RELATIONS:
@@ -473,12 +448,12 @@ RELATIONS:
   VALUE: BR-012
 
 [REQUIREMENT]
-UID: UR-041
+UID: UR-039
 TITLE: Playback Queue Modification
 STATEMENT: The user shall be able to rearrange the contents of the playback queue.
 RELATIONS:
 - TYPE: Parent
-  VALUE: BR-012
+  VALUE: BR-013
 
 [[/SECTION]]
 
@@ -490,10 +465,94 @@ TITLE: Personalisation
 [[SECTION]]
 TITLE: User Preferences
 
+[REQUIREMENT]
+UID: UR-040
+TITLE: Application Preference Configuration
+STATEMENT: The user shall be able to configure application preferences.
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-014
+
+[REQUIREMENT]
+UID: UR-041
+TITLE: Playback Preference Configuration
+STATEMENT: The user shall be able to configure playback preferences.
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-014
+
+[REQUIREMENT]
+UID: UR-042
+TITLE: View Preference Settings
+STATEMENT: The user shall be able to view their current preference settings.
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-014
+
+[REQUIREMENT]
+UID: UR-043
+TITLE: Preference Settings Persistence
+STATEMENT: >>>
+The user shall be able to retain configured preferences between playback sessions.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-014
+
 [[/SECTION]]
 
 [[SECTION]]
 TITLE: Internationalization
+
+[REQUIREMENT]
+UID: UR-044
+TITLE: View Language
+STATEMENT: >>>
+The user shall be able to view and preview an available application language.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-015
+
+[REQUIREMENT]
+UID: UR-045
+TITLE: Select Language
+STATEMENT: >>>
+The user shall be able to select an available application language.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-015
+
+[REQUIREMENT]
+UID: UR-046
+TITLE: Select Language
+STATEMENT: >>>
+The user shall be able to use the application in the selected language.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-015
+
+[REQUIREMENT]
+UID: UR-047
+TITLE: Install Languages
+STATEMENT: >>>
+The user shall be able to install languages from external sources.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-015
+
+[REQUIREMENT]
+UID: UR-048
+TITLE: Language Settings Persistence
+STATEMENT: >>>
+The user shall be able to retain the selected Language between playback sessions.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-014
 
 [[/SECTION]]
 
@@ -503,7 +562,92 @@ TITLE: Internationalization
 TITLE: Analytics
 
 [[SECTION]]
+TITLE: Library Activity
+
+[REQUIREMENT]
+UID: UR-049
+TITLE: Viewing Library Activity
+STATEMENT: >>>
+The user shall be able to view information about their library activity.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-010
+
+[REQUIREMENT]
+UID: UR-050
+TITLE: Deleting Library Activity
+STATEMENT: >>>
+The user shall be able to delete information about their library activity.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-010
+
+[REQUIREMENT]
+UID: UR-051
+TITLE: Reviewing Library Activity
+STATEMENT: >>>
+The user shall be able to review library activity information over time periods.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-016
+
+[REQUIREMENT]
+UID: UR-052
+TITLE: Analysing Library Activity
+STATEMENT: >>>
+The user shall be able to analyse library activity information over time periods.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-016
+
+[[/SECTION]]
+
+[[SECTION]]
 TITLE: Listening Analytics
+
+[REQUIREMENT]
+UID: UR-053
+TITLE: Viewing Listening Behaviour
+STATEMENT: >>>
+The user shall be able to view information about their listening behaviour.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-016
+
+[REQUIREMENT]
+UID: UR-054
+TITLE: Deleting Listening Behaviour
+STATEMENT: >>>
+The user shall be able to delete information about their listening behaviour.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-016
+
+[REQUIREMENT]
+UID: UR-055
+TITLE: Reviewing Listening Behaviour
+STATEMENT: >>>
+The user shall be able to review listening information over time periods.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-016
+
+[REQUIREMENT]
+UID: UR-056
+TITLE: Analysing Listening Behaviour
+STATEMENT: >>>
+The user shall be able to analyse listening information over time periods.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-016
 
 [[/SECTION]]
 
@@ -514,6 +658,38 @@ TITLE: Interoperability
 
 [[SECTION]]
 TITLE: Sharing
+
+[REQUIREMENT]
+UID: UR-057
+TITLE: Sharing Audio Information
+STATEMENT: >>>
+The user shall be able to share supported audio-related information with 
+compatible external applications or services.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-017
+
+[REQUIREMENT]
+UID: UR-058
+TITLE: Synchronize Playback
+STATEMENT: >>>
+The user shall be able to synchronize playback between different devices.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-017
+
+[REQUIREMENT]
+UID: UR-059
+TITLE: Identifying External Options
+STATEMENT: >>>
+The user shall be able to identify which external applications, services, or 
+devices are available for supported interactions.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-017
 
 [[/SECTION]]
 
@@ -526,9 +702,38 @@ TITLE: User Interaction
 TITLE: User Interface Types
 
 [REQUIREMENT]
-UID: UR-0
+UID: UR-060
 TITLE: TUI Interface
-STATEMENT: Yaap shall provide a TUI interface.
+STATEMENT: The user shall be able to access Yaap through a TUI interface.
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-018
+
+[REQUIREMENT]
+UID: UR-061
+TITLE: Identify Controls
+STATEMENT: >>>
+The user shall be able to identify the available controls and how to use them
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-018
+
+[REQUIREMENT]
+UID: UR-062
+TITLE: Customise Controls
+STATEMENT: The user shall be able to change the controls for Yaap.
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-018
+
+[REQUIREMENT]
+UID: UR-063
+TITLE: Perform Actions
+STATEMENT: >>>
+The user shall be able to perform supported operations through provided 
+interaction modes.
+<<<
 RELATIONS:
 - TYPE: Parent
   VALUE: BR-018
@@ -543,10 +748,207 @@ TITLE: Data Management
 [[SECTION]]
 TITLE: Operation Recovery
 
+[REQUIREMENT]
+UID: UR-064
+TITLE: Undo Actions
+STATEMENT: The user shall be able to undo supported actions.
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-019
+
+[REQUIREMENT]
+UID: UR-065
+TITLE: Redo Actions
+STATEMENT: >>>
+The user shall be able to redo supported actions.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-019
+
+[REQUIREMENT]
+UID: UR-066
+TITLE: View Action Tree
+STATEMENT: >>>
+The user shall be able to view a tree of their actions in the current session.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-019
+
+[REQUIREMENT]
+UID: UR-067
+TITLE: Identify Undoable and Redoable Actions
+STATEMENT: >>>
+The user shall be able to determine which modifications can currently be undone 
+or redone.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-019
+
 [[/SECTION]]
 
 [[SECTION]]
 TITLE: User Data Persistence
+
+[REQUIREMENT]
+UID: UR-068
+TITLE: Perform Actions
+STATEMENT: >>>
+The user shall be able to import user-created information.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-020
+
+[REQUIREMENT]
+UID: UR-069
+TITLE: Perform Actions
+STATEMENT: >>>
+The user shall be able to export user-created information.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-020
+
+[[/SECTION]]
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Lyrics
+
+[[SECTION]]
+TITLE: Display Lyrics
+
+[REQUIREMENT]
+UID: UR-070
+TITLE: View Lyrics
+STATEMENT: >>>
+The user shall be able to view lyrics associated with an audio track.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-021
+
+[REQUIREMENT]
+UID: UR-071
+TITLE: Modify Lyrics
+STATEMENT: >>>
+The user shall be able to modify lyrics associated with an audio track.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-021
+
+[REQUIREMENT]
+UID: UR-072
+TITLE: Toggle Lyrics
+STATEMENT: >>>
+The user shall be able to enable and disable lyric visualisation for an audio track.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-021
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Translate Lyrics
+
+[REQUIREMENT]
+UID: UR-073
+TITLE: Translate Lyrics
+STATEMENT: The user shall be able to translate lyrics.
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-022
+
+[REQUIREMENT]
+UID: UR-074
+TITLE: Change Translations
+STATEMENT: >>>
+The user shall be able to switch between different lyric translations for a given 
+audio track.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-022
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Align Lyrics
+
+[REQUIREMENT]
+UID: UR-075
+TITLE: Align Lyrics
+STATEMENT: The user shall be able to align lyrics to different levels
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-022
+
+[REQUIREMENT]
+UID: UR-076
+TITLE: Align Lyrics
+STATEMENT: >>>
+The user shall be able to switch between different lyric alignments for a given 
+audio track.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-022
+
+[[/SECTION]]
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Audio Visualisation
+
+[[SECTION]]
+TITLE: Audio Visualisation
+
+[REQUIREMENT]
+UID: UR-077
+TITLE: View Audio Visualisation
+STATEMENT: >>>
+The user shall be able to view visual representations of the audio.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-023
+
+[REQUIREMENT]
+UID: UR-078
+TITLE: Customise Audio Visualisation
+STATEMENT: >>>
+The user shall be able to change the visual representation of the audio.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-023
+
+[REQUIREMENT]
+UID: UR-079
+TITLE: Toggle Audio Visualisation
+STATEMENT: >>>
+The user shall be able to enable and disable audio visualisation for an audio track.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-023
+
+[REQUIREMENT]
+UID: UR-080
+TITLE: Audio Visualisation Settings Persistence
+STATEMENT: >>>
+The user shall be able to retain the selected settings for audio visualisation.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-023
 
 [[/SECTION]]
 

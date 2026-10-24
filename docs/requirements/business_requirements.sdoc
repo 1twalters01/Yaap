@@ -213,3 +213,34 @@ TITLE: User Data Persistence
 STATEMENT: Yaap shall persist user-created information between sessions.
 
 [[/SECTION]]
+
+[[SECTION]]
+TITLE: Lyrics
+
+[REQUIREMENT]
+UID: BR-021
+TITLE: Lyrics Display
+STATEMENT: >>>
+Yaap shall provide the ability to view and edit lyrics associated with audio tracks.
+<<<
+
+[REQUIREMENT]
+UID: BR-022
+TITLE: Lyrics Variants
+STATEMENT: >>>
+Yaap shall support the use of alternative lyric versions and translations.
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Audio Visualisation
+
+[REQUIREMENT]
+UID: BR-023
+TITLE: Audio Visualisation
+STATEMENT: >>>
+Yaap shall provide visual representations of audio during playback.
+<<<
+
+[[/SECTION]]
