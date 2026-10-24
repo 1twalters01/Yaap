@@ -448,6 +448,38 @@ RELATIONS:
 [[SECTION]]
 TITLE: Playback Queue
 
+[REQUIREMENT]
+UID: UR-038
+TITLE: View Playback Queue
+STATEMENT: The user shall be able to view the current playback queue.
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-012
+
+[REQUIREMENT]
+UID: UR-039
+TITLE: Add to Playback Queue
+STATEMENT: The user shall be able to add tracks to the playback queue.
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-012
+
+[REQUIREMENT]
+UID: UR-040
+TITLE: Remove from Playback Queue
+STATEMENT: The user shall be able to remove tracks from the playback queue.
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-012
+
+[REQUIREMENT]
+UID: UR-041
+TITLE: Playback Queue Modification
+STATEMENT: The user shall be able to rearrange the contents of the playback queue.
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-012
+
 [[/SECTION]]
 
 [[/SECTION]]
