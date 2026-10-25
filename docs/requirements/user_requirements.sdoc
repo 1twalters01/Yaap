@@ -101,9 +101,9 @@ RELATIONS:
 
 [REQUIREMENT]
 UID: UR-008
-TITLE: Seek Playback Position
+TITLE: Elapsed Playback Time
 STATEMENT: >>>
-The user shall be able to seek to a requested position within an audio track.
+The user shall be able to determine the elapsed playback time of an audio track.
 <<<
 RELATIONS:
 - TYPE: Parent
@@ -111,9 +111,9 @@ RELATIONS:
 
 [REQUIREMENT]
 UID: UR-009
-TITLE: Elapsed Playback Time
+TITLE: Seek Playback Position
 STATEMENT: >>>
-The user shall be able to determine the elapsed playback time of an audio track.
+The user shall be able to seek to a requested position within an audio track.
 <<<
 RELATIONS:
 - TYPE: Parent
@@ -148,7 +148,7 @@ TITLE: Audio Playback Customization
 [REQUIREMENT]
 UID: UR-012
 TITLE: Playback Speed
-STATEMENT: The user shall be able to adjust playback speed.
+STATEMENT: The user shall be able to adjust the playback speed of an audio track.
 RELATIONS:
 - TYPE: Parent
   VALUE: BR-006
@@ -157,7 +157,8 @@ RELATIONS:
 UID: UR-013
 TITLE: Playback Pitch
 STATEMENT: >>>
-The user shall be able to adjust playback pitch independently of playback speed.
+The user shall be able to adjust the playback pitch of an audio track independently 
+of playback speed.
 <<<
 RELATIONS:
 - TYPE: Parent
@@ -166,15 +167,17 @@ RELATIONS:
 [REQUIREMENT]
 UID: UR-014
 TITLE: Playback Volume
-STATEMENT: The user shall be able to adjust playback volume.
+STATEMENT: The user shall be able to adjust the playback volume of an audio track.
 RELATIONS:
 - TYPE: Parent
   VALUE: BR-006
 
 [REQUIREMENT]
 UID: UR-015
-TITLE: Audio Processing Configurations
-STATEMENT: The user shall be able to configure available audio processing options.
+TITLE: Audio Processing Configuration
+STATEMENT: >>>
+The user shall be able to configure the available audio processing options.
+<<<
 RELATIONS:
 - TYPE: Parent
   VALUE: BR-006

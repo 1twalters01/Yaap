@@ -299,6 +299,218 @@ RELATIONS:
 
 [[/SECTION]]
 
+[[SECTION]]
+TITLE: Audio Playback Position
+
+[REQUIREMENT]
+UID: SR-024
+TITLE: Playback Position Accuracy
+STATEMENT: >>>
+The system shall make the current playback position of the active audio track 
+available to the user.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-007
+
+[REQUIREMENT]
+UID: SR-025
+TITLE: Playback Position Accuracy
+STATEMENT: >>>
+The system shall report the playback position within the specified timing accuracy 
+under defined operating conditions.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-007
+
+[REQUIREMENT]
+UID: SR-026
+TITLE: Elapsed Playback Time
+STATEMENT: >>>
+The system shall report the elapsed playback time of the active audio track, 
+corresponding to its current playback position.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-007
+- TYPE: Parent
+  VALUE: UR-008
+
+[REQUIREMENT]
+UID: SR-027
+TITLE: Playback Position Seeking
+STATEMENT: >>>
+The system shall allow the user to request a playback position within the duration 
+of the active audio track.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-009
+
+[REQUIREMENT]
+UID: SR-028
+TITLE: Seek Position Accuracy
+STATEMENT: >>>
+The system shall seek to the requested playback position with the greatest accuracy 
+supported by the active audio track and playback pipeline, targeting a maximum 
+error of 1 microsecond where supported.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-009
+
+[REQUIREMENT]
+UID: SR-029
+TITLE: Remaining Playback Time
+STATEMENT: >>>
+The system shall display the estimated remaining playback time of the active audio
+track, calculated from its duration and current playback position.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-010
+
+[REQUIREMENT]
+UID: SR-030
+TITLE: Media Playback Information
+STATEMENT: >>>
+The system shall make the currently playing track's available playback information 
+accessible through the operating system's media-control interface.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-011
+
+[REQUIREMENT]
+UID: SR-031
+TITLE: Media Playback Information
+STATEMENT: >>>
+The system shall make the currently playing track's metadata accessible through 
+the operating system's media-control interface, where supported hby that interface.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-011
+
+[REQUIREMENT]
+UID: SR-032
+TITLE: Media Playback Controls
+STATEMENT: >>>
+The system shall support playback control commands received through the operating 
+system's media-control interface, where supported by that interface.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-011
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Audio Playback Customization
+
+[REQUIREMENT]
+UID: SR-033
+TITLE: Playback Speed Adjustment
+STATEMENT: >>>
+The system shall support the adjustment of the playback speed of the active 
+audio track.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-012
+
+[REQUIREMENT]
+UID: SR-034
+TITLE: Playback Speed Range
+STATEMENT: >>>
+The system shall support playback speeds within a range of 0.5x to 2.0x at minimum.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-012
+
+[REQUIREMENT]
+UID: SR-035
+TITLE: Independent Playback Pitch Adjustment
+STATEMENT: >>>
+The system shall support the adjustment of the playback pitch independently of 
+playback speed.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-013
+
+[REQUIREMENT]
+UID: SR-036
+TITLE: Playback Pitch Range
+STATEMENT: >>>
+The system shall support playback pitch changes within a range of ±6 semitones
+at minimum.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-013
+
+[REQUIREMENT]
+UID: SR-037
+TITLE: Playback Volume Adjustment
+STATEMENT: >>>
+The system shall support the adjustment of the playback volume within a range 
+of 0% to 150%.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-014
+
+[REQUIREMENT]
+UID: SR-038
+TITLE: Audio Processing Configuration
+STATEMENT: >>>
+The system shall allow the user to configure each supported audio processing option.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-015
+
+[REQUIREMENT]
+UID: SR-039
+TITLE: Active Playback Customisation Information
+STATEMENT: >>>
+The system shall make the currently active playback speed, pitch adjustment, 
+volume setting and audio processing options available for display to the user.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-016
+
+[[/SECTION]]
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Queues, Playlists and Collections
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Settings
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Analytics
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: User Experience
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Data Management
+
 [[/SECTION]]
 
 [[/SECTION]]
