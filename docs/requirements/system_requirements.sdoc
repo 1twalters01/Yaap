@@ -9,7 +9,33 @@ TITLE: Introduction
 
 [TEXT]
 STATEMENT: >>>
+This document defines the system requirements for Yet Another Audio Player (Yaap),
+a time accurate desktop audio player.
 <<<
 
-[[/STATEMENT]]
+[[/SECTION]]
 
+[[SECTION]]
+TITLE: Main App
+
+[[SECTION]]
+TITLE: Audio Player
+
+[[/SECTION]]
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Extra Features
+
+[[SECTION]]
+TITLE: Lyrics Player
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Audio Visualiser
+
+[[/SECTION]]
+
+[[/SECTION]]
