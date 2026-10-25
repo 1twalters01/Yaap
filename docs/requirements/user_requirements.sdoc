@@ -262,7 +262,7 @@ RELATIONS:
 [[/SECTION]]
 
 [[SECTION]]
-TITLE: Searching, Sorting and Filtering
+TITLE: Searching, Sorting, Filtering and Tagging
 
 [REQUIREMENT]
 UID: UR-022
@@ -328,7 +328,7 @@ TITLE: Track Metadata
 UID: UR-027
 TITLE: Viewing Track Metadata
 STATEMENT: >>>
-The user shall be able to view the available metadata for an audio track. 
+The user shall be able to view the available metadata for an audio track.
 <<<
 RELATIONS:
 - TYPE: Parent
@@ -600,7 +600,7 @@ RELATIONS:
 UID: UR-051
 TITLE: Library Filtering
 STATEMENT: >>>
-The user shall be able to filter tracks inside of playlists and collections using 
+The user shall be able to filter tracks inside of queues using 
 tags or supported track attributes.
 <<<
 RELATIONS:
