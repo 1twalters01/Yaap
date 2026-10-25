@@ -93,7 +93,10 @@ STATEMENT: Yaap shall provide a persistent library containing supported audio tr
 [REQUIREMENT]
 UID: BR-008
 TITLE: Searching, Sorting and Filtering
-STATEMENT: Yaap shall allow for searching, sorting and filtering of tracks.
+STATEMENT: >>>
+Yaap shall allow for the discovery of tracks through searching, sorting,
+filtering and tagging management.
+<<<
 
 [[/SECTION]]
 
@@ -136,7 +139,7 @@ playlists and collections.
 [REQUIREMENT]
 UID: BR-012
 TITLE: Playback Queue
-STATEMENT: Yaap shall be able to create and modify its playback queue.
+STATEMENT: Yaap shall be able to create and modify its playback queues.
 
 [REQUIREMENT]
 UID: BR-013

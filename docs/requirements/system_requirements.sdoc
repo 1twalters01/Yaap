@@ -489,7 +489,357 @@ RELATIONS:
 [[/SECTION]]
 
 [[SECTION]]
-TITLE: Queues, Playlists and Collections
+TITLE: Audio Tracks
+
+[[SECTION]]
+TITLE: Track Metadata
+
+[REQUIREMENT]
+UID: SR-040
+TITLE: Displaying Track Metadata
+STATEMENT: >>>
+The system shall allow for the viewing of available metadata for a selected
+audio track.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-027
+
+[REQUIREMENT]
+UID: SR-041
+TITLE: Editing Track Metadata
+STATEMENT: >>>
+The system shall allow for the modification of metadata fields that are editable 
+for a selected audio track.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-028
+
+[REQUIREMENT]
+UID: SR-042
+TITLE: Editing Track Metadata
+STATEMENT: >>>
+The system shall allow for the deletion of metadata fields that are editable 
+for a selected audio track.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-028
+
+[REQUIREMENT]
+UID: SR-043
+TITLE: Saving Track Metadata
+STATEMENT: >>>
+The system shall allow metadata changes made to an audio track to be saved.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-029
+
+[REQUIREMENT]
+UID: SR-044
+TITLE: Reporting Metadata Save Results
+STATEMENT: >>>
+The system shall report if metadata changes were saved successfully.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-029
+
+[REQUIREMENT]
+UID: SR-045
+TITLE: Reporting Metadata Save Results
+STATEMENT: >>>
+The system shall report an error if atempting to save metadata changes fails.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-029
+
+[REQUIREMENT]
+UID: SR-046
+TITLE: Identifying Non-Editable Metadata Fields
+STATEMENT: >>>
+The system shall distinguish metadata fields that cannot be modified from fields 
+that can be modified.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-030
+
+[[/SECTION]]
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Audio Library
+
+[[SECTION]]
+TITLE: Adding Local Files
+
+[REQUIREMENT]
+UID: SR-047
+TITLE: Local Audio File Selection
+STATEMENT: >>>
+The system shall allow for selected local audio files to be added to the library.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-017
+
+[REQUIREMENT]
+UID: SR-048
+TITLE: Adding Local Audio Files
+STATEMENT: >>>
+The system shall add selected supported local audio files to the library.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-017
+
+[REQUIREMENT]
+UID: SR-049
+TITLE: Handling Inaccessible Local Files
+STATEMENT: >>>
+The system shall report an error when a selected local audio file cannot be 
+accessed or added to the library.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-017
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Adding Remote Files
+
+[REQUIREMENT]
+UID: SR-050
+TITLE: Remote Audio File Selection
+STATEMENT: >>>
+The system shall allow for selected audio files from connected cloud storage 
+providers to be added to the library.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-018
+
+[REQUIREMENT]
+UID: SR-051
+TITLE: Adding Remote Audio Files
+STATEMENT: >>>
+The system shall add selected supported remote audio files to the library.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-018
+
+[REQUIREMENT]
+UID: SR-052
+TITLE: Handling Inaccessible Remote Files
+STATEMENT: >>>
+The system shall report an error when a selected remote audio file cannot be 
+accessed or added to the library.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-017
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Removing Files
+
+[REQUIREMENT]
+UID: SR-053
+TITLE: Preserving Source Audio Files
+STATEMENT: >>>
+The system shall allow for the removal of a audio files from the library without 
+deleting the underlying audio file.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-019
+
+[REQUIREMENT]
+UID: SR-054
+TITLE: Deleting Source Audio Files
+STATEMENT: >>>
+The system shall allow for the deletion of a audio files from the underlying 
+storage.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-019
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Browsing Files
+
+[REQUIREMENT]
+UID: SR-055
+TITLE: Library Browsing
+STATEMENT: >>>
+The system shall present the audio files in the library for
+browsing and selection.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-020
+
+[REQUIREMENT]
+UID: SR-056
+TITLE: Library Persistence
+STATEMENT: >>>
+The system shall preserve library entries across application sessions.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-021
+
+[REQUIREMENT]
+UID: SR-057
+TITLE: Handling Unavailable Library Files
+STATEMENT: >>>
+The system shall retain library entries when their associated audio 
+files become unavailable.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-021
+
+[REQUIREMENT]
+UID: SR-058
+TITLE: Differentiating Unavailable Library Files
+STATEMENT: >>>
+The system shall differentiate unavailable audio files from available audio files.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-021
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Searching, Sorting and Filtering
+
+[REQUIREMENT]
+UID: SR-059
+TITLE: Creating Tags
+STATEMENT: >>>
+The system shall allow for the creation tags for use in organising audio files 
+whilst in the library.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-022
+
+[REQUIREMENT]
+UID: SR-060
+TITLE: Removing Tags from Audio Files
+STATEMENT: >>>
+The system shall allow for the removal of tag assignments from audio files in 
+their library without deleting the tags themselves.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-022
+
+[REQUIREMENT]
+UID: SR-061
+TITLE: Deleting Tags
+STATEMENT: The system shall allow for the deletion of tags.
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-022
+
+[REQUIREMENT]
+UID: SR-062
+TITLE: Assigning Tags to Audio Files
+STATEMENT: >>>
+The system shall allow for existing tags to be assigned to audio files in 
+the library.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-022
+
+[REQUIREMENT]
+UID: SR-063
+TITLE: Tag Persistence
+STATEMENT: >>>
+The system shall preserve tags and their assignments to audio files across 
+application sessions.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-022
+
+[REQUIREMENT]
+UID: SR-064
+TITLE: Searching Library Tracks
+STATEMENT: >>>
+The system shall allow for the searching of tracks in the library using tags or 
+supported track attributes.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-023
+
+[REQUIREMENT]
+UID: SR-065
+TITLE: Empty Search Results
+STATEMENT: >>>
+The system shall indicate when a library search returns no matching tracks.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-026
+
+[REQUIREMENT]
+UID: SR-066
+TITLE: Sorting Library Tracks
+STATEMENT: >>>
+The system shall allow the user to sort library tracks by supported track attributes.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-024
+
+[REQUIREMENT]
+UID: SR-067
+TITLE: Filtering Library Tracks
+STATEMENT: >>>
+The system shall allow the user to filter library tracks using supported track 
+attributes.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-025
+
+[REQUIREMENT]
+UID: SR-068
+TITLE: Empty Filter Results
+STATEMENT: >>>
+The system shall indicate when library filtering returns no matching tracks.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-026
+
+[[/SECTION]]
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Playlists and Collections
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Queues
 
 [[/SECTION]]
 
