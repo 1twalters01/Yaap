@@ -19,7 +19,135 @@ a time accurate desktop audio player.
 TITLE: Main App
 
 [[SECTION]]
-TITLE: Audio Player
+TITLE: Audio Playback
+
+[[SECTION]]
+TITLE: Audio Format Support
+
+[REQUIREMENT]
+UID: SR-001
+TITLE: FLAC Audio Support
+STATEMENT: >>>
+The system shall support playback of audio files encoded in the FLAC format.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-001
+
+[REQUIREMENT]
+UID: SR-002
+TITLE: MP3 Audio Support
+STATEMENT: >>>
+The system shall support playback of audio files encoded in the MP3 format.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-001
+
+[REQUIREMENT]
+UID: SR-003
+TITLE: WAV Audio Support
+STATEMENT: >>>
+The system shall support playback of audio files containing supported PCM audio 
+in the WAV container format.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-001
+
+[REQUIREMENT]
+UID: SR-004
+TITLE: AAC Audio Support
+STATEMENT: >>>
+The system shall support playback of AAC audio stored in supported audio containers,
+including M4A audio files.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-001
+
+[REQUIREMENT]
+UID: SR-005
+TITLE: ALAC Audio Support
+STATEMENT: >>>
+The system shall support playback of audio files encoded in the ALAC format.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-001
+
+[REQUIREMENT]
+UID: SR-006
+TITLE: Ogg Vorbis Audio Support
+STATEMENT: >>>
+The system shall support playback of audio files encoded in the Vorbis codec
+in the Ogg container format.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-001
+
+[REQUIREMENT]
+UID: SR-007
+TITLE: Opus Audio Support
+STATEMENT: >>>
+The system shall support playback of audio files encoded in the Opus codec in 
+supported containers.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-001
+
+[REQUIREMENT]
+UID: SR-008
+TITLE: AIFF Audio Support
+STATEMENT: >>>
+The system shall support playback of audio files containing supported PCM audio 
+in the AIFF container format.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-001
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: General Audio Decoding
+
+[REQUIREMENT]
+UID: SR-009
+TITLE: Audio Format Identification
+STATEMENT: >>>
+The system shall identify the audio format of an input file using its content or 
+format metadata rather then relying solely on its file extension.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-001
+
+[REQUIREMENT]
+UID: SR-010
+TITLE: Unsupported Audio Formats
+STATEMENT: >>>
+The system shall report when an audio file cannot be played because its format or
+encoding is unsupported.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-002
+
+[REQUIREMENT]
+UID: SR-011
+TITLE: Invalid Audio Files
+STATEMENT: >>>
+The system shall report an appropriate error when an audio file cannot be decoded
+because its contents are invalid or corrupted.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-002
+
+[[/SECTION]]
 
 [[/SECTION]]
 
