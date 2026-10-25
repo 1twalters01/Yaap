@@ -149,6 +149,156 @@ RELATIONS:
 
 [[/SECTION]]
 
+[[SECTION]]
+TITLE: Local Audio Files
+
+[REQUIREMENT]
+UID: SR-012
+TITLE: Local Audio File Selection
+STATEMENT: >>>
+The system shall allow for a local audio file to be browsed or selected for playback.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-003
+
+[REQUIREMENT]
+UID: SR-013
+TITLE: Local Audio File Playback
+STATEMENT: >>>
+The system shall play a selected local audio file when its format and encoding 
+are supported.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-003
+
+[REQUIREMENT]
+UID: SR-014
+TITLE: Local File Access Failure
+STATEMENT: >>>
+The system shall report when a selected local audio file cannot be accessed for 
+playback.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-003
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Cloud Provider Support
+
+[REQUIREMENT]
+UID: SR-015
+TITLE: Cloud Provider Support
+STATEMENT: >>>
+The system shall support connecting to Google Drive, iCloud Drive, Dropbox,
+and Microsoft OneDrive.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-004
+
+[REQUIREMENT]
+UID: SR-016
+TITLE: Cloud Provider Authentication
+STATEMENT: >>>
+The system shall support authenticating with a supported cloud storage provider.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-004
+
+[REQUIREMENT]
+UID: SR-017
+TITLE: Cloud Connection Status
+STATEMENT: >>>
+The system shall report whether a cloud storage connection has been established
+successfully.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-004
+
+[REQUIREMENT]
+UID: SR-018
+TITLE: Cloud Connection Failure
+STATEMENT: >>>
+The system shall report an appropriate error when a connection to a cloud storage
+provider cannot be established.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-004
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Remote Audio Files
+
+[REQUIREMENT]
+UID: SR-019
+TITLE: Remote Audio File Selection
+STATEMENT: >>>
+The system shall allow for audio files to be browsed or selected for playback
+through a connected cloud storage provider.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-005
+
+[REQUIREMENT]
+UID: SR-020
+TITLE: Remote Audio File Playback
+STATEMENT: >>>
+The system shall play a selected remote audio file when its format and encoding are
+supported and the file is accessible.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-005
+
+[REQUIREMENT]
+UID: SR-021
+TITLE: Remote File Access Failure
+STATEMENT: >>>
+The system shall report when a selected remote audio file cannot be retrieved
+for playback.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-005
+
+[REQUIREMENT]
+UID: SR-022
+TITLE: Remote Playback Interruption
+STATEMENT: >>>
+The system shall report when a remote audio file becomes unavailable during playback
+and playback cannot continue.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-005
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Audio Quality
+
+[REQUIREMENT]
+UID: SR-023
+TITLE: Audio Decoding Fidelity
+STATEMENT: >>>
+The system shall decode supported audio files according to their encoding format 
+without introducing additional lossy encoding during decoding.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-006
+
+[[/SECTION]]
+
 [[/SECTION]]
 
 [[/SECTION]]
