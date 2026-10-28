@@ -391,7 +391,7 @@ RELATIONS:
 UID: UR-032
 TITLE: Adding to Playlists and Collections
 STATEMENT: >>>
-The user shall be able to add tracks to playlists and collections.
+The user shall be able to add entries to playlists and collections.
 <<<
 RELATIONS:
 - TYPE: Parent
@@ -401,7 +401,8 @@ RELATIONS:
 UID: UR-033
 TITLE: Removing from Playlists and Collections
 STATEMENT: >>>
-The user shall be able to remove tracks from playlists and collections.
+The user shall be able to remove tracks from playlists and collections without 
+removing the tracks from their library.
 <<<
 RELATIONS:
 - TYPE: Parent
@@ -411,7 +412,8 @@ RELATIONS:
 UID: UR-034
 TITLE: Playlist Organisation
 STATEMENT: >>>
-The user shall be able to organise tracks inside of playlists and collections.
+The user shall be able to change the order of tracks inside of playlists 
+and collections.
 <<<
 RELATIONS:
 - TYPE: Parent
@@ -419,7 +421,7 @@ RELATIONS:
 
 [REQUIREMENT]
 UID: UR-035
-TITLE: Playlist Metadata Modification
+TITLE: Playlist and collection Metadata
 STATEMENT: >>>
 The user shall be able to view and modify playlist and collection metadata.
 <<<
@@ -429,7 +431,7 @@ RELATIONS:
 
 [REQUIREMENT]
 UID: UR-036
-TITLE: Playlist Metadata Persistence
+TITLE: Playlist anc Collection Persistence
 STATEMENT: >>>
 The user shall be able to access their saved playlists and collections across 
 application sessions.

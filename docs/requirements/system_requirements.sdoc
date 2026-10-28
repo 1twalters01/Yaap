@@ -854,15 +854,130 @@ TITLE: Playlists and Collections
 [[SECTION]]
 TITLE: Playlist Modification
 
+[REQUIREMENT]
+UID: SR-070
+TITLE: Creating Playlists
+STATEMENT: >>>
+The system shall allow for the creation of playlists.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-031
+
+[REQUIREMENT]
+UID: SR-071
+TITLE: Adding Tracks to Playlists
+STATEMENT: >>>
+The system shall allow for the addition of tracks from the library to a playlist.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-032
+
+[REQUIREMENT]
+UID: SR-072
+TITLE: Duplicate Playlist Entries
+STATEMENT: >>>
+The system shall allow the same track to appear multiple times within a playlist.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-032
+
+[REQUIREMENT]
+UID: SR-073
+TITLE: Removing Tracks from Playlists
+STATEMENT: >>>
+The system shall allow the user to remove individual track entries from a 
+playlist without removing the corresponding tracks from their library.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-033
+
+[REQUIREMENT]
+UID: SR-074
+TITLE: Modifying Playlist Metadata
+STATEMENT: >>>
+The system shall allow the user to modify editable metadata fields for playlists.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-035
+
+[REQUIREMENT]
+UID: SR-075
+TITLE: Persisting Playlists
+STATEMENT: >>>
+The system shall preserve playlists, including their membership, ordering and 
+editable metadata, across application sessions.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-036
+
 [[/SECTION]]
 
 [[SECTION]]
 TITLE: Collection Modification
 
-[[/SECTION]]
+[REQUIREMENT]
+UID: SR-076
+TITLE: Creating Playlists
+STATEMENT: The system shall allow for the creation of collections.
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-031
 
-[[SECTION]]
-TITLE: Playlist and Collection Metadata
+[REQUIREMENT]
+UID: SR-077
+TITLE: Adding Playlists and Collections to Collections
+STATEMENT: >>>
+The system shall allow the user to add playlists and collections to a collection.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-032
+
+[REQUIREMENT]
+UID: SR-078
+TITLE: Preventing Circular Collections
+STATEMENT: >>>
+The system shall prevent the addition of a collection to itself or to any of its 
+descendant collections.
+<<<
+
+[REQUIREMENT]
+UID: SR-079
+TITLE: Removing Items from Collections
+STATEMENT: >>>
+The system shall allow the user to remove playlists and collections from a 
+collection without deleting the referenced playlists or collections.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-033
+
+[REQUIREMENT]
+UID: SR-080
+TITLE: Modifying Collection Metadata
+STATEMENT: >>>
+The system shall allow the user to modify editable metadata fields for collections.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-035
+
+[REQUIREMENT]
+UID: SR-081
+TITLE: Persisting Playlists and Collections
+STATEMENT: >>>
+The system shall preserve collections, including their membership, ordering and 
+editable metadata, across application sessions.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-036
 
 [[/SECTION]]
 
