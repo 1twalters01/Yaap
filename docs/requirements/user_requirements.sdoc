@@ -431,7 +431,7 @@ RELATIONS:
 
 [REQUIREMENT]
 UID: UR-036
-TITLE: Playlist anc Collection Persistence
+TITLE: Playlist and Collection Persistence
 STATEMENT: >>>
 The user shall be able to access their saved playlists and collections across 
 application sessions.
@@ -520,7 +520,7 @@ RELATIONS:
 
 [REQUIREMENT]
 UID: UR-043
-TITLE: View Playback Queue
+TITLE: Create and Delete Playback Queues
 STATEMENT: The user shall be able to create and delete playback queues.
 RELATIONS:
 - TYPE: Parent
@@ -528,7 +528,7 @@ RELATIONS:
 
 [REQUIREMENT]
 UID: UR-044
-TITLE: Add to Playback Queue
+TITLE: Add Tracks to Playback Queues
 STATEMENT: The user shall be able to add tracks to their playback queues.
 RELATIONS:
 - TYPE: Parent
@@ -536,7 +536,7 @@ RELATIONS:
 
 [REQUIREMENT]
 UID: UR-045
-TITLE: Remove from Playback Queue
+TITLE: Remove Tracks from Playback Queue
 STATEMENT: The user shall be able to remove tracks from their playback queues.
 RELATIONS:
 - TYPE: Parent
@@ -550,13 +550,23 @@ RELATIONS:
 - TYPE: Parent
   VALUE: BR-013
 
+[REQUIREMENT]
+UID: UR-047
+TITLE: Queue Order Persistence
+STATEMENT: >>>
+The user shall be able to undo and redo changes to a queue.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-008
+
 [[/SECTION]]
 
 [[SECTION]]
 TITLE: Searching, Sorting, Filtering and Tagging
 
 [REQUIREMENT]
-UID: UR-047
+UID: UR-048
 TITLE: Tag Management
 STATEMENT: >>>
 The user shall be able to create tags and assign them to audio files
@@ -567,7 +577,7 @@ RELATIONS:
   VALUE: BR-008
 
 [REQUIREMENT]
-UID: UR-048
+UID: UR-049
 TITLE: Queue Searching
 STATEMENT: >>>
 The user shall be able to search their queues using tags or supported track 
@@ -578,7 +588,7 @@ RELATIONS:
   VALUE: BR-008
 
 [REQUIREMENT]
-UID: UR-049
+UID: UR-050
 TITLE: Queue Sorting
 STATEMENT: >>>
 The user shall be able to sort tracks inside of queues using 
@@ -589,18 +599,8 @@ RELATIONS:
   VALUE: BR-008
 
 [REQUIREMENT]
-UID: UR-050
-TITLE: Queue Persistence
-STATEMENT: >>>
-The user shall be able to undo changes to a queue due to sorting.
-<<<
-RELATIONS:
-- TYPE: Parent
-  VALUE: BR-008
-
-[REQUIREMENT]
 UID: UR-051
-TITLE: Library Filtering
+TITLE: Queue Filtering
 STATEMENT: >>>
 The user shall be able to filter tracks inside of queues using 
 tags or supported track attributes.
