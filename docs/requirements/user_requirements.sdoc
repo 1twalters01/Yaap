@@ -250,6 +250,16 @@ RELATIONS:
   VALUE: BR-007
 
 [REQUIREMENT]
+UID: UR-104
+TITLE: Undo and Redo library Changes
+STATEMENT: >>>
+The user shall be able to undo and redo changes to a library.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-019
+
+[REQUIREMENT]
 UID: UR-021
 TITLE: Library Persistence
 STATEMENT: >>>
@@ -345,6 +355,16 @@ RELATIONS:
   VALUE: BR-009
 
 [REQUIREMENT]
+UID: UR-105
+TITLE: Undo and Redo Track Metadata Changes
+STATEMENT: >>>
+The user shall be able to undo and redo changes to a library.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-019
+
+[REQUIREMENT]
 UID: UR-029
 TITLE: Saving Track Metadata
 STATEMENT: >>>
@@ -428,6 +448,27 @@ The user shall be able to view and modify playlist and collection metadata.
 RELATIONS:
 - TYPE: Parent
   VALUE: BR-011
+
+[REQUIREMENT]
+UID: UR-102
+TITLE: Undo and Redo playlist and collection Changes
+STATEMENT: >>>
+The user shall be able to undo and redo changes to a playlist or collection.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-019
+
+[REQUIREMENT]
+UID: UR-103
+TITLE: Undo and Redo metadata Changes
+STATEMENT: >>>
+The user shall be able to undo and redo changes to the metadata of a playlist or
+collection.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-019
 
 [REQUIREMENT]
 UID: UR-036
@@ -572,7 +613,7 @@ The user shall be able to undo and redo changes to a queue.
 <<<
 RELATIONS:
 - TYPE: Parent
-  VALUE: BR-008
+  VALUE: BR-019
 
 [REQUIREMENT]
 UID: UR-049
@@ -991,7 +1032,8 @@ RELATIONS:
 UID: UR-084
 TITLE: View Action Tree
 STATEMENT: >>>
-The user shall be able to view a tree of their actions in the current session.
+The user shall be able to view the history of actions performed during the 
+current session.
 <<<
 RELATIONS:
 - TYPE: Parent
@@ -1001,7 +1043,7 @@ RELATIONS:
 UID: UR-085
 TITLE: Identify Undoable and Redoable Actions
 STATEMENT: >>>
-The user shall be able to determine which modifications can currently be undone 
+The user shall be able to determine which actions can currently be undone 
 or redone.
 <<<
 RELATIONS:

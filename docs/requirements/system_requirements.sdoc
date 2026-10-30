@@ -571,6 +571,27 @@ RELATIONS:
 [[/SECTION]]
 
 [[SECTION]]
+TITLE: Undoing and Redoing Actions
+
+[REQUIREMENT]
+UID: SR-125
+TITLE: Undoing Track Metadata Changes
+STATEMENT: The system shall support undoing track metadata changes.
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-105
+
+[REQUIREMENT]
+UID: SR-126
+TITLE: Redoing Track Metadata Changes
+STATEMENT: The system shall support redoing track metadata changes.
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-105
+
+[[/SECTION]]
+
+[[SECTION]]
 TITLE: Tags
 
 [REQUIREMENT]
@@ -602,6 +623,28 @@ or collections that are using them.
 RELATIONS:
 - TYPE: Parent
   VALUE: UR-022
+
+[REQUIREMENT]
+UID: SR-133
+TITLE: Undoing Tag Changes
+STATEMENT: >>>
+The system shall support undoing playlist and collection metadata changes, 
+provided the previous state can be restored.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-082
+
+[REQUIREMENT]
+UID: SR-134
+TITLE: Redoing Tag Changes
+STATEMENT: >>>
+The system shall support redoing playlist and collection metadata changes, 
+provided the previous state can be restored.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-083
 
 [REQUIREMENT]
 UID: SR-050
@@ -764,6 +807,33 @@ The system shall differentiate unavailable audio files from available audio file
 RELATIONS:
 - TYPE: Parent
   VALUE: UR-021
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Undoing and Redoing Actions
+
+[REQUIREMENT]
+UID: SR-131
+TITLE: Undoing Library Changes
+STATEMENT: >>>
+The system shall support undoing library changes, provided the 
+previous state can be restored.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-104
+
+[REQUIREMENT]
+UID: SR-132
+TITLE: Redoing Library Changes
+STATEMENT: >>>
+The system shall support redoing library changes, provided 
+the previous state can be restored.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-104
 
 [[/SECTION]]
 
@@ -982,10 +1052,59 @@ RELATIONS:
 [[/SECTION]]
 
 [[SECTION]]
+TITLE: Undoing and Redoing Actions
+
+[REQUIREMENT]
+UID: SR-82
+TITLE: Undoing Playlist and Collection Changes
+STATEMENT: >>>
+The system shall support undoing playlist and collection changes, provided the 
+previous state can be restored.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-102
+
+[REQUIREMENT]
+UID: SR-83
+TITLE: Redoing Playlist and Collection Changes
+STATEMENT: >>>
+The system shall support redoing playlist and collection changes, provided 
+the previous state can be restored.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-102
+
+[REQUIREMENT]
+UID: SR-84
+TITLE: Undoing Playlist and Collection Metadata Changes
+STATEMENT: >>>
+The system shall support undoing playlist and collection metadata changes, 
+provided the previous state can be restored.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-103
+
+[REQUIREMENT]
+UID: SR-85
+TITLE: Redoing Playlist and Collection Metadata Changes
+STATEMENT: >>>
+The system shall support redoing playlist and collection metadata changes, 
+provided the previous state can be restored.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-103
+
+[[/SECTION]]
+
+[[SECTION]]
 TITLE: Searching, Sorting, Filtering and Tagging
 
 [REQUIREMENT]
-UID: SR-085
+UID: SR-086
 TITLE: Removing Tags from Audio Files
 STATEMENT: >>>
 The system shall allow for the removal of tag assignments from audio files in 
@@ -996,7 +1115,7 @@ RELATIONS:
   VALUE: UR-037
 
 [REQUIREMENT]
-UID: SR-086
+UID: SR-087
 TITLE: Removing Tags from playlists and collections 
 STATEMENT: >>>
 The system shall allow for the removal of tag assignments from a playlist or 
@@ -1007,7 +1126,7 @@ RELATIONS:
   VALUE: UR-037
 
 [REQUIREMENT]
-UID: SR-087
+UID: SR-088
 TITLE: Assigning Tags to Audio Files
 STATEMENT: >>>
 The system shall allow for existing tags to be assigned to audio files in 
@@ -1018,7 +1137,7 @@ RELATIONS:
   VALUE: UR-037
 
 [REQUIREMENT]
-UID: SR-088
+UID: SR-089
 TITLE: Assigning Tags to playlists and collections
 STATEMENT: >>>
 The system shall allow for existing tags to be assigned to playlists and
@@ -1029,7 +1148,7 @@ RELATIONS:
   VALUE: UR-037
 
 [REQUIREMENT]
-UID: SR-089
+UID: SR-090
 TITLE: Searching Playlist Tracks
 STATEMENT: >>>
 The system shall allow for the searching of tracks in a playlist using tags or 
@@ -1040,7 +1159,7 @@ RELATIONS:
   VALUE: UR-038
 
 [REQUIREMENT]
-UID: SR-090
+UID: SR-091
 TITLE: Searching Collections for Playlists
 STATEMENT: >>>
 The system shall allow for the searching of playlists in a collection using 
@@ -1051,7 +1170,7 @@ RELATIONS:
   VALUE: UR-038
 
 [REQUIREMENT]
-UID: SR-091
+UID: SR-092
 TITLE: Searching Collections for Collections
 STATEMENT: >>>
 The system shall allow for the searching of collections in a collection using 
@@ -1062,7 +1181,7 @@ RELATIONS:
   VALUE: UR-038
 
 [REQUIREMENT]
-UID: SR-092
+UID: SR-093
 TITLE: Empty Search Results
 STATEMENT: >>>
 The system shall indicate when a playlist or collection search returns no 
@@ -1073,7 +1192,7 @@ RELATIONS:
   VALUE: UR-041
 
 [REQUIREMENT]
-UID: SR-093
+UID: SR-094
 TITLE: Sorting Playlist Tracks
 STATEMENT: >>>
 The system shall allow the user to sort playlist tracks using supported track 
@@ -1084,7 +1203,7 @@ RELATIONS:
   VALUE: UR-039
 
 [REQUIREMENT]
-UID: SR-094
+UID: SR-095
 TITLE: Sorting Collection Playlists and Collections
 STATEMENT: >>>
 The system shall allow the user to sort playlists and collections inside of a 
@@ -1095,7 +1214,7 @@ RELATIONS:
   VALUE: UR-039
 
 [REQUIREMENT]
-UID: SR-095
+UID: SR-096
 TITLE: Filtering Playlist Tracks
 STATEMENT: >>>
 The system shall allow the user to filter playlist tracks using supported track 
@@ -1106,7 +1225,7 @@ RELATIONS:
   VALUE: UR-025
 
 [REQUIREMENT]
-UID: SR-096
+UID: SR-097
 TITLE: Filtering Playlists in a Collection
 STATEMENT: >>>
 The system shall allow the user to filter playlists in a collection using 
@@ -1117,7 +1236,7 @@ RELATIONS:
   VALUE: UR-040
 
 [REQUIREMENT]
-UID: SR-097
+UID: SR-098
 TITLE: Filtering Collections in a Collection
 STATEMENT: >>>
 The system shall allow the user to filter collections in a collection using 
@@ -1128,7 +1247,7 @@ RELATIONS:
   VALUE: UR-040
 
 [REQUIREMENT]
-UID: SR-098
+UID: SR-099
 TITLE: Empty Filter Results
 STATEMENT: >>>
 The system shall indicate when filtering a playlist or a collection returns no 
@@ -1149,7 +1268,7 @@ TITLE: Queues
 TITLE: Queue Viewing and Selection
 
 [REQUIREMENT]
-UID: SR-099
+UID: SR-100
 TITLE: Viewing Playback Queue
 STATEMENT: >>>
 The system shall allow the user to view available playback decks and their 
@@ -1160,7 +1279,7 @@ RELATIONS:
   VALUE: UR-042
 
 [REQUIREMENT]
-UID: SR-100
+UID: SR-101
 TITLE: Identifying Active Playback Decks
 STATEMENT: >>>
 The system shall distinguish playback decks that are currently playing audio 
@@ -1171,7 +1290,7 @@ RELATIONS:
   VALUE: UR-043
 
 [REQUIREMENT]
-UID: SR-101
+UID: SR-102
 TITLE: Selecting Playback Queues
 STATEMENT: >>>
 The system shall allow the user to associate a playback queue for association with 
@@ -1187,7 +1306,7 @@ RELATIONS:
 TITLE: Queue Creation and Management
 
 [REQUIREMENT]
-UID: SR-102
+UID: SR-103
 TITLE: Creating Playback Queues
 STATEMENT: The system shall allow the user to create playback queues.
 RELATIONS:
@@ -1195,7 +1314,7 @@ RELATIONS:
   VALUE: UR-045
 
 [REQUIREMENT]
-UID: SR-103
+UID: SR-104
 TITLE: Deleting Playback Queues
 STATEMENT: >>>
 The system shall allow the user to delete playback queues without deleting 
@@ -1206,7 +1325,7 @@ RELATIONS:
   VALUE: UR-045
 
 [REQUIREMENT]
-UID: SR-104
+UID: SR-105
 TITLE: Adding Tracks to Playback Queues
 STATEMENT: >>>
 The system shall allow the user to add tracks from their library to playback queues.
@@ -1216,7 +1335,7 @@ RELATIONS:
   VALUE: UR-046
 
 [REQUIREMENT]
-UID: SR-105
+UID: SR-106
 TITLE: Removing Tracks from Playback Queues
 STATEMENT: >>>
 The system shall allow the user to remove individual track entries from 
@@ -1227,7 +1346,7 @@ RELATIONS:
   VALUE: UR-046
 
 [REQUIREMENT]
-UID: SR-106
+UID: SR-107
 TITLE: Reordering Playback Queue Entries
 STATEMENT: >>>
 The system shall allow the user to change the order of track entries within a 
@@ -1240,25 +1359,25 @@ RELATIONS:
 [[/SECTION]]
 
 [[SECTION]]
-TITLE: Undo and Redo
+TITLE: Undoing and Redoing Actions
 
 [REQUIREMENT]
-UID: SR-107
+UID: SR-108
 TITLE: Undoing Playback Queue Changes
 STATEMENT: >>>
-The system shall allow the user to reverse supported changes made to a 
-playback queue.
+The system shall support undoing playback queue changes, provided the previous
+state can be restored.
 <<<
 RELATIONS:
 - TYPE: Parent
   VALUE: UR-048
 
 [REQUIREMENT]
-UID: SR-108
+UID: SR-109
 TITLE: Redoing Playback Queue Changes
 STATEMENT: >>>
-The system shall allow the user to reapply supported playback queue changes that 
-have been undone.
+The system shall support redoing playback queue changes, provided the previous
+state can be restored.
 <<<
 RELATIONS:
 - TYPE: Parent
@@ -1270,7 +1389,7 @@ RELATIONS:
 TITLE: Independent Deck Playback
 
 [REQUIREMENT]
-UID: SR-109
+UID: SR-110
 TITLE: Independent Playback Deck Control
 STATEMENT: >>>
 The system shall allow the playback state of each deck to be controlled 
@@ -1281,7 +1400,7 @@ RELATIONS:
   VALUE: UR-049
 
 [REQUIREMENT]
-UID: SR-110
+UID: SR-111
 TITLE: Independent Playback Position
 STATEMENT: >>>
 The system shall allow the playback position of each deck to be adjusted 
@@ -1292,7 +1411,7 @@ RELATIONS:
   VALUE: UR-049
 
 [REQUIREMENT]
-UID: SR-111
+UID: SR-112
 TITLE: Independent Playback Volume
 STATEMENT: >>>
 The system shall allow the playback volume of each deck to be adjusted independently of other decks.
@@ -1302,7 +1421,7 @@ RELATIONS:
   VALUE: UR-049
 
 [REQUIREMENT]
-UID: SR-112
+UID: SR-113
 TITLE: Independent Playback Speed
 STATEMENT: >>>
 The system shall allow the playback speed of each deck to be adjusted independently of other decks.
@@ -1312,7 +1431,7 @@ RELATIONS:
   VALUE: UR-049
 
 [REQUIREMENT]
-UID: SR-113
+UID: SR-114
 TITLE: Independent Playback Pitch
 STATEMENT: >>>
 The system shall allow the playback pitch of each deck to be adjusted independently of other decks.
@@ -1322,7 +1441,7 @@ RELATIONS:
   VALUE: UR-049
 
 [REQUIREMENT]
-UID: SR-114
+UID: SR-115
 TITLE: Simultaneous Playback Decks
 STATEMENT: >>>
 The system shall support simultaneous audio playback on at least two playback decks.
@@ -1332,7 +1451,7 @@ RELATIONS:
   VALUE: UR-050
 
 [REQUIREMENT]
-UID: SR-115
+UID: SR-116
 TITLE: Configuring Queue Switching Behaviour
 STATEMENT: >>>
 The system shall allow the user to configure the behaviour of a playback deck 
@@ -1348,7 +1467,7 @@ RELATIONS:
 TITLE: Searching, Sorting, Filtering and Tagging
 
 [REQUIREMENT]
-UID: SR-163
+UID: SR-117
 TITLE: Removing Tags from Audio Files
 STATEMENT: >>>
 The system shall allow for the removal of tag assignments from audio files in 
@@ -1359,7 +1478,7 @@ RELATIONS:
   VALUE: UR-052
 
 [REQUIREMENT]
-UID: SR-164
+UID: SR-118
 TITLE: Assigning Tags to Audio Files
 STATEMENT: >>>
 The system shall allow for existing tags to be assigned to audio files in 
@@ -1370,7 +1489,7 @@ RELATIONS:
   VALUE: UR-052
 
 [REQUIREMENT]
-UID: SR-165
+UID: SR-119
 TITLE: Searching Queue Tracks
 STATEMENT: >>>
 The system shall allow for the searching of tracks in a queue using tags or 
@@ -1381,7 +1500,7 @@ RELATIONS:
   VALUE: UR-053
 
 [REQUIREMENT]
-UID: SR-166
+UID: SR-120
 TITLE: Empty Search Results
 STATEMENT: >>>
 The system shall indicate when a queue search returns no matching tracks.
@@ -1391,7 +1510,7 @@ RELATIONS:
   VALUE: UR-056
 
 [REQUIREMENT]
-UID: SR-167
+UID: SR-121
 TITLE: Sorting Queue Tracks
 STATEMENT: >>>
 The system shall allow the user to sort tracks in a queue using supported track 
@@ -1402,18 +1521,18 @@ RELATIONS:
   VALUE: UR-054
 
 [REQUIREMENT]
-UID: SR-168
+UID: SR-122
 TITLE: Filtering Queue Tracks
 STATEMENT: >>>
-The system shall allow the user to filter tracks in a queue using supported track 
-attributes.
+The system shall allow the user to filter tracks in a queue using supported
+track attributes.
 <<<
 RELATIONS:
 - TYPE: Parent
   VALUE: UR-055
 
 [REQUIREMENT]
-UID: SR-169
+UID: SR-123
 TITLE: Empty Filter Results
 STATEMENT: >>>
 The system shall indicate when filtering a queue returns no matching tracks.
@@ -1428,6 +1547,55 @@ RELATIONS:
 
 [[SECTION]]
 TITLE: Data Management
+
+[[SECTION]]
+TITLE: Undoing and Redoing Actions
+
+[REQUIREMENT]
+UID: SR-172
+TITLE: Maintain Action History
+STATEMENT: >>>
+The system shall maintain a record of actions performed during the current 
+session that are relevant to undo and redo operations.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-084
+
+[REQUIREMENT]
+UID: SR-173
+TITLE: Provide Action History
+STATEMENT: >>>
+The system shall provide the user with access to the action history for the 
+current session.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-084
+
+[REQUIREMENT]
+UID: SR-174
+TITLE: Identify Undoable Actions
+STATEMENT: >>>
+The system shall identify actions in the current action history that can 
+currently be undone.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-085
+
+[REQUIREMENT]
+UID: SR-175
+TITLE: Identify Redoable Actions
+STATEMENT: >>>
+The system shall identify actions in the current action history that can 
+currently be redone.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-085
+
+[[/SECTION]]
 
 [[/SECTION]]
 
