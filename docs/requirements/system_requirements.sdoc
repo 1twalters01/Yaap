@@ -1146,12 +1146,201 @@ RELATIONS:
 TITLE: Queues
 
 [[SECTION]]
-TITLE: Playback Queue Modification
+TITLE: Queue Viewing and Selection
+
+[REQUIREMENT]
+UID: SR-099
+TITLE: Viewing Playback Queue
+STATEMENT: >>>
+The system shall allow the user to view available playback decks and their 
+associated queues.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-042
+
+[REQUIREMENT]
+UID: SR-100
+TITLE: Identifying Active Playback Decks
+STATEMENT: >>>
+The system shall distinguish playback decks that are currently playing audio 
+from decks that are not playing audio.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-043
+
+[REQUIREMENT]
+UID: SR-101
+TITLE: Selecting Playback Queues
+STATEMENT: >>>
+The system shall allow the user to associate a playback queue for association with 
+a playback deck.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-044
 
 [[/SECTION]]
 
 [[SECTION]]
-TITLE: Multiple Playback Queues
+TITLE: Queue Creation and Management
+
+[REQUIREMENT]
+UID: SR-102
+TITLE: Creating Playback Queues
+STATEMENT: The system shall allow the user to create playback queues.
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-045
+
+[REQUIREMENT]
+UID: SR-103
+TITLE: Deleting Playback Queues
+STATEMENT: >>>
+The system shall allow the user to delete playback queues without deleting 
+the tracks in their library.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-045
+
+[REQUIREMENT]
+UID: SR-104
+TITLE: Adding Tracks to Playback Queues
+STATEMENT: >>>
+The system shall allow the user to add tracks from their library to playback queues.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-046
+
+[REQUIREMENT]
+UID: SR-105
+TITLE: Removing Tracks from Playback Queues
+STATEMENT: >>>
+The system shall allow the user to remove individual track entries from 
+playback queues without removing the corresponding tracks from their library.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-046
+
+[REQUIREMENT]
+UID: SR-106
+TITLE: Reordering Playback Queue Entries
+STATEMENT: >>>
+The system shall allow the user to change the order of track entries within a 
+playback queue.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-047
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Undo and Redo
+
+[REQUIREMENT]
+UID: SR-107
+TITLE: Undoing Playback Queue Changes
+STATEMENT: >>>
+The system shall allow the user to reverse supported changes made to a 
+playback queue.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-048
+
+[REQUIREMENT]
+UID: SR-108
+TITLE: Redoing Playback Queue Changes
+STATEMENT: >>>
+The system shall allow the user to reapply supported playback queue changes that 
+have been undone.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-048
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Independent Deck Playback
+
+[REQUIREMENT]
+UID: SR-109
+TITLE: Independent Playback Deck Control
+STATEMENT: >>>
+The system shall allow the playback state of each deck to be controlled 
+independently of other decks.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-049
+
+[REQUIREMENT]
+UID: SR-110
+TITLE: Independent Playback Position
+STATEMENT: >>>
+The system shall allow the playback position of each deck to be adjusted 
+independently of other decks.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-049
+
+[REQUIREMENT]
+UID: SR-111
+TITLE: Independent Playback Volume
+STATEMENT: >>>
+The system shall allow the playback volume of each deck to be adjusted independently of other decks.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-049
+
+[REQUIREMENT]
+UID: SR-112
+TITLE: Independent Playback Speed
+STATEMENT: >>>
+The system shall allow the playback speed of each deck to be adjusted independently of other decks.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-049
+
+[REQUIREMENT]
+UID: SR-113
+TITLE: Independent Playback Pitch
+STATEMENT: >>>
+The system shall allow the playback pitch of each deck to be adjusted independently of other decks.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-049
+
+[REQUIREMENT]
+UID: SR-114
+TITLE: Simultaneous Playback Decks
+STATEMENT: >>>
+The system shall support simultaneous audio playback on at least two playback decks.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-050
+
+[REQUIREMENT]
+UID: SR-115
+TITLE: Configuring Queue Switching Behaviour
+STATEMENT: >>>
+The system shall allow the user to configure the behaviour of a playback deck 
+when a different playback queue is associated with it during playback.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-051
 
 [[/SECTION]]
 
@@ -1167,7 +1356,7 @@ a queue without deleting the tags themselves.
 <<<
 RELATIONS:
 - TYPE: Parent
-  VALUE: UR-048
+  VALUE: UR-052
 
 [REQUIREMENT]
 UID: SR-164
@@ -1178,7 +1367,7 @@ a queue.
 <<<
 RELATIONS:
 - TYPE: Parent
-  VALUE: UR-048
+  VALUE: UR-052
 
 [REQUIREMENT]
 UID: SR-165
@@ -1189,7 +1378,7 @@ supported track attributes.
 <<<
 RELATIONS:
 - TYPE: Parent
-  VALUE: UR-049
+  VALUE: UR-053
 
 [REQUIREMENT]
 UID: SR-166
@@ -1199,7 +1388,7 @@ The system shall indicate when a queue search returns no matching tracks.
 <<<
 RELATIONS:
 - TYPE: Parent
-  VALUE: UR-052
+  VALUE: UR-056
 
 [REQUIREMENT]
 UID: SR-167
@@ -1210,7 +1399,7 @@ attributes.
 <<<
 RELATIONS:
 - TYPE: Parent
-  VALUE: UR-050
+  VALUE: UR-054
 
 [REQUIREMENT]
 UID: SR-168
@@ -1221,7 +1410,7 @@ attributes.
 <<<
 RELATIONS:
 - TYPE: Parent
-  VALUE: UR-051
+  VALUE: UR-055
 
 [REQUIREMENT]
 UID: SR-169
@@ -1231,7 +1420,7 @@ The system shall indicate when filtering a queue returns no matching tracks.
 <<<
 RELATIONS:
 - TYPE: Parent
-  VALUE: UR-052
+  VALUE: UR-056
 
 [[/SECTION]]
 

@@ -234,13 +234,20 @@ STATEMENT: >>>
 Yaap shall support the use of alternative lyric versions and translations.
 <<<
 
+[REQUIREMENT]
+UID: BR-023
+TITLE: Download Lyrics
+STATEMENT: >>>
+Yaap shall provide the ability to download lyrics associated with audio tracks.
+<<<
+
 [[/SECTION]]
 
 [[SECTION]]
 TITLE: Audio Visualisation
 
 [REQUIREMENT]
-UID: BR-023
+UID: BR-024
 TITLE: Audio Visualisation
 STATEMENT: >>>
 Yaap shall provide visual representations of audio during playback.
