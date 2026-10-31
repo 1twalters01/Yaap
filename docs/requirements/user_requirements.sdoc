@@ -721,7 +721,7 @@ TITLE: User Preferences
 
 [REQUIREMENT]
 UID: UR-057
-TITLE: Application Preference Configuration
+TITLE: Configure Application Preferences
 STATEMENT: The user shall be able to configure application preferences.
 RELATIONS:
 - TYPE: Parent
@@ -729,8 +729,16 @@ RELATIONS:
 
 [REQUIREMENT]
 UID: UR-058
-TITLE: Playback Preference Configuration
+TITLE: Configure Playback Preferences
 STATEMENT: The user shall be able to configure playback preferences.
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-014
+
+[REQUIREMENT]
+UID: UR-107
+TITLE: Configure Interface Preferences
+STATEMENT: The user shall be able to configure Interface preferences.
 RELATIONS:
 - TYPE: Parent
   VALUE: BR-014
@@ -738,16 +746,28 @@ RELATIONS:
 [REQUIREMENT]
 UID: UR-059
 TITLE: View Preference Settings
-STATEMENT: The user shall be able to view their current preference settings.
+STATEMENT: >>>
+The user shall be able to view their current preferences.
+<<<
 RELATIONS:
 - TYPE: Parent
   VALUE: BR-014
 
 [REQUIREMENT]
 UID: UR-060
-TITLE: Preference Settings Persistence
+TITLE: Retain Preference Settings
 STATEMENT: >>>
 The user shall be able to retain configured preferences between playback sessions.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-014
+
+[REQUIREMENT]
+UID: UR-108
+TITLE: Reset Preferences
+STATEMENT: >>>
+The user shall be able to restore default preferences.
 <<<
 RELATIONS:
 - TYPE: Parent
@@ -762,7 +782,7 @@ TITLE: Internationalization
 UID: UR-061
 TITLE: View Language
 STATEMENT: >>>
-The user shall be able to view and preview an available application language.
+The user shall be able to view the languages available for use by the application.
 <<<
 RELATIONS:
 - TYPE: Parent
@@ -770,7 +790,7 @@ RELATIONS:
 
 [REQUIREMENT]
 UID: UR-062
-TITLE: Select Language
+TITLE: Select Application Language
 STATEMENT: >>>
 The user shall be able to select an available application language.
 <<<
@@ -780,7 +800,7 @@ RELATIONS:
 
 [REQUIREMENT]
 UID: UR-063
-TITLE: Select Language
+TITLE: Use Selected Language
 STATEMENT: >>>
 The user shall be able to use the application in the selected language.
 <<<
@@ -790,7 +810,7 @@ RELATIONS:
 
 [REQUIREMENT]
 UID: UR-064
-TITLE: Install Languages
+TITLE: Install Additional Languages
 STATEMENT: >>>
 The user shall be able to install languages from external sources.
 <<<
@@ -840,7 +860,7 @@ RELATIONS:
 
 [REQUIREMENT]
 UID: UR-068
-TITLE: Reviewing Library Activity
+TITLE: Reviewing Historical Library Activity
 STATEMENT: >>>
 The user shall be able to review library activity information over time periods.
 <<<
@@ -850,9 +870,9 @@ RELATIONS:
 
 [REQUIREMENT]
 UID: UR-069
-TITLE: Analysing Library Activity
+TITLE: Analyse Library Activity
 STATEMENT: >>>
-The user shall be able to analyse library activity information over time periods.
+The user shall be able to analyse their library activity information over time periods.
 <<<
 RELATIONS:
 - TYPE: Parent
@@ -915,7 +935,7 @@ TITLE: Sharing
 
 [REQUIREMENT]
 UID: UR-074
-TITLE: Sharing Audio Information
+TITLE: Sharing Audio-Related Information
 STATEMENT: >>>
 The user shall be able to share supported audio-related information with 
 compatible external applications or services.
@@ -926,9 +946,9 @@ RELATIONS:
 
 [REQUIREMENT]
 UID: UR-075
-TITLE: Synchronize Playback
+TITLE: Synchronize Playback Across Devices
 STATEMENT: >>>
-The user shall be able to synchronize playback between different devices.
+The user shall be able to synchronize playback between supported devices.
 <<<
 RELATIONS:
 - TYPE: Parent
@@ -936,7 +956,7 @@ RELATIONS:
 
 [REQUIREMENT]
 UID: UR-076
-TITLE: Identifying External Options
+TITLE: Identifying External Integrations
 STATEMENT: >>>
 The user shall be able to identify which external applications, services, or 
 devices are available for supported interactions.
@@ -975,7 +995,7 @@ RELATIONS:
 UID: UR-079
 TITLE: Identify Controls
 STATEMENT: >>>
-The user shall be able to identify the available controls and how to use them
+The user shall be able to identify the available controls and how to use them.
 <<<
 RELATIONS:
 - TYPE: Parent
@@ -984,14 +1004,15 @@ RELATIONS:
 [REQUIREMENT]
 UID: UR-080
 TITLE: Customise Controls
-STATEMENT: The user shall be able to change the controls for Yaap.
+STATEMENT: The user shall be able to customise the controls used to interact
+with Yaap.
 RELATIONS:
 - TYPE: Parent
   VALUE: BR-018
 
 [REQUIREMENT]
 UID: UR-081
-TITLE: Perform Actions
+TITLE: Perform Actions through Interaction Modes
 STATEMENT: >>>
 The user shall be able to perform supported operations through provided 
 interaction modes.
@@ -1053,11 +1074,11 @@ RELATIONS:
 [[/SECTION]]
 
 [[SECTION]]
-TITLE: User Data Persistence
+TITLE: Importing and Exporting User Data
 
 [REQUIREMENT]
 UID: UR-086
-TITLE: Perform Actions
+TITLE: Import User-Created Information
 STATEMENT: >>>
 The user shall be able to import user-created information.
 <<<
@@ -1067,9 +1088,20 @@ RELATIONS:
 
 [REQUIREMENT]
 UID: UR-087
-TITLE: Perform Actions
+TITLE: Export User-Created Information
 STATEMENT: >>>
 The user shall be able to export user-created information.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-020
+
+[REQUIREMENT]
+UID: UR-106
+TITLE: Selecting Shared Information Categories
+STATEMENT: >>>
+The user shall be able to select which supported categories of user-created 
+information to import or export.
 <<<
 RELATIONS:
 - TYPE: Parent
@@ -1110,6 +1142,17 @@ UID: UR-090
 TITLE: Toggle Lyrics
 STATEMENT: >>>
 The user shall be able to enable and disable lyric visualisation for an audio track.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-021
+
+[REQUIREMENT]
+UID: UR-109
+TITLE: Lyrics Selection
+STATEMENT: >>>
+The user shall be able to select which available lyrics associated with an audio 
+track are displayed.
 <<<
 RELATIONS:
 - TYPE: Parent
@@ -1211,9 +1254,9 @@ TITLE: Audio Visualisation
 
 [REQUIREMENT]
 UID: UR-098
-TITLE: View Audio Visualisation
+TITLE: View Audio Visualisations
 STATEMENT: >>>
-The user shall be able to view visual representations of the audio.
+The user shall be able to view visual representations of audio during playback.
 <<<
 RELATIONS:
 - TYPE: Parent
@@ -1223,7 +1266,8 @@ RELATIONS:
 UID: UR-099
 TITLE: Customise Audio Visualisation
 STATEMENT: >>>
-The user shall be able to change the visual representation of the audio.
+The user shall be able to customise the appearance and behaviour of audio 
+visualisations.
 <<<
 RELATIONS:
 - TYPE: Parent
@@ -1233,7 +1277,7 @@ RELATIONS:
 UID: UR-100
 TITLE: Toggle Audio Visualisation
 STATEMENT: >>>
-The user shall be able to enable and disable audio visualisation for an audio track.
+The user shall be able to enable and disable audio visualisation during playback.
 <<<
 RELATIONS:
 - TYPE: Parent
@@ -1241,9 +1285,10 @@ RELATIONS:
 
 [REQUIREMENT]
 UID: UR-101
-TITLE: Audio Visualisation Settings Persistence
+TITLE: Retain Audio Visualisation Settings
 STATEMENT: >>>
-The user shall be able to retain the selected settings for audio visualisation.
+The user shall be able to retain configured audio visualisation settings between 
+application settings.
 <<<
 RELATIONS:
 - TYPE: Parent

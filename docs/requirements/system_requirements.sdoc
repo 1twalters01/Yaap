@@ -1597,10 +1597,183 @@ RELATIONS:
 
 [[/SECTION]]
 
+[[SECTION]]
+TITLE: Importing and Exporting User Data
+
+[REQUIREMENT]
+UID: SR-200
+TITLE: Export Playlists
+STATEMENT: >>>
+The system shall support exporting playlists and their associated track references.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-087
+
+[REQUIREMENT]
+UID: SR-201
+TITLE: Export Collections
+STATEMENT: >>>
+The system shall support exporting collections and their associated contents.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-087
+
+[REQUIREMENT]
+UID: SR-202
+TITLE: Export Tags
+STATEMENT: >>>
+The system shall support exporting user-defined tags and their associations 
+with tracks.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-087
+
+[REQUIREMENT]
+UID: SR-203
+TITLE: Export Playback Queues
+STATEMENT: >>>
+The system shall support exporting playback queues and their associated track 
+references in queue order.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-087
+
+[REQUIREMENT]
+UID: SR-204
+TITLE: Export Track Metadata
+STATEMENT: >>>
+The system shall support exporting user-created and user-modified track metadata.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-087
+
+[REQUIREMENT]
+UID: SR-205
+TITLE: Export Preference Configurations
+STATEMENT: >>>
+The system shall support exporting Configured Preferences.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-087
+
+[REQUIREMENT]
+UID: SR-206
+TITLE: Export Lyrics
+STATEMENT: >>>
+The system shall support exporting lyrics associated with tracks, including 
+their synchronisation information and language where available.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-087
+
+[REQUIREMENT]
+UID: SR-207
+TITLE: Exclude Audio Content from Exports
+STATEMENT: >>>
+The system shall not include audio content from source tracks in exported 
+user-created information.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-087
+
+[REQUIREMENT]
+UID: SR-208
+TITLE: Import Playlists
+STATEMENT: >>>
+The system shall support importing playlists and their associated track references.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-086
+
+[REQUIREMENT]
+UID: SR-209
+TITLE: Import Collections
+STATEMENT: The system shall support importing collections and their associated contents.
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-086
+
+[REQUIREMENT]
+UID: SR-210
+TITLE: Import Tags
+STATEMENT: The system shall support importing user-defined tags and their associations with tracks.
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-086
+
+[REQUIREMENT]
+UID: SR-211
+TITLE: Import Playback Queues
+STATEMENT: The system shall support importing playback queues and their associated track references in queue order.
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-086
+
+[REQUIREMENT]
+UID: SR-212
+TITLE: Import Track Metadata
+STATEMENT: The system shall support importing track metadata.
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-086
+
+[REQUIREMENT]
+UID: SR-213
+TITLE: Export Preference Configurations
+STATEMENT: >>>
+The system shall support exporting Configured Preferences.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-087
+
+[REQUIREMENT]
+UID: SR-214
+TITLE: Import Lyrics
+STATEMENT: >>>
+The system shall support importing lyrics associated with tracks, including 
+their synchronisation information and language where available.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-086
+
+[REQUIREMENT]
+UID: SR-215
+TITLE: Selecting Shared Information Categories
+STATEMENT: >>>
+The system shall support the selection of supported categories for user-created 
+information to import or export.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-106
+
+[[/SECTION]]
+
 [[/SECTION]]
 
 [[SECTION]]
 TITLE: Settings
+
+[[SECTION]]
+TITLE: Preferences
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Internationalisation
+
+[[/SECTION]]
 
 [[/SECTION]]
 

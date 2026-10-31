@@ -155,7 +155,7 @@ TITLE: Personalisation
 UID: BR-014
 TITLE: User Preferences
 STATEMENT: >>>
-Yaap shall allow users to configure application and playback settings.
+Yaap shall allow users to configure app settings.
 <<<
 
 [REQUIREMENT]
@@ -212,8 +212,8 @@ STATEMENT: Yaap shall allow reversible modifications to be undone and redone.
 
 [REQUIREMENT]
 UID: BR-020
-TITLE: User Data Persistence
-STATEMENT: Yaap shall persist user-created information between sessions.
+TITLE: Importing and Exporting User Data 
+STATEMENT: Yaap shall be able to import and export data.
 
 [[/SECTION]]
 
