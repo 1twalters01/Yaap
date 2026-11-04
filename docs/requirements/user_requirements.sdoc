@@ -852,7 +852,7 @@ RELATIONS:
 UID: UR-067
 TITLE: Deleting Library Activity
 STATEMENT: >>>
-The user shall be able to delete information about their library activity.
+The user shall be able to delete recorded library activity information.
 <<<
 RELATIONS:
 - TYPE: Parent
@@ -862,7 +862,8 @@ RELATIONS:
 UID: UR-068
 TITLE: Reviewing Historical Library Activity
 STATEMENT: >>>
-The user shall be able to review library activity information over time periods.
+The user shall be able to review their library activity over user-defined 
+time periods.
 <<<
 RELATIONS:
 - TYPE: Parent
@@ -872,7 +873,8 @@ RELATIONS:
 UID: UR-069
 TITLE: Analyse Library Activity
 STATEMENT: >>>
-The user shall be able to analyse their library activity information over time periods.
+The user shall be able to analyse their library activity information over 
+user-defined time periods.
 <<<
 RELATIONS:
 - TYPE: Parent

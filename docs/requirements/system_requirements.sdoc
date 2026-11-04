@@ -1763,6 +1763,157 @@ RELATIONS:
 [[/SECTION]]
 
 [[SECTION]]
+TITLE: Library Analitics
+
+[[SECTION]]
+TITLE: Library Activity Recording
+
+[REQUIREMENT]
+UID: SR-216
+TITLE: Record Library Activity
+STATEMENT: >>>
+The system shall record supported library activities.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-066
+
+[REQUIREMENT]
+UID: SR-217
+TITLE: Record Library Activity
+STATEMENT: >>>
+The system shall record supported library activities.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-066
+
+[REQUIREMENT]
+UID: SR-218
+TITLE: Record Library Activity
+STATEMENT: >>>
+The system shall record supported library activities.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-066
+
+[REQUIREMENT]
+UID: SR-219
+TITLE: Record Library Activity
+STATEMENT: >>>
+The system shall record supported library activities.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-066
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Deleting Library History
+
+[REQUIREMENT]
+UID: SR-300
+TITLE: Deleting Library Activity
+STATEMENT: >>>
+The system shall support deleting recorded library activity information.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-067
+
+[REQUIREMENT]
+UID: SR-301
+TITLE: Deleting Historical Library Activity
+STATEMENT: >>>
+The system shall support deleting recorded library activity information for 
+specified historical time periods.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-067
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Library Activity Review
+
+[REQUIREMENT]
+UID: SR-302
+TITLE: Retrieving Historical Library Activity
+STATEMENT: >>>
+The system shall support retrieving recorded library activity information for 
+specified historical time periods.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-068
+
+[REQUIREMENT]
+UID: SR-303
+TITLE: Filtering Historical Library Activity
+STATEMENT: >>>
+The system shall support filtering recorded library activity information for 
+specified historical time periods.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-068
+
+[REQUIREMENT]
+UID: SR-304
+TITLE: Sorting Historical Library Activity
+STATEMENT: >>>
+The system shall support sorting recorded library activity information for specified 
+historical time periods.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-068
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Library Activity Analysis
+
+[REQUIREMENT]
+UID: SR-305
+TITLE: Analysing Historical Library Activity
+STATEMENT: >>>
+The system shall support analysing recorded library activity information for 
+specified historical time periods.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-069
+
+[REQUIREMENT]
+UID: SR-306
+TITLE: Calculating Library Activity Statistics
+STATEMENT: >>>
+The system shall calculate statistical measurements from recorded library activity.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-069
+
+[REQUIREMENT]
+UID: SR-307
+TITLE: Comparing Library Activity Behaviour
+STATEMENT: >>>
+The system shall support comparing library activity statistics across different
+historical time periods.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-069
+
+[[/SECTION]]
+
+[[/SECTION]]
+
+[[SECTION]]
 TITLE: Listening Analytics
 
 [[SECTION]]
