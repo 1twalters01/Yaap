@@ -2199,6 +2199,132 @@ RELATIONS:
 [[SECTION]]
 TITLE: User Experience
 
+[[SECTION]]
+TITLE: Interface Provision
+
+[REQUIREMENT]
+UID: SR-310
+TITLE: Provide TUI Interface
+STATEMENT: >>>
+The system shall provide a text-based user interface through which users can access
+supported application functionality.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-077
+
+[REQUIREMENT]
+UID: SR-311
+TITLE: Provide GUI Interface
+STATEMENT: >>>
+The system shall provide a graphical user interface through which users can access
+supported application functionality.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-078
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Control Discoverability
+
+[REQUIREMENT]
+UID: SR-312
+TITLE: Identify Available Controls
+STATEMENT: >>>
+The system shall provide information identifying the controls available within 
+the active interface.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-079
+
+[REQUIREMENT]
+UID: SR-313
+TITLE: Provide Control Usage Instructions
+STATEMENT: >>>
+The system shall provide instructions describing how available controls are used.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-079
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Control Customisation
+
+[REQUIREMENT]
+UID: SR-314
+TITLE: Customise Interface Controls
+STATEMENT: >>>
+The system shall support customisation of supported interface controls.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-080
+
+[REQUIREMENT]
+UID: SR-315
+TITLE: Retain Control Customisations
+STATEMENT: >>>
+The system shall retain configured control customistaions between application 
+sessions.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-080
+
+[REQUIREMENT]
+UID: SR-316
+TITLE: Restore Default Controls
+STATEMENT: >>>
+The system shall support restoring interface controls to their default 
+configurations.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-080
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Interactions
+
+[REQUIREMENT]
+UID: SR-317
+TITLE: Support User Interaction
+STATEMENT: >>>
+The system shall support user interaction through provided interface controls.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-081
+
+[REQUIREMENT]
+UID: SR-318
+TITLE: Execute Supported Operations
+STATEMENT: >>>
+The system shall execute supported operations in response to valid user 
+interactions.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-081
+
+[REQUIREMENT]
+UID: SR-319
+TITLE: Provide Interaction Feedback
+STATEMENT: >>>
+The system shall provide feedback to users in response to supported interactions.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-081
+
+[[/SECTION]]
+
 [[/SECTION]]
 
 [[/SECTION]]

@@ -980,7 +980,9 @@ TITLE: User Interface Types
 [REQUIREMENT]
 UID: UR-077
 TITLE: TUI Interface
-STATEMENT: The user shall be able to access Yaap through a TUI interface.
+STATEMENT: >>>
+The user shall be able to access Yaap through a text-based user interface.
+<<<
 RELATIONS:
 - TYPE: Parent
   VALUE: BR-018
@@ -988,7 +990,9 @@ RELATIONS:
 [REQUIREMENT]
 UID: UR-078
 TITLE: GUI Interface
-STATEMENT: The user shall be able to access Yaap through a GUI interface.
+STATEMENT: >>>
+The user shall be able to access Yaap through a graphical user interface.
+<<<
 RELATIONS:
 - TYPE: Parent
   VALUE: BR-018
@@ -1007,8 +1011,7 @@ RELATIONS:
 UID: UR-080
 TITLE: Customise Controls
 STATEMENT: >>>
-The user shall be able to customise the controls used to interact
-with Yaap.
+The user shall be able to customise the controls used to interact with Yaap.
 <<<
 RELATIONS:
 - TYPE: Parent
@@ -1018,7 +1021,7 @@ RELATIONS:
 UID: UR-081
 TITLE: Perform Actions through Interaction Modes
 STATEMENT: >>>
-The user shall be able to perform supported operations through provided 
+The user shall be able to perform supported operations through the available 
 interaction modes.
 <<<
 RELATIONS:
