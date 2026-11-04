@@ -1763,6 +1763,11 @@ RELATIONS:
 [[/SECTION]]
 
 [[SECTION]]
+TITLE: Analytics
+
+[[/SECTION]]
+
+[[SECTION]]
 TITLE: Settings
 
 [[SECTION]]
@@ -1773,12 +1778,111 @@ TITLE: Preferences
 [[SECTION]]
 TITLE: Internationalisation
 
-[[/SECTION]]
+[REQUIREMENT]
+UID: SR-270
+TITLE: Provide Available Languages
+STATEMENT: >>>
+The system shall provide a list of languages available for application use.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-061
+
+[REQUIREMENT]
+UID: SR-271
+TITLE: Identify Installed Languages
+STATEMENT: >>>
+The system shall identify which application languages are currently installed.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-061
+
+[REQUIREMENT]
+UID: SR-272
+TITLE: Identify Default Language
+STATEMENT: >>>
+The system shall identify the default application language.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-061
+
+[REQUIREMENT]
+UID: SR-273
+TITLE: Preview Application Languages
+STATEMENT: >>>
+The system shall support previewing the application in available languages.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-061
+
+[REQUIREMENT]
+UID: SR-274
+TITLE: Select Application Languages
+STATEMENT: >>>
+The system shall support selection of an available application language.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-062
+
+[REQUIREMENT]
+UID: SR-275
+TITLE: Apply Application Languages
+STATEMENT: >>>
+The system shall display supported application content in the selected language.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-063
+
+[REQUIREMENT]
+UID: SR-276
+TITLE: Install Application Languages
+STATEMENT: >>>
+The system shall support installing additional language resources from 
+external sources.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-064
+
+[REQUIREMENT]
+UID: SR-277
+TITLE: Remove Installed Application Languages
+STATEMENT: >>>
+The system shall support removing language resources if more than one is
+installed.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-064
+
+[REQUIREMENT]
+UID: SR-278
+TITLE: Persist Application Languages
+STATEMENT: >>>
+The system shall retain the selected application language between application
+sessions.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-065
+
+[REQUIREMENT]
+UID: SR-279
+TITLE: Handle Unavailable Selected Languages
+STATEMENT: >>>
+The system shall select an available fallback language when the previously
+selected language is no longer available.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-065
 
 [[/SECTION]]
-
-[[SECTION]]
-TITLE: Analytics
 
 [[/SECTION]]
 

@@ -810,9 +810,9 @@ RELATIONS:
 
 [REQUIREMENT]
 UID: UR-064
-TITLE: Install Additional Languages
+TITLE: Update Installed Additional Languages
 STATEMENT: >>>
-The user shall be able to install languages from external sources.
+The user shall be able to update the installed languages using external sources.
 <<<
 RELATIONS:
 - TYPE: Parent
@@ -1004,8 +1004,10 @@ RELATIONS:
 [REQUIREMENT]
 UID: UR-080
 TITLE: Customise Controls
-STATEMENT: The user shall be able to customise the controls used to interact
+STATEMENT: >>>
+The user shall be able to customise the controls used to interact
 with Yaap.
+<<<
 RELATIONS:
 - TYPE: Parent
   VALUE: BR-018
