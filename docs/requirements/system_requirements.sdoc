@@ -1763,7 +1763,166 @@ RELATIONS:
 [[/SECTION]]
 
 [[SECTION]]
-TITLE: Analytics
+TITLE: Listening Analytics
+
+[[SECTION]]
+TITLE: Listening Activity Recording
+
+[REQUIREMENT]
+UID: SR-220
+TITLE: Record Listening Activity
+STATEMENT: The system shall record supported listening activities.
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-070
+
+[REQUIREMENT]
+UID: SR-221
+TITLE: Record Track Playback
+STATEMENT: >>>
+The system shall record track playback events, including the associated track 
+and occurence timestamp.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-070
+
+[REQUIREMENT]
+UID: SR-222
+TITLE: Record Listening Duration
+STATEMENT: >>>
+The system shall maintain a record of listening activity for subsequent retrieval.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-070
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Listening History Management
+
+[REQUIREMENT]
+UID: SR-223
+TITLE: Retrieve Listening History
+STATEMENT: >>>
+The system shall support toggling whether to record available listening analytics.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-070
+
+[REQUIREMENT]
+UID: SR-224
+TITLE: Retrieve Listening History
+STATEMENT: The system shall support retrieving recorded listening history.
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-070
+
+[REQUIREMENT]
+UID: SR-225
+TITLE: Delete Listening History
+STATEMENT: The system shall support deleting recorded listening history.
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-071
+
+[REQUIREMENT]
+UID: SR-226
+TITLE: Delete Historical Listening Activity
+STATEMENT: >>>
+The system shall support deleting recorded listening history for specified 
+historical time periods.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-071
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Historical Listening Review
+
+[REQUIREMENT]
+UID: SR-227
+TITLE: Retrieve Historical Listening Activity
+STATEMENT: >>>
+The system shall support retrieving listening history for specified historical 
+time periods.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-072
+
+[REQUIREMENT]
+UID: SR-228
+TITLE: Filter Listening History
+STATEMENT: >>>
+The system shall support filtering listening history by supported track 
+attributes and playback information.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-072
+
+[REQUIREMENT]
+UID: SR-229
+TITLE: Sort Listening History
+STATEMENT: The system shall support sorting listening history chronologically.
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-072
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Listening Behaviour Analysis
+
+[REQUIREMENT]
+UID: SR-230
+TITLE: Analyse Listening Behaviour
+STATEMENT: >>>
+The system shall support analysing recorded listening activity over specific
+historical time periods.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-073
+
+[REQUIREMENT]
+UID: SR-231
+TITLE: Calculate Listening Statistics
+STATEMENT: >>>
+The system shall calculate statistical measurements from recorded listening 
+activity.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-073
+
+[REQUIREMENT]
+UID: SR-232
+TITLE: Analyse Listening Behaviour
+STATEMENT: >>>
+The system shall support comparing listening statistics across different
+historical time periods.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-073
+
+[TEXT]
+STATEMENT: >>>
+Note that statistics includes but is not limited to: 
+Play counts and listening duration per track/artist/album
+Listening distribution by genre/language
+Listening behaviour by time of day and day of week
+Track completion and skip rates
+Most frequently played tracks over a period
+<<<
+
+[[/SECTION]]
 
 [[/SECTION]]
 

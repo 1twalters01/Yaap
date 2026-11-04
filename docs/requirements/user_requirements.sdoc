@@ -896,9 +896,7 @@ RELATIONS:
 [REQUIREMENT]
 UID: UR-071
 TITLE: Deleting Listening Behaviour
-STATEMENT: >>>
-The user shall be able to delete information about their listening behaviour.
-<<<
+STATEMENT: The user shall be able to delete recorded listening history.
 RELATIONS:
 - TYPE: Parent
   VALUE: BR-016
@@ -907,7 +905,8 @@ RELATIONS:
 UID: UR-072
 TITLE: Reviewing Listening Behaviour
 STATEMENT: >>>
-The user shall be able to review listening information over time periods.
+The user shall be able to review listening information over user-defined 
+time periods.
 <<<
 RELATIONS:
 - TYPE: Parent
@@ -917,7 +916,8 @@ RELATIONS:
 UID: UR-073
 TITLE: Analysing Listening Behaviour
 STATEMENT: >>>
-The user shall be able to analyse listening information over time periods.
+The user shall be able to analyse their listening behaviour over user-defined 
+time periods.
 <<<
 RELATIONS:
 - TYPE: Parent
