@@ -2327,18 +2327,645 @@ RELATIONS:
 
 [[/SECTION]]
 
+[[SECTION]]
+TITLE: Remote Playback Synchronisation
+
+[[SECTION]]
+TITLE: Device Discovery and Information
+
+[REQUIREMENT]
+UID: SR-350
+TITLE: Discover Connected Devices
+STATEMENT: >>>
+The system shall identify supported devices available for connection.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-075
+
+[REQUIREMENT]
+UID: SR-351
+TITLE: Identify Connected Devices
+STATEMENT: >>>
+The system shall maintain information identifying connected devices.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-075
+
+[REQUIREMENT]
+UID: SR-352
+TITLE: Provide Device Capabilities
+STATEMENT: >>>
+The system shall provide information about its supported capabilities to 
+connected devices.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-075
+
+[REQUIREMENT]
+UID: SR-353
+TITLE: Retrieve Device Capabilities
+STATEMENT: >>>
+The system shall retrieve information about the capabilities of connected devices.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-075
+
+[REQUIREMENT]
+UID: SR-354
+TITLE: Provide System Resource Information
+STATEMENT: >>>
+The system shall provide permitted information about its available system
+resources to connected devices.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-075
+
+[REQUIREMENT]
+UID: SR-355
+TITLE: Retrieve System Resource Information
+STATEMENT: >>>
+The system shall retrieve available system resource information from connected
+devices.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-075
+
+[REQUIREMENT]
+UID: SR-356
+TITLE: Update System Resource Information
+STATEMENT: >>>
+The system shall update advertised system resource information when relevant 
+resource availability changes.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-075
+
 [[/SECTION]]
 
 [[SECTION]]
-TITLE: Extra Features
+TITLE: Playback Synchronisation
+
+[REQUIREMENT]
+UID: SR-357
+TITLE: Provide Playback Synchronisation Information
+STATEMENT: >>>
+The system shall provide playback synchronisation information to connected devices.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-075
+
+[REQUIREMENT]
+UID: SR-358
+TITLE: Receive Playback Synchronisation Information
+STATEMENT: >>>
+The system shall receive playback synchronisation information from connected 
+devices.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-075
+
+[REQUIREMENT]
+UID: SR-359
+TITLE: Synchronize Local Playback
+STATEMENT: >>>
+The system shall synchronise local playback with playback information received 
+from a connected device.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-075
+
+[REQUIREMENT]
+UID: SR-360
+TITLE: Identify Synchronisation Source
+STATEMENT: >>>
+The system shall identify the connected device providing playback 
+synchronisation information.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-075
+
+[REQUIREMENT]
+UID: SR-361
+TITLE: Handle Synchronization Changes
+STATEMENT: >>>
+The system shall update local playback in response to relevant changes in the 
+synchronisation source's playback state.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-075
+
+[REQUIREMENT]
+UID: SR-362
+TITLE: Identify Matching Audio Tracks
+STATEMENT: >>>
+The system shall identify audio tracks across connected devices using supported
+track identifiers.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-075
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Sharing Permissions
+
+[REQUIREMENT]
+UID: SR-363
+TITLE: Configure Sharing Permissions
+STATEMENT: >>>
+The system shall allow sharing permissions to be configured for supported
+information and operations.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-075
+
+[REQUIREMENT]
+UID: SR-364
+TITLE: Configure Device-Specific Sharing Permissions
+STATEMENT: >>>
+The system shall allow sharing permissions to be configured for individual
+connected devices.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-075
+
+[REQUIREMENT]
+UID: SR-365
+TITLE: Persist Sharing Permissions
+STATEMENT: >>>
+The system shall retain configured sharing permissions between application sessions.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-075
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Authentication and Authorisation
+
+[REQUIREMENT]
+UID: SR-366
+TITLE: Track Remote Processing Requests
+STATEMENT: >>>
+The system shall maintain the status of remote lyrics processing requests.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-075
+
+[REQUIREMENT]
+UID: SR-367
+TITLE: Handle Remote Processing Failures
+STATEMENT: >>>
+The system shall handle unsuccessful remote lyrics processing requests without
+corrupting existing lyrics data.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-075
+
+[REQUIREMENT]
+UID: SR-368
+TITLE: Handle Device Disconnections
+STATEMENT: >>>
+The system shall handle the disconnection of devices participating in distributed
+operations.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-075
+
+[REQUIREMENT]
+UID: SR-369
+TITLE: Authenticate Connected Devices
+STATEMENT: >>>
+The system shall authenticate devices before permitting access to protected
+information or operations.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-075
+
+[REQUIREMENT]
+UID: SR-370
+TITLE: Authorise Remote Operations
+STATEMENT: >>>
+The system shall verify that connected devices are authorised to perform operations.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-075
+
+[[/SECTION]]
+
+[[/SECTION]]
+
+[[/SECTION]]
 
 [[SECTION]]
 TITLE: Lyrics Player
+
+[[SECTION]]
+TITLE: View and Modify Lyrics
+
+[REQUIREMENT]
+UID: SR-500
+TITLE: Retrieve Track Lyrics
+STATEMENT: >>>
+The system shall support retrieving lyrics associated with an audio track.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-088
+
+[REQUIREMENT]
+UID: SR-501
+TITLE: Display Track Lyrics
+STATEMENT: >>>
+The system shall display retrieved lyrics associated with the selected audio track.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-088
+
+[REQUIREMENT]
+UID: SR-502
+TITLE: Modify Track Lyrics
+STATEMENT: >>>
+The system shall support modifying lyrics associated with an audio track.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-089
+
+[REQUIREMENT]
+UID: SR-503
+TITLE: Save Modified Lyrics
+STATEMENT: >>>
+The system shall retain modifications made to lyrics.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-089
+
+[REQUIREMENT]
+UID: SR-504
+TITLE: Enable Lyrics Display
+STATEMENT: >>>
+The system shall support enabling the display of lyrics during playback.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-090
+
+[REQUIREMENT]
+UID: SR-505
+TITLE: Disable Lyrics Display
+STATEMENT: >>>
+The system shall support disabling the display of lyrics during playback.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-090
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Translate Lyrics
+
+[REQUIREMENT]
+UID: SR-506
+TITLE: Translate Track Lyrics
+STATEMENT: >>>
+The system shall support translating lyrics into supported target languages.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-091
+
+[REQUIREMENT]
+UID: SR-507
+TITLE: Associate Translation with Original Lyrics
+STATEMENT: >>>
+The system shall associate translated lyrics with their corresponding original 
+lyrics and audio track.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-091
+
+[REQUIREMENT]
+UID: SR-508
+TITLE: Maintain Multiple Lyrics Translations
+STATEMENT: >>>
+The system shall support maintaining multiple translations of lyrics associated
+with an audio track.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-092
+
+[REQUIREMENT]
+UID: SR-509
+TITLE: Select Lyrics Translation
+STATEMENT: >>>
+The system shall support selecting an available translation of lyrics for display.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-092
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Align Lyrics
+
+[REQUIREMENT]
+UID: SR-510
+TITLE: Align Lyrics with Audio
+STATEMENT: >>>
+The system shall support aligning lyrics with their associated audio track.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-093
+
+[REQUIREMENT]
+UID: SR-511
+TITLE: Maintain Multiple Lyrics Alignments
+STATEMENT: >>>
+The system shall support maintaining multiple alignments of lyrics associated
+with an audio track.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-092
+
+[REQUIREMENT]
+UID: SR-512
+TITLE: Associate Alignment with Original Lyrics
+STATEMENT: >>>
+The system shall associate aligned lyrics with their corresponding original 
+lyrics and audio track.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-093
+
+[REQUIREMENT]
+UID: SR-513
+TITLE: Support Multiple Lyrics Alignment Levels
+STATEMENT: >>>
+The system shall support lyric alignment at multiple levels of granularity.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-093
+
+[REQUIREMENT]
+UID: SR-514
+TITLE: Select Lyrics Alignment
+STATEMENT: >>>
+The system shall support selecting an available alignment of lyrics for display.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-094
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Download Lyrics
+
+[REQUIREMENT]
+UID: SR-515
+TITLE: Align Lyrics with Audio
+STATEMENT: >>>
+The system shall support retrieving lyrics from supported external sources.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-095
+
+[REQUIREMENT]
+UID: SR-516
+TITLE: Identify Available Lyrics Sources
+STATEMENT: >>>
+The system shall identify external sources available for retrieving lyrics.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-096
+
+[REQUIREMENT]
+UID: SR-517
+TITLE: Select Lyrics Download Source
+STATEMENT: >>>
+The system shall support selecting an available source for retrieving lyrics.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-096
+
+[REQUIREMENT]
+UID: SR-518
+TITLE: Identify Available Lyric Alignments
+STATEMENT: >>>
+The system shall identify the alignment levels available for lyrics that are to 
+be downloaded if they are retrievable.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-097
+
+[REQUIREMENT]
+UID: SR-519
+TITLE: Select Lyrics Download Alignment
+STATEMENT: >>>
+The system shall support selecting the alignment level of lyrics retrieved from 
+an external source.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-097
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Synchronized Lyrics
+
+[REQUIREMENT]
+UID: SR-520
+TITLE: Identify Remote Lyrics
+STATEMENT: >>>
+The system shall identify lyrics associated with matching audio tracks that are 
+available on connected devices.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-110
+
+[REQUIREMENT]
+UID: SR-521
+TITLE: Advertise Available Lyrics
+STATEMENT: >>>
+The system shall make permitted lyrics available for discovery by connected devices.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-110
+
+[REQUIREMENT]
+UID: SR-522
+TITLE: Advertise Lyrics Processing Requests
+STATEMENT: >>>
+The system shall advertise supported lyrics processing operations to connected 
+devices.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-110
+
+[REQUIREMENT]
+UID: SR-523
+TITLE: Provide Lyrics Attributes
+STATEMENT: >>>
+The system shall provide supported metadata describing available lyrics to 
+connected devices.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-110
+
+[REQUIREMENT]
+UID: SR-524
+TITLE: Execute Remote Lyrics Translation
+STATEMENT: >>>
+The system shall execute permitted lyrics translation requests received from 
+connected devices.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-110
+
+[REQUIREMENT]
+UID: SR-525
+TITLE: Execute Remote Lyrics Alignment
+STATEMENT: >>>
+The system shall execute permitted lyrics alignment requests received from 
+connected devices.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-110
+
+[REQUIREMENT]
+UID: SR-526
+TITLE: Return Lyrics Processing Results
+STATEMENT: >>>
+The system shall return the results of completed lyrics processing requests to 
+the requesting device.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-110
+
+[REQUIREMENT]
+UID: SR-527
+TITLE: Retrieve Remote Lyrics
+STATEMENT: >>>
+The system shall retrieve a selected lyrics version from its associated connected
+device.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-110
+
+[REQUIREMENT]
+UID: SR-528
+TITLE: Retain Retrieved Lyrics
+STATEMENT: The system shall support retaining retrieved lyrics locally.
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-110
+
+[REQUIREMENT]
+UID: SR-529
+TITLE: Control Remote Processing Availability
+STATEMENT: >>>
+The system shall allow remote lyrics processing requests to be enabled and disabled.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-110
+
+[REQUIREMENT]
+UID: SR-530
+TITLE: Consider Available System Resources
+STATEMENT: >>>
+The system shall consider available system resources when accepting remote lyrics
+processing requests.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-110
+
+[REQUIREMENT]
+UID: SR-531
+TITLE: Select Lyrics Variants
+STATEMENT: >>>
+The system shall support the selection of a lyrics variation from the available 
+local and remote variations associated with an audio track.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-110
+
+[[/SECTION]]
 
 [[/SECTION]]
 
 [[SECTION]]
 TITLE: Audio Visualiser
+
+[[SECTION]]
+TITLE: Audio Visualisation Provision
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Audio Visualisation Customisation
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Enabling and Disabling Audio Visualisations
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Audio Visualisation Settings Persistence
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Synchronized Audio Visualisations
 
 [[/SECTION]]
 

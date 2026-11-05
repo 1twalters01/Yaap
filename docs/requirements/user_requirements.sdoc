@@ -1165,6 +1165,19 @@ RELATIONS:
 - TYPE: Parent
   VALUE: BR-021
 
+[REQUIREMENT]
+UID: UR-110
+TITLE: Display Synchronized Lyrics on Other Devices
+STATEMENT: >>>
+The user shall be able to display lyrics synchronised with audio playback 
+on other supported devices.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-017
+- TYPE: Parent
+  VALUE: BR-021
+
 [[/SECTION]]
 
 [[SECTION]]
@@ -1298,6 +1311,19 @@ The user shall be able to retain configured audio visualisation settings between
 application settings.
 <<<
 RELATIONS:
+- TYPE: Parent
+  VALUE: BR-024
+
+[REQUIREMENT]
+UID: UR-120
+TITLE: Display Synchronized Audio Visualisations on Other Devices
+STATEMENT: >>>
+The user shall be able to display audio visualisations synchronized with audio
+playback on other supported devices.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: BR-017
 - TYPE: Parent
   VALUE: BR-024
 
