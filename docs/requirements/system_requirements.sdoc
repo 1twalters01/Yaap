@@ -2947,25 +2947,168 @@ TITLE: Audio Visualiser
 [[SECTION]]
 TITLE: Audio Visualisation Provision
 
+[REQUIREMENT]
+UID: SR-600
+TITLE: Generate Audio Visualisations
+STATEMENT: >>>
+The system shall generate visual representations of audio during playback.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-098
+
+[REQUIREMENT]
+UID: SR-601
+TITLE: Generate Audio Visualisations
+STATEMENT: >>>
+The system shall display generated audio visualisations through supported 
+interfaces.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-098
+
+[REQUIREMENT]
+UID: SR-602
+TITLE: Generate Audio Visualisations
+STATEMENT: >>>
+The system shall support multiple audio visualisation types.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-098
+
+[TEXT]
+STATEMENT: >>>
+Types may include but are not limited to: Waveforms, Spectrums and Spectograms
+<<<
+
 [[/SECTION]]
 
 [[SECTION]]
 TITLE: Audio Visualisation Customisation
+
+[REQUIREMENT]
+UID: SR-603
+TITLE: Customise Audio Visualisations
+STATEMENT: >>>
+The system shall support the customisation of supported audio visualisation 
+settings.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-099
+
+[REQUIREMENT]
+UID: SR-604
+TITLE: Select Audio Visualisation Type
+STATEMENT: >>>
+The system shall allow the user to select from supported audio visualisation types.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-099
+
+[REQUIREMENT]
+UID: SR-605
+TITLE: Configure Audio Visualisation Appearance
+STATEMENT: >>>
+The system shall support configuring the appearance of supported audio 
+visualisations.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-099
+
+[REQUIREMENT]
+UID: SR-606
+TITLE: Configure Audio Visualisation Behaviour
+STATEMENT: >>>
+The system shall support configuring the behaviour of supported audio 
+visualisations.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-099
 
 [[/SECTION]]
 
 [[SECTION]]
 TITLE: Enabling and Disabling Audio Visualisations
 
+[REQUIREMENT]
+UID: SR-607
+TITLE: Enable Audio Visualisation
+STATEMENT: >>>
+The system shall support enabling audio visualisation during playback.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-100
+
+[REQUIREMENT]
+UID: SR-608
+TITLE: Disable Audio Visualisation
+STATEMENT: >>>
+The system shall support disabling audio visualisation during playback.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-100
+
+[REQUIREMENT]
+UID: SR-609
+TITLE: Maintain Audio Visualisation State
+STATEMENT: >>>
+The system shall maintain the current enabled or disabled state of audio
+visualisation
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-100
+
 [[/SECTION]]
 
 [[SECTION]]
 TITLE: Audio Visualisation Settings Persistence
 
+[REQUIREMENT]
+UID: SR-610
+TITLE: Persist Audio Visualisation Settings
+STATEMENT: >>>
+The system shall retain configured audio visualisation settings between
+application sessions.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-101
+
+[REQUIREMENT]
+UID: SR-611
+TITLE: Restore Audio Visualisation Settings
+STATEMENT: >>>
+The system shall restore previously configured audio visualisation settings when
+starting a new application session.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-101
+
 [[/SECTION]]
 
 [[SECTION]]
 TITLE: Synchronized Audio Visualisations
+
+[REQUIREMENT]
+UID: SR-650
+TITLE: Synchronize Remote Audio Visualisations
+STATEMENT: >>>
+The system shall enable connected devices to display audio visualisations 
+synchronized with the current audio playback.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-120
 
 [[/SECTION]]
 
