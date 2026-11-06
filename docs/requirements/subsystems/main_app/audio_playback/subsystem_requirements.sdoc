@@ -78,7 +78,7 @@ RELATIONS:
 
 [REQUIREMENT]
 UID: APSSR-006
-TITLE: FLAC File Bits per Sample Extraction
+TITLE: FLAC File Bits Per Sample Extraction
 STATEMENT: >>>
 The subsystem shall obtain the number of bits per sample from FLAC audio 
 streams.
@@ -323,6 +323,71 @@ RELATIONS:
 [[SECTION]]
 TITLE: ALAC File Handling
 
+[REQUIREMENT]
+UID: APSSR-027
+TITLE: ALAC Audio Input Access
+STATEMENT: >>>
+The subsystem shall support ALAC-encoded audio files as audio input sources.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-004
+
+[REQUIREMENT]
+UID: APSSR-028
+TITLE: ALAC Format Identification
+STATEMENT: >>>
+The subsystem shall identify whether an input file contains an audio stream 
+encoded in the ALAC format.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-004
+- TYPE: Parent
+  VALUE: SR-009
+
+[REQUIREMENT]
+UID: APSSR-029
+TITLE: ALAC Audio Decoding
+STATEMENT: >>>
+The subsystem shall decode supported ALAC audio streams into PCM audio samples.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-004
+
+[REQUIREMENT]
+UID: APSSR-030
+TITLE: ALAC Audio Channel Extraction
+STATEMENT: >>>
+The subsystem shall obtain the number of audio channels from ALAC audio
+streams.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-004
+
+[REQUIREMENT]
+UID: APSSR-031
+TITLE: ALAC Audio Sample Rate Extraction
+STATEMENT: >>>
+The subsystem shall obtain the sample rate of ALAC audio streams.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-004
+
+[REQUIREMENT]
+UID: APSSR-032
+TITLE: ALAC Audio Bits Per Sample Extraction
+STATEMENT: >>>
+The subsystem shall obtain the number of bits per sample from ALAC audio 
+streams.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-004
+
 [[/SECTION]]
 
 [[SECTION]]
@@ -369,3 +434,42 @@ RELATIONS:
 
 [[/SECTION]]
 
+[[SECTION]]
+TITLE: Audio File Location
+
+[[SECTION]]
+TITLE: Local Audio Files
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Cloud Provider support
+
+[[SECTION]]
+TITLE: Remote Audio files
+
+[[/SECTION]]
+
+[[/SECTION]]
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Audio Playback
+
+[[SECTION]]
+TITLE: Audio Quality
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Audio Playback Position
+
+[[/SECTION]]
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Audio Playback Customization
+
+[[/SECTION]]
