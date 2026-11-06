@@ -149,7 +149,7 @@ RELATIONS:
 
 [REQUIREMENT]
 UID: APSSR-012
-TITLE: MP3 File Bit Depth Extraction
+TITLE: MP3 File Bitrate Extraction
 STATEMENT: >>>
 The subsystem shall obtain the bitrate of MP3 audio streams.
 <<<
@@ -449,7 +449,7 @@ RELATIONS:
 
 [REQUIREMENT]
 UID: APSSR-038
-TITLE: Vorbis Audio Birate Extraction
+TITLE: Vorbis Audio Bitrate Extraction
 STATEMENT: >>>
 The subsystem shall obtain the bitrate of Vorbis audio streams.
 <<<
@@ -462,10 +462,140 @@ RELATIONS:
 [[SECTION]]
 TITLE: Opus File Handling
 
+[REQUIREMENT]
+UID: APSSR-039
+TITLE: Opus Audio Input Access
+STATEMENT: >>>
+The subsystem shall support Opus-encoded audio files as audio input sources.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-007
+
+[REQUIREMENT]
+UID: APSSR-040
+TITLE: Opus Format Identification
+STATEMENT: >>>
+The subsystem shall identify whether an input file contains an audio stream 
+encoded in the Opus format.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-007
+- TYPE: Parent
+  VALUE: SR-009
+
+[REQUIREMENT]
+UID: APSSR-041
+TITLE: Opus Audio Decoding
+STATEMENT: >>>
+The subsystem shall decode supported Opus audio streams into PCM audio samples.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-007
+
+[REQUIREMENT]
+UID: APSSR-042
+TITLE: Opus Audio Channel Extraction
+STATEMENT: >>>
+The subsystem shall obtain the number of audio channels from Opus audio
+streams.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-007
+
+[REQUIREMENT]
+UID: APSSR-043
+TITLE: Opus Audio Sample Rate Extraction
+STATEMENT: >>>
+The subsystem shall obtain the sample rate of decoded Opus audio streams.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-007
+
+[REQUIREMENT]
+UID: APSSR-044
+TITLE: Opus Audio Bitrate Extraction
+STATEMENT: >>>
+The subsystem shall obtain the bitrate of Opus audio streams.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-007
+
 [[/SECTION]]
 
 [[SECTION]]
 TITLE: AIFF File Handling
+
+[REQUIREMENT]
+UID: APSSR-045
+TITLE: AIFF File Input Access
+STATEMENT: >>>
+The subsystem shall support AIFF files as audio input sources.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-008
+
+[REQUIREMENT]
+UID: APSSR-046
+TITLE: AIFF Format Identification
+STATEMENT: >>>
+The subsystem shall identify whether an input file is encoded in the AIFF 
+format.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-008
+- TYPE: Parent
+  VALUE: SR-009
+
+[REQUIREMENT]
+UID: APSSR-047
+TITLE: AIFF File Decoding
+STATEMENT: >>>
+The subsystem shall decode supported audio data contained within AIFF files 
+into PCM audio samples.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-008
+
+[REQUIREMENT]
+UID: APSSR-048
+TITLE: AIFF File Channel Extraction
+STATEMENT: >>>
+The subsystem shall obtain the number of audio channels from AIFF audio
+streams.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-008
+
+[REQUIREMENT]
+UID: APSSR-049
+TITLE: AIFF File Sample Rate Extraction
+STATEMENT: >>>
+The subsystem shall obtain the sample rate of AIFF audio streams.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-008
+
+[REQUIREMENT]
+UID: APSSR-050
+TITLE: AIFF File Bits Per Sample Extraction
+STATEMENT: >>>
+The subsystem shall obtain the number of bits per sample from AIFF audio 
+streams.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-008
 
 [[/SECTION]]
 
