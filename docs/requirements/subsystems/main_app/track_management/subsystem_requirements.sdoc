@@ -1,0 +1,16 @@
+[DOCUMENT]
+TITLE: Track Management Subsystem Requirements
+UID: YAAP-TMSSR
+DATE: @GIT_COMMIT_DATETIME
+PREFIX: TMSSR-
+
+[[SECTION]]
+TITLE: Introduction
+
+[TEXT]
+STATEMENT: >>>
+This document defines the track management subsystem requirements for 
+Yet Another Audio Player (Yaap), a time accurate desktop audio player.
+<<<
+
+[[/SECTION]]

@@ -1,0 +1,371 @@
+[DOCUMENT]
+TITLE: Audio Playback Subsystem Requirements
+UID: YAAP-APSSR
+DATE: @GIT_COMMIT_DATETIME
+PREFIX: APSSR-
+
+[[SECTION]]
+TITLE: Introduction
+
+[TEXT]
+STATEMENT: >>>
+This document defines the system requirements for Yet Another Audio Player
+(Yaap), a time accurate desktop audio player.
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: File Handling
+
+[[SECTION]]
+TITLE: FLAC File Handling
+
+[REQUIREMENT]
+UID: APSSR-001
+TITLE: FLAC File Input Access
+STATEMENT: >>>
+The subsystem shall support FLAC files as audio input sources.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-001
+
+[REQUIREMENT]
+UID: APSSR-002
+TITLE: FLAC Format Identification
+STATEMENT: >>>
+The subsystem shall identify whether an input file contains an audio stream 
+encoded in the FLAC format.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-001
+- TYPE: Parent
+  VALUE: SR-009
+
+[REQUIREMENT]
+UID: APSSR-003
+TITLE: FLAC File Decoding
+STATEMENT: >>>
+The subsystem shall decode supported audio streams encoded in the FLAC format
+into PCM audio samples.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-001
+
+[REQUIREMENT]
+UID: APSSR-004
+TITLE: FLAC File Channel Extraction
+STATEMENT: >>>
+The subsystem shall obtain the number of audio channels from FLAC audio
+streams.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-001
+
+[REQUIREMENT]
+UID: APSSR-005
+TITLE: FLAC File Sample Rate Extraction
+STATEMENT: >>>
+The subsystem shall obtain the sample rate of FLAC audio streams.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-001
+
+[REQUIREMENT]
+UID: APSSR-006
+TITLE: FLAC File Bits per Sample Extraction
+STATEMENT: >>>
+The subsystem shall obtain the number of bits per sample from FLAC audio 
+streams.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-001
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: MP3 File Handling
+
+[REQUIREMENT]
+UID: APSSR-007
+TITLE: MP3 File Input Access
+STATEMENT: >>>
+The subsystem shall support MP3 files as audio input sources.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-002
+
+[REQUIREMENT]
+UID: APSSR-008
+TITLE: MP3 Format Identification
+STATEMENT: >>>
+The subsystem shall identify whether an input file contains an audio stream 
+encoded in the MP3 format.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-002
+- TYPE: Parent
+  VALUE: SR-009
+
+[REQUIREMENT]
+UID: APSSR-009
+TITLE: MP3 File Decoding
+STATEMENT: >>>
+The subsystem shall decode supported audio streams contained within MP3 files 
+into PCM audio samples.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-002
+
+[REQUIREMENT]
+UID: APSSR-010
+TITLE: MP3 File Channel Extraction
+STATEMENT: >>>
+The subsystem shall obtain the number of audio channels from MP3 audio
+streams.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-002
+
+[REQUIREMENT]
+UID: APSSR-011
+TITLE: MP3 File Sample Rate Extraction
+STATEMENT: >>>
+The subsystem shall obtain the sample rate of MP3 audio streams.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-002
+
+[REQUIREMENT]
+UID: APSSR-012
+TITLE: MP3 File Bit Depth Extraction
+STATEMENT: >>>
+The subsystem shall obtain the bitrate of MP3 audio streams.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-002
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: WAV File Handling
+
+[REQUIREMENT]
+UID: APSSR-013
+TITLE: WAV File Input Access
+STATEMENT: >>>
+The subsystem shall support WAV files as audio input sources.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-003
+
+[REQUIREMENT]
+UID: APSSR-014
+TITLE: Audio Container Identification
+STATEMENT: >>>
+The subsystem shall identify WAV containers independently of the
+codecs they contain.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-009
+
+[REQUIREMENT]
+UID: APSSR-015
+TITLE: WAV Format Identification
+STATEMENT: >>>
+The subsystem shall identify whether an input file uses the WAV container 
+format.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-009
+
+[REQUIREMENT]
+UID: APSSR-016
+TITLE: WAV File Decoding
+STATEMENT: >>>
+The subsystem shall decode supported audio streams contained within WAV files 
+into PCM audio samples.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-003
+
+[REQUIREMENT]
+UID: APSSR-017
+TITLE: WAV File Channel Extraction
+STATEMENT: >>>
+The subsystem shall obtain the number of audio channels from audio streams 
+contained within WAV files.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-003
+
+[REQUIREMENT]
+UID: APSSR-018
+TITLE: WAV File Sample Rate Extraction
+STATEMENT: >>>
+The subsystem shall obtain the sample rate of audio streams contained within 
+WAV files.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-003
+
+[REQUIREMENT]
+UID: APSSR-019
+TITLE: WAV File Bits Per Sample Extraction
+STATEMENT: >>>
+The subsystem shall obtain the number of bits per sample from audio streams 
+contained within WAV files.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-003
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: AAC Audio Handling
+
+[REQUIREMENT]
+UID: APSSR-020
+TITLE: AAC Input Access
+STATEMENT: >>>
+The subsystem shall support AAC-encoded audio files as audio input sources.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-004
+
+[REQUIREMENT]
+UID: APSSR-021
+TITLE: Audio Container Identification
+STATEMENT: >>>
+The subsystem shall identify the container format of input sources containing 
+AAC-encoded audio.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-009
+
+[REQUIREMENT]
+UID: APSSR-022
+TITLE: AAC Stream Identification
+STATEMENT: >>>
+The subsystem shall identify whether an input source contains AAC-encoded 
+audio.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-004
+- TYPE: Parent
+  VALUE: SR-009
+
+[REQUIREMENT]
+UID: APSSR-023
+TITLE: AAC Audio Decoding
+STATEMENT: >>>
+The subsystem shall decode supported AAC audio streams into PCM audio samples.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-004
+
+[REQUIREMENT]
+UID: APSSR-024
+TITLE: AAC Audio Channel Extraction
+STATEMENT: >>>
+The subsystem shall obtain the number of audio channels from AAC audio streams.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-004
+
+[REQUIREMENT]
+UID: APSSR-025
+TITLE: AAC Sample Rate Extraction
+STATEMENT: >>>
+The subsystem shall obtain the sample rate of AAC audio streams.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-004
+
+[REQUIREMENT]
+UID: APSSR-026
+TITLE: AAC Bitrate Extraction
+STATEMENT: >>>
+The subsystem shall obtain the bitrate of audio streams 
+contained within AAC files.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-003
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: ALAC File Handling
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Ogg Vorbis File Handling
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Opus File Handling
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: AIFF File Handling
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Audio File Error Handling
+
+[REQUIREMENT]
+UID: APSSR-100
+TITLE: Unsupported Format Reporting
+STATEMENT: >>>
+The subsystem shall report when an input audio stream uses an unsupported
+format or encoding.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-001
+
+[REQUIREMENT]
+UID: APSSR-101
+TITLE: Invalid Audio Data Handling
+STATEMENT: >>>
+The subsystem shall report when an input audio stream contains invalid or
+corrupted data that prevents decoding.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-001
+
+[[/SECTION]]
+
+[[/SECTION]]
+

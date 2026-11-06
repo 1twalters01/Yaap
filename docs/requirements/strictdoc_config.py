@@ -26,6 +26,7 @@ def create_config() -> ProjectConfig:
             "business_requirements.sdoc",
             "user_requirements.sdoc",
             "system_requirements.sdoc",
+            "subsystems/*/*/subsystem_requirements.sdoc",
         ],
         include_source_paths=[
             "/libs/**",
