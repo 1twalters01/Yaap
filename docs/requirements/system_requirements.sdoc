@@ -59,8 +59,8 @@ RELATIONS:
 UID: SR-004
 TITLE: AAC Audio Support
 STATEMENT: >>>
-The system shall support playback of AAC audio stored in supported audio containers,
-including M4A audio files.
+The system shall support playback of audio files encoded in the AAC codec in 
+supported containers, including M4A audio files.
 <<<
 RELATIONS:
 - TYPE: Parent
@@ -78,10 +78,10 @@ RELATIONS:
 
 [REQUIREMENT]
 UID: SR-006
-TITLE: Ogg Vorbis Audio Support
+TITLE: Vorbis Audio Support
 STATEMENT: >>>
-The system shall support playback of audio files encoded in the Vorbis codec
-in the Ogg container format.
+The system shall support playback of audio files encoded in the Vorbis codec in
+supported containers, including OGG files.
 <<<
 RELATIONS:
 - TYPE: Parent

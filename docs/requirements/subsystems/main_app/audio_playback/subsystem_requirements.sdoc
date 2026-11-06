@@ -316,7 +316,7 @@ contained within AAC files.
 <<<
 RELATIONS:
 - TYPE: Parent
-  VALUE: SR-003
+  VALUE: SR-004
 
 [[/SECTION]]
 
@@ -331,7 +331,7 @@ The subsystem shall support ALAC-encoded audio files as audio input sources.
 <<<
 RELATIONS:
 - TYPE: Parent
-  VALUE: SR-004
+  VALUE: SR-005
 
 [REQUIREMENT]
 UID: APSSR-028
@@ -342,7 +342,7 @@ encoded in the ALAC format.
 <<<
 RELATIONS:
 - TYPE: Parent
-  VALUE: SR-004
+  VALUE: SR-005
 - TYPE: Parent
   VALUE: SR-009
 
@@ -354,7 +354,7 @@ The subsystem shall decode supported ALAC audio streams into PCM audio samples.
 <<<
 RELATIONS:
 - TYPE: Parent
-  VALUE: SR-004
+  VALUE: SR-005
 
 [REQUIREMENT]
 UID: APSSR-030
@@ -365,7 +365,7 @@ streams.
 <<<
 RELATIONS:
 - TYPE: Parent
-  VALUE: SR-004
+  VALUE: SR-005
 
 [REQUIREMENT]
 UID: APSSR-031
@@ -375,7 +375,7 @@ The subsystem shall obtain the sample rate of ALAC audio streams.
 <<<
 RELATIONS:
 - TYPE: Parent
-  VALUE: SR-004
+  VALUE: SR-005
 
 [REQUIREMENT]
 UID: APSSR-032
@@ -386,12 +386,76 @@ streams.
 <<<
 RELATIONS:
 - TYPE: Parent
-  VALUE: SR-004
+  VALUE: SR-005
 
 [[/SECTION]]
 
 [[SECTION]]
-TITLE: Ogg Vorbis File Handling
+TITLE: Vorbis File Handling
+
+[REQUIREMENT]
+UID: APSSR-033
+TITLE: Vorbis Audio Input Access
+STATEMENT: >>>
+The subsystem shall support Vorbis-encoded audio files as audio input sources.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-006
+
+[REQUIREMENT]
+UID: APSSR-034
+TITLE: Vorbis Format Identification
+STATEMENT: >>>
+The subsystem shall identify whether an input file contains an audio stream 
+encoded in the Vorbis format.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-006
+- TYPE: Parent
+  VALUE: SR-009
+
+[REQUIREMENT]
+UID: APSSR-035
+TITLE: Vorbis Audio Decoding
+STATEMENT: >>>
+The subsystem shall decode supported Vorbis audio streams into PCM audio samples.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-006
+
+[REQUIREMENT]
+UID: APSSR-036
+TITLE: Vorbis Audio Channel Extraction
+STATEMENT: >>>
+The subsystem shall obtain the number of audio channels from Vorbis audio
+streams.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-006
+
+[REQUIREMENT]
+UID: APSSR-037
+TITLE: Vorbis Audio Sample Rate Extraction
+STATEMENT: >>>
+The subsystem shall obtain the sample rate of Vorbis audio streams.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-006
+
+[REQUIREMENT]
+UID: APSSR-038
+TITLE: Vorbis Audio Birate Extraction
+STATEMENT: >>>
+The subsystem shall obtain the bitrate of Vorbis audio streams.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-006
 
 [[/SECTION]]
 
@@ -417,7 +481,7 @@ format or encoding.
 <<<
 RELATIONS:
 - TYPE: Parent
-  VALUE: SR-001
+  VALUE: SR-010
 
 [REQUIREMENT]
 UID: APSSR-101
@@ -428,7 +492,7 @@ corrupted data that prevents decoding.
 <<<
 RELATIONS:
 - TYPE: Parent
-  VALUE: SR-001
+  VALUE: SR-011
 
 [[/SECTION]]
 
