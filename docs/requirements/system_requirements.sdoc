@@ -212,28 +212,6 @@ RELATIONS:
   VALUE: UR-004
 
 [REQUIREMENT]
-UID: SR-127
-TITLE: Cloud Storage Provider Connection
-STATEMENT: >>>
-The system shall support establishing connections to all supported cloud
-storage providers.
-<<<
-RELATIONS:
-- TYPE: Parent
-  VALUE: UR-004
-
-[REQUIREMENT]
-UID: SR-129
-TITLE: Cloud Storage Provider Disconnection 
-STATEMENT: >>>
-The system shall support disconnecting from any supported cloud storage
-provider.
-<<<
-RELATIONS:
-- TYPE: Parent
-  VALUE: UR-004
-
-[REQUIREMENT]
 UID: SR-016
 TITLE: Cloud Storage Provider Authentication
 STATEMENT: >>>
@@ -267,6 +245,27 @@ RELATIONS:
   VALUE: UR-004
 
 [REQUIREMENT]
+UID: SR-127
+TITLE: Cloud Storage Provider Connection
+STATEMENT: >>>
+The system shall support establishing connections to supported cloud storage 
+providers.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-004
+
+[REQUIREMENT]
+UID: SR-129
+TITLE: Cloud Storage Provider Disconnection 
+STATEMENT: >>>
+The system shall support disconnecting from supported cloud storage providers.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-004
+
+[REQUIREMENT]
 UID: SR-017
 TITLE: Cloud Connection Status
 STATEMENT: >>>
@@ -282,7 +281,7 @@ UID: SR-136
 TITLE: Cloud Connection Failure
 STATEMENT: >>>
 The system shall detect and report when a connection to a cloud storage 
-provider cannot be established.
+provider fails.
 <<<
 RELATIONS:
 - TYPE: Parent
@@ -304,7 +303,7 @@ UID: SR-137
 TITLE: Cloud Storage Provider Reconnection
 STATEMENT: >>>
 The system shall support re-establishing interrupted or expired connections to 
-cloud storage providers.
+supported cloud storage providers.
 <<<
 RELATIONS:
 - TYPE: Parent

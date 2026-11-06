@@ -774,6 +774,130 @@ RELATIONS:
 [[SECTION]]
 TITLE: Cloud Storage Provider Authentication
 
+[REQUIREMENT]
+UID: APSSR-64
+TITLE: Cloud Storage Provider Authentication
+STATEMENT: >>>
+The subsystem shall support authenticating with each supported cloud storage
+provider.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-016
+
+[REQUIREMENT]
+UID: APSSR-65
+TITLE: Cloud Storage Provider Authentication Failure Reporting
+STATEMENT: >>>
+The subsystem shall report when authentication with a supported cloud storage 
+provider fails.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-018
+
+[REQUIREMENT]
+UID: APSSR-66
+TITLE: Cloud Storage Provider Authentication Expiration Reporting
+STATEMENT: >>>
+The subsystem shall report when authentication with a supported cloud storage 
+provider expires.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-135
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Cloud Storage Provider Connection Management
+
+[REQUIREMENT]
+UID: APSSR-67
+TITLE: Cloud Storage Provider Connection Establishment
+STATEMENT: >>>
+The subsystem shall support establishing connections to supported cloud storage
+providers.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-127
+
+[REQUIREMENT]
+UID: APSSR-68
+TITLE: Cloud Storage Provider Disconnection 
+STATEMENT: >>>
+The subsystem shall support disconnecting from supported cloud storage providers.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-129
+
+[REQUIREMENT]
+UID: APSSR-69
+TITLE: Cloud Storage Provider Connection Status Reporting
+STATEMENT: >>>
+The system shall report the connection status of each configured cloud storage
+provider.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-017
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Cloud Storage Provider Connection Failure Handling
+
+[REQUIREMENT]
+UID: APSSR-70
+TITLE: Cloud Storage Provider Connection Failure Reporting
+STATEMENT: >>>
+The system shall detect and report when a connection to a cloud storage 
+provider fails.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-136
+
+[REQUIREMENT]
+UID: APSSR-71
+TITLE: Cloud Storage Provider Connection Interruption Reporting
+STATEMENT: >>>
+The system shall detect and report when an established connection
+to a cloud storage provider is interrupted.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-130
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Cloud Storage Provider Connection Recovery
+
+[REQUIREMENT]
+UID: APSSR-72
+TITLE: Cloud Storage Provider Connection Re-establishment
+STATEMENT: >>>
+The system shall support re-establishing interrupted connections to 
+supported cloud storage providers.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-137
+
+[REQUIREMENT]
+UID: APSSR-73
+TITLE: Cloud Storage Provider Authentication Recovery
+STATEMENT: >>>
+The system shall support restoring authenticated access to cloud storage 
+providers following authentication expiration.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-137
+
 [[/SECTION]]
 
 [[SECTION]]
