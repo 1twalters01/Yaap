@@ -9,8 +9,8 @@ TITLE: Introduction
 
 [TEXT]
 STATEMENT: >>>
-This document defines the business requirements for Yet Another Audio Player (Yaap),
-a time accurate desktop audio player.
+This document defines the business requirements for Yet Another Audio Player 
+(Yaap), a time accurate desktop audio player.
 
 Yaap provides users with an audio library and playback experience.
 <<<
@@ -32,18 +32,18 @@ Yaap shall support playback of a range of audio formats and codecs.
 
 [REQUIREMENT]
 UID: BR-002
-TITLE: Audio Playback Stored Locally
+TITLE: Storing Audio Playback Locally
 STATEMENT: >>>
-Yaap shall provide the ability to play supported audio files stored locally on their
-devices.
+Yaap shall provide the ability to play supported audio files stored locally on
+their devices.
 <<<
 
 [REQUIREMENT]
 UID: BR-003
-TITLE: Audio Playback Stored Externally
+TITLE: Storing Audio Playback Externally
 STATEMENT: >>>
-Yaap shall provide the ability to play supported audio files stored on supported,
-linked cloud providers.
+Yaap shall provide the ability to play supported audio files stored on
+supported, linked cloud providers.
 <<<
 
 [[/SECTION]]
@@ -63,16 +63,16 @@ collections.
 UID: BR-005
 TITLE: Audio Playback Position
 STATEMENT: >>>
-Yaap shall provide an accurate representation of the current or requested playback
-position of an audio track.
+Yaap shall provide an accurate representation of the current or requested
+playback position of an audio track.
 <<<
 
 [REQUIREMENT]
 UID: BR-006
 TITLE: Audio Playback Customization
 STATEMENT: >>>
-Yaap shall allow for playback characteristic customizations such as speed, pitch,
-volume, and audio processing.
+Yaap shall allow for playback characteristic customizations such as speed,
+pitch, volume, and audio processing.
 <<<
 
 [[/SECTION]]
@@ -88,7 +88,14 @@ TITLE: Audio Library
 [REQUIREMENT]
 UID: BR-007
 TITLE: Audio Library
-STATEMENT: Yaap shall provide a persistent library containing supported audio tracks.
+STATEMENT: >>>
+Yaap shall provide a persistent library containing supported audio tracks.
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Track Metadata
 
 [REQUIREMENT]
 UID: BR-008
@@ -98,17 +105,12 @@ Yaap shall allow for the discovery of tracks through searching, sorting,
 filtering and tagging management.
 <<<
 
-[[/SECTION]]
-
-[[SECTION]]
-TITLE: Track Metadata
-
 [REQUIREMENT]
 UID: BR-009
-TITLE: Track Metadata
+TITLE: Track Metadata Management
 STATEMENT: >>>
-Yaap shall allow for the viewing, managing, and where appropriate modification of
-track metadata.
+Yaap shall allow for the viewing, managing, and where appropriate modification
+of track metadata.
 <<<
 
 [[/SECTION]]
@@ -118,7 +120,7 @@ TITLE: Library Activity
 
 [REQUIREMENT]
 UID: BR-010
-TITLE: Activity
+TITLE: Library Activity Provision
 STATEMENT: Yaap shall provide library activity information.
 
 [[/SECTION]]
@@ -138,12 +140,12 @@ playlists and collections.
 
 [REQUIREMENT]
 UID: BR-012
-TITLE: Playback Queue
+TITLE: Playback Queue Management
 STATEMENT: Yaap shall be able to create and modify its playback queues.
 
 [REQUIREMENT]
 UID: BR-013
-TITLE: Playback Control
+TITLE: Playback Order
 STATEMENT: Yaap shall allow users to control the order of tracks being played.
 
 [[/SECTION]]
@@ -182,7 +184,7 @@ TITLE: Interoperability
 
 [REQUIREMENT]
 UID: BR-017
-TITLE: Sharing 
+TITLE: Application Interoperability 
 STATEMENT: >>>
 Yaap shall support interoperability with external applications, services,
 and devices.
@@ -195,7 +197,7 @@ TITLE: User Interaction
 
 [REQUIREMENT]
 UID: BR-018
-TITLE: Interaction Modes
+TITLE: Accessing Application Functionality
 STATEMENT: >>>
 Yaap shall provide access to functionality through intuitive interfaces.
 <<<
@@ -212,8 +214,8 @@ STATEMENT: Yaap shall allow reversible modifications to be undone and redone.
 
 [REQUIREMENT]
 UID: BR-020
-TITLE: Importing and Exporting User Data 
-STATEMENT: Yaap shall be able to import and export data.
+TITLE: Importing and Exporting App and User Data 
+STATEMENT: Yaap shall be able to import and export application and user data.
 
 [[/SECTION]]
 
@@ -222,9 +224,10 @@ TITLE: Lyrics
 
 [REQUIREMENT]
 UID: BR-021
-TITLE: Lyrics Display
+TITLE: Displaying Lyrics
 STATEMENT: >>>
-Yaap shall provide the ability to view and edit lyrics associated with audio tracks.
+Yaap shall provide the ability to view and edit lyrics associated with audio
+tracks.
 <<<
 
 [REQUIREMENT]
@@ -236,7 +239,7 @@ Yaap shall support the use of alternative lyric versions and translations.
 
 [REQUIREMENT]
 UID: BR-023
-TITLE: Download Lyrics
+TITLE: Downloading Lyrics
 STATEMENT: >>>
 Yaap shall provide the ability to download lyrics associated with audio tracks.
 <<<

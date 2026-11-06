@@ -1,0 +1,22 @@
+# Subsystem Requirements
+
+- 1. Main App
+  - 1. Audio Playback
+  - 2. Track Management
+  - 3. Library Management
+  - 4. Playlist Management
+  - 5. Collection Management
+  - 6. Queue Management
+  - 7. Data Management
+  - 8. Analytics
+  - 9. Settings Management
+  - 10. UI Management
+- 2. Lyrics Player
+    - 1. Lyrics Processing
+    - 2. Lyrics Management
+- 3. Audio Visualiser
+    - 1. Audio Visualisation
+- 4. Shared
+    - 1. Device Management
+    - 2. Remote Synchronisation
+    - 3. Security

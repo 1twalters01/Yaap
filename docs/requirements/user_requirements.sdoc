@@ -250,7 +250,7 @@ RELATIONS:
   VALUE: BR-007
 
 [REQUIREMENT]
-UID: UR-104
+UID: UR-021
 TITLE: Undo and Redo library Changes
 STATEMENT: >>>
 The user shall be able to undo and redo changes to a library.
@@ -260,7 +260,7 @@ RELATIONS:
   VALUE: BR-019
 
 [REQUIREMENT]
-UID: UR-021
+UID: UR-104
 TITLE: Library Persistence
 STATEMENT: >>>
 The user shall be able to access their library across application sessions.
