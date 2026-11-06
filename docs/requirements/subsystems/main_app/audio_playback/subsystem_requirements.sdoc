@@ -420,7 +420,8 @@ RELATIONS:
 UID: APSSR-035
 TITLE: Vorbis Audio Decoding
 STATEMENT: >>>
-The subsystem shall decode supported Vorbis audio streams into PCM audio samples.
+The subsystem shall decode supported Vorbis audio streams into PCM audio
+samples.
 <<<
 RELATIONS:
 - TYPE: Parent
@@ -603,7 +604,7 @@ RELATIONS:
 TITLE: Audio File Error Handling
 
 [REQUIREMENT]
-UID: APSSR-100
+UID: APSSR-51
 TITLE: Unsupported Format Reporting
 STATEMENT: >>>
 The subsystem shall report when an input audio stream uses an unsupported
@@ -614,8 +615,8 @@ RELATIONS:
   VALUE: SR-010
 
 [REQUIREMENT]
-UID: APSSR-101
-TITLE: Invalid Audio Data Handling
+UID: APSSR-52
+TITLE: Invalid Audio Data Reporting
 STATEMENT: >>>
 The subsystem shall report when an input audio stream contains invalid or
 corrupted data that prevents decoding.
@@ -629,20 +630,154 @@ RELATIONS:
 [[/SECTION]]
 
 [[SECTION]]
-TITLE: Audio File Location
+TITLE: Local Audio Files
 
 [[SECTION]]
-TITLE: Local Audio Files
+TITLE: Local Audio File Selection
+
+[REQUIREMENT]
+UID: APSSR-53
+TITLE: Local Audio File Selection Request
+STATEMENT: >>>
+The subsystem shall allow the user to initiate the selection of a local audio
+file for playback.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-012
+
+[REQUIREMENT]
+UID: APSSR-54
+TITLE: Selected Audio File Reference Provision
+STATEMENT: >>>
+The subsystem shall make the local audio file selected by the user available
+for playback.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-012
 
 [[/SECTION]]
 
 [[SECTION]]
-TITLE: Cloud Provider support
+TITLE: Local FIle Access
+
+[REQUIREMENT]
+UID: APSSR-55
+TITLE: Local Audio File Opening
+STATEMENT: >>>
+The subsystem shall open a selected local audio file for reading.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-013
+
+[REQUIREMENT]
+UID: APSSR-56
+TITLE: Local Audio File Reading
+STATEMENT: >>>
+The subsystem shall read data from an opened local audio file.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-013
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Local Audio File Playback Failure
+
+[REQUIREMENT]
+UID: APSSR-57
+TITLE: Local Audio File Opening Failure Reporting
+STATEMENT: >>>
+The subsystem shall report failures when opening a selected local audio file
+for reading.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-014
+
+[REQUIREMENT]
+UID: APSSR-58
+TITLE: Local Audio File Reading Failure Reporting
+STATEMENT: >>>
+The subsystem shall report failures when reading an opened local audio file.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-014
+
+[REQUIREMENT]
+UID: APSSR-59
+TITLE: Local Audio File Playback Failure Reporting
+STATEMENT: >>>
+The subsystem shall report failures when a selected local file cannot be
+played.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-124
+
+[[/SECTION]]
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Remote Audio Files
+
+[[SECTION]]
+TITLE: Cloud Storage Provider support
+
+[REQUIREMENT]
+UID: APSSR-60
+TITLE: Google Drive Support
+STATEMENT: >>>
+The subsystem shall support integration with Google Drive.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-015
+
+[REQUIREMENT]
+UID: APSSR-61
+TITLE: iCloud Drive Support
+STATEMENT: >>>
+The subsystem shall support integration with iCloud Drive.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-015
+
+[REQUIREMENT]
+UID: APSSR-62
+TITLE: Dropbox Support
+STATEMENT: >>>
+The subsystem shall support integration with Dropbox Drive.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-015
+
+[REQUIREMENT]
+UID: APSSR-63
+TITLE: Microsoft OneDrive Support
+STATEMENT: >>>
+The subsystem shall support integration with Microsoft OneDrive.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-015
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Cloud Storage Provider Authentication
+
+[[/SECTION]]
 
 [[SECTION]]
 TITLE: Remote Audio files
-
-[[/SECTION]]
 
 [[/SECTION]]
 

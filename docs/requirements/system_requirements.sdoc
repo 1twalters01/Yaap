@@ -156,7 +156,8 @@ TITLE: Local Audio Files
 UID: SR-012
 TITLE: Local Audio File Selection
 STATEMENT: >>>
-The system shall allow for a local audio file to be browsed or selected for playback.
+The system shall allow for a local audio file to be browsed or selected for
+playback.
 <<<
 RELATIONS:
 - TYPE: Parent
@@ -166,8 +167,8 @@ RELATIONS:
 UID: SR-013
 TITLE: Local Audio File Playback
 STATEMENT: >>>
-The system shall play a selected local audio file when its format and encoding 
-are supported.
+The system shall play audio from a selected local audio file when its container
+format and encoding are supported.
 <<<
 RELATIONS:
 - TYPE: Parent
@@ -184,17 +185,49 @@ RELATIONS:
 - TYPE: Parent
   VALUE: UR-003
 
+[REQUIREMENT]
+UID: SR-124
+TITLE: Local Audio File Playback Failure
+STATEMENT: >>>
+The system shall report when a selected local audio file cannot be played.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-003
+
 [[/SECTION]]
 
 [[SECTION]]
-TITLE: Cloud Provider Support
+TITLE: Cloud Storage Provider Support
 
 [REQUIREMENT]
 UID: SR-015
-TITLE: Cloud Provider Support
+TITLE: Supported Cloud Storage Providers
 STATEMENT: >>>
-The system shall support connecting to Google Drive, iCloud Drive, Dropbox,
-and Microsoft OneDrive.
+The system shall support the following cloud storage providers:
+Google Drive, iCloud Drive, Dropbox, and Microsoft OneDrive.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-004
+
+[REQUIREMENT]
+UID: SR-127
+TITLE: Cloud Storage Provider Connection
+STATEMENT: >>>
+The system shall support establishing connections to all supported cloud
+storage providers.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-004
+
+[REQUIREMENT]
+UID: SR-129
+TITLE: Cloud Storage Provider Disconnection 
+STATEMENT: >>>
+The system shall support disconnecting from any supported cloud storage
+provider.
 <<<
 RELATIONS:
 - TYPE: Parent
@@ -202,9 +235,32 @@ RELATIONS:
 
 [REQUIREMENT]
 UID: SR-016
-TITLE: Cloud Provider Authentication
+TITLE: Cloud Storage Provider Authentication
 STATEMENT: >>>
-The system shall support authenticating with a supported cloud storage provider.
+The system shall support authenticating with each supported cloud storage
+provider.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-004
+
+[REQUIREMENT]
+UID: SR-018
+TITLE: Cloud Storage Provider Authentication Failure
+STATEMENT: >>>
+The system shall report when authentication with a cloud storage provider
+fails.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-004
+
+[REQUIREMENT]
+UID: SR-135
+TITLE: Cloud Storage Provider Authentication Expiration
+STATEMENT: >>>
+The system shall report when authentication with a cloud storage provider
+expires.
 <<<
 RELATIONS:
 - TYPE: Parent
@@ -214,19 +270,41 @@ RELATIONS:
 UID: SR-017
 TITLE: Cloud Connection Status
 STATEMENT: >>>
-The system shall report whether a cloud storage connection has been established
-successfully.
+The system shall report the connection status of each configured cloud storage
+provider.
 <<<
 RELATIONS:
 - TYPE: Parent
   VALUE: UR-004
 
 [REQUIREMENT]
-UID: SR-018
+UID: SR-136
 TITLE: Cloud Connection Failure
 STATEMENT: >>>
-The system shall report an appropriate error when a connection to a cloud storage
+The system shall detect and report when a connection to a cloud storage 
 provider cannot be established.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-004
+
+[REQUIREMENT]
+UID: SR-130
+TITLE: Cloud Storage Provider Interruption
+STATEMENT: >>>
+The system shall detect and report when an established connection
+to a cloud storage provider is interrupted.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-004
+
+[REQUIREMENT]
+UID: SR-137
+TITLE: Cloud Storage Provider Reconnection
+STATEMENT: >>>
+The system shall support re-establishing interrupted or expired connections to 
+cloud storage providers.
 <<<
 RELATIONS:
 - TYPE: Parent
@@ -280,6 +358,16 @@ and playback cannot continue.
 RELATIONS:
 - TYPE: Parent
   VALUE: UR-005
+
+[REQUIREMENT]
+UID: SR-128
+TITLE: Remote Audio File Playback Failure
+STATEMENT: >>>
+The system shall report when a selected remote audio file cannot be played.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: UR-003
 
 [[/SECTION]]
 
