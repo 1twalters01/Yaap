@@ -1523,7 +1523,7 @@ RELATIONS:
 TITLE: Mono Playback
 
 [REQUIREMENT]
-UID: APSSR-117
+UID: APSSR-120
 TITLE: Mono Playback Configuration
 STATEMENT: >>>
 The subsystem shall allow mono playback to be enabled or disabled.
@@ -1533,7 +1533,7 @@ RELATIONS:
   VALUE: SR-038
 
 [REQUIREMENT]
-UID: APSSR-118
+UID: APSSR-121
 TITLE: Mono Playback Application
 STATEMENT: >>>
 The subsystem shall combine the left and right audio channels into a mono 
@@ -1544,7 +1544,7 @@ RELATIONS:
   VALUE: SR-038
 
 [REQUIREMENT]
-UID: APSSR-119
+UID: APSSR-122
 TITLE: Mono Playback Settings Request
 STATEMENT: >>>
 Upon request, the subsystem shall return the currently active mono playback 
@@ -1560,7 +1560,7 @@ RELATIONS:
 TITLE: Channel Swapping
 
 [REQUIREMENT]
-UID: APSSR-117
+UID: APSSR-123
 TITLE: Channel Swapping Configuration
 STATEMENT: >>>
 The subsystem shall allow channel swapping to be enabled or disabled.
@@ -1570,7 +1570,7 @@ RELATIONS:
   VALUE: SR-038
 
 [REQUIREMENT]
-UID: APSSR-118
+UID: APSSR-124
 TITLE: Channel Swapping Application
 STATEMENT: >>>
 The subsystem shall exchange the left and right audio channels when channel 
@@ -1581,7 +1581,7 @@ RELATIONS:
   VALUE: SR-038
 
 [REQUIREMENT]
-UID: APSSR-119
+UID: APSSR-125
 TITLE: Channel Swapping Settings Request
 STATEMENT: >>>
 Upon request, the subsystem shall return the currently active channel swapping 
@@ -1597,7 +1597,7 @@ RELATIONS:
 TITLE: Channel Muting
 
 [REQUIREMENT]
-UID: APSSR-120
+UID: APSSR-126
 TITLE: Left Channel Muting Configuration
 STATEMENT: >>>
 The subsystem shall allow the left audio channel to be muted or unmuted.
@@ -1607,7 +1607,7 @@ RELATIONS:
   VALUE: SR-038
 
 [REQUIREMENT]
-UID: APSSR-121
+UID: APSSR-127
 TITLE: Right Channel Muting Configuration
 STATEMENT: >>>
 The subsystem shall allow the right audio channel to be muted or unmuted.
@@ -1617,7 +1617,7 @@ RELATIONS:
   VALUE: SR-038
 
 [REQUIREMENT]
-UID: APSSR-122
+UID: APSSR-128
 TITLE: Channel Muting Application
 STATEMENT: >>>
 The subsystem shall suppress audio output from each channel configured to be 
@@ -1628,7 +1628,7 @@ RELATIONS:
   VALUE: SR-038
 
 [REQUIREMENT]
-UID: APSSR-123
+UID: APSSR-129
 TITLE: Channel Muting Settings Request
 STATEMENT: >>>
 Upon request, the subsystem shall return the currently active channel muting 
