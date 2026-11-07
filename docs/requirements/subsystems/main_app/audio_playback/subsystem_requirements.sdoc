@@ -604,7 +604,7 @@ RELATIONS:
 TITLE: Audio File Error Handling
 
 [REQUIREMENT]
-UID: APSSR-51
+UID: APSSR-051
 TITLE: Unsupported Format Reporting
 STATEMENT: >>>
 The subsystem shall report when an input audio stream uses an unsupported
@@ -615,7 +615,7 @@ RELATIONS:
   VALUE: SR-010
 
 [REQUIREMENT]
-UID: APSSR-52
+UID: APSSR-052
 TITLE: Invalid Audio Data Reporting
 STATEMENT: >>>
 The subsystem shall report when an input audio stream contains invalid or
@@ -636,7 +636,7 @@ TITLE: Local Audio Files
 TITLE: Local Audio File Selection
 
 [REQUIREMENT]
-UID: APSSR-53
+UID: APSSR-053
 TITLE: Local Audio File Selection Request
 STATEMENT: >>>
 The subsystem shall allow the user to initiate the selection of a local audio
@@ -647,11 +647,10 @@ RELATIONS:
   VALUE: SR-012
 
 [REQUIREMENT]
-UID: APSSR-54
-TITLE: Selected Audio File Reference Provision
+UID: APSSR-054
+TITLE: Selected Local Audio File Provision
 STATEMENT: >>>
-The subsystem shall make the local audio file selected by the user available
-for playback.
+The subsystem shall make selected local audio files available for playback.
 <<<
 RELATIONS:
 - TYPE: Parent
@@ -660,10 +659,10 @@ RELATIONS:
 [[/SECTION]]
 
 [[SECTION]]
-TITLE: Local FIle Access
+TITLE: Local Audio File Access
 
 [REQUIREMENT]
-UID: APSSR-55
+UID: APSSR-055
 TITLE: Local Audio File Opening
 STATEMENT: >>>
 The subsystem shall open a selected local audio file for reading.
@@ -673,7 +672,7 @@ RELATIONS:
   VALUE: SR-013
 
 [REQUIREMENT]
-UID: APSSR-56
+UID: APSSR-056
 TITLE: Local Audio File Reading
 STATEMENT: >>>
 The subsystem shall read data from an opened local audio file.
@@ -688,7 +687,7 @@ RELATIONS:
 TITLE: Local Audio File Playback Failure
 
 [REQUIREMENT]
-UID: APSSR-57
+UID: APSSR-057
 TITLE: Local Audio File Opening Failure Reporting
 STATEMENT: >>>
 The subsystem shall report failures when opening a selected local audio file
@@ -699,7 +698,7 @@ RELATIONS:
   VALUE: SR-014
 
 [REQUIREMENT]
-UID: APSSR-58
+UID: APSSR-058
 TITLE: Local Audio File Reading Failure Reporting
 STATEMENT: >>>
 The subsystem shall report failures when reading an opened local audio file.
@@ -709,7 +708,7 @@ RELATIONS:
   VALUE: SR-014
 
 [REQUIREMENT]
-UID: APSSR-59
+UID: APSSR-059
 TITLE: Local Audio File Playback Failure Reporting
 STATEMENT: >>>
 The subsystem shall report failures when a selected local file cannot be
@@ -730,7 +729,7 @@ TITLE: Remote Audio Files
 TITLE: Cloud Storage Provider support
 
 [REQUIREMENT]
-UID: APSSR-60
+UID: APSSR-060
 TITLE: Google Drive Support
 STATEMENT: >>>
 The subsystem shall support integration with Google Drive.
@@ -740,7 +739,7 @@ RELATIONS:
   VALUE: SR-015
 
 [REQUIREMENT]
-UID: APSSR-61
+UID: APSSR-061
 TITLE: iCloud Drive Support
 STATEMENT: >>>
 The subsystem shall support integration with iCloud Drive.
@@ -750,7 +749,7 @@ RELATIONS:
   VALUE: SR-015
 
 [REQUIREMENT]
-UID: APSSR-62
+UID: APSSR-062
 TITLE: Dropbox Support
 STATEMENT: >>>
 The subsystem shall support integration with Dropbox Drive.
@@ -760,7 +759,7 @@ RELATIONS:
   VALUE: SR-015
 
 [REQUIREMENT]
-UID: APSSR-63
+UID: APSSR-063
 TITLE: Microsoft OneDrive Support
 STATEMENT: >>>
 The subsystem shall support integration with Microsoft OneDrive.
@@ -775,7 +774,7 @@ RELATIONS:
 TITLE: Cloud Storage Provider Authentication
 
 [REQUIREMENT]
-UID: APSSR-64
+UID: APSSR-064
 TITLE: Cloud Storage Provider Authentication
 STATEMENT: >>>
 The subsystem shall support authenticating with each supported cloud storage
@@ -786,7 +785,7 @@ RELATIONS:
   VALUE: SR-016
 
 [REQUIREMENT]
-UID: APSSR-65
+UID: APSSR-065
 TITLE: Cloud Storage Provider Authentication Failure Reporting
 STATEMENT: >>>
 The subsystem shall report when authentication with a supported cloud storage 
@@ -797,7 +796,7 @@ RELATIONS:
   VALUE: SR-018
 
 [REQUIREMENT]
-UID: APSSR-66
+UID: APSSR-066
 TITLE: Cloud Storage Provider Authentication Expiration Reporting
 STATEMENT: >>>
 The subsystem shall report when authentication with a supported cloud storage 
@@ -813,7 +812,7 @@ RELATIONS:
 TITLE: Cloud Storage Provider Connection Management
 
 [REQUIREMENT]
-UID: APSSR-67
+UID: APSSR-067
 TITLE: Cloud Storage Provider Connection Establishment
 STATEMENT: >>>
 The subsystem shall support establishing connections to supported cloud storage
@@ -824,7 +823,7 @@ RELATIONS:
   VALUE: SR-127
 
 [REQUIREMENT]
-UID: APSSR-68
+UID: APSSR-068
 TITLE: Cloud Storage Provider Disconnection 
 STATEMENT: >>>
 The subsystem shall support disconnecting from supported cloud storage providers.
@@ -834,7 +833,7 @@ RELATIONS:
   VALUE: SR-129
 
 [REQUIREMENT]
-UID: APSSR-69
+UID: APSSR-069
 TITLE: Cloud Storage Provider Connection Status Reporting
 STATEMENT: >>>
 The system shall report the connection status of each configured cloud storage
@@ -850,7 +849,7 @@ RELATIONS:
 TITLE: Cloud Storage Provider Connection Failure Handling
 
 [REQUIREMENT]
-UID: APSSR-70
+UID: APSSR-070
 TITLE: Cloud Storage Provider Connection Failure Reporting
 STATEMENT: >>>
 The system shall detect and report when a connection to a cloud storage 
@@ -861,7 +860,7 @@ RELATIONS:
   VALUE: SR-136
 
 [REQUIREMENT]
-UID: APSSR-71
+UID: APSSR-071
 TITLE: Cloud Storage Provider Connection Interruption Reporting
 STATEMENT: >>>
 The system shall detect and report when an established connection
@@ -877,7 +876,7 @@ RELATIONS:
 TITLE: Cloud Storage Provider Connection Recovery
 
 [REQUIREMENT]
-UID: APSSR-72
+UID: APSSR-072
 TITLE: Cloud Storage Provider Connection Re-establishment
 STATEMENT: >>>
 The system shall support re-establishing interrupted connections to 
@@ -888,7 +887,7 @@ RELATIONS:
   VALUE: SR-137
 
 [REQUIREMENT]
-UID: APSSR-73
+UID: APSSR-073
 TITLE: Cloud Storage Provider Authentication Recovery
 STATEMENT: >>>
 The system shall support restoring authenticated access to cloud storage 
@@ -901,7 +900,130 @@ RELATIONS:
 [[/SECTION]]
 
 [[SECTION]]
-TITLE: Remote Audio files
+TITLE: Remote Audio File Selection
+
+[REQUIREMENT]
+UID: APSSR-074
+TITLE: Remote Audio File Selection Request
+STATEMENT: >>>
+The subsystem shall allow the user to initiate the selection of a remote audio
+file for playback through a connected cloud provider.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-019
+
+[REQUIREMENT]
+UID: APSSR-075
+TITLE: Selected Remote Audio File Provision
+STATEMENT: >>>
+The subsystem shall make the remote audio file selected by the user available
+for playback.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-019
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Remote File Access
+
+[REQUIREMENT]
+UID: APSSR-076
+TITLE: Remote Audio File Opening
+STATEMENT: >>>
+The subsystem shall open a remote audio file selected a connected cloud storage
+provider for reading.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-020
+
+[REQUIREMENT]
+UID: APSSR-077
+TITLE: Remote Audio File Reading
+STATEMENT: >>>
+The subsystem shall read data from an opened remote audio file.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-020
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Remote Audio File Playback Failure
+
+[REQUIREMENT]
+UID: APSSR-078
+TITLE: Remote Audio File Retrieval Failure Reporting
+STATEMENT: >>>
+The subsystem shall report failures when a selected remote audio file cannot be
+retrieved from a connected cloud provider.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-021
+
+[REQUIREMENT]
+UID: APSSR-079
+TITLE: Remote Audio File Opening Failure Reporting
+STATEMENT: >>>
+The subsystem shall report failures when opening a selected remote audio file 
+for reading.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-021
+
+[REQUIREMENT]
+UID: APSSR-080
+TITLE: Remote Audio File Reading Failure Reporting
+STATEMENT: >>>
+The subsystem shall report failures when reading an opened remote audio file.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-021
+
+[REQUIREMENT]
+UID: APSSR-081
+TITLE: Remote Audio File Playback Failure Reporting
+STATEMENT: >>>
+The subsystem shall report failures when a selected remote file cannot be 
+played.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-022
+
+[REQUIREMENT]
+UID: APSSR-082
+TITLE: Remote Audio File Playback Interruption Reporting
+STATEMENT: >>>
+The subsystem shall report when a remote audio file becomes unavailable during
+playback such that playback cannot continue.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-128
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Remote Audio File Playback Recovery
+
+[REQUIREMENT]
+UID: APSSR-083
+TITLE: Remote Audio File Playback Resuption
+STATEMENT: >>>
+The system shall support resuming interrupted remote audio playback when the 
+remote audio file becomes accessible again.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-138
 
 [[/SECTION]]
 
