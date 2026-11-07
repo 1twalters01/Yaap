@@ -388,8 +388,8 @@ TITLE: Audio Quality
 UID: SR-023
 TITLE: Audio Decoding Fidelity
 STATEMENT: >>>
-The system shall decode supported audio files according to their encoding format 
-without introducing additional lossy encoding during decoding.
+The system shall decode supported audio files in accordance with their encoding 
+formats without introducing additional loss of audio information.
 <<<
 RELATIONS:
 - TYPE: Parent
@@ -404,8 +404,8 @@ TITLE: Audio Playback Position
 UID: SR-024
 TITLE: Playback Position Accuracy
 STATEMENT: >>>
-The system shall make the current playback position of the active audio track 
-available to the user.
+The system shall report the playback position within the greater of 1 
+microsecond or the temporal resolution of the active audio track.
 <<<
 RELATIONS:
 - TYPE: Parent
@@ -413,10 +413,10 @@ RELATIONS:
 
 [REQUIREMENT]
 UID: SR-025
-TITLE: Playback Position Accuracy
+TITLE: Playback Position Availability
 STATEMENT: >>>
-The system shall report the playback position within the specified timing accuracy 
-under defined operating conditions.
+The system shall make the current playback position of the active audio track 
+available to the user.
 <<<
 RELATIONS:
 - TYPE: Parent
@@ -450,9 +450,8 @@ RELATIONS:
 UID: SR-028
 TITLE: Seek Position Accuracy
 STATEMENT: >>>
-The system shall seek to the requested playback position with the greatest accuracy 
-supported by the active audio track and playback pipeline, targeting a maximum 
-error of 1 microsecond where supported.
+The system shall seek to the requested playback position with the greater of 1 
+microsecond or the temporal resolution of the active audio track.
 <<<
 RELATIONS:
 - TYPE: Parent
@@ -473,8 +472,9 @@ RELATIONS:
 UID: SR-030
 TITLE: Media Playback Information
 STATEMENT: >>>
-The system shall make the currently playing track's available playback information 
-accessible through the operating system's media-control interface.
+The system shall make the currently playing track's playback information 
+accessible through the operating system's media-control interface, where
+supported by that interface.
 <<<
 RELATIONS:
 - TYPE: Parent
@@ -482,10 +482,10 @@ RELATIONS:
 
 [REQUIREMENT]
 UID: SR-031
-TITLE: Media Playback Information
+TITLE: Media Playback Metadata
 STATEMENT: >>>
 The system shall make the currently playing track's metadata accessible through 
-the operating system's media-control interface, where supported hby that interface.
+the operating system's media-control interface, where supported by that interface.
 <<<
 RELATIONS:
 - TYPE: Parent
@@ -522,7 +522,8 @@ RELATIONS:
 UID: SR-034
 TITLE: Playback Speed Range
 STATEMENT: >>>
-The system shall support playback speeds within a range of 0.5x to 2.0x at minimum.
+The system shall support playback speeds from 0.5x to 2.0x inclusive at 
+minimum.
 <<<
 RELATIONS:
 - TYPE: Parent
@@ -543,8 +544,8 @@ RELATIONS:
 UID: SR-036
 TITLE: Playback Pitch Range
 STATEMENT: >>>
-The system shall support playback pitch changes within a range of ±6 semitones
-at minimum.
+The system shall support playback pitch adjustments from -6 to +6 semitones
+inclusive at minimum.
 <<<
 RELATIONS:
 - TYPE: Parent
@@ -555,7 +556,7 @@ UID: SR-037
 TITLE: Playback Volume Adjustment
 STATEMENT: >>>
 The system shall support the adjustment of the playback volume within a range 
-of 0% to 150%.
+of 0% (silence) to 150% (1.5 times the reference amplitude), inclusive.
 <<<
 RELATIONS:
 - TYPE: Parent
@@ -565,7 +566,8 @@ RELATIONS:
 UID: SR-038
 TITLE: Audio Processing Configuration
 STATEMENT: >>>
-The system shall allow the user to configure each supported audio processing option.
+The system shall allow the user to configure each supported audio processing 
+option.
 <<<
 RELATIONS:
 - TYPE: Parent

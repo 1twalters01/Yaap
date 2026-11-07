@@ -1018,7 +1018,7 @@ TITLE: Remote Audio File Playback Recovery
 UID: APSSR-083
 TITLE: Remote Audio File Playback Resuption
 STATEMENT: >>>
-The system shall support resuming interrupted remote audio playback when the 
+The subsystem shall support resuming interrupted remote audio playback when the 
 remote audio file becomes accessible again.
 <<<
 RELATIONS:
@@ -1033,12 +1033,164 @@ RELATIONS:
 TITLE: Audio Playback
 
 [[SECTION]]
-TITLE: Audio Quality
+TITLE: Audio Playback Fidelity
+
+[REQUIREMENT]
+UID: APSSR-084
+TITLE: Audio Decoding Fidelity
+STATEMENT: >>>
+The subsystem shall decode supported audio data without introducing additional 
+loss of audio information.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-023
+
+[REQUIREMENT]
+UID: APSSR-085
+TITLE: Lossless Audio Decoding Fidelity
+STATEMENT: >>>
+The subsystem shall support reproducing the original audio sample values when 
+decoding losslessly encoded audio data.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-023
 
 [[/SECTION]]
 
 [[SECTION]]
 TITLE: Audio Playback Position
+
+[REQUIREMENT]
+UID: APSSR-086
+TITLE: Current Playback Position Calculation
+STATEMENT: >>>
+The subsystem shall determine the current playback position of an active audio
+track, within the greater of 1 microsecond or the temporal resolution of the 
+active audio track.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-024
+
+[REQUIREMENT]
+UID: APSSR-087
+TITLE: Current Playback Position Availability
+STATEMENT: >>>
+The subsystem shall make the current playback position of an active audio track
+available upon request.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-025
+
+[REQUIREMENT]
+UID: APSSR-088
+TITLE: Elapsed Playback Time Calculation
+STATEMENT: >>>
+The subsystem shall determine the cumulative duration for which the active 
+audio track has been playing.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-026
+
+[REQUIREMENT]
+UID: APSSR-089
+TITLE: Elapsed Playback Time Availability
+STATEMENT: >>>
+The subsystem shall make the elapsed playback time of an active audio track
+available upon request.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-026
+
+[REQUIREMENT]
+UID: APSSR-090
+TITLE: Seeking Position Acceptance
+STATEMENT: >>>
+The subsystem shall support seeking to a requested playback position within
+the greater of 1 microsecond or the temporal resolution of the active audio 
+track.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-028
+
+[REQUIREMENT]
+UID: APSSR-091
+TITLE: Seeking Position Accuracy
+STATEMENT: >>>
+The subsystem shall accept a request to seek to a playback position within the 
+duration of the active audio track.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-027
+
+[REQUIREMENT]
+UID: APSSR-092
+TITLE: Remaining Playback Time Calculation
+STATEMENT: >>>
+The subsystem shall determine the estimated time remaining until the end of an 
+active audio track, accounting for its current playback position and playback 
+speed.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-029
+
+[REQUIREMENT]
+UID: APSSR-093
+TITLE: Remaining Playback Time Availability
+STATEMENT: >>>
+The subsystem shall make the current playback position of an active audio track
+available upon request.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-029
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Operating System Media integration
+
+[REQUIREMENT]
+UID: APSSR-094
+TITLE: Playback Information Availability
+STATEMENT: >>>
+The subsystem shall make the currently playing track's available playback
+information accessible through the operating system's media-control interface.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-030
+
+[REQUIREMENT]
+UID: APSSR-095
+TITLE: Playback Metadata Availability
+STATEMENT: >>>
+The subsystem shall make the currently playing track's available metadata
+accessible through the operating system's media-control interface, where
+supported by that interface.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-031
+
+[REQUIREMENT]
+UID: APSSR-096
+TITLE: Operating System Playback Control
+STATEMENT: >>>
+The subsystem shall support playback control commands received through the 
+operating system's media-control interface, where supported by that interface.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-032
 
 [[/SECTION]]
 
@@ -1046,5 +1198,446 @@ TITLE: Audio Playback Position
 
 [[SECTION]]
 TITLE: Audio Playback Customization
+
+[[SECTION]]
+TITLE: Playback Speed Customization
+
+[REQUIREMENT]
+UID: APSSR-097
+TITLE: Playback Speed Independence
+STATEMENT: >>>
+The subsystem shall adjust the playback speed without changing the playback
+pitch.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-035
+
+[REQUIREMENT]
+UID: APSSR-098
+TITLE: Playback Speed Acceptance
+STATEMENT: >>>
+The subsystem shall accept requests to adjust the playback speed of the active 
+track to values within its supported range.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-033
+
+[REQUIREMENT]
+UID: APSSR-099
+TITLE: Playback Speed Rejection
+STATEMENT: >>>
+The subsystem shall report the rejection of requests to adjust the playback 
+speed of the active track to values outside of the supported range.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-033
+
+[REQUIREMENT]
+UID: APSSR-100
+TITLE: Playback Speed Range
+STATEMENT: >>>
+The subsystem shall support playback speeds from 0.5x to 2.0x inclusive, with 
+1.0x being the default playback speed.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-034
+
+[REQUIREMENT]
+UID: APSSR-101
+TITLE: Playback Speed Maintenance
+STATEMENT: >>>
+The subsystem shall maintain the set playback speed according to playback speed
+persistence configuration settings, with track specific being the default.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-034
+
+[REQUIREMENT]
+UID: APSSR-102
+TITLE: Playback Speed Persistence Configuration
+STATEMENT: >>>
+The subsystem shall support configuring playback speed persistence as:
+- Permanent: Retained across application sessions,
+- Application Session: Retained until the application closes,
+- Playback Session: Retained until playback is stopped,
+- Track Specific: Reset to 1.0x when the active track changes.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-034
+- TYPE: Parent
+  VALUE: SR-038
+
+[REQUIREMENT]
+UID: APSSR-103
+TITLE: Playback Speed Settings Request
+STATEMENT: >>>
+Upon request, the subsystem shall return the currently active playback speed 
+settings.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-034
+- TYPE: Parent
+  VALUE: SR-039
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Playback Pitch Customization
+
+[REQUIREMENT]
+UID: APSSR-104
+TITLE: Playback Pitch Independence
+STATEMENT: >>>
+The subsystem shall adjust the playback pitch without changing the playback
+speed.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-035
+
+[REQUIREMENT]
+UID: APSSR-105
+TITLE: Playback Pitch Acceptance
+STATEMENT: >>>
+The subsystem shall accept requests to adjust the playback pitch of the active 
+track to values within its supported range.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-035
+
+[REQUIREMENT]
+UID: APSSR-106
+TITLE: Playback Pitch Rejection
+STATEMENT: >>>
+The subsystem shall report the rejection of requests to adjust the playback 
+pitch of the active track to values outside of the supported range.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-035
+
+[REQUIREMENT]
+UID: APSSR-107
+TITLE: Playback Pitch Range
+STATEMENT: >>>
+The subsystem shall support playback pitch adjustments from -6 to +6 semitones 
+inclusive, with 0 semitones being the default playback pitch.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-036
+
+[REQUIREMENT]
+UID: APSSR-108
+TITLE: Playback Pitch Maintenance
+STATEMENT: >>>
+The subsystem shall maintain the set playback pitch according to the configured
+playback pitch persistence configuration settings, with track specific being 
+the default.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-036
+
+[REQUIREMENT]
+UID: APSSR-109
+TITLE: Playback Pitch Persistence Configuration
+STATEMENT: >>>
+The subsystem shall support configuring playback pitch persistence as:
+- Permanent: Retained across application sessions,
+- Application Session: Retained until the application closes,
+- Playback Session: Retained until playback is stopped,
+- Track Specific: Reset to 0 semitones when the active track changes.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-036
+- TYPE: Parent
+  VALUE: SR-038
+
+[REQUIREMENT]
+UID: APSSR-110
+TITLE: Playback Volume Settings Request
+STATEMENT: >>>
+Upon request, the subsystem shall return the currently active playback volume 
+settings.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-036
+- TYPE: Parent
+  VALUE: SR-039
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Playback Volume Customization
+
+[REQUIREMENT]
+UID: APSSR-111
+TITLE: Playback Volume Acceptance
+STATEMENT: >>>
+The subsystem shall accept requests to adjust the playback volume of the active 
+track to values within its supported range.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-037
+
+[REQUIREMENT]
+UID: APSSR-112
+TITLE: Playback Volume Rejection
+STATEMENT: >>>
+The subsystem shall report the rejection of requests to adjust the playback 
+volume of the active track is outside of the supported range.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-037
+
+[REQUIREMENT]
+UID: APSSR-113
+TITLE: Playback Volume Range
+STATEMENT: >>>
+The subsystem shall support playback volume adjustments from 0% to 150% of the
+reference amplitude inclusive, with 100% being the default playback volume.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-037
+
+[REQUIREMENT]
+UID: APSSR-114
+TITLE: Playback Volume Maintenance
+STATEMENT: >>>
+The subsystem shall maintain the set playback volume according to the 
+configured playback volume persistence configuration settings, with application 
+session persistence being the default.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-037
+
+[REQUIREMENT]
+UID: APSSR-115
+TITLE: Playback Volume Persistence Configuration
+STATEMENT: >>>
+The subsystem shall support configuring playback volume persistence as:
+- Permanent: Retained across application sessions,
+- Application Session: Retained until the application closes,
+- Playback Session: Retained until playback is stopped,
+- Track Specific: Reset to 100% when the active track changes.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-037
+- TYPE: Parent
+  VALUE: SR-038
+
+[REQUIREMENT]
+UID: APSSR-116
+TITLE: Playback Volume Settings Request
+STATEMENT: >>>
+Upon request, the subsystem shall return the currently active playback volume 
+settings.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-037
+- TYPE: Parent
+  VALUE: SR-039
+
+[[/SECTION]]
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Playback Configuration Settings
+
+[TEXT]
+STATEMENT: >>>
+Currently Mono Playback, Channel Swapping and Channel Muting are written as 
+requirements.
+
+Considerations will be made for:
+- Channel Balance
+
+- Equaliser
+- Audio Filters (High-pass, Low-pass, Band-pass and Notch Filters)
+
+- Dynamic-range Compression
+- Limiter
+- Expander
+- Noise Gate
+- Automatic Gain Control (AGC)
+- Loudness Normalisation
+<<<
+
+[[SECTION]]
+TITLE: Volume Normalisation
+
+[REQUIREMENT]
+UID: APSSR-117
+TITLE: Volume Normalisation Configuration
+STATEMENT: >>>
+The subsystem shall allow volume normalisation to be enabled or disabled.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-038
+
+[REQUIREMENT]
+UID: APSSR-118
+TITLE: Volume Normalisation Application
+STATEMENT: >>>
+The subsystem shall adjust the playback level of an active audio track to
+achieve a consistent perceived loudness between tracks when volume 
+normalisation is enabled.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-038
+
+[REQUIREMENT]
+UID: APSSR-119
+TITLE: Volume Normalisation Settings Request
+STATEMENT: >>>
+Upon request, the subsystem shall return the currently active volume 
+normalisation settings.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-039
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Mono Playback
+
+[REQUIREMENT]
+UID: APSSR-117
+TITLE: Mono Playback Configuration
+STATEMENT: >>>
+The subsystem shall allow mono playback to be enabled or disabled.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-038
+
+[REQUIREMENT]
+UID: APSSR-118
+TITLE: Mono Playback Application
+STATEMENT: >>>
+The subsystem shall combine the left and right audio channels into a mono 
+output when mono playback is enabled.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-038
+
+[REQUIREMENT]
+UID: APSSR-119
+TITLE: Mono Playback Settings Request
+STATEMENT: >>>
+Upon request, the subsystem shall return the currently active mono playback 
+settings.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-039
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Channel Swapping
+
+[REQUIREMENT]
+UID: APSSR-117
+TITLE: Channel Swapping Configuration
+STATEMENT: >>>
+The subsystem shall allow channel swapping to be enabled or disabled.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-038
+
+[REQUIREMENT]
+UID: APSSR-118
+TITLE: Channel Swapping Application
+STATEMENT: >>>
+The subsystem shall exchange the left and right audio channels when channel 
+swapping is enabled.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-038
+
+[REQUIREMENT]
+UID: APSSR-119
+TITLE: Channel Swapping Settings Request
+STATEMENT: >>>
+Upon request, the subsystem shall return the currently active channel swapping 
+settings.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-039
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Channel Muting
+
+[REQUIREMENT]
+UID: APSSR-120
+TITLE: Left Channel Muting Configuration
+STATEMENT: >>>
+The subsystem shall allow the left audio channel to be muted or unmuted.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-038
+
+[REQUIREMENT]
+UID: APSSR-121
+TITLE: Right Channel Muting Configuration
+STATEMENT: >>>
+The subsystem shall allow the right audio channel to be muted or unmuted.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-038
+
+[REQUIREMENT]
+UID: APSSR-122
+TITLE: Channel Muting Application
+STATEMENT: >>>
+The subsystem shall suppress audio output from each channel configured to be 
+muted, after applying any configured channel swapping.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-038
+
+[REQUIREMENT]
+UID: APSSR-123
+TITLE: Channel Muting Settings Request
+STATEMENT: >>>
+Upon request, the subsystem shall return the currently active channel muting 
+settings.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-039
+
+[[/SECTION]]
 
 [[/SECTION]]
