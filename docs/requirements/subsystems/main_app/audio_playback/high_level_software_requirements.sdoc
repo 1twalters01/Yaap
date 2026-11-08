@@ -1,0 +1,17 @@
+[DOCUMENT]
+TITLE: Audio Playback High Level Software Requirements
+UID: YAAP-APHLSR
+DATE: @GIT_COMMIT_DATETIME
+PREFIX: APHLSR-
+
+[[SECTION]]
+TITLE: Introduction
+
+[TEXT]
+STATEMENT: >>>
+This document defines the high level software requirements for Yet Another 
+Audio Player (Yaap), a time accurate desktop audio player.
+<<<
+
+[[/SECTION]]
+

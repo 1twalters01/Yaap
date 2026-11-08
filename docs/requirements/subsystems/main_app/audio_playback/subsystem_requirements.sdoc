@@ -9,7 +9,7 @@ TITLE: Introduction
 
 [TEXT]
 STATEMENT: >>>
-This document defines the system requirements for Yet Another Audio Player
+This document defines the subsystem requirements for Yet Another Audio Player
 (Yaap), a time accurate desktop audio player.
 <<<
 
@@ -752,7 +752,7 @@ RELATIONS:
 UID: APSSR-062
 TITLE: Dropbox Support
 STATEMENT: >>>
-The subsystem shall support integration with Dropbox Drive.
+The subsystem shall support integration with Dropbox.
 <<<
 RELATIONS:
 - TYPE: Parent
@@ -933,8 +933,8 @@ TITLE: Remote File Access
 UID: APSSR-076
 TITLE: Remote Audio File Opening
 STATEMENT: >>>
-The subsystem shall open a remote audio file selected a connected cloud storage
-provider for reading.
+The subsystem shall open a remote audio file selected from a connected cloud 
+storage provider for reading.
 <<<
 RELATIONS:
 - TYPE: Parent
@@ -1016,7 +1016,7 @@ TITLE: Remote Audio File Playback Recovery
 
 [REQUIREMENT]
 UID: APSSR-083
-TITLE: Remote Audio File Playback Resuption
+TITLE: Remote Audio File Playback Resumption
 STATEMENT: >>>
 The subsystem shall support resuming interrupted remote audio playback when the 
 remote audio file becomes accessible again.
@@ -1146,7 +1146,7 @@ RELATIONS:
 UID: APSSR-093
 TITLE: Remaining Playback Time Availability
 STATEMENT: >>>
-The subsystem shall make the current playback position of an active audio track
+The subsystem shall make the current playback time of an active audio track
 available upon request.
 <<<
 RELATIONS:
@@ -1365,9 +1365,9 @@ RELATIONS:
 
 [REQUIREMENT]
 UID: APSSR-110
-TITLE: Playback Volume Settings Request
+TITLE: Playback Pitch Settings Request
 STATEMENT: >>>
-Upon request, the subsystem shall return the currently active playback volume 
+Upon request, the subsystem shall return the currently active playback pitch 
 settings.
 <<<
 RELATIONS:
@@ -1397,7 +1397,7 @@ UID: APSSR-112
 TITLE: Playback Volume Rejection
 STATEMENT: >>>
 The subsystem shall report the rejection of requests to adjust the playback 
-volume of the active track is outside of the supported range.
+volume of the active track to values outside of the supported range.
 <<<
 RELATIONS:
 - TYPE: Parent
@@ -1464,8 +1464,8 @@ TITLE: Playback Configuration Settings
 
 [TEXT]
 STATEMENT: >>>
-Currently Mono Playback, Channel Swapping and Channel Muting are written as 
-requirements.
+Currently Volume Normalisation, Mono Playback, Channel Swapping and Channel 
+Muting are written as requirements.
 
 Considerations will be made for:
 - Channel Balance
