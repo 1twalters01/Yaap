@@ -15,3 +15,101 @@ Audio Player (Yaap), a time accurate desktop audio player.
 
 [[/SECTION]]
 
+[[SECTION]]
+TITLE: File Handling
+
+[[SECTION]]
+TITLE: Audio File Error Handling
+
+[REQUIREMENT]
+UID: APHLSR-001
+TITLE: Unsupported Format Reporting
+STATEMENT: >>>
+The software shall report when an input audio stream uses an unsupported format
+or encoding.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: APSSR-051
+
+[REQUIREMENT]
+UID: APHLSR-002
+TITLE: Invalid Audio Data Reporting
+STATEMENT: >>>
+The software shall report when an input audio stream contains invalid or 
+corrupted data that prevents decoding.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: APSSR-052
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: FLAC File Handling
+
+[REQUIREMENT]
+UID: APHLSR-003
+TITLE: FLAC File Input Access
+STATEMENT: >>>
+The software shall accept FLAC audio streams as audio processing inputs.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: APSSR-001
+
+[REQUIREMENT]
+UID: APHLSR-004
+TITLE: FLAC Format Identification
+STATEMENT: >>>
+The software shall identify audio streams encoded in the FLAC format.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: APSSR-002
+
+[REQUIREMENT]
+UID: APHLSR-005
+TITLE: FLAC Audio Decoding
+STATEMENT: >>>
+The software shall decode supported FLAC audio streams into PCM audio samples.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: APSSR-003
+
+[REQUIREMENT]
+UID: APHLSR-006
+TITLE: FLAC Channel Count Retrieval
+STATEMENT: >>>
+The software shall retrieve the number of audio channels from FLAC audio
+streams.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: APSSR-004
+
+[REQUIREMENT]
+UID: APHLSR-007
+TITLE: FLAC Sample Rate Retrieval
+STATEMENT: >>>
+The software shall retrieve the sample rate of FLAC audio streams.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: APSSR-005
+
+[REQUIREMENT]
+UID: APHLSR-008
+TITLE: FLAC Sample Rate Retrieval
+STATEMENT: >>>
+The software shall retrieve the number of bits per sample from FLAC audio
+streams.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: APSSR-006
+
+[[/SECTION]]
+
+[[/SECTION]]

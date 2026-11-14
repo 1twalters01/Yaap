@@ -28,7 +28,8 @@ def create_config() -> ProjectConfig:
             "system_requirements.sdoc",
             "subsystems/*/*/subsystem_requirements.sdoc",
             "subsystems/*/*/high_level_software_requirements.sdoc",
-            "subsystems/*/*/test_specification.sdoc",
+            "subsystems/*/*/low_level_software_requirements.sdoc",
+            # "subsystems/*/*/test_specification.sdoc",
         ],
         include_source_paths=[
             "/libs/**",

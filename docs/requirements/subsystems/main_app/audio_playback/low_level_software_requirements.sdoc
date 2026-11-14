@@ -1,0 +1,59 @@
+[DOCUMENT]
+TITLE: Audio Playback Low Level Software Requirements
+UID: YAAP-APLLSR
+DATE: @GIT_COMMIT_DATETIME
+PREFIX: APLLSR-
+
+[[SECTION]]
+TITLE: Introduction
+
+[TEXT]
+STATEMENT: >>>
+This document defines the low level software requirements for Yet Another 
+Audio Player (Yaap), a time accurate desktop audio player.
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: File Handling
+
+[[SECTION]]
+TITLE: File Type Identification
+
+[REQUIREMENT]
+UID: APLLSR-001
+TITLE: Unsupported Format Detection
+STATEMENT: >>>
+The software shall determine whether an input audio stream's identified format 
+and encoding are supported.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: APHLSR-001
+
+[REQUIREMENT]
+UID: APLLSR-002
+TITLE: Unsupported Format Error Generation
+STATEMENT: >>>
+The software shall generate an unsupported-format error when an input audio
+stream's format or encoding is unsupported.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: APHLSR-001
+
+[REQUIREMENT]
+UID: APLLSR-003
+TITLE: Unsupported Format Error Generation
+STATEMENT: >>>
+The software shall identify whether an input audio stream is encoded in the 
+FLAC format.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: APHLSR-004
+
+[[/SECTION]]
+
+[[/SECTION]]
