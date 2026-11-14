@@ -1,0 +1,48 @@
+[GRAMMAR]
+ELEMENTS:
+- TAG: TEST
+  FIELDS:
+  - TITLE: UID
+    TYPE: String
+    REQUIRED: True
+
+  - TITLE: TITLE
+    TYPE: String
+    REQUIRED: True
+
+  - TITLE: TEST_TYPE
+    TYPE: SingleChoice(Functional, Performance, Robustness, Compatibility, Security, Usability)
+    REQUIRED: True
+
+  - TITLE: TEST_LEVEL
+    TYPE: SingleChoice(Unit, Integration, Subsystem, System, Acceptance)
+    REQUIRED: True
+
+  - TITLE: PRECONDITIONS
+    TYPE: String
+    REQUIRED: False
+
+  - TITLE: INPUTS
+    TYPE: String
+    REQUIRED: False
+
+  - TITLE: PROCEDURE
+    TYPE: String
+    REQUIRED: False
+
+  - TITLE: EXPECTED_RESULT
+    TYPE: String
+    REQUIRED: True
+
+  - TITLE: NOTES
+    TYPE: String
+    REQUIRED: False
+
+  - TITLE: STATEMENT
+    TYPE: String
+    REQUIRED: True
+
+  RELATIONS:
+  - TYPE: Parent
+    ROLE: Verifies
+
