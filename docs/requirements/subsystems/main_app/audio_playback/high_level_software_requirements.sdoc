@@ -60,7 +60,7 @@ RELATIONS:
 
 [REQUIREMENT]
 UID: APHLSR-004
-TITLE: FLAC Format Identification
+TITLE: FLAC Encoding Identification
 STATEMENT: >>>
 The software shall identify audio streams encoded in the FLAC format.
 <<<

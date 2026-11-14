@@ -32,8 +32,6 @@ def create_config() -> ProjectConfig:
             # "subsystems/*/*/test_specification.sdoc",
         ],
         include_source_paths=[
-            "/libs/**",
-            "/apps/**",
-            "/frontends/**",
+            "/crates/**",
         ],
     )
