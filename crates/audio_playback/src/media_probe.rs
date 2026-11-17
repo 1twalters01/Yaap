@@ -1,18 +1,169 @@
-#[derive(Debug, PartialEq, Eq)]
-pub enum AudioType {
-    // @relation(APLLSR-007, scope=line)
-    Flac,
-    // @relation(APLLSR-002, scope=line)
-    Unsupported,
-    // @relation(APLLSR-003, scope=line)
-    UnknownFormat,
-    // @relation(APLLSR-004, scope=line)
-    UnknownEncoding,
-    // @relation(APLLSR-005, scope=line)
-    InvalidFormat,
-    // @relation(APLLSR-006, scope=line)
-    InvalidEncoding,
+use symphonia::core::{
+    codecs::{
+        CodecParameters::Audio,
+        audio::{AudioCodecId, CODEC_ID_NULL_AUDIO, well_known::CODEC_ID_FLAC},
+    },
+    errors::Error as SymphoniaError,
+    formats::{FormatOptions, FormatReader, TrackType, probe::Hint},
+    io::MediaSourceStream,
+    meta::MetadataOptions,
+};
+
+pub struct IdentifiedAudioStream<'a> {
+    pub classification: AudioStreamClassification,
+    pub track_id: u32,
+    pub reader: Box<dyn FormatReader + 'a>,
 }
 
-pub fn identify_audio_stream() {
+#[derive(Debug, PartialEq, Eq)]
+pub struct AudioStreamClassification {
+    pub format: String,
+    pub encoding: AudioCodecId,
+}
+
+#[derive(Debug, thiserror::Error)]
+pub enum AudioStreamError {
+    // @relation(APLLSR-005, scope=line)
+    #[error("Unknown audio format")]
+    UnknownFormat,
+
+    // @relation(APLLSR-003, scope=line)
+    #[error("Unsupported audio format: {0}")]
+    UnsupportedFormat(String),
+
+    // @relation(APLLSR-007, scope=line)
+    #[error("Invalid audio format: {0}")]
+    InvalidFormat(String),
+
+    // @relation(APLLSR-006, scope=line)
+    #[error("Unknown audio encoding")]
+    UnknownEncoding,
+
+    // @relation(APLLSR-004, scope=line)
+    #[error("Unsupported audio encoding: {0}")]
+    UnsupportedEncoding(String),
+
+    // @relation(APLLSR-008, scope=line)
+    #[error("Invalid audio encoding: {0}")]
+    InvalidEncoding(String),
+
+    // @relation(APLLSR-009, scope=line)
+    #[error("No audio track was found")]
+    NoAudioTrack,
+
+    #[error("Audio stream I/O error: {0}")]
+    Io(#[from] std::io::Error),
+
+    #[error("Symphonia error: {0}")]
+    Symphonia(#[from] SymphoniaError),
+}
+
+// @relation(APLLSR-002, scope=function)
+pub fn identify_supported_audio_stream<'a>(
+    media_source_stream: MediaSourceStream<'a>,
+) -> Result<IdentifiedAudioStream<'a>, AudioStreamError> {
+    let identified_audio_stream = identify_audio_stream(media_source_stream)?;
+    verify_format_supported(&identified_audio_stream.classification)?;
+
+    Ok(identified_audio_stream)
+}
+
+// @relation(APLLSR-001, scope=function)
+fn identify_audio_stream<'a>(
+    media_source_stream: MediaSourceStream<'a>,
+) -> Result<IdentifiedAudioStream<'a>, AudioStreamError> {
+    let hint = Hint::new();
+
+    let probed = symphonia::default::get_probe()
+        .probe(
+            &hint,
+            media_source_stream,
+            FormatOptions::default(),
+            MetadataOptions::default(),
+        )
+        .map_err(|error| match error {
+            // @relation(APLLSR-005, scope=line)
+            SymphoniaError::Unsupported(_) => AudioStreamError::UnknownFormat,
+            SymphoniaError::DecodeError(message) => {
+                // @relation(APLLSR-007, scope=line)
+                AudioStreamError::InvalidFormat(message.to_string())
+            }
+            other => AudioStreamError::Symphonia(other),
+        })?;
+
+    let format = probed.format_info().short_name.to_owned();
+    let track = probed
+        .first_track(TrackType::Audio)
+        .ok_or(AudioStreamError::NoAudioTrack)?;
+
+    let track_id = track.id;
+
+    let codec_params = track
+        .codec_params
+        .as_ref()
+        // @relation(APLLSR-006, scope=line)
+        .ok_or(AudioStreamError::UnknownEncoding)?;
+
+    let audio_params = match codec_params {
+        Audio(params) => params,
+        _ => return Err(AudioStreamError::UnknownEncoding),
+    };
+
+    let encoding = audio_params.codec;
+
+    // @relation(APLLSR-006, scope=line)
+    if encoding == CODEC_ID_NULL_AUDIO {
+        return Err(AudioStreamError::UnknownEncoding);
+    }
+
+    let classification = AudioStreamClassification { format, encoding };
+
+    Ok(IdentifiedAudioStream {
+        classification,
+        track_id,
+        reader: probed,
+    })
+}
+
+fn verify_format_supported(
+    classification: &AudioStreamClassification,
+) -> Result<(), AudioStreamError> {
+    validate_audio_format(&classification.format)?;
+    validate_audio_encoding(classification.encoding)?;
+    validate_format_encoding_combination(classification)?;
+
+    Ok(())
+}
+
+fn validate_audio_format(format: &str) -> Result<(), AudioStreamError> {
+    match format {
+        "flac" => Ok(()),
+        // @relation(APLLSR-003, scope=line)
+        other => Err(AudioStreamError::UnsupportedFormat(other.to_owned())),
+    }
+}
+
+fn validate_audio_encoding(encoding: AudioCodecId) -> Result<(), AudioStreamError> {
+    match encoding {
+        // @relation(APLLSR-010, scope=line)
+        CODEC_ID_FLAC => Ok(()),
+
+        // @relation(APLLSR-004, scope=line)
+        other => Err(AudioStreamError::UnsupportedEncoding(format!("{other:?}"))),
+    }
+}
+
+fn validate_format_encoding_combination(
+    classification: &AudioStreamClassification,
+) -> Result<(), AudioStreamError> {
+    match (classification.format.as_str(), classification.encoding) {
+        // @relation(APLLSR-011, scope=line)
+        ("flac", CODEC_ID_FLAC) => Ok(()),
+
+        // @relation(APLLSR-004, scope=line)
+        _ => Err(AudioStreamError::UnsupportedEncoding(format!(
+            "Encoding {:?} is not supported in format {}",
+            classification.encoding, classification.format,
+        ))),
+    }
 }
