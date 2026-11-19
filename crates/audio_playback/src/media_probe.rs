@@ -1,7 +1,9 @@
 use symphonia::core::{
     codecs::{
         CodecParameters::{self, Audio},
-        audio::{AudioCodecId, CODEC_ID_NULL_AUDIO, well_known::CODEC_ID_FLAC},
+        audio::{
+            AudioCodecId, CODEC_ID_NULL_AUDIO, well_known::CODEC_ID_FLAC,
+        },
     },
     errors::Error as SymphoniaError,
     formats::{FormatOptions, FormatReader, TrackType, probe::Hint},
@@ -159,18 +161,19 @@ impl AudioProber for SymphoniaProber {
     }
 }
 
-// @relation(APLLSR-002, scope=function)
+/// @relation(APLLSR-002, scope=function)
 pub fn identify_supported_audio_stream<'a, P: AudioProber>(
     media_source_stream: MediaSourceStream<'a>,
     prober: &P,
 ) -> Result<IdentifiedAudioStream<'a>, AudioStreamError> {
-    let identified_audio_stream = identify_audio_stream(media_source_stream, prober)?;
+    let identified_audio_stream =
+        identify_audio_stream(media_source_stream, prober)?;
     verify_format_supported(&identified_audio_stream.classification)?;
 
     Ok(identified_audio_stream)
 }
 
-// @relation(APLLSR-001, scope=function)
+/// @relation(APLLSR-001, scope=function)
 fn identify_audio_stream<'a, P: AudioProber>(
     media_source_stream: MediaSourceStream<'a>,
     prober: &P,
@@ -179,7 +182,8 @@ fn identify_audio_stream<'a, P: AudioProber>(
         .probe_stream(media_source_stream)
         .map_err(|error| map_probe_error(error))?;
 
-    let (classification, track) = identify_classification(probed.probed_reader.as_ref())?;
+    let (classification, track) =
+        identify_classification(probed.probed_reader.as_ref())?;
 
     Ok(IdentifiedAudioStream {
         classification,
@@ -202,9 +206,10 @@ fn map_probe_error(error: SymphoniaError) -> AudioStreamError {
     }
 }
 
-fn identify_classification(
+pub fn identify_classification(
     probed_reader: &dyn ProbedAudioReader,
-) -> Result<(AudioStreamClassification, AudioTrackInfo<'_>), AudioStreamError> {
+) -> Result<(AudioStreamClassification, AudioTrackInfo<'_>), AudioStreamError>
+{
     let format = probed_reader.format_short_name().to_owned();
     let track = probed_reader
         .first_audio_track()
@@ -257,13 +262,17 @@ fn validate_audio_format(format: &str) -> Result<(), AudioStreamError> {
     }
 }
 
-fn validate_audio_encoding(encoding: AudioCodecId) -> Result<(), AudioStreamError> {
+fn validate_audio_encoding(
+    encoding: AudioCodecId,
+) -> Result<(), AudioStreamError> {
     match encoding {
         // @relation(APLLSR-010, scope=line)
         CODEC_ID_FLAC => Ok(()),
 
         // @relation(APLLSR-004, scope=line)
-        other => Err(AudioStreamError::UnsupportedEncoding(format!("{other:?}"))),
+        other => {
+            Err(AudioStreamError::UnsupportedEncoding(format!("{other:?}")))
+        }
     }
 }
 
