@@ -1,0 +1,47 @@
+[DOCUMENT]
+TITLE: Audio Playback Test Specification
+UID: YAAP-APTS
+DATE: @GIT_COMMIT_DATETIME
+PREFIX: APTS-
+
+[GRAMMAR]
+IMPORT_FROM_FILE: @test_grammar
+
+[[SECTION]]
+TITLE: Introduction
+
+[TEXT]
+STATEMENT: >>>
+This document defines the test specification for Yet Another Audio Player 
+(Yaap), a time accurate desktop audio player.
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: File Handling
+
+[TEST]
+UID: APTS-001
+TITLE: FLAC Format and Encoding Identification
+TEST_TYPE: Functional
+TEST_LEVEL: Integration
+PRECONDITIONS: A valid FLAC audio file is available
+INPUTS: A valid FLAC audio stream
+PROCEDURE: >>>
+1. Supply the FLAC audio stream to the audio identification subsystem.
+2. Execute the identification procedure.
+3. Examine the identified format and encoding.
+<<<
+EXPECTED_RESULT: >>>
+The software identifies the stream's format as FLAC and its encoding as FLAC.
+<<<
+STATEMENT: >>>
+The test shall verify that the software correctly identifies the format and
+encoding of a valid FLAC audio stream.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: APLLSR-001
+
+[[/SECTION]]

@@ -22,6 +22,9 @@ def create_config() -> ProjectConfig:
             # "DIFF",
         ],
         source_root_path="../..",
+        grammars={
+            "@test_grammar": "grammars/test_grammar.sgra",
+        },
         include_doc_paths=[
             "business_requirements.sdoc",
             "user_requirements.sdoc",
@@ -29,7 +32,7 @@ def create_config() -> ProjectConfig:
             "subsystems/*/*/subsystem_requirements.sdoc",
             "subsystems/*/*/high_level_software_requirements.sdoc",
             "subsystems/*/*/low_level_software_requirements.sdoc",
-            # "subsystems/*/*/test_specification.sdoc",
+            "subsystems/*/*/test_specification.sdoc",
         ],
         include_source_paths=[
             "/crates/**",

@@ -1,6 +1,6 @@
 use symphonia::core::{
     codecs::{
-        CodecParameters::Audio,
+        CodecParameters::{self, Audio},
         audio::{AudioCodecId, CODEC_ID_NULL_AUDIO, well_known::CODEC_ID_FLAC},
     },
     errors::Error as SymphoniaError,
@@ -58,29 +58,62 @@ pub enum AudioStreamError {
     Symphonia(#[from] SymphoniaError),
 }
 
+pub trait AudioProber {
+    fn probe_stream<'a>(
+        &self,
+        media_source_stream: MediaSourceStream<'a>,
+    ) -> Result<Box<dyn FormatReader + 'a>, SymphoniaError>;
+}
+
+pub struct SymphoniaProber {
+    pub hint: Hint,
+    pub format_options: FormatOptions,
+    pub metadata_options: MetadataOptions,
+}
+
+impl Default for SymphoniaProber {
+    fn default() -> Self {
+        Self {
+            hint: Hint::new(),
+            format_options: FormatOptions::default(),
+            metadata_options: MetadataOptions::default(),
+        }
+    }
+}
+
+impl AudioProber for SymphoniaProber {
+    fn probe_stream<'a>(
+        &self,
+        media_source_stream: MediaSourceStream<'a>,
+    ) -> Result<Box<dyn FormatReader + 'a>, SymphoniaError> {
+        symphonia::default::get_probe().probe(
+            &self.hint,
+            media_source_stream,
+            self.format_options.clone(),
+            self.metadata_options,
+        )
+    }
+}
+
 // @relation(APLLSR-002, scope=function)
-pub fn identify_supported_audio_stream<'a>(
+pub fn identify_supported_audio_stream<'a, P: AudioProber>(
     media_source_stream: MediaSourceStream<'a>,
+    prober: &P,
 ) -> Result<IdentifiedAudioStream<'a>, AudioStreamError> {
-    let identified_audio_stream = identify_audio_stream(media_source_stream)?;
+    let identified_audio_stream =
+        identify_audio_stream(media_source_stream, prober)?;
     verify_format_supported(&identified_audio_stream.classification)?;
 
     Ok(identified_audio_stream)
 }
 
 // @relation(APLLSR-001, scope=function)
-fn identify_audio_stream<'a>(
+fn identify_audio_stream<'a, P: AudioProber>(
     media_source_stream: MediaSourceStream<'a>,
+    prober: &P,
 ) -> Result<IdentifiedAudioStream<'a>, AudioStreamError> {
-    let hint = Hint::new();
-
-    let probed = symphonia::default::get_probe()
-        .probe(
-            &hint,
-            media_source_stream,
-            FormatOptions::default(),
-            MetadataOptions::default(),
-        )
+    let probed = prober
+        .probe_stream(media_source_stream)
         .map_err(|error| match error {
             // @relation(APLLSR-005, scope=line)
             SymphoniaError::Unsupported(_) => AudioStreamError::UnknownFormat,
@@ -96,32 +129,36 @@ fn identify_audio_stream<'a>(
         .first_track(TrackType::Audio)
         .ok_or(AudioStreamError::NoAudioTrack)?;
 
-    let track_id = track.id;
-
-    let codec_params = track
-        .codec_params
-        .as_ref()
-        // @relation(APLLSR-006, scope=line)
-        .ok_or(AudioStreamError::UnknownEncoding)?;
-
-    let audio_params = match codec_params {
-        Audio(params) => params,
-        _ => return Err(AudioStreamError::UnknownEncoding),
-    };
-
-    let encoding = audio_params.codec;
-
-    // @relation(APLLSR-006, scope=line)
-    if encoding == CODEC_ID_NULL_AUDIO {
-        return Err(AudioStreamError::UnknownEncoding);
-    }
-
-    let classification = AudioStreamClassification { format, encoding };
+    let classification = extract_classification(format.clone(), track.codec_params.as_ref())?;
 
     Ok(IdentifiedAudioStream {
         classification,
-        track_id,
+        track_id: track.id,
         reader: probed,
+    })
+}
+
+fn extract_classification(
+    format: String,
+    codec_params: Option<&CodecParameters>,
+) -> Result<AudioStreamClassification, AudioStreamError> {
+    // @relation(APLLSR-006, scope=line)
+    let params = codec_params.ok_or(AudioStreamError::UnknownEncoding)?;
+
+    let audio_params = match params {
+        Audio(audio) => audio,
+        // @relation(APLLSR-006, scope=line)
+        _ => return Err(AudioStreamError::UnknownEncoding),
+    };
+
+    if audio_params.codec == CODEC_ID_NULL_AUDIO {
+        // @relation(APLLSR-006, scope=line)
+        return Err(AudioStreamError::UnknownEncoding);
+    }
+
+    Ok(AudioStreamClassification {
+        format,
+        encoding: audio_params.codec,
     })
 }
 
