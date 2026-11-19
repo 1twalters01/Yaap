@@ -26,6 +26,7 @@ def create_config() -> ProjectConfig:
             "@test_grammar": "grammars/test_grammar.sgra",
         },
         include_doc_paths=[
+            "grammars/*.sgra",
             "business_requirements.sdoc",
             "user_requirements.sdoc",
             "system_requirements.sdoc",
