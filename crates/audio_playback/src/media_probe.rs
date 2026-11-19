@@ -68,15 +68,17 @@ pub trait ProbedAudioReader {
     fn first_audio_track(&self) -> Option<AudioTrackInfo<'_>>;
 }
 
-impl <T: FormatReader + ?Sized> ProbedAudioReader for T {
+impl<T: FormatReader + ?Sized> ProbedAudioReader for T {
     fn format_short_name(&self) -> &str {
         self.format_info().short_name
     }
 
     fn first_audio_track(&self) -> Option<AudioTrackInfo<'_>> {
-        self.first_track(TrackType::Audio).map(|track| AudioTrackInfo { id: track.id,
-            codec_params: track.codec_params.as_ref(),
-        })
+        self.first_track(TrackType::Audio)
+            .map(|track| AudioTrackInfo {
+                id: track.id,
+                codec_params: track.codec_params.as_ref(),
+            })
     }
 }
 
@@ -141,19 +143,19 @@ impl AudioProber for SymphoniaProber {
         )?;
 
         let format_short_name = reader.format_info().short_name.to_owned();
-        let audio_track = reader.first_track(TrackType::Audio).map(|track| {
-            (
-                track.id,
-                track.codec_params.clone(),
-            )
-        });
+        let audio_track = reader
+            .first_track(TrackType::Audio)
+            .map(|track| (track.id, track.codec_params.clone()));
 
         let probed_reader = Box::new(SymphoniaProbedReader {
             format_short_name,
             audio_track,
         });
 
-        Ok(ProbedAudioStream { probed_reader, reader })
+        Ok(ProbedAudioStream {
+            probed_reader,
+            reader,
+        })
     }
 }
 
@@ -162,8 +164,7 @@ pub fn identify_supported_audio_stream<'a, P: AudioProber>(
     media_source_stream: MediaSourceStream<'a>,
     prober: &P,
 ) -> Result<IdentifiedAudioStream<'a>, AudioStreamError> {
-    let identified_audio_stream =
-        identify_audio_stream(media_source_stream, prober)?;
+    let identified_audio_stream = identify_audio_stream(media_source_stream, prober)?;
     verify_format_supported(&identified_audio_stream.classification)?;
 
     Ok(identified_audio_stream)
@@ -176,29 +177,42 @@ fn identify_audio_stream<'a, P: AudioProber>(
 ) -> Result<IdentifiedAudioStream<'a>, AudioStreamError> {
     let probed = prober
         .probe_stream(media_source_stream)
-        .map_err(|error| match error {
-            // @relation(APLLSR-005, scope=line)
-            SymphoniaError::Unsupported(_) => AudioStreamError::UnknownFormat,
-            SymphoniaError::DecodeError(message) => {
-                // @relation(APLLSR-007, scope=line)
-                AudioStreamError::InvalidFormat(message.to_string())
-            }
+        .map_err(|error| map_probe_error(error))?;
 
-            SymphoniaError::IoError(error) => AudioStreamError::Io(error),
-            other => AudioStreamError::Symphonia(other),
-        })?;
-
-    let format = probed.probed_reader.format_short_name().to_owned();
-    let track = probed
-    .probed_reader.first_audio_track().ok_or(AudioStreamError::NoAudioTrack)?;
-
-    let classification = extract_classification(format, track.codec_params)?;
+    let (classification, track) = identify_classification(probed.probed_reader.as_ref())?;
 
     Ok(IdentifiedAudioStream {
         classification,
         track_id: track.id,
         reader: probed.reader,
     })
+}
+
+fn map_probe_error(error: SymphoniaError) -> AudioStreamError {
+    match error {
+        // @relation(APLLSR-005, scope=line)
+        SymphoniaError::Unsupported(_) => AudioStreamError::UnknownFormat,
+        SymphoniaError::DecodeError(message) => {
+            // @relation(APLLSR-007, scope=line)
+            AudioStreamError::InvalidFormat(message.to_string())
+        }
+
+        SymphoniaError::IoError(error) => AudioStreamError::Io(error),
+        other => AudioStreamError::Symphonia(other),
+    }
+}
+
+fn identify_classification(
+    probed_reader: &dyn ProbedAudioReader,
+) -> Result<(AudioStreamClassification, AudioTrackInfo<'_>), AudioStreamError> {
+    let format = probed_reader.format_short_name().to_owned();
+    let track = probed_reader
+        .first_audio_track()
+        .ok_or(AudioStreamError::NoAudioTrack)?;
+
+    let classification = extract_classification(format, track.codec_params)?;
+
+    Ok((classification, track))
 }
 
 fn extract_classification(
