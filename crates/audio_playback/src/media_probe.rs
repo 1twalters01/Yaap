@@ -58,17 +58,58 @@ pub enum AudioStreamError {
     Symphonia(#[from] SymphoniaError),
 }
 
+pub struct AudioTrackInfo<'a> {
+    pub id: u32,
+    pub codec_params: Option<&'a CodecParameters>,
+}
+
+pub trait ProbedAudioReader {
+    fn format_short_name(&self) -> &str;
+    fn first_audio_track(&self) -> Option<AudioTrackInfo<'_>>;
+}
+
+impl <T: FormatReader + ?Sized> ProbedAudioReader for T {
+    fn format_short_name(&self) -> &str {
+        self.format_info().short_name
+    }
+
+    fn first_audio_track(&self) -> Option<AudioTrackInfo<'_>> {
+        self.first_track(TrackType::Audio).map(|track| AudioTrackInfo { id: track.id,
+            codec_params: track.codec_params.as_ref(),
+        })
+    }
+}
+
+struct SymphoniaProbedReader {
+    format_short_name: String,
+    audio_track: Option<(u32, Option<CodecParameters>)>,
+}
+
+impl ProbedAudioReader for SymphoniaProbedReader {
+    fn format_short_name(&self) -> &str {
+        &self.format_short_name
+    }
+
+    fn first_audio_track(&self) -> Option<AudioTrackInfo<'_>> {
+        self.audio_track
+            .as_ref()
+            .map(|(id, codec_params)| AudioTrackInfo {
+                id: *id,
+                codec_params: codec_params.as_ref(),
+            })
+    }
+}
+
+pub struct ProbedAudioStream<'a> {
+    pub probed_reader: Box<dyn ProbedAudioReader + 'a>,
+    pub reader: Box<dyn FormatReader + 'a>,
+}
+
 pub trait AudioProber {
     fn probe_stream<'a>(
         &self,
         media_source_stream: MediaSourceStream<'a>,
-    ) -> Result<Box<dyn FormatReader + 'a>, SymphoniaError>;
-}
-
-pub struct SymphoniaProber {
-    pub hint: Hint,
-    pub format_options: FormatOptions,
-    pub metadata_options: MetadataOptions,
+    ) -> Result<ProbedAudioStream<'a>, SymphoniaError>;
 }
 
 impl Default for SymphoniaProber {
@@ -81,17 +122,38 @@ impl Default for SymphoniaProber {
     }
 }
 
+pub struct SymphoniaProber {
+    pub hint: Hint,
+    pub format_options: FormatOptions,
+    pub metadata_options: MetadataOptions,
+}
+
 impl AudioProber for SymphoniaProber {
     fn probe_stream<'a>(
         &self,
         media_source_stream: MediaSourceStream<'a>,
-    ) -> Result<Box<dyn FormatReader + 'a>, SymphoniaError> {
-        symphonia::default::get_probe().probe(
+    ) -> Result<ProbedAudioStream<'a>, SymphoniaError> {
+        let reader = symphonia::default::get_probe().probe(
             &self.hint,
             media_source_stream,
             self.format_options.clone(),
             self.metadata_options,
-        )
+        )?;
+
+        let format_short_name = reader.format_info().short_name.to_owned();
+        let audio_track = reader.first_track(TrackType::Audio).map(|track| {
+            (
+                track.id,
+                track.codec_params.clone(),
+            )
+        });
+
+        let probed_reader = Box::new(SymphoniaProbedReader {
+            format_short_name,
+            audio_track,
+        });
+
+        Ok(ProbedAudioStream { probed_reader, reader })
     }
 }
 
@@ -121,20 +183,21 @@ fn identify_audio_stream<'a, P: AudioProber>(
                 // @relation(APLLSR-007, scope=line)
                 AudioStreamError::InvalidFormat(message.to_string())
             }
+
+            SymphoniaError::IoError(error) => AudioStreamError::Io(error),
             other => AudioStreamError::Symphonia(other),
         })?;
 
-    let format = probed.format_info().short_name.to_owned();
+    let format = probed.probed_reader.format_short_name().to_owned();
     let track = probed
-        .first_track(TrackType::Audio)
-        .ok_or(AudioStreamError::NoAudioTrack)?;
+    .probed_reader.first_audio_track().ok_or(AudioStreamError::NoAudioTrack)?;
 
-    let classification = extract_classification(format.clone(), track.codec_params.as_ref())?;
+    let classification = extract_classification(format, track.codec_params)?;
 
     Ok(IdentifiedAudioStream {
         classification,
         track_id: track.id,
-        reader: probed,
+        reader: probed.reader,
     })
 }
 
