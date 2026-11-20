@@ -1,7 +1,7 @@
 use std::io;
 
 use audio_playback::media_probe::{
-    AudioProperty, AudioPropertyType, AudioStreamError, map_probe_error,
+    AudioFormatError, AudioStreamError, map_probe_error,
 };
 use symphonia::core::errors::Error as SymphoniaError;
 
@@ -14,10 +14,7 @@ fn maps_unsupported_probe_error_to_unknown_format() {
 
     assert!(matches!(
         result,
-        AudioStreamError::Unknown(AudioProperty {
-            property: AudioPropertyType::Format,
-            message: _,
-        })
+        AudioStreamError::Format(AudioFormatError::Unknown(_))
     ));
 }
 
@@ -29,10 +26,7 @@ fn maps_decode_error_to_invalid_format() {
 
     assert!(matches!(
         result,
-        AudioStreamError::Invalid(AudioProperty {
-            property: AudioPropertyType::Format,
-            message: _
-        })
+        AudioStreamError::Format(AudioFormatError::Invalid(_))
     ));
 }
 

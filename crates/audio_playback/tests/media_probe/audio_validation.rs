@@ -1,10 +1,12 @@
 use audio_playback::media_probe::{
-    AudioProperty, AudioPropertyType, AudioStreamClassification,
-    AudioStreamError, validate_audio_encoding, validate_audio_format,
-    validate_format_encoding_combination, verify_format_supported,
+    AudioEncodingError, AudioFormatAndEncodingError, AudioFormatError,
+    AudioStreamClassification, AudioStreamError, validate_audio_encoding,
+    validate_audio_format, validate_format_encoding_combination,
+    verify_format_supported,
 };
-use symphonia::core::codecs::audio::well_known::{
-    CODEC_ID_FLAC, CODEC_ID_WAVPACK,
+use symphonia::core::codecs::audio::{
+    CODEC_ID_NULL_AUDIO,
+    well_known::{CODEC_ID_FLAC, CODEC_ID_WAVPACK},
 };
 
 /// @relation(APLLSR-002-T01, scope=function)
@@ -43,11 +45,8 @@ fn rejects_unsupported_audio_formats() {
 
         assert!(matches!(
             result,
-            Err(AudioStreamError::Unsupported(AudioProperty {
-                property: AudioPropertyType::Format,
-                message: _,
-            })),
-        ),);
+            Err(AudioStreamError::Format(AudioFormatError::Unsupported(_)))
+        ));
     }
 }
 
@@ -58,10 +57,46 @@ fn rejects_empty_format_name() {
 
     assert!(matches!(
         result,
-        Err(AudioStreamError::Unsupported(AudioProperty {
-            property: AudioPropertyType::Format,
-            message: _,
-        })),
+        Err(AudioStreamError::Format(AudioFormatError::Unsupported(_)))
+    ));
+}
+
+/// @relation(APLLSR-006-T03, scope=function)
+#[test]
+fn rejects_null_codec_identifier_with_valid_format() {
+    let classification = AudioStreamClassification {
+        format: "flac".to_owned(),
+        encoding: CODEC_ID_NULL_AUDIO,
+    };
+
+    let result = verify_format_supported(&classification);
+    println!("result: {:?}", result);
+
+    assert!(matches!(
+        result,
+        Err(AudioStreamError::Encoding(AudioEncodingError::Unknown(_)))
+    ));
+}
+
+/// @relation(APLLSR-006-T03, scope=function)
+#[test]
+fn rejects_null_codec_identifier_with_unsupported_format() {
+    let classification = AudioStreamClassification {
+        format: "mka".to_owned(),
+        encoding: CODEC_ID_NULL_AUDIO,
+    };
+
+    let result = verify_format_supported(&classification);
+    println!("result: {:?}", result);
+
+    assert!(matches!(
+        result,
+        Err(AudioStreamError::FormatAndEncoding(
+            AudioFormatAndEncodingError {
+                format_error: AudioFormatError::Unsupported(_),
+                encoding_error: AudioEncodingError::Unknown(_),
+            }
+        )),
     ));
 }
 
@@ -77,10 +112,12 @@ fn unsupported_format_and_unsupported_encoding() {
 
     assert!(matches!(
         result,
-        Err(AudioStreamError::Unsupported(AudioProperty {
-            property: AudioPropertyType::FormatAndEncoding,
-            message: _,
-        })),
+        Err(AudioStreamError::FormatAndEncoding(
+            AudioFormatAndEncodingError {
+                format_error: AudioFormatError::Unsupported(_),
+                encoding_error: AudioEncodingError::Unsupported(_),
+            }
+        )),
     ));
 }
 
@@ -96,9 +133,8 @@ fn unsupported_encoding_is_returned_for_supported_format() {
 
     assert!(matches!(
         result,
-        Err(AudioStreamError::Unsupported(AudioProperty {
-            property: AudioPropertyType::Encoding,
-            message: _,
-        })),
+        Err(AudioStreamError::Encoding(AudioEncodingError::Unsupported(
+            _
+        ))),
     ));
 }
