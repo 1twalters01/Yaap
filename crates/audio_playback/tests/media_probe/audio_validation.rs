@@ -91,13 +91,16 @@ fn unsupported_format_and_unsupported_encoding() {
 fn unsupported_encoding_is_returned_for_supported_format() {
     let classification = AudioStreamClassification {
         format: "flac".to_owned(),
-        encoding: other_audio_codec_id(),
+        encoding: CODEC_ID_WAVPACK,
     };
 
     let result = verify_format_supported(&classification);
 
     assert!(matches!(
         result,
-        Err(AudioStreamError::UnsupportedEncoding(_))
+        Err(AudioStreamError::Unsupported(AudioProperty{
+            property: AudioPropertyType::Encoding,
+            message: _,
+        })),
     ));
 }
