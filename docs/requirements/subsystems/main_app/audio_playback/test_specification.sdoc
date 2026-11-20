@@ -79,7 +79,7 @@ RELATIONS:
 
 [TEST]
 UID: APLLSR-001-T03
-TITLE: Audio Track Identification
+TITLE: Multiple Audio Track Identification
 TEST_TYPE: Functional
 TEST_LEVEL: Integration
 PRECONDITIONS: An audio file containing multiple audio tracks is available

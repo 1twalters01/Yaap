@@ -53,7 +53,7 @@ fn rejects_unsupported_audio_formats() {
     }
 }
 
-/// @relation(APLLSR-003-T01, scope=function
+/// @relation(APLLSR-003-T01, scope=function)
 #[test]
 fn rejects_empty_format_name() {
     let result = validate_audio_format("");
@@ -67,7 +67,7 @@ fn rejects_empty_format_name() {
     ));
 }
 
-/// @relation(APLLSR-003-T01, scope=function
+/// @relation(APLLSR-002-T04, scope=function)
 #[test]
 fn unsupported_format_and_unsupported_encoding() {
     let classification = AudioStreamClassification {

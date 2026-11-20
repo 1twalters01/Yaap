@@ -127,6 +127,8 @@ FLAC format.
 <<<
 RELATIONS:
 - TYPE: Parent
+  VALUE: APHLSR-003
+- TYPE: Parent
   VALUE: APHLSR-004
 
 [REQUIREMENT]
@@ -137,6 +139,8 @@ The software shall identify FLAC audio streams independently from the stream's
 filename extension.
 <<<
 RELATIONS:
+- TYPE: Parent
+  VALUE: APHLSR-003
 - TYPE: Parent
   VALUE: APHLSR-004
 

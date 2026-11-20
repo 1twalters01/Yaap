@@ -19,7 +19,7 @@ fn maps_unsupported_probe_error_to_unknown_format() {
     ));
 }
 
-// @relation(APLLSR-007-T01, scope=function)
+/// @relation(APLLSR-007-T01, scope=function)
 #[test]
 fn maps_decode_error_to_invalid_format() {
     let result = map_probe_error(

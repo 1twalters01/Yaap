@@ -24,7 +24,7 @@ fn identifies_valid_flac_file() {
     assert_eq!(stream.classification.encoding, CODEC_ID_FLAC);
 }
 
-// @relation(APLLSR-005-T02, scope=function)
+/// @relation(APLLSR-005-T01, scope=function)
 #[test]
 fn returns_unknown_format_for_unrecognised_input() {
     let file = File::open(
@@ -49,7 +49,7 @@ fn returns_unknown_format_for_unrecognised_input() {
     ));
 }
 
-// @relation(APLLSR-011-T01, scope=function)
+/// @relation(APLLSR-011-T01, scope=function)
 #[test]
 fn identifies_flac_independently_of_filename_extension() {
     for path in [
