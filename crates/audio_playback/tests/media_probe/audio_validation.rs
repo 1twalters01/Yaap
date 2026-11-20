@@ -86,7 +86,7 @@ fn unsupported_format_and_unsupported_encoding() {
     ));
 }
 
-// @relation(APLLSR-004-T01, scope=function)
+/// @relation(APLLSR-004-T01, scope=function)
 #[test]
 fn unsupported_encoding_is_returned_for_supported_format() {
     let classification = AudioStreamClassification {

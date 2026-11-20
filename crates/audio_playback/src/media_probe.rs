@@ -198,7 +198,7 @@ fn identify_audio_stream<'a, P: AudioProber>(
     })
 }
 
-fn map_probe_error(error: SymphoniaError) -> AudioStreamError {
+pub fn map_probe_error(error: SymphoniaError) -> AudioStreamError {
     match error {
         // @relation(APLLSR-005, scope=line)
         SymphoniaError::Unsupported(message) => AudioStreamError::Unknown(AudioProperty {
