@@ -1,3 +1,5 @@
+use std::fmt;
+
 use symphonia::core::{
     codecs::{
         CodecParameters::{self, Audio},
@@ -25,29 +27,14 @@ pub struct AudioStreamClassification {
 
 #[derive(Debug, thiserror::Error)]
 pub enum AudioStreamError {
-    // @relation(APLLSR-005, scope=line)
-    #[error("Unknown audio format")]
-    UnknownFormat,
+    #[error("Unknown audio property: {0}")]
+    Unknown(AudioProperty),
 
-    // @relation(APLLSR-003, scope=line)
-    #[error("Unsupported audio format: {0}")]
-    UnsupportedFormat(String),
+    #[error("Unsupported audio property: {0}")]
+    Unsupported(AudioProperty),
 
-    // @relation(APLLSR-007, scope=line)
-    #[error("Invalid audio format: {0}")]
-    InvalidFormat(String),
-
-    // @relation(APLLSR-006, scope=line)
-    #[error("Unknown audio encoding")]
-    UnknownEncoding,
-
-    // @relation(APLLSR-004, scope=line)
-    #[error("Unsupported audio encoding: {0}")]
-    UnsupportedEncoding(String),
-
-    // @relation(APLLSR-008, scope=line)
-    #[error("Invalid audio encoding: {0}")]
-    InvalidEncoding(String),
+    #[error("Invalid audio property: {0}")]
+    Invalid(AudioProperty),
 
     // @relation(APLLSR-009, scope=line)
     #[error("No audio track was found")]
@@ -58,6 +45,25 @@ pub enum AudioStreamError {
 
     #[error("Symphonia error: {0}")]
     Symphonia(#[from] SymphoniaError),
+}
+
+#[derive(Debug)]
+pub struct AudioProperty {
+    pub property: AudioPropertyType,
+    pub message: String,
+}
+
+#[derive(Debug)]
+pub enum AudioPropertyType {
+    Format,
+    Encoding,
+    FormatAndEncoding,
+}
+
+impl fmt::Display for AudioProperty {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        write!(f, "{:?}: {}", self.property, self.message)
+    }
 }
 
 pub struct AudioTrackInfo<'a> {
@@ -195,10 +201,16 @@ fn identify_audio_stream<'a, P: AudioProber>(
 fn map_probe_error(error: SymphoniaError) -> AudioStreamError {
     match error {
         // @relation(APLLSR-005, scope=line)
-        SymphoniaError::Unsupported(_) => AudioStreamError::UnknownFormat,
+        SymphoniaError::Unsupported(message) => AudioStreamError::Unknown(AudioProperty {
+            property: AudioPropertyType::Format,
+            message: message.to_string(),
+        }),
         SymphoniaError::DecodeError(message) => {
             // @relation(APLLSR-007, scope=line)
-            AudioStreamError::InvalidFormat(message.to_string())
+            AudioStreamError::Invalid(AudioProperty {
+                property: AudioPropertyType::Format,
+                message: message.to_string(),
+            })
         }
 
         SymphoniaError::IoError(error) => AudioStreamError::Io(error),
@@ -225,17 +237,26 @@ fn extract_classification(
     codec_params: Option<&CodecParameters>,
 ) -> Result<AudioStreamClassification, AudioStreamError> {
     // @relation(APLLSR-006, scope=line)
-    let params = codec_params.ok_or(AudioStreamError::UnknownEncoding)?;
+    let params = codec_params.ok_or(AudioStreamError::Unknown(AudioProperty {
+        property: AudioPropertyType::Encoding,
+        message: "Audio codec parameters were not provided".to_owned()
+    }))?;
 
     let audio_params = match params {
         Audio(audio) => audio,
         // @relation(APLLSR-006, scope=line)
-        _ => return Err(AudioStreamError::UnknownEncoding),
+        _ => return Err(AudioStreamError::Unknown(AudioProperty {
+            property: AudioPropertyType::Encoding,
+            message: "Codec parameters do not describe an audio stream".to_owned(),
+        })),
     };
 
     if audio_params.codec == CODEC_ID_NULL_AUDIO {
         // @relation(APLLSR-006, scope=line)
-        return Err(AudioStreamError::UnknownEncoding);
+        return Err(AudioStreamError::Unknown(AudioProperty {
+            property: AudioPropertyType::Encoding,
+            message: "Audio codec identifier is null".to_owned()
+        }));
     }
 
     Ok(AudioStreamClassification {
@@ -244,25 +265,37 @@ fn extract_classification(
     })
 }
 
-fn verify_format_supported(
+pub fn verify_format_supported(
     classification: &AudioStreamClassification,
 ) -> Result<(), AudioStreamError> {
-    validate_audio_format(&classification.format)?;
-    validate_audio_encoding(classification.encoding)?;
-    validate_format_encoding_combination(classification)?;
-
-    Ok(())
-}
-
-fn validate_audio_format(format: &str) -> Result<(), AudioStreamError> {
-    match format {
-        "flac" => Ok(()),
-        // @relation(APLLSR-003, scope=line)
-        other => Err(AudioStreamError::UnsupportedFormat(other.to_owned())),
+    let format_result = validate_audio_format(&classification.format);
+    let encoding_result = validate_audio_encoding(classification.encoding);
+    
+    match (format_result, encoding_result) {
+        (Ok(()), Ok(())) => validate_format_encoding_combination(classification),
+        (
+            Err(AudioStreamError::Unsupported(format)),
+            Err(AudioStreamError::Unsupported(encoding)),
+        ) => Err(AudioStreamError::Unsupported(AudioProperty {
+            property: AudioPropertyType::FormatAndEncoding,
+            message: format!("{}; {}", format.message, encoding.message),
+        })),
+        (Err(error), _) | (_, Err(error)) => Err(error),
     }
 }
 
-fn validate_audio_encoding(
+pub fn validate_audio_format(format: &str) -> Result<(), AudioStreamError> {
+    match format {
+        "flac" => Ok(()),
+        // @relation(APLLSR-003, scope=line)
+        other => Err(AudioStreamError::Unsupported(AudioProperty {
+            property: AudioPropertyType::Format,
+            message: format!("Audio format '{other}' is not supported"),
+        })),
+    }
+}
+
+pub fn validate_audio_encoding(
     encoding: AudioCodecId,
 ) -> Result<(), AudioStreamError> {
     match encoding {
@@ -271,12 +304,15 @@ fn validate_audio_encoding(
 
         // @relation(APLLSR-004, scope=line)
         other => {
-            Err(AudioStreamError::UnsupportedEncoding(format!("{other:?}")))
+            Err(AudioStreamError::Unsupported(AudioProperty {
+                property: AudioPropertyType::Encoding,
+                message: format!("Audio encoding '{other}' is not supported"),
+            }))
         }
     }
 }
 
-fn validate_format_encoding_combination(
+pub fn validate_format_encoding_combination(
     classification: &AudioStreamClassification,
 ) -> Result<(), AudioStreamError> {
     match (classification.format.as_str(), classification.encoding) {
@@ -284,9 +320,9 @@ fn validate_format_encoding_combination(
         ("flac", CODEC_ID_FLAC) => Ok(()),
 
         // @relation(APLLSR-004, scope=line)
-        _ => Err(AudioStreamError::UnsupportedEncoding(format!(
-            "Encoding {:?} is not supported in format {}",
-            classification.encoding, classification.format,
-        ))),
+        (format, encoding) => Err(AudioStreamError::Unsupported(AudioProperty {
+            property: AudioPropertyType::Encoding,
+            message: format!("Audio encoding '{encoding}' is not supported in audio format '{format}'"),
+        })),
     }
 }

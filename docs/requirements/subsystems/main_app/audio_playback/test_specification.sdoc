@@ -132,35 +132,6 @@ RELATIONS:
 
 [TEST]
 UID: APLLSR-002-T02
-TITLE: Unsupported Audio Format Detection
-TEST_TYPE: Functional
-TEST_LEVEL: Unit
-PRECONDITIONS: >>>
-An audio format that is not supported by the software is defined 
-<<<
-INPUTS: >>>
-An audio stream classification containing an unsupported format
-<<<
-PROCEDURE: >>>
-1. Supply the audio stream classification to the format validation procedure.
-2. Execute the format validation procedure.
-3. Examine the validation result.
-<<<
-EXPECTED_RESULT: >>>
-The software identifies the audio format as unsupported and returns an 
-unsupported-format error.
-<<<
-STATEMENT: >>>
-The test shall verify that the software correctly detects an unsupported audio 
-format.
-<<<
-RELATIONS:
-- TYPE: Parent
-  VALUE: APLLSR-002
-  ROLE: Verifies
-
-[TEST]
-UID: APLLSR-002-T03
 TITLE: Supported Audio Encoding Detection
 TEST_TYPE: Functional
 TEST_LEVEL: Unit
@@ -184,32 +155,7 @@ RELATIONS:
   ROLE: Verifies
 
 [TEST]
-UID: APLLSR-002-T04
-TITLE: Unsupported Audio Encoding Detection
-TEST_TYPE: Functional
-TEST_LEVEL: Unit
-PRECONDITIONS: An audio encoding that is not supported by the software is defined
-INPUTS: An audio stream classification containing an unsupported encoding
-PROCEDURE: >>>
-1. Supply the audio stream classification to the encoding validation procedure.
-2. Execute the encoding validation procedure.
-3. Examine the validation result.
-<<<
-EXPECTED_RESULT: >>>
-The software identifies the audio encoding as unsupported and returns an
-unsupported-encoding error.
-<<<
-STATEMENT: >>>
-The test shall verify that the software correctly detects an unsupported
-audio encoding.
-<<<
-RELATIONS:
-- TYPE: Parent
-  VALUE: APLLSR-002
-  ROLE: Verifies
-
-[TEST]
-UID: APLLSR-002-T05
+UID: APLLSR-002-T03
 TITLE: Supported Format and Encoding Combination Detection
 TEST_TYPE: Functional
 TEST_LEVEL: Unit
@@ -234,7 +180,7 @@ RELATIONS:
   ROLE: Verifies
 
 [TEST]
-UID: APLLSR-002-T06
+UID: APLLSR-002-T04
 TITLE: Unsupported Format and Encoding Combination Detection
 TEST_TYPE: Functional
 TEST_LEVEL: Unit
