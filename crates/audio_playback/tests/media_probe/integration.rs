@@ -1,9 +1,6 @@
 use std::fs::File;
 
-use audio_playback::media_probe::{
-    AudioFormatError, AudioStreamError, AudioTrackSelection, SymphoniaProber,
-    identify_supported_audio_stream,
-};
+use audio_playback::media_probe::{errors::{AudioFormatError, AudioStreamError}, identify_supported_audio_stream, prober::SymphoniaProber, reader::AudioTrackSelection};
 use symphonia::core::{
     codecs::audio::well_known::CODEC_ID_FLAC, io::MediaSourceStream,
 };

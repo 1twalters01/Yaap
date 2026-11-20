@@ -1,9 +1,4 @@
-use audio_playback::media_probe::{
-    AudioEncodingError, AudioFormatAndEncodingError, AudioFormatError,
-    AudioStreamClassification, AudioStreamError, validate_audio_encoding,
-    validate_audio_format, validate_format_encoding_combination,
-    verify_format_supported,
-};
+use audio_playback::media_probe::{audio_classification::AudioStreamClassification, audio_validation::{validate_audio_encoding, validate_audio_format, validate_format_encoding_combination, verify_format_supported}, errors::{AudioEncodingError, AudioFormatAndEncodingError, AudioFormatError, AudioStreamError}};
 use symphonia::core::codecs::audio::{
     CODEC_ID_NULL_AUDIO,
     well_known::{CODEC_ID_FLAC, CODEC_ID_WAVPACK},

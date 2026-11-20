@@ -1,7 +1,4 @@
-use audio_playback::media_probe::{
-    AudioStreamError, AudioTrackInfo, AudioTrackSelection, ProbedAudioReader,
-    identify_classification,
-};
+use audio_playback::media_probe::{audio_classification::identify_classification, errors::AudioStreamError, reader::{AudioTrackInfo, AudioTrackSelection, ProbedAudioReader}};
 use symphonia::core::codecs::{
     CodecParameters,
     audio::{AudioCodecParameters, well_known::CODEC_ID_FLAC},
@@ -20,7 +17,7 @@ impl ProbedAudioReader for StubProbedAudioReader {
 
     fn audio_tracks(
         &self,
-    ) -> Vec<audio_playback::media_probe::AudioTrackInfo<'_>> {
+    ) -> Vec<AudioTrackInfo<'_>> {
         self.track_id
             .iter()
             .enumerate()
