@@ -1,7 +1,7 @@
 # File Type Identification
 
 ## API
-```
+```rust
 use symphonia::core::codecs::AudioCodecId;
 
 pub struct IdentifiedAudioStream<'a> {
@@ -39,9 +39,16 @@ pub enum AudioPropertyType {
     FormatAndEncoding,
 }
 
+pub enum AudioTrackSelection {
+    First,
+    Index(usize),
+    Id(u32),
+}
+
 pub fn identify_supported_audio_stream<'a, P: AudioProber>(
     media_source_stream: MediaSourceStream<'a>,
     prober: &P,
+    selection: AudioTrackSelection,
 ) -> Result<IdentifiedAudioStream<'a>, AudioStreamError> {
 }
 ```
@@ -115,8 +122,14 @@ sequenceDiagram
 
 ## Additional Design Considerations
 ### Track Selection
-Currently the first track is selected.
+The first track, the nth track and the symphonia id of a track can be selected 
+when identifying the file type.
 
-### Stream Ownership 
 ### Thread Safety and Concurrency
+Send or Sync?
+
 ### Format support extensibility
+1. Add new format to the format validation rules
+2. Add the relevant codec identifier to encoding validation
+3. Add the supported format/encoding combinations
+4. Add the corresponding tests

@@ -1,7 +1,11 @@
 use audio_playback::media_probe::{
-    AudioProperty, AudioPropertyType, AudioStreamClassification, AudioStreamError, validate_audio_encoding, validate_audio_format, validate_format_encoding_combination, verify_format_supported,
+    AudioProperty, AudioPropertyType, AudioStreamClassification,
+    AudioStreamError, validate_audio_encoding, validate_audio_format,
+    validate_format_encoding_combination, verify_format_supported,
 };
-use symphonia::core::codecs::audio::well_known::{CODEC_ID_FLAC, CODEC_ID_WAVPACK};
+use symphonia::core::codecs::audio::well_known::{
+    CODEC_ID_FLAC, CODEC_ID_WAVPACK,
+};
 
 /// @relation(APLLSR-002-T01, scope=function)
 #[test]
@@ -17,9 +21,7 @@ fn accepts_flac_and_encoding_combination() {
         encoding: CODEC_ID_FLAC,
     };
 
-    assert!(
-        validate_audio_encoding(classification.encoding).is_ok()
-    );
+    assert!(validate_audio_encoding(classification.encoding).is_ok());
 }
 
 /// @relation(APLLSR-002-T03, scope=function)
@@ -30,9 +32,7 @@ fn accepts_flac_format_and_encoding_combination() {
         encoding: CODEC_ID_FLAC,
     };
 
-    assert!(
-        validate_format_encoding_combination(&classification).is_ok()
-    );
+    assert!(validate_format_encoding_combination(&classification).is_ok());
 }
 
 /// @relation(APLLSR-003-T01, scope=function)
@@ -41,15 +41,13 @@ fn rejects_unsupported_audio_formats() {
     for format in ["mp3", "wav", "ogg", "aiff", "unknown"] {
         let result = validate_audio_format(format);
 
-        assert!(
-            matches!(
-                result,
-                Err(AudioStreamError::Unsupported(AudioProperty{
-                    property: AudioPropertyType::Format,
-                    message: _,
-                })),
-            ),
-        );
+        assert!(matches!(
+            result,
+            Err(AudioStreamError::Unsupported(AudioProperty {
+                property: AudioPropertyType::Format,
+                message: _,
+            })),
+        ),);
     }
 }
 
@@ -60,7 +58,7 @@ fn rejects_empty_format_name() {
 
     assert!(matches!(
         result,
-        Err(AudioStreamError::Unsupported(AudioProperty{
+        Err(AudioStreamError::Unsupported(AudioProperty {
             property: AudioPropertyType::Format,
             message: _,
         })),
@@ -79,7 +77,7 @@ fn unsupported_format_and_unsupported_encoding() {
 
     assert!(matches!(
         result,
-        Err(AudioStreamError::Unsupported(AudioProperty{
+        Err(AudioStreamError::Unsupported(AudioProperty {
             property: AudioPropertyType::FormatAndEncoding,
             message: _,
         })),
@@ -98,7 +96,7 @@ fn unsupported_encoding_is_returned_for_supported_format() {
 
     assert!(matches!(
         result,
-        Err(AudioStreamError::Unsupported(AudioProperty{
+        Err(AudioStreamError::Unsupported(AudioProperty {
             property: AudioPropertyType::Encoding,
             message: _,
         })),

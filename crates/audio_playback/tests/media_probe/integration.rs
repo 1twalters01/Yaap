@@ -1,24 +1,31 @@
 use std::fs::File;
 
-use audio_playback::media_probe::{AudioProperty, AudioPropertyType, AudioStreamError, SymphoniaProber, identify_supported_audio_stream};
-use symphonia::core::{codecs::audio::well_known::CODEC_ID_FLAC, io::MediaSourceStream};
-
+use audio_playback::media_probe::{
+    AudioProperty, AudioPropertyType, AudioStreamError, AudioTrackSelection,
+    SymphoniaProber, identify_supported_audio_stream,
+};
+use symphonia::core::{
+    codecs::audio::well_known::CODEC_ID_FLAC, io::MediaSourceStream,
+};
 
 /// @relation(APLLSR-010-T01, scope=function)
 #[test]
 fn identifies_valid_flac_file() {
-    let file = File::open(
-        "/data/Programming/Tests/data/music/flac/music.flac"
-    ).unwrap();
+    let file =
+        File::open("/data/Programming/Tests/data/music/flac/music.flac")
+            .unwrap();
 
-    let source = MediaSourceStream::new(
-        Box::new(file),
-        Default::default(),
-    );
+    let source = MediaSourceStream::new(Box::new(file), Default::default());
 
     let prober = SymphoniaProber::default();
+    let audio_track_selection = AudioTrackSelection::First;
 
-    let stream = identify_supported_audio_stream(source, &prober).unwrap();
+    let stream = identify_supported_audio_stream(
+        source,
+        &prober,
+        audio_track_selection,
+    )
+    .unwrap();
 
     assert_eq!(stream.classification.format, "flac");
     assert_eq!(stream.classification.encoding, CODEC_ID_FLAC);
@@ -27,18 +34,20 @@ fn identifies_valid_flac_file() {
 /// @relation(APLLSR-005-T01, scope=function)
 #[test]
 fn returns_unknown_format_for_unrecognised_input() {
-    let file = File::open(
-        "/data/Programming/Tests/data/music/lrc/04 Mala mia.lrc"
-    ).unwrap();
+    let file =
+        File::open("/data/Programming/Tests/data/music/lrc/04 Mala mia.lrc")
+            .unwrap();
 
-    let source = MediaSourceStream::new(
-        Box::new(file),
-        Default::default(),
-    );
+    let source = MediaSourceStream::new(Box::new(file), Default::default());
 
     let prober = SymphoniaProber::default();
+    let audio_track_selection = AudioTrackSelection::First;
 
-    let result = identify_supported_audio_stream(source, &prober);
+    let result = identify_supported_audio_stream(
+        source,
+        &prober,
+        audio_track_selection,
+    );
 
     assert!(matches!(
         result,
@@ -59,19 +68,21 @@ fn identifies_flac_independently_of_filename_extension() {
     ] {
         let file = File::open(path).unwrap();
 
-        let source = MediaSourceStream::new(
-            Box::new(file),
-            Default::default(),
-        );
+        let source =
+            MediaSourceStream::new(Box::new(file), Default::default());
 
         let prober = SymphoniaProber::default();
+        let audio_track_selection = AudioTrackSelection::First;
 
-        let stream = identify_supported_audio_stream(source, &prober)
-            .unwrap();
+        let stream = identify_supported_audio_stream(
+            source,
+            &prober,
+            audio_track_selection,
+        )
+        .unwrap();
 
         assert_eq!(
-            stream.classification.format,
-            "flac",
+            stream.classification.format, "flac",
             "Failed to identify FLAC data in {path}"
         );
     }

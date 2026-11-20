@@ -40,6 +40,9 @@ pub enum AudioStreamError {
     #[error("No audio track was found")]
     NoAudioTrack,
 
+    #[error("Audio track not found: {0:?}")]
+    AudioTrackNotFound(AudioTrackSelection),
+
     #[error("Audio stream I/O error: {0}")]
     Io(#[from] std::io::Error),
 
@@ -67,13 +70,39 @@ impl fmt::Display for AudioProperty {
 }
 
 pub struct AudioTrackInfo<'a> {
+    pub index: usize,
     pub id: u32,
     pub codec_params: Option<&'a CodecParameters>,
 }
 
 pub trait ProbedAudioReader {
     fn format_short_name(&self) -> &str;
-    fn first_audio_track(&self) -> Option<AudioTrackInfo<'_>>;
+    fn audio_tracks(&self) -> Vec<AudioTrackInfo<'_>>;
+
+    fn select_audio_track(
+        &self,
+        selection: AudioTrackSelection,
+    ) -> Result<AudioTrackInfo<'_>, AudioStreamError> {
+        let tracks = self.audio_tracks();
+
+        if tracks.is_empty() {
+            return Err(AudioStreamError::NoAudioTrack);
+        }
+
+        let track = match selection {
+            AudioTrackSelection::First => tracks.into_iter().next(),
+
+            AudioTrackSelection::Index(index) => {
+                tracks.into_iter().find(|track| track.index == index)
+            }
+
+            AudioTrackSelection::Id(id) => {
+                tracks.into_iter().find(|track| track.id == id)
+            }
+        };
+
+        track.ok_or(AudioStreamError::AudioTrackNotFound(selection))
+    }
 }
 
 impl<T: FormatReader + ?Sized> ProbedAudioReader for T {
@@ -81,18 +110,29 @@ impl<T: FormatReader + ?Sized> ProbedAudioReader for T {
         self.format_info().short_name
     }
 
-    fn first_audio_track(&self) -> Option<AudioTrackInfo<'_>> {
+    fn audio_tracks(&self) -> Vec<AudioTrackInfo<'_>> {
         self.first_track(TrackType::Audio)
-            .map(|track| AudioTrackInfo {
+            .iter()
+            .filter(|track| {
+                track.codec_params.is_some()
+                    && matches!(
+                        track.codec_params.as_ref(),
+                        Some(CodecParameters::Audio(_))
+                    )
+            })
+            .enumerate()
+            .map(|(index, track)| AudioTrackInfo {
+                index,
                 id: track.id,
                 codec_params: track.codec_params.as_ref(),
             })
+            .collect()
     }
 }
 
 struct SymphoniaProbedReader {
     format_short_name: String,
-    audio_track: Option<(u32, Option<CodecParameters>)>,
+    audio_tracks: Vec<(u32, Option<CodecParameters>)>,
 }
 
 impl ProbedAudioReader for SymphoniaProbedReader {
@@ -100,13 +140,16 @@ impl ProbedAudioReader for SymphoniaProbedReader {
         &self.format_short_name
     }
 
-    fn first_audio_track(&self) -> Option<AudioTrackInfo<'_>> {
-        self.audio_track
-            .as_ref()
-            .map(|(id, codec_params)| AudioTrackInfo {
+    fn audio_tracks(&self) -> Vec<AudioTrackInfo<'_>> {
+        self.audio_tracks
+            .iter()
+            .enumerate()
+            .map(|(index, (id, codec_params))| AudioTrackInfo {
+                index,
                 id: *id,
                 codec_params: codec_params.as_ref(),
             })
+            .collect()
     }
 }
 
@@ -151,13 +194,18 @@ impl AudioProber for SymphoniaProber {
         )?;
 
         let format_short_name = reader.format_info().short_name.to_owned();
-        let audio_track = reader
-            .first_track(TrackType::Audio)
-            .map(|track| (track.id, track.codec_params.clone()));
+        let audio_tracks = reader
+            .tracks()
+            .iter()
+            .filter(|track| {
+                matches!(track.codec_params, Some(CodecParameters::Audio(_)))
+            })
+            .map(|track| (track.id, track.codec_params.clone()))
+            .collect();
 
         let probed_reader = Box::new(SymphoniaProbedReader {
             format_short_name,
-            audio_track,
+            audio_tracks,
         });
 
         Ok(ProbedAudioStream {
@@ -167,13 +215,21 @@ impl AudioProber for SymphoniaProber {
     }
 }
 
+#[derive(Debug)]
+pub enum AudioTrackSelection {
+    First,
+    Index(usize),
+    Id(u32),
+}
+
 /// @relation(APLLSR-002, scope=function)
 pub fn identify_supported_audio_stream<'a, P: AudioProber>(
     media_source_stream: MediaSourceStream<'a>,
     prober: &P,
+    selection: AudioTrackSelection,
 ) -> Result<IdentifiedAudioStream<'a>, AudioStreamError> {
     let identified_audio_stream =
-        identify_audio_stream(media_source_stream, prober)?;
+        identify_audio_stream(media_source_stream, prober, selection)?;
     verify_format_supported(&identified_audio_stream.classification)?;
 
     Ok(identified_audio_stream)
@@ -183,13 +239,14 @@ pub fn identify_supported_audio_stream<'a, P: AudioProber>(
 fn identify_audio_stream<'a, P: AudioProber>(
     media_source_stream: MediaSourceStream<'a>,
     prober: &P,
+    selection: AudioTrackSelection,
 ) -> Result<IdentifiedAudioStream<'a>, AudioStreamError> {
     let probed = prober
         .probe_stream(media_source_stream)
         .map_err(|error| map_probe_error(error))?;
 
     let (classification, track) =
-        identify_classification(probed.probed_reader.as_ref())?;
+        identify_classification(probed.probed_reader.as_ref(), selection)?;
 
     Ok(IdentifiedAudioStream {
         classification,
@@ -201,10 +258,12 @@ fn identify_audio_stream<'a, P: AudioProber>(
 pub fn map_probe_error(error: SymphoniaError) -> AudioStreamError {
     match error {
         // @relation(APLLSR-005, scope=line)
-        SymphoniaError::Unsupported(message) => AudioStreamError::Unknown(AudioProperty {
-            property: AudioPropertyType::Format,
-            message: message.to_string(),
-        }),
+        SymphoniaError::Unsupported(message) => {
+            AudioStreamError::Unknown(AudioProperty {
+                property: AudioPropertyType::Format,
+                message: message.to_string(),
+            })
+        }
         SymphoniaError::DecodeError(message) => {
             // @relation(APLLSR-007, scope=line)
             AudioStreamError::Invalid(AudioProperty {
@@ -220,12 +279,11 @@ pub fn map_probe_error(error: SymphoniaError) -> AudioStreamError {
 
 pub fn identify_classification(
     probed_reader: &dyn ProbedAudioReader,
+    selection: AudioTrackSelection,
 ) -> Result<(AudioStreamClassification, AudioTrackInfo<'_>), AudioStreamError>
 {
     let format = probed_reader.format_short_name().to_owned();
-    let track = probed_reader
-        .first_audio_track()
-        .ok_or(AudioStreamError::NoAudioTrack)?;
+    let track = probed_reader.select_audio_track(selection)?;
 
     let classification = extract_classification(format, track.codec_params)?;
 
@@ -237,25 +295,29 @@ fn extract_classification(
     codec_params: Option<&CodecParameters>,
 ) -> Result<AudioStreamClassification, AudioStreamError> {
     // @relation(APLLSR-006, scope=line)
-    let params = codec_params.ok_or(AudioStreamError::Unknown(AudioProperty {
-        property: AudioPropertyType::Encoding,
-        message: "Audio codec parameters were not provided".to_owned()
-    }))?;
+    let params =
+        codec_params.ok_or(AudioStreamError::Unknown(AudioProperty {
+            property: AudioPropertyType::Encoding,
+            message: "Audio codec parameters were not provided".to_owned(),
+        }))?;
 
     let audio_params = match params {
         Audio(audio) => audio,
         // @relation(APLLSR-006, scope=line)
-        _ => return Err(AudioStreamError::Unknown(AudioProperty {
-            property: AudioPropertyType::Encoding,
-            message: "Codec parameters do not describe an audio stream".to_owned(),
-        })),
+        _ => {
+            return Err(AudioStreamError::Unknown(AudioProperty {
+                property: AudioPropertyType::Encoding,
+                message: "Codec parameters do not describe an audio stream"
+                    .to_owned(),
+            }));
+        }
     };
 
     if audio_params.codec == CODEC_ID_NULL_AUDIO {
         // @relation(APLLSR-006, scope=line)
         return Err(AudioStreamError::Unknown(AudioProperty {
             property: AudioPropertyType::Encoding,
-            message: "Audio codec identifier is null".to_owned()
+            message: "Audio codec identifier is null".to_owned(),
         }));
     }
 
@@ -270,9 +332,11 @@ pub fn verify_format_supported(
 ) -> Result<(), AudioStreamError> {
     let format_result = validate_audio_format(&classification.format);
     let encoding_result = validate_audio_encoding(classification.encoding);
-    
+
     match (format_result, encoding_result) {
-        (Ok(()), Ok(())) => validate_format_encoding_combination(classification),
+        (Ok(()), Ok(())) => {
+            validate_format_encoding_combination(classification)
+        }
         (
             Err(AudioStreamError::Unsupported(format)),
             Err(AudioStreamError::Unsupported(encoding)),
@@ -303,12 +367,10 @@ pub fn validate_audio_encoding(
         CODEC_ID_FLAC => Ok(()),
 
         // @relation(APLLSR-004, scope=line)
-        other => {
-            Err(AudioStreamError::Unsupported(AudioProperty {
-                property: AudioPropertyType::Encoding,
-                message: format!("Audio encoding '{other}' is not supported"),
-            }))
-        }
+        other => Err(AudioStreamError::Unsupported(AudioProperty {
+            property: AudioPropertyType::Encoding,
+            message: format!("Audio encoding '{other}' is not supported"),
+        })),
     }
 }
 
@@ -320,9 +382,13 @@ pub fn validate_format_encoding_combination(
         ("flac", CODEC_ID_FLAC) => Ok(()),
 
         // @relation(APLLSR-004, scope=line)
-        (format, encoding) => Err(AudioStreamError::Unsupported(AudioProperty {
-            property: AudioPropertyType::Encoding,
-            message: format!("Audio encoding '{encoding}' is not supported in audio format '{format}'"),
-        })),
+        (format, encoding) => {
+            Err(AudioStreamError::Unsupported(AudioProperty {
+                property: AudioPropertyType::Encoding,
+                message: format!(
+                    "Audio encoding '{encoding}' is not supported in audio format '{format}'"
+                ),
+            }))
+        }
     }
 }
