@@ -101,7 +101,7 @@ RELATIONS:
 
 [REQUIREMENT]
 UID: APHLSR-008
-TITLE: FLAC Sample Rate Retrieval
+TITLE: FLAC Bits per Sample Retrieval
 STATEMENT: >>>
 The software shall retrieve the number of bits per sample from FLAC audio
 streams.
