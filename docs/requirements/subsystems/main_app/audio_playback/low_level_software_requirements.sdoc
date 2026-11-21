@@ -146,4 +146,107 @@ RELATIONS:
 
 [[/SECTION]]
 
+[[SECTION]]
+TITLE: Audio Stream Metadata Retrieval
+
+[REQUIREMENT]
+UID: APLLSR-012
+TITLE: FLAC Channel Count Extraction
+STATEMENT: >>>
+The software shall obtain the channel count from the FLAC stream's metadata.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: APHLSR-005
+
+[REQUIREMENT]
+UID: APLLSR-013
+TITLE: Invalid FLAC Channel Count Error Generation
+STATEMENT: >>>
+The software shall generate an Invalid Channel Count Error when the channel 
+count retrieved from a FLAC stream is outside the range permitted by the FLAC 
+format.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: APHLSR-005
+
+[REQUIREMENT]
+UID: APLLSR-014
+TITLE: FLAC Sample Rate Extraction
+STATEMENT: >>>
+The software shall obtain the sample rate from the FLAC stream's metadata.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: APHLSR-006
+
+[REQUIREMENT]
+UID: APLLSR-015
+TITLE: Invalid FLAC Sample Rate Error Generation
+STATEMENT: >>>
+The software shall generate an Invalid Sample Rate Error when the sample rate 
+retrieved from a FLAC stream is outside the range permitted by the FLAC format.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: APHLSR-006
+
+[REQUIREMENT]
+UID: APLLSR-016
+TITLE: FLAC Bits per Sample Extraction
+STATEMENT: >>>
+The software shall obtain the bits per sample from the FLAC stream's metadata.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: APHLSR-007
+
+[REQUIREMENT]
+UID: APLLSR-017
+TITLE: Invalid Bits per Sample Error Generation
+STATEMENT: >>>
+The software shall generate an Invalid Bits Per Sample Error when the bits per 
+sample value retrieved from a FLAC stream is outside the range permitted by the 
+FLAC format.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: APHLSR-007
+
+[REQUIREMENT]
+UID: APLLSR-018
+TITLE: FLAC Total Sample Count Extraction
+STATEMENT: >>>
+The software shall obtain the total number of samples from the FLAC stream's 
+metadata.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: APHLSR-008
+
+[REQUIREMENT]
+UID: APLLSR-019
+TITLE: FLAC Duration Calculation
+STATEMENT: >>>
+The software shall calculate the duration of a FLAC stream using its total 
+sample count and sample rate.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: APHLSR-008
+
+[REQUIREMENT]
+UID: APLLSR-020
+TITLE: FLAC Unknown Duration Handling
+STATEMENT: >>>
+The software shall generate an Unknown Duration Error when the total sample 
+count required to calculate the duration of a FLAC stream is unavailable.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: APHLSR-008
+
+[[/SECTION]]
+
 [[/SECTION]]

@@ -2,7 +2,8 @@
 ## Requirements
 Subsystem: Audio Playback
 Subsystem Requirements Covered: APSSR-004, APSSR-005, APSSR-006, APSSR-130
-HL Software Requirements Created: APHLSR-005, APHLSR-006, APHLSR-007
+HL Software Requirements Created: APHLSR-005, APHLSR-006, APHLSR-007, 
+APHLSR-008
 LL Software Requirements Created: 
 
 ## High Level Overview
@@ -34,6 +35,22 @@ Consider:
 - Incomplete streams
 - Unsupported streams
 
+Flac supports between 1 and 8 channels:
+0 - Invalid
+1 - mono
+2 - stereo
+6 - 5.1 surround
+8 - 7.1 surround
+9 - Invalid
+
+Flac supports sample rates from 1 Hz to 655,350 Hz:
+0 Hz = Invalid, 0.5 Hz = Invalid, 1 Hz = Valid, 192,000 Hz = Valid, 
+655,350 Hz = Valid, 655, 351 Hz = Invalid
+
+Flac supports 4 to 32 bits per sample, inclusive, in 1-bit increments for 
+linear integer PCM audio:
+0 bits = Invalid, 3 bits = Invalid, 4 bits = Valid, 7 bits = Valid, 
+32 bits = Valid, 33 bits = Invalid
 
 # Flac Decoding
 ## Requirements
