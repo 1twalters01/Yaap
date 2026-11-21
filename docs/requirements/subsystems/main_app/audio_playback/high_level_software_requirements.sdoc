@@ -68,18 +68,9 @@ RELATIONS:
 - TYPE: Parent
   VALUE: APSSR-002
 
-[REQUIREMENT]
-UID: APHLSR-005
-TITLE: FLAC Audio Decoding
-STATEMENT: >>>
-The software shall decode supported FLAC audio streams into PCM audio samples.
-<<<
-RELATIONS:
-- TYPE: Parent
-  VALUE: APSSR-003
 
 [REQUIREMENT]
-UID: APHLSR-006
+UID: APHLSR-005
 TITLE: FLAC Channel Count Retrieval
 STATEMENT: >>>
 The software shall retrieve the number of audio channels from FLAC audio
@@ -90,7 +81,7 @@ RELATIONS:
   VALUE: APSSR-004
 
 [REQUIREMENT]
-UID: APHLSR-007
+UID: APHLSR-006
 TITLE: FLAC Sample Rate Retrieval
 STATEMENT: >>>
 The software shall retrieve the sample rate of FLAC audio streams.
@@ -100,7 +91,7 @@ RELATIONS:
   VALUE: APSSR-005
 
 [REQUIREMENT]
-UID: APHLSR-008
+UID: APHLSR-007
 TITLE: FLAC Bits per Sample Retrieval
 STATEMENT: >>>
 The software shall retrieve the number of bits per sample from FLAC audio
@@ -110,6 +101,15 @@ RELATIONS:
 - TYPE: Parent
   VALUE: APSSR-006
 
+[REQUIREMENT]
+UID: APHLSR-008
+TITLE: FLAC Audio Decoding
+STATEMENT: >>>
+The software shall decode supported FLAC audio streams into PCM audio samples.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: APSSR-003
 [[/SECTION]]
 
 [[/SECTION]]
