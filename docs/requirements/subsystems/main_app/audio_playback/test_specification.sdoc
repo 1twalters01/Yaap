@@ -1,0 +1,529 @@
+[DOCUMENT]
+TITLE: Audio Playback Test Specification
+UID: YAAP-APTS
+DATE: @GIT_COMMIT_DATETIME
+PREFIX: APTS-
+
+[GRAMMAR]
+IMPORT_FROM_FILE: @test_grammar
+
+[[SECTION]]
+TITLE: Introduction
+
+[TEXT]
+STATEMENT: >>>
+This document defines the test specification for Yet Another Audio Player 
+(Yaap), a time accurate desktop audio player.
+<<<
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: File Handling
+
+[[SECTION]]
+TITLE: File Type Identification
+
+[TEST]
+UID: APLLSR-001-T01
+TITLE: FLAC Format and Encoding Identification
+TEST_TYPE: Functional
+TEST_LEVEL: Integration
+PRECONDITIONS: A valid FLAC audio file is available
+INPUTS: A valid FLAC audio stream
+PROCEDURE: >>>
+1. Supply the FLAC audio stream to the audio identification subsystem.
+2. Execute the identification procedure.
+3. Examine the identified format and encoding.
+<<<
+EXPECTED_RESULT: >>>
+The software identifies the stream's format as FLAC and its encoding as FLAC.
+<<<
+STATEMENT: >>>
+The test shall verify that the software correctly identifies the format and
+encoding of a valid FLAC audio stream.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: APLLSR-001
+  ROLE: Verifies
+- TYPE: Parent
+  VALUE: APLLSR-010
+  ROLE: Verifies
+
+[TEST]
+UID: APLLSR-001-T02
+TITLE: Audio Track Identification
+TEST_TYPE: Functional
+TEST_LEVEL: Unit
+PRECONDITIONS: An audio track with valid codec parameters is available
+INPUTS: Audio track information containing a track identifier and codec parameters 
+PROCEDURE: >>>
+1. Supply the audio track information to the classification extraction
+procedure.
+2. Execute the classification extraction procedure.
+3. Examine the returned audio stream classification.
+<<<
+EXPECTED_RESULT: >>>
+The software successfully extreacts the audio track's encoding and associates 
+it with the supplied audio format.
+<<<
+STATEMENT: >>>
+The test shall verify that the software correctly extracts an audio track's 
+format and encoding from its codec parameters.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: APLLSR-001
+  ROLE: Verifies
+
+[TEST]
+UID: APLLSR-001-T03
+TITLE: Multiple Audio Track Identification
+TEST_TYPE: Functional
+TEST_LEVEL: Integration
+PRECONDITIONS: An audio file containing multiple audio tracks is available
+INPUTS: >>>
+An audio stream containing multiple audio tracks with identifiable codec 
+parameters
+<<<
+PROCEDURE: >>>
+1. Supply the audio stream to the audio identification subsystem.
+2. Execute the identification procedure.
+3. Examine the identified audio track.
+<<<
+EXPECTED_RESULT: >>>
+The software identifies the first audio track in the input stream.
+<<<
+STATEMENT: >>>
+The test shall verify that the software correctly identifies the first audio 
+track in an input audio stream.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: APLLSR-001
+  ROLE: Verifies
+
+[TEST]
+UID: APLLSR-002-T01
+TITLE: Supported Audio Format Detection
+TEST_TYPE: Functional
+TEST_LEVEL: Unit
+PRECONDITIONS: A supported audio format is defined
+INPUTS: >>>
+An audio stream classification containing a supported format
+<<<
+PROCEDURE: >>>
+1. Supply the audio stream classification to the format validation procedure.
+2. Execute the format validation procedure.
+3. Examine the validation result.
+<<<
+EXPECTED_RESULT: >>>
+The software successfully validates the identified audio format as support.
+<<<
+STATEMENT: >>>
+The test shall verify that the software correctly detects a supported audio 
+format.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: APLLSR-002
+  ROLE: Verifies
+
+[TEST]
+UID: APLLSR-002-T02
+TITLE: Supported Audio Encoding Detection
+TEST_TYPE: Functional
+TEST_LEVEL: Unit
+PRECONDITIONS: A supported audio encoding is defined
+INPUTS: An audio stream classification containing a supported encoding
+PROCEDURE: >>>
+1. Supply the audio stream classification to the encoding validation procedure.
+2. Execute the encoding validation procedure.
+3. Examine the validation result.
+<<<
+EXPECTED_RESULT: >>>
+The software successfully validates the identified audio encoding as supported.
+<<<
+STATEMENT: >>>
+The test shall verify that the software correctly detects a supported audio
+encoding.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: APLLSR-002
+  ROLE: Verifies
+
+[TEST]
+UID: APLLSR-002-T03
+TITLE: Supported Format and Encoding Combination Detection
+TEST_TYPE: Functional
+TEST_LEVEL: Unit
+PRECONDITIONS: A supported audio format and encoding combination is defined
+INPUTS: An audio stream classification containing a supported format and encoding combination
+PROCEDURE: >>>
+1. Supply the audio stream classification to the format and encoding validation procedure.
+2. Execute the validation procedure.
+3. Examine the validation result.
+<<<
+EXPECTED_RESULT: >>>
+The software successfully validates the audio format and encoding combination
+as supported.
+<<<
+STATEMENT: >>>
+The test shall verify that the software correctly detects a supported audio
+format and encoding combination.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: APLLSR-002
+  ROLE: Verifies
+
+[TEST]
+UID: APLLSR-002-T04
+TITLE: Unsupported Format and Encoding Combination Detection
+TEST_TYPE: Functional
+TEST_LEVEL: Unit
+PRECONDITIONS: An audio format and encoding combination that is not supported by the software is defined
+INPUTS: An audio stream classification containing a format and encoding combination that is individually supported but unsupported in combination
+PROCEDURE: >>>
+1. Supply the audio stream classification to the format and encoding validation procedure.
+2. Execute the validation procedure.
+3. Examine the validation result.
+<<<
+EXPECTED_RESULT: >>>
+The software identifies the format and encoding combination as unsupported
+and returns an unsupported-encoding error.
+<<<
+STATEMENT: >>>
+The test shall verify that the software correctly detects an unsupported
+audio format and encoding combination.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: APLLSR-002
+  ROLE: Verifies
+
+[TEST]
+UID: APLLSR-003-T01
+TITLE: Unsupported Format Error Generation
+TEST_TYPE: Functional
+TEST_LEVEL: Unit
+PRECONDITIONS: An unsupported audio format is defined
+INPUTS: An audio stream classification containing an unsupported format
+PROCEDURE: >>>
+1. Supply the audio stream classification to the format validation procedure.
+2. Execute the format validation procedure.
+3. Examine the returned error.
+<<<
+EXPECTED_RESULT: >>>
+The software generates an unsupported-format error containing the identified
+audio format.
+<<<
+STATEMENT: >>>
+The test shall verify that the software generates an unsupported-format error
+when an identified audio format is unsupported.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: APLLSR-003
+  ROLE: Verifies
+
+[TEST]
+UID: APLLSR-004-T01
+TITLE: Unsupported Encoding Error Generation
+TEST_TYPE: Functional
+TEST_LEVEL: Unit
+PRECONDITIONS: An unsupported audio encoding is defined
+INPUTS: An audio stream classification containing an unsupported encoding
+PROCEDURE: >>>
+1. Supply the audio stream classification to the encoding validation procedure.
+2. Execute the encoding validation procedure.
+3. Examine the returned error.
+<<<
+EXPECTED_RESULT: >>>
+The software generates an unsupported-encoding error containing the identified
+audio encoding.
+<<<
+STATEMENT: >>>
+The test shall verify that the software generates an unsupported-encoding
+error when an identified audio encoding is unsupported.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: APLLSR-004
+  ROLE: Verifies
+
+[TEST]
+UID: APLLSR-005-T01
+TITLE: Unknown Format Error Generation
+TEST_TYPE: Robustness
+TEST_LEVEL: Integration
+PRECONDITIONS: An input containing unrecognised audio data is available
+INPUTS: An audio stream containing unrecognised audio data
+PROCEDURE: >>>
+1. Supply the audio stream to the audio identification subsystem.
+2. Execute the identification procedure.
+3. Examine the returned error.
+<<<
+EXPECTED_RESULT: >>>
+The software generates an unknown-format error.
+<<<
+STATEMENT: >>>
+The test shall verify that the software generates an unknown-format error
+when it cannot identify the input audio stream's format.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: APLLSR-005
+  ROLE: Verifies
+
+[TEST]
+UID: APLLSR-006-T01
+TITLE: Unknown Encoding Error Generation with Missing Codec Parameters
+TEST_TYPE: Robustness
+TEST_LEVEL: Unit
+PRECONDITIONS: An audio track without codec parameters is available
+INPUTS: Audio track information containing no codec parameters
+PROCEDURE: >>>
+1. Supply the audio track information to the classification extraction 
+procedure.
+2. Execute the classification extraction procedure.
+3. Examine the returned error.
+<<<
+EXPECTED_RESULT: >>>
+The software generates an unknown-encoding error.
+<<<
+STATEMENT: >>>
+The test shall verify that the software generates an unknown-encoding error
+when an audio track does not contain codec parameters.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: APLLSR-006
+  ROLE: Verifies
+
+[TEST]
+UID: APLLSR-006-T02
+TITLE: Unknown Encoding Error with Non-Audio Codec Parameters
+TEST_TYPE: Robustness
+TEST_LEVEL: Unit
+PRECONDITIONS: >>>
+Codec parameters that do not represent an audio encoding are available
+<<<
+INPUTS: Audio track information containing non-audio codec parameters
+PROCEDURE: >>>
+1. Supply the audio track information to the classification extraction 
+procedure.
+2. Execute the classification extraction procedure.
+3. Examine the returned error.
+<<<
+EXPECTED_RESULT: >>>
+The software generates an unknown-encoding error.
+<<<
+STATEMENT: >>>
+The test shall verify that the software generates an unknown-encoding error
+when the supplied codec parameters do not identify an audio encoding.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: APLLSR-006
+  ROLE: Verifies
+
+[TEST]
+UID: APLLSR-006-T03
+TITLE: Unknown Encoding Error with Null Codec Identifier
+TEST_TYPE: Robustness
+TEST_LEVEL: Unit
+PRECONDITIONS: >>>
+Audio codec parameters containing a null codec identifier are available
+<<<
+INPUTS: Audio codec parameters containing CODEC_ID_NULL_AUDIO
+PROCEDURE: >>>
+1. Supply the audio codec parameters to the classification extraction procedure.
+2. Execute the classification extraction procedure.
+3. Examine the returned error.
+<<<
+EXPECTED_RESULT: >>>
+The software generates an unknown-encoding error.
+<<<
+STATEMENT: >>>
+The test shall verify that the software generates an unknown-encoding error
+when the audio codec identifier is null.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: APLLSR-006
+  ROLE: Verifies
+
+[TEST]
+UID: APLLSR-007-T01
+TITLE: Invalid Format Error Generation
+TEST_TYPE: Robustness
+TEST_LEVEL: Integration
+PRECONDITIONS: A malformed audio file with a recognisable format signature is available
+INPUTS: An audio stream containing a recognisable but malformed audio format
+PROCEDURE: >>>
+1. Supply the malformed audio stream to the audio identification subsystem.
+2. Execute the identification procedure.
+3. Examine the returned error.
+<<<
+EXPECTED_RESULT: >>>
+The software generates an invalid-format error.
+<<<
+STATEMENT: >>>
+The test shall verify that the software generates an invalid-format error
+when an identified audio format contains invalid structural data.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: APLLSR-007
+  ROLE: Verifies
+
+[TEST]
+UID: APLLSR-008-T01
+TITLE: Invalid Encoding Error Generation
+TEST_TYPE: Robustness
+TEST_LEVEL: Unit
+PRECONDITIONS: Audio codec parameters containing invalid encoding information are available
+INPUTS: Audio codec parameters containing invalid encoding information
+PROCEDURE: >>>
+1. Supply the audio codec parameters to the encoding validation procedure.
+2. Execute the encoding validation procedure.
+3. Examine the returned error.
+<<<
+EXPECTED_RESULT: >>>
+The software generates an invalid-encoding error.
+<<<
+STATEMENT: >>>
+The test shall verify that the software generates an invalid-encoding error
+when an identified audio encoding contains invalid parameters.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: APLLSR-008
+  ROLE: Verifies
+
+[TEST]
+UID: APLLSR-009-T01
+TITLE: No Audio Track Detection
+TEST_TYPE: Robustness
+TEST_LEVEL: Integration
+PRECONDITIONS: A valid media file containing no audio tracks is available
+INPUTS: An audio stream containing no audio tracks
+PROCEDURE: >>>
+1. Supply the input stream to the audio identification subsystem.
+2. Execute the identification procedure.
+3. Examine the returned error.
+<<<
+EXPECTED_RESULT: >>>
+The software generates a no-audio-track error.
+<<<
+STATEMENT: >>>
+The test shall verify that the software detects when an input audio stream
+contains no audio tracks.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: APLLSR-009
+  ROLE: Verifies
+
+[TEST]
+UID: APLLSR-010-T01
+TITLE: FLAC Encoding Identification
+TEST_TYPE: Functional
+TEST_LEVEL: Integration
+PRECONDITIONS: A valid FLAC audio file is available
+INPUTS: A valid FLAC audio stream
+PROCEDURE: >>>
+1. Supply the FLAC audio stream to the audio identification subsystem.
+2. Execute the identification procedure.
+3. Examine the identified encoding.
+<<<
+EXPECTED_RESULT: >>>
+The software identifies the audio encoding as FLAC.
+<<<
+STATEMENT: >>>
+The test shall verify that the software correctly identifies FLAC as the
+encoding of an input audio stream.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: APLLSR-010
+  ROLE: Verifies
+
+[TEST]
+UID: APLLSR-011-T01
+TITLE: FLAC Identification with FLAC Filename Extension
+TEST_TYPE: Compatibility
+TEST_LEVEL: Subsystem
+PRECONDITIONS: A valid FLAC audio file is available
+INPUTS: A valid FLAC audio stream with a .flac filename extension
+PROCEDURE: >>>
+1. Supply the FLAC audio stream to the audio identification subsystem.
+2. Execute the identification procedure.
+3. Examine the identified format and encoding.
+<<<
+EXPECTED_RESULT: >>>
+The software identifies the stream's format and encoding as FLAC.
+<<<
+STATEMENT: >>>
+The test shall verify that the software correctly identifies a FLAC audio
+stream with a .flac filename extension.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: APLLSR-011
+  ROLE: Verifies
+
+[TEST]
+UID: APLLSR-011-T02
+TITLE: FLAC Identification with Different Filename Extension
+TEST_TYPE: Compatibility
+TEST_LEVEL: Subsystem
+PRECONDITIONS: A valid FLAC audio file is available
+INPUTS: A valid FLAC audio stream with an .mp3 filename extension
+PROCEDURE: >>>
+1. Supply the FLAC audio stream to the audio identification subsystem.
+2. Execute the identification procedure.
+3. Examine the identified format and encoding.
+<<<
+EXPECTED_RESULT: >>>
+The software identifies the stream's format and encoding as FLAC.
+<<<
+STATEMENT: >>>
+The test shall verify that the software correctly identifies a FLAC audio
+stream independently of an incorrect filename extension.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: APLLSR-011
+  ROLE: Verifies
+
+[TEST]
+UID: APLLSR-011-T03
+TITLE: FLAC Identification without Filename Extension
+TEST_TYPE: Compatibility
+TEST_LEVEL: Subsystem
+PRECONDITIONS: A valid FLAC audio file is available
+INPUTS: A valid FLAC audio stream without a filename extension
+PROCEDURE: >>>
+1. Supply the FLAC audio stream to the audio identification subsystem.
+2. Execute the identification procedure.
+3. Examine the identified format and encoding.
+<<<
+EXPECTED_RESULT: >>>
+The software identifies the stream's format and encoding as FLAC.
+<<<
+STATEMENT: >>>
+The test shall verify that the software correctly identifies a FLAC audio
+stream without relying on a filename extension.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: APLLSR-011
+  ROLE: Verifies
+
+[[/SECTION]]
+
+[[/SECTION]]
