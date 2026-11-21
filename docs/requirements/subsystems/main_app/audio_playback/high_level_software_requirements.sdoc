@@ -68,7 +68,6 @@ RELATIONS:
 - TYPE: Parent
   VALUE: APSSR-002
 
-
 [REQUIREMENT]
 UID: APHLSR-005
 TITLE: FLAC Channel Count Retrieval
@@ -103,6 +102,14 @@ RELATIONS:
 
 [REQUIREMENT]
 UID: APHLSR-008
+TITLE: Duration Retrieval
+STATEMENT: The software shall retrieve the duration of FLAC audio streams.
+RELATIONS:
+- TYPE: Parent
+  VALUE: APSSR-130
+
+[REQUIREMENT]
+UID: APHLSR-009
 TITLE: FLAC Audio Decoding
 STATEMENT: >>>
 The software shall decode supported FLAC audio streams into PCM audio samples.
@@ -110,6 +117,7 @@ The software shall decode supported FLAC audio streams into PCM audio samples.
 RELATIONS:
 - TYPE: Parent
   VALUE: APSSR-003
+
 [[/SECTION]]
 
 [[/SECTION]]

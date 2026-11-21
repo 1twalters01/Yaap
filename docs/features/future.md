@@ -1,22 +1,39 @@
 # Flac Stream Metadata Retrieval
 ## Requirements
 Subsystem: Audio Playback
-Subsystem Requirements Covered: APSSR004, APSSR005, APSSR006
-HL Software Requirements Created: APHLSR005, APHLSR006, APHLSR007
+Subsystem Requirements Covered: APSSR-004, APSSR-005, APSSR-006, APSSR-130
+HL Software Requirements Created: APHLSR-005, APHLSR-006, APHLSR-007
 LL Software Requirements Created: 
 
 ## High Level Overview
-Get codec parameters: Need to refactor what I have to expose this?
+### Codec Parameters
+Retrieve the following properties from the FLAC audio stream's codec 
+parameters: number of audio channels, sample rate, bits per sample.
+
+Consider whether the existing implementation needs refactoring to expose these 
+properties.
 
 ```
-let channels = codec parameters.channels;
-let sample rate = codec parameters.sample rate;
-let bits per sample = codec parameters.bits per sample;
+let channels = codec_parameters.channels;
+let sample_rate = codec_parameters.sample rate;
+let bits_per_sample = codec_parameters.bits_per_sample;
 ```
 
-Also get duration, total number of audio frames/samples, stream time base
+### Duration
+duration = total number of samples / sample rate
 
-Are these optionals? Will need error handling.
+Consider how to handle streams where the total sample count is unknown.
+
+### Error Handling
+Determine which properties are optional or potentially unavailable.
+
+Consider:
+- Missing metadata
+- Invalid metadata
+- Unknown duration
+- Incomplete streams
+- Unsupported streams
+
 
 # Flac Decoding
 ## Requirements

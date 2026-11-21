@@ -1153,6 +1153,16 @@ RELATIONS:
 - TYPE: Parent
   VALUE: SR-029
 
+[REQUIREMENT]
+UID: APSSR-130
+TITLE: Playback Duration
+STATEMENT: >>>
+The subsystem shall make the duration of tracks available upon request.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: SR-027
+
 [[/SECTION]]
 
 [[SECTION]]
