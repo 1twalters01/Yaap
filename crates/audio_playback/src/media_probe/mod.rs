@@ -4,6 +4,7 @@ use crate::media_probe::{audio_classification::{IdentifiedAudioStream, identify_
 
 pub mod audio_classification;
 pub mod audio_validation;
+pub mod audio_metadata;
 pub mod errors;
 pub mod prober;
 pub mod reader;

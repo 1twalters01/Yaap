@@ -163,9 +163,9 @@ RELATIONS:
 UID: APLLSR-013
 TITLE: Invalid FLAC Channel Count Error Generation
 STATEMENT: >>>
-The software shall generate an Invalid Channel Count Error when the channel 
-count retrieved from a FLAC stream is outside the range permitted by the FLAC 
-format.
+The software shall generate an Invalid Channel Count Error when validation 
+determines that the channel count retrieved from a FLAC stream is outside the 
+range permitted by the FLAC format.
 <<<
 RELATIONS:
 - TYPE: Parent
@@ -185,8 +185,9 @@ RELATIONS:
 UID: APLLSR-015
 TITLE: Invalid FLAC Sample Rate Error Generation
 STATEMENT: >>>
-The software shall generate an Invalid Sample Rate Error when the sample rate 
-retrieved from a FLAC stream is outside the range permitted by the FLAC format.
+The software shall generate an Invalid Sample Rate Error when validation 
+determines that the sample rate retrieved from a FLAC stream is outside the 
+range permitted by the FLAC format.
 <<<
 RELATIONS:
 - TYPE: Parent
@@ -206,9 +207,9 @@ RELATIONS:
 UID: APLLSR-017
 TITLE: Invalid Bits per Sample Error Generation
 STATEMENT: >>>
-The software shall generate an Invalid Bits Per Sample Error when the bits per 
-sample value retrieved from a FLAC stream is outside the range permitted by the 
-FLAC format.
+The software shall generate an Invalid Bits Per Sample Error when validation 
+determines that the bits per sample value retrieved from a FLAC stream is 
+outside the range permitted by the FLAC format.
 <<<
 RELATIONS:
 - TYPE: Parent
@@ -240,8 +241,9 @@ RELATIONS:
 UID: APLLSR-020
 TITLE: FLAC Unknown Duration Handling
 STATEMENT: >>>
-The software shall generate an Unknown Duration Error when the total sample 
-count required to calculate the duration of a FLAC stream is unavailable.
+The software shall indicate that the duration of a FLAC stream is unknown when 
+the total sample count required to calculate the duration of a FLAC stream is 
+unavailable.
 <<<
 RELATIONS:
 - TYPE: Parent

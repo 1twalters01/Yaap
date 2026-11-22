@@ -1,6 +1,6 @@
 use symphonia::core::{codecs::{CodecParameters, audio::AudioCodecId}, errors::Error as SymphoniaError, formats::FormatReader, io::MediaSourceStream};
 
-use crate::media_probe::{errors::{AudioEncodingError, AudioFormatError, AudioStreamError}, prober::AudioProber, reader::{AudioTrackInfo, AudioTrackSelection, ProbedAudioReader}};
+use crate::media_probe::{audio_metadata::{AudioStreamMetadata, extract_audio_metadata}, errors::{AudioEncodingError, AudioFormatError, AudioStreamError}, prober::AudioProber, reader::{AudioTrackInfo, AudioTrackSelection, ProbedAudioReader}};
 
 #[derive(Debug, PartialEq, Eq)]
 pub struct AudioStreamClassification {
@@ -18,12 +18,13 @@ pub(crate) fn identify_audio_stream<'a, P: AudioProber>(
         .probe_stream(media_source_stream)
         .map_err(|error| map_probe_error(error))?;
 
-    let (classification, track) =
+    let identified_audio_track =
         identify_classification(probed.probed_reader.as_ref(), selection)?;
 
     Ok(IdentifiedAudioStream {
-        classification,
-        track_id: track.id,
+        classification: identified_audio_track.classification,
+        metadata: identified_audio_track.metadata,
+        track_id: identified_audio_track.track.id,
         reader: probed.reader,
     })
 }
@@ -48,6 +49,7 @@ pub fn map_probe_error(error: SymphoniaError) -> AudioStreamError {
 
 pub struct IdentifiedAudioStream<'a> {
     pub classification: AudioStreamClassification,
+    pub metadata: AudioStreamMetadata,
     pub track_id: u32,
     pub reader: Box<dyn FormatReader + 'a>,
 }
@@ -55,14 +57,28 @@ pub struct IdentifiedAudioStream<'a> {
 pub fn identify_classification(
     probed_reader: &dyn ProbedAudioReader,
     selection: AudioTrackSelection,
-) -> Result<(AudioStreamClassification, AudioTrackInfo<'_>), AudioStreamError>
+) -> Result<IdentifiedAudioTrack<'_>, AudioStreamError>
 {
     let format = probed_reader.format_short_name().to_owned();
     let track = probed_reader.select_audio_track(selection)?;
 
+    let metadata = track.codec_params
+        .map(extract_audio_metadata)
+        .unwrap_or_default();
+
     let classification = extract_classification(format, track.codec_params)?;
 
-    Ok((classification, track))
+    Ok(IdentifiedAudioTrack { 
+        classification,
+        metadata,
+        track,
+    })
+}
+
+pub struct IdentifiedAudioTrack<'a> {
+    pub classification: AudioStreamClassification,
+    pub metadata: AudioStreamMetadata,
+    pub track: AudioTrackInfo<'a>,
 }
 
 fn extract_classification(

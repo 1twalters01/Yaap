@@ -56,12 +56,12 @@ fn identifies_flac_format_and_encoding() {
     let reader = stub_reader("flac", Some(1), Some(codec_params));
     let audio_track_selection = AudioTrackSelection::First;
 
-    let (classification, track) =
+    let identified_audio_track =
         identify_classification(&reader, audio_track_selection).unwrap();
 
-    assert_eq!(classification.format, "flac");
-    assert_eq!(classification.encoding, CODEC_ID_FLAC);
-    assert_eq!(track.id, 1);
+    assert_eq!(identified_audio_track.classification.format, "flac");
+    assert_eq!(identified_audio_track.classification.encoding, CODEC_ID_FLAC);
+    assert_eq!(identified_audio_track.track.id, 1);
 }
 
 /// @relation(APLLSR-001-T02, scope=function)
@@ -71,10 +71,10 @@ fn preserves_audio_track_id() {
     let reader = stub_reader("flac", Some(42), Some(codec_params));
     let audio_track_selection = AudioTrackSelection::First;
 
-    let (_, track) =
+    let identified_audio_track =
         identify_classification(&reader, audio_track_selection).unwrap();
 
-    assert_eq!(track.id, 42);
+    assert_eq!(identified_audio_track.track.id, 42);
 }
 
 /// @relation(APLLSR-009-T01, scope=function)
