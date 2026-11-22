@@ -62,9 +62,10 @@ pub fn identify_classification(
     let format = probed_reader.format_short_name().to_owned();
     let track = probed_reader.select_audio_track(selection)?;
 
-    let metadata = track.codec_params
-        .map(extract_audio_metadata)
-        .unwrap_or_default();
+    let metadata = match track.codec_params {
+        Some(codec_params) => extract_audio_metadata(codec_params)?,
+        None => AudioStreamMetadata::default(),
+    };
 
     let classification = extract_classification(format, track.codec_params)?;
 
@@ -94,10 +95,10 @@ fn extract_classification(
 
     let audio_params = match params {
         CodecParameters::Audio(audio) => audio,
-        // @relation(APLLSR-006, scope=line)
+        // @relation(APLLSR-003, scope=line)
         _ => {
-            return Err(AudioStreamError::Encoding(
-                AudioEncodingError::Unknown(
+            return Err(AudioStreamError::Format(
+                AudioFormatError::Unsupported(
                     "Codec parameters do not describe an audio stream"
                         .to_owned(),
                 ),
