@@ -12,6 +12,13 @@ use crate::media_probe::{
     reader::{AudioTrackInfo, AudioTrackSelection, ProbedAudioReader},
 };
 
+pub struct IdentifiedAudioStream<'a> {
+    pub classification: AudioStreamClassification,
+    pub metadata: AudioStreamMetadata,
+    pub track_id: u32,
+    pub reader: Box<dyn FormatReader + 'a>,
+}
+
 #[derive(Debug, PartialEq, Eq)]
 pub struct AudioStreamClassification {
     pub format: String,
@@ -55,13 +62,6 @@ pub fn map_probe_error(error: SymphoniaError) -> AudioStreamError {
         SymphoniaError::IoError(error) => AudioStreamError::Io(error),
         other => AudioStreamError::Symphonia(other),
     }
-}
-
-pub struct IdentifiedAudioStream<'a> {
-    pub classification: AudioStreamClassification,
-    pub metadata: AudioStreamMetadata,
-    pub track_id: u32,
-    pub reader: Box<dyn FormatReader + 'a>,
 }
 
 pub fn identify_audio_track(
