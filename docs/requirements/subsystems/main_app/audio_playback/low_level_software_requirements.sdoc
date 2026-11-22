@@ -217,7 +217,7 @@ RELATIONS:
 
 [REQUIREMENT]
 UID: APLLSR-018
-TITLE: FLAC Total Sample Count Extraction
+TITLE: FLAC Total Sample Frames Extraction
 STATEMENT: >>>
 The software shall obtain the total number of samples from the FLAC stream's 
 metadata.
@@ -228,9 +228,9 @@ RELATIONS:
 
 [REQUIREMENT]
 UID: APLLSR-019
-TITLE: FLAC Duration Calculation
+TITLE: FLAC Sample Accurate Duration Calculation
 STATEMENT: >>>
-The software shall calculate the duration of a FLAC stream using its total 
+The software shall calculate the duration of a FLAC stream using its total
 sample count and sample rate.
 <<<
 RELATIONS:
@@ -239,11 +239,45 @@ RELATIONS:
 
 [REQUIREMENT]
 UID: APLLSR-020
+TITLE: FLAC Time Base Retrieval
+STATEMENT: >>>
+The software shall obtain the time base from the FLAC stream's 
+metadata.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: APHLSR-008
+
+[REQUIREMENT]
+UID: APLLSR-021
+TITLE: FLAC Tick Count Retrieval
+STATEMENT: >>>
+The software shall obtain the tick count from the FLAC stream's 
+metadata.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: APHLSR-008
+
+[REQUIREMENT]
+UID: APLLSR-022
+TITLE: FLAC Duration Calculation
+STATEMENT: >>>
+The software shall calculate the duration of a FLAC stream using its time base 
+and tick count if it cannot be calculated using the total sample count and
+sample rate.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: APHLSR-008
+
+[REQUIREMENT]
+UID: APLLSR-023
 TITLE: FLAC Unknown Duration Handling
 STATEMENT: >>>
 The software shall indicate that the duration of a FLAC stream is unknown when 
-the total sample count required to calculate the duration of a FLAC stream is 
-unavailable.
+neither the total sample count and sample rate nor the time base and tick
+count required to calculate the duration are available.
 <<<
 RELATIONS:
 - TYPE: Parent

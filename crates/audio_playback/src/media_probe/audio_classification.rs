@@ -73,8 +73,10 @@ pub fn identify_audio_track(
 
     let metadata = extract_audio_metadata(track_info.track)?;
 
-    let classification =
-        extract_classification(format, track_info.track.codec_params.as_ref())?;
+    let classification = extract_classification(
+        format,
+        track_info.track.codec_params.as_ref(),
+    )?;
 
     Ok(IdentifiedAudioTrack {
         classification,
