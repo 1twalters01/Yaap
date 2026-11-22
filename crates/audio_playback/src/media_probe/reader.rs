@@ -1,4 +1,4 @@
-use symphonia::core::{codecs::CodecParameters, formats::{FormatReader, TrackType}};
+use symphonia::core::{codecs::CodecParameters, formats::{FormatReader, Track, TrackType}};
 
 use crate::media_probe::errors::AudioStreamError;
 
@@ -11,8 +11,7 @@ pub enum AudioTrackSelection {
 
 pub struct AudioTrackInfo<'a> {
     pub index: usize,
-    pub id: u32,
-    pub codec_params: Option<&'a CodecParameters>,
+    pub track: &'a Track,
 }
 
 pub trait ProbedAudioReader {
@@ -37,7 +36,7 @@ pub trait ProbedAudioReader {
             }
 
             AudioTrackSelection::Id(id) => {
-                tracks.into_iter().find(|track| track.id == id)
+                tracks.into_iter().find(|track| track.track.id == id)
             }
         };
 
@@ -63,8 +62,7 @@ impl<T: FormatReader + ?Sized> ProbedAudioReader for T {
             .enumerate()
             .map(|(index, track)| AudioTrackInfo {
                 index,
-                id: track.id,
-                codec_params: track.codec_params.as_ref(),
+                track: track,
             })
             .collect()
     }
@@ -72,7 +70,7 @@ impl<T: FormatReader + ?Sized> ProbedAudioReader for T {
 
 pub(crate) struct SymphoniaProbedReader {
     pub(crate) format_short_name: String,
-    pub(crate) audio_tracks: Vec<(u32, Option<CodecParameters>)>,
+    pub(crate) audio_tracks: Vec<Track>,
 }
 
 impl ProbedAudioReader for SymphoniaProbedReader {
@@ -84,10 +82,9 @@ impl ProbedAudioReader for SymphoniaProbedReader {
         self.audio_tracks
             .iter()
             .enumerate()
-            .map(|(index, (id, codec_params))| AudioTrackInfo {
+            .map(|(index, track)| AudioTrackInfo {
                 index,
-                id: *id,
-                codec_params: codec_params.as_ref(),
+                track,
             })
             .collect()
     }

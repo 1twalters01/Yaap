@@ -39,7 +39,7 @@ impl AudioProber for SymphoniaProber {
             .filter(|track| {
                 matches!(track.codec_params, Some(CodecParameters::Audio(_)))
             })
-            .map(|track| (track.id, track.codec_params.clone()))
+            .cloned()
             .collect();
 
         let probed_reader = Box::new(SymphoniaProbedReader {

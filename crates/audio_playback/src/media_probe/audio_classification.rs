@@ -24,7 +24,7 @@ pub(crate) fn identify_audio_stream<'a, P: AudioProber>(
     Ok(IdentifiedAudioStream {
         classification: identified_audio_track.classification,
         metadata: identified_audio_track.metadata,
-        track_id: identified_audio_track.track.id,
+        track_id: identified_audio_track.track.track.id,
         reader: probed.reader,
     })
 }
@@ -62,12 +62,9 @@ pub fn identify_classification(
     let format = probed_reader.format_short_name().to_owned();
     let track = probed_reader.select_audio_track(selection)?;
 
-    let metadata = match track.codec_params {
-        Some(codec_params) => extract_audio_metadata(codec_params)?,
-        None => AudioStreamMetadata::default(),
-    };
+    let metadata = extract_audio_metadata(track.track)?;
 
-    let classification = extract_classification(format, track.codec_params)?;
+    let classification = extract_classification(format, track.track.codec_params.as_ref())?;
 
     Ok(IdentifiedAudioTrack { 
         classification,
