@@ -1,4 +1,10 @@
-use symphonia::core::{codecs::CodecParameters, errors::Error as SymphoniaError, formats::{FormatOptions, FormatReader, probe::Hint}, io::MediaSourceStream, meta::MetadataOptions};
+use symphonia::core::{
+    codecs::CodecParameters,
+    errors::Error as SymphoniaError,
+    formats::{FormatOptions, FormatReader, probe::Hint},
+    io::MediaSourceStream,
+    meta::MetadataOptions,
+};
 
 use crate::media_probe::reader::{ProbedAudioReader, SymphoniaProbedReader};
 

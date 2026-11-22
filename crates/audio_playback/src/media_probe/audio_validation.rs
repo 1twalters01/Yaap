@@ -1,6 +1,14 @@
-use symphonia::core::codecs::audio::{AudioCodecId, CODEC_ID_NULL_AUDIO, well_known::CODEC_ID_FLAC};
+use symphonia::core::codecs::audio::{
+    AudioCodecId, CODEC_ID_NULL_AUDIO, well_known::CODEC_ID_FLAC,
+};
 
-use crate::media_probe::{audio_classification::AudioStreamClassification, errors::{AudioEncodingError, AudioFormatAndEncodingError, AudioFormatError, AudioStreamError}};
+use crate::media_probe::{
+    audio_classification::AudioStreamClassification,
+    errors::{
+        AudioEncodingError, AudioFormatAndEncodingError, AudioFormatError,
+        AudioStreamError,
+    },
+};
 
 pub fn verify_format_supported(
     classification: &AudioStreamClassification,
@@ -73,4 +81,3 @@ pub fn validate_format_encoding_combination(
         )),
     }
 }
-

@@ -64,4 +64,3 @@ pub enum AudioEncodingError {
     #[error("Invalid audio encoding: {0}")]
     Invalid(String),
 }
-

@@ -1,6 +1,16 @@
-use symphonia::core::{codecs::{CodecParameters, audio::AudioCodecId}, errors::Error as SymphoniaError, formats::FormatReader, io::MediaSourceStream};
+use symphonia::core::{
+    codecs::{CodecParameters, audio::AudioCodecId},
+    errors::Error as SymphoniaError,
+    formats::FormatReader,
+    io::MediaSourceStream,
+};
 
-use crate::media_probe::{audio_metadata::{AudioStreamMetadata, extract_audio_metadata}, errors::{AudioEncodingError, AudioFormatError, AudioStreamError}, prober::AudioProber, reader::{AudioTrackInfo, AudioTrackSelection, ProbedAudioReader}};
+use crate::media_probe::{
+    audio_metadata::{AudioStreamMetadata, extract_audio_metadata},
+    errors::{AudioEncodingError, AudioFormatError, AudioStreamError},
+    prober::AudioProber,
+    reader::{AudioTrackInfo, AudioTrackSelection, ProbedAudioReader},
+};
 
 #[derive(Debug, PartialEq, Eq)]
 pub struct AudioStreamClassification {
@@ -19,12 +29,12 @@ pub(crate) fn identify_audio_stream<'a, P: AudioProber>(
         .map_err(|error| map_probe_error(error))?;
 
     let identified_audio_track =
-        identify_classification(probed.probed_reader.as_ref(), selection)?;
+        identify_audio_track(probed.probed_reader.as_ref(), selection)?;
 
     Ok(IdentifiedAudioStream {
         classification: identified_audio_track.classification,
         metadata: identified_audio_track.metadata,
-        track_id: identified_audio_track.track.track.id,
+        track_id: identified_audio_track.track_info.track.id,
         reader: probed.reader,
     })
 }
@@ -54,29 +64,29 @@ pub struct IdentifiedAudioStream<'a> {
     pub reader: Box<dyn FormatReader + 'a>,
 }
 
-pub fn identify_classification(
+pub fn identify_audio_track(
     probed_reader: &dyn ProbedAudioReader,
     selection: AudioTrackSelection,
-) -> Result<IdentifiedAudioTrack<'_>, AudioStreamError>
-{
+) -> Result<IdentifiedAudioTrack<'_>, AudioStreamError> {
     let format = probed_reader.format_short_name().to_owned();
-    let track = probed_reader.select_audio_track(selection)?;
+    let track_info = probed_reader.select_audio_track(selection)?;
 
-    let metadata = extract_audio_metadata(track.track)?;
+    let metadata = extract_audio_metadata(track_info.track)?;
 
-    let classification = extract_classification(format, track.track.codec_params.as_ref())?;
+    let classification =
+        extract_classification(format, track_info.track.codec_params.as_ref())?;
 
-    Ok(IdentifiedAudioTrack { 
+    Ok(IdentifiedAudioTrack {
         classification,
         metadata,
-        track,
+        track_info,
     })
 }
 
 pub struct IdentifiedAudioTrack<'a> {
     pub classification: AudioStreamClassification,
     pub metadata: AudioStreamMetadata,
-    pub track: AudioTrackInfo<'a>,
+    pub track_info: AudioTrackInfo<'a>,
 }
 
 fn extract_classification(
@@ -108,4 +118,3 @@ fn extract_classification(
         encoding: audio_params.codec,
     })
 }
-

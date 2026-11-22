@@ -1,10 +1,16 @@
 use symphonia::core::io::MediaSourceStream;
 
-use crate::media_probe::{audio_classification::{IdentifiedAudioStream, identify_audio_stream}, audio_validation::verify_format_supported, errors::AudioStreamError, prober::AudioProber, reader::AudioTrackSelection};
+use crate::media_probe::{
+    audio_classification::{IdentifiedAudioStream, identify_audio_stream},
+    audio_validation::verify_format_supported,
+    errors::AudioStreamError,
+    prober::AudioProber,
+    reader::AudioTrackSelection,
+};
 
 pub mod audio_classification;
-pub mod audio_validation;
 pub mod audio_metadata;
+pub mod audio_validation;
 pub mod errors;
 pub mod prober;
 pub mod reader;
@@ -21,4 +27,3 @@ pub fn identify_supported_audio_stream<'a, P: AudioProber>(
 
     Ok(identified_audio_stream)
 }
-

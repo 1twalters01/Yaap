@@ -1,8 +1,15 @@
-use audio_playback::media_probe::{audio_classification::identify_classification, errors::AudioStreamError, reader::{AudioTrackInfo, AudioTrackSelection, ProbedAudioReader}};
-use symphonia::core::{codecs::{
-    CodecParameters,
-    audio::{AudioCodecParameters, well_known::CODEC_ID_FLAC},
-}, formats::{Track, TrackFlags}};
+use audio_playback::media_probe::{
+    audio_classification::identify_audio_track,
+    errors::AudioStreamError,
+    reader::{AudioTrackInfo, AudioTrackSelection, ProbedAudioReader},
+};
+use symphonia::core::{
+    codecs::{
+        CodecParameters,
+        audio::{AudioCodecParameters, well_known::CODEC_ID_FLAC},
+    },
+    formats::{Track, TrackFlags},
+};
 
 struct StubProbedAudioReader {
     format: String,
@@ -14,16 +21,11 @@ impl ProbedAudioReader for StubProbedAudioReader {
         &self.format
     }
 
-    fn audio_tracks(
-        &self,
-    ) -> Vec<AudioTrackInfo<'_>> {
+    fn audio_tracks(&self) -> Vec<AudioTrackInfo<'_>> {
         self.track
             .iter()
             .enumerate()
-            .map(|(index, track)| AudioTrackInfo {
-                index,
-                track,
-            })
+            .map(|(index, track)| AudioTrackInfo { index, track })
             .collect()
     }
 }
@@ -67,11 +69,14 @@ fn identifies_flac_format_and_encoding() {
     let audio_track_selection = AudioTrackSelection::First;
 
     let identified_audio_track =
-        identify_classification(&reader, audio_track_selection).unwrap();
+        identify_audio_track(&reader, audio_track_selection).unwrap();
 
     assert_eq!(identified_audio_track.classification.format, "flac");
-    assert_eq!(identified_audio_track.classification.encoding, CODEC_ID_FLAC);
-    assert_eq!(identified_audio_track.track.track.id, 1);
+    assert_eq!(
+        identified_audio_track.classification.encoding,
+        CODEC_ID_FLAC
+    );
+    assert_eq!(identified_audio_track.track_info.track.id, 1);
 }
 
 /// @relation(APLLSR-001-T02, scope=function)
@@ -82,9 +87,9 @@ fn preserves_audio_track_id() {
     let audio_track_selection = AudioTrackSelection::First;
 
     let identified_audio_track =
-        identify_classification(&reader, audio_track_selection).unwrap();
+        identify_audio_track(&reader, audio_track_selection).unwrap();
 
-    assert_eq!(identified_audio_track.track.track.id, 42);
+    assert_eq!(identified_audio_track.track_info.track.id, 42);
 }
 
 /// @relation(APLLSR-009-T01, scope=function)
@@ -93,7 +98,7 @@ fn returns_no_audio_track_when_no_track_exists() {
     let reader = stub_reader("flac", None, None);
     let audio_track_selection = AudioTrackSelection::First;
 
-    let result = identify_classification(&reader, audio_track_selection);
+    let result = identify_audio_track(&reader, audio_track_selection);
 
     assert!(matches!(result, Err(AudioStreamError::NoAudioTrack)));
 }

@@ -1,6 +1,9 @@
 use std::io;
 
-use audio_playback::media_probe::{audio_classification::map_probe_error, errors::{AudioFormatError, AudioStreamError}};
+use audio_playback::media_probe::{
+    audio_classification::map_probe_error,
+    errors::{AudioFormatError, AudioStreamError},
+};
 use symphonia::core::errors::Error as SymphoniaError;
 
 /// @relation(APLLSR-005-T01, scope=function)

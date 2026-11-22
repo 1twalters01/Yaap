@@ -1,4 +1,7 @@
-use symphonia::core::{codecs::CodecParameters, formats::{FormatReader, Track, TrackType}};
+use symphonia::core::{
+    codecs::CodecParameters,
+    formats::{FormatReader, Track, TrackType},
+};
 
 use crate::media_probe::errors::AudioStreamError;
 
@@ -82,11 +85,7 @@ impl ProbedAudioReader for SymphoniaProbedReader {
         self.audio_tracks
             .iter()
             .enumerate()
-            .map(|(index, track)| AudioTrackInfo {
-                index,
-                track,
-            })
+            .map(|(index, track)| AudioTrackInfo { index, track })
             .collect()
     }
 }
-
