@@ -51,7 +51,7 @@ pub fn extract_audio_metadata(
                 audio_codec_params,
             ) {
                 Some(duration) => Some(duration),
-                // @relation(APLLSR-023, scope=line)
+                // @relation(APLLSR-020, scope=line)
                 None => extract_track_duration(track),
             };
 
@@ -77,13 +77,12 @@ fn extract_sample_accurate_duration(
         return None;
     }
 
-    // @relation(APLLSR-018, scope=line)
     let total_frames = track.num_frames?;
     if total_frames == 0 {
         return None;
     }
 
-    // @relation(APLLSR-019, scope=line)
+    // @relation(APLLSR-018, scope=line)
     let duration_nanoseconds =
         u128::from(total_frames) * 1_000_000_000 / u128::from(sample_rate);
 
@@ -94,13 +93,10 @@ fn extract_sample_accurate_duration(
 }
 
 fn extract_track_duration(track: &Track) -> Option<Duration> {
-    // @relation(APLLSR-020, scope=line)
     let time_base = track.time_base?;
-
-    // @relation(APLLSR-021, scope=line)
     let duration_ticks = track.duration?;
 
-    // @relation(APLLSR-022, scope=line)
+    // @relation(APLLSR-019, scope=line)
     let time = time_base.calc_duration(duration_ticks)?;
     let (seconds, nanoseconds) = time.parts();
     let seconds = u64::try_from(seconds).ok()?;

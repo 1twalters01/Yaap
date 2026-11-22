@@ -29,8 +29,8 @@ UID: APLLSR-001-T01
 TITLE: FLAC Format and Encoding Identification
 TEST_TYPE: Functional
 TEST_LEVEL: Integration
-PRECONDITIONS: A valid FLAC audio file is available
-INPUTS: A valid FLAC audio stream
+PRECONDITIONS: A valid FLAC audio file is available.
+INPUTS: A valid FLAC audio stream.
 PROCEDURE: >>>
 1. Supply the FLAC audio stream to the audio identification subsystem.
 2. Execute the identification procedure.
@@ -56,8 +56,10 @@ UID: APLLSR-001-T02
 TITLE: Audio Track Identification
 TEST_TYPE: Functional
 TEST_LEVEL: Unit
-PRECONDITIONS: An audio track with valid codec parameters is available
-INPUTS: Audio track information containing a track identifier and codec parameters 
+PRECONDITIONS: An audio track with valid codec parameters is available.
+INPUTS: >>>
+Audio track information containing a track identifier and codec parameters.
+<<<
 PROCEDURE: >>>
 1. Supply the audio track information to the classification extraction
 procedure.
@@ -82,10 +84,10 @@ UID: APLLSR-001-T03
 TITLE: Multiple Audio Track Identification
 TEST_TYPE: Functional
 TEST_LEVEL: Integration
-PRECONDITIONS: An audio file containing multiple audio tracks is available
+PRECONDITIONS: An audio file containing multiple audio tracks is available.
 INPUTS: >>>
 An audio stream containing multiple audio tracks with identifiable codec 
-parameters
+parameters.
 <<<
 PROCEDURE: >>>
 1. Supply the audio stream to the audio identification subsystem.
@@ -109,9 +111,9 @@ UID: APLLSR-002-T01
 TITLE: Supported Audio Format Detection
 TEST_TYPE: Functional
 TEST_LEVEL: Unit
-PRECONDITIONS: A supported audio format is defined
+PRECONDITIONS: A supported audio format is defined.
 INPUTS: >>>
-An audio stream classification containing a supported format
+An audio stream classification containing a supported format.
 <<<
 PROCEDURE: >>>
 1. Supply the audio stream classification to the format validation procedure.
@@ -135,8 +137,8 @@ UID: APLLSR-002-T02
 TITLE: Supported Audio Encoding Detection
 TEST_TYPE: Functional
 TEST_LEVEL: Unit
-PRECONDITIONS: A supported audio encoding is defined
-INPUTS: An audio stream classification containing a supported encoding
+PRECONDITIONS: A supported audio encoding is defined.
+INPUTS: An audio stream classification containing a supported encoding.
 PROCEDURE: >>>
 1. Supply the audio stream classification to the encoding validation procedure.
 2. Execute the encoding validation procedure.
@@ -159,8 +161,11 @@ UID: APLLSR-002-T03
 TITLE: Supported Format and Encoding Combination Detection
 TEST_TYPE: Functional
 TEST_LEVEL: Unit
-PRECONDITIONS: A supported audio format and encoding combination is defined
-INPUTS: An audio stream classification containing a supported format and encoding combination
+PRECONDITIONS: A supported audio format and encoding combination is defined.
+INPUTS: >>>
+An audio stream classification containing a supported format and encoding 
+combination.
+<<<
 PROCEDURE: >>>
 1. Supply the audio stream classification to the format and encoding validation procedure.
 2. Execute the validation procedure.
@@ -184,8 +189,14 @@ UID: APLLSR-002-T04
 TITLE: Unsupported Format and Encoding Combination Detection
 TEST_TYPE: Functional
 TEST_LEVEL: Unit
-PRECONDITIONS: An audio format and encoding combination that is not supported by the software is defined
-INPUTS: An audio stream classification containing a format and encoding combination that is individually supported but unsupported in combination
+PRECONDITIONS: >>>
+An audio format and encoding combination that is not supported by the software 
+is defined.
+<<<
+INPUTS: >>>
+An audio stream classification containing a format and encoding combination 
+that is individually supported but unsupported in combination.
+<<<
 PROCEDURE: >>>
 1. Supply the audio stream classification to the format and encoding validation procedure.
 2. Execute the validation procedure.
@@ -209,8 +220,8 @@ UID: APLLSR-003-T01
 TITLE: Unsupported Format Error Generation
 TEST_TYPE: Functional
 TEST_LEVEL: Unit
-PRECONDITIONS: An unsupported audio format is defined
-INPUTS: An audio stream classification containing an unsupported format
+PRECONDITIONS: An unsupported audio format is defined.
+INPUTS: An audio stream classification containing an unsupported format.
 PROCEDURE: >>>
 1. Supply the audio stream classification to the format validation procedure.
 2. Execute the format validation procedure.
@@ -234,8 +245,8 @@ UID: APLLSR-004-T01
 TITLE: Unsupported Encoding Error Generation
 TEST_TYPE: Functional
 TEST_LEVEL: Unit
-PRECONDITIONS: An unsupported audio encoding is defined
-INPUTS: An audio stream classification containing an unsupported encoding
+PRECONDITIONS: An unsupported audio encoding is defined.
+INPUTS: An audio stream classification containing an unsupported encoding.
 PROCEDURE: >>>
 1. Supply the audio stream classification to the encoding validation procedure.
 2. Execute the encoding validation procedure.
@@ -259,8 +270,8 @@ UID: APLLSR-005-T01
 TITLE: Unknown Format Error Generation
 TEST_TYPE: Robustness
 TEST_LEVEL: Integration
-PRECONDITIONS: An input containing unrecognised audio data is available
-INPUTS: An audio stream containing unrecognised audio data
+PRECONDITIONS: An input containing unrecognised audio data is available.
+INPUTS: An audio stream containing unrecognised audio data.
 PROCEDURE: >>>
 1. Supply the audio stream to the audio identification subsystem.
 2. Execute the identification procedure.
@@ -283,8 +294,8 @@ UID: APLLSR-006-T01
 TITLE: Unknown Encoding Error Generation with Missing Codec Parameters
 TEST_TYPE: Robustness
 TEST_LEVEL: Unit
-PRECONDITIONS: An audio track without codec parameters is available
-INPUTS: Audio track information containing no codec parameters
+PRECONDITIONS: An audio track without codec parameters is available.
+INPUTS: Audio track information containing no codec parameters.
 PROCEDURE: >>>
 1. Supply the audio track information to the classification extraction 
 procedure.
@@ -309,9 +320,9 @@ TITLE: Unknown Encoding Error with Non-Audio Codec Parameters
 TEST_TYPE: Robustness
 TEST_LEVEL: Unit
 PRECONDITIONS: >>>
-Codec parameters that do not represent an audio encoding are available
+Codec parameters that do not represent an audio encoding are available.
 <<<
-INPUTS: Audio track information containing non-audio codec parameters
+INPUTS: Audio track information containing non-audio codec parameters.
 PROCEDURE: >>>
 1. Supply the audio track information to the classification extraction 
 procedure.
@@ -336,9 +347,9 @@ TITLE: Unknown Encoding Error with Null Codec Identifier
 TEST_TYPE: Robustness
 TEST_LEVEL: Unit
 PRECONDITIONS: >>>
-Audio codec parameters containing a null codec identifier are available
+Audio codec parameters containing a null codec identifier are available.
 <<<
-INPUTS: Audio codec parameters containing CODEC_ID_NULL_AUDIO
+INPUTS: Audio codec parameters containing CODEC_ID_NULL_AUDIO.
 PROCEDURE: >>>
 1. Supply the audio codec parameters to the classification extraction procedure.
 2. Execute the classification extraction procedure.
@@ -361,8 +372,10 @@ UID: APLLSR-007-T01
 TITLE: Invalid Format Error Generation
 TEST_TYPE: Robustness
 TEST_LEVEL: Integration
-PRECONDITIONS: A malformed audio file with a recognisable format signature is available
-INPUTS: An audio stream containing a recognisable but malformed audio format
+PRECONDITIONS: >>>
+A malformed audio file with a recognisable format signature is available.
+<<<
+INPUTS: An audio stream containing a recognisable but malformed audio format.
 PROCEDURE: >>>
 1. Supply the malformed audio stream to the audio identification subsystem.
 2. Execute the identification procedure.
@@ -385,8 +398,10 @@ UID: APLLSR-008-T01
 TITLE: Invalid Encoding Error Generation
 TEST_TYPE: Robustness
 TEST_LEVEL: Unit
-PRECONDITIONS: Audio codec parameters containing invalid encoding information are available
-INPUTS: Audio codec parameters containing invalid encoding information
+PRECONDITIONS: >>>
+Audio codec parameters containing invalid encoding information are available.
+<<<
+INPUTS: Audio codec parameters containing invalid encoding information.
 PROCEDURE: >>>
 1. Supply the audio codec parameters to the encoding validation procedure.
 2. Execute the encoding validation procedure.
@@ -409,8 +424,8 @@ UID: APLLSR-009-T01
 TITLE: No Audio Track Detection
 TEST_TYPE: Robustness
 TEST_LEVEL: Integration
-PRECONDITIONS: A valid media file containing no audio tracks is available
-INPUTS: An audio stream containing no audio tracks
+PRECONDITIONS: A valid media file containing no audio tracks is available.
+INPUTS: An audio stream containing no audio tracks.
 PROCEDURE: >>>
 1. Supply the input stream to the audio identification subsystem.
 2. Execute the identification procedure.
@@ -433,8 +448,8 @@ UID: APLLSR-010-T01
 TITLE: FLAC Encoding Identification
 TEST_TYPE: Functional
 TEST_LEVEL: Integration
-PRECONDITIONS: A valid FLAC audio file is available
-INPUTS: A valid FLAC audio stream
+PRECONDITIONS: A valid FLAC audio file is available.
+INPUTS: A valid FLAC audio stream.
 PROCEDURE: >>>
 1. Supply the FLAC audio stream to the audio identification subsystem.
 2. Execute the identification procedure.
@@ -457,8 +472,8 @@ UID: APLLSR-011-T01
 TITLE: FLAC Identification with FLAC Filename Extension
 TEST_TYPE: Compatibility
 TEST_LEVEL: Subsystem
-PRECONDITIONS: A valid FLAC audio file is available
-INPUTS: A valid FLAC audio stream with a .flac filename extension
+PRECONDITIONS: A valid FLAC audio file is available.
+INPUTS: A valid FLAC audio stream with a .flac filename extension.
 PROCEDURE: >>>
 1. Supply the FLAC audio stream to the audio identification subsystem.
 2. Execute the identification procedure.
@@ -481,8 +496,8 @@ UID: APLLSR-011-T02
 TITLE: FLAC Identification with Different Filename Extension
 TEST_TYPE: Compatibility
 TEST_LEVEL: Subsystem
-PRECONDITIONS: A valid FLAC audio file is available
-INPUTS: A valid FLAC audio stream with an .mp3 filename extension
+PRECONDITIONS: A valid FLAC audio file is available.
+INPUTS: A valid FLAC audio stream with an .mp3 filename extension.
 PROCEDURE: >>>
 1. Supply the FLAC audio stream to the audio identification subsystem.
 2. Execute the identification procedure.
@@ -505,8 +520,8 @@ UID: APLLSR-011-T03
 TITLE: FLAC Identification without Filename Extension
 TEST_TYPE: Compatibility
 TEST_LEVEL: Subsystem
-PRECONDITIONS: A valid FLAC audio file is available
-INPUTS: A valid FLAC audio stream without a filename extension
+PRECONDITIONS: A valid FLAC audio file is available.
+INPUTS: A valid FLAC audio stream without a filename extension.
 PROCEDURE: >>>
 1. Supply the FLAC audio stream to the audio identification subsystem.
 2. Execute the identification procedure.
@@ -522,6 +537,168 @@ stream without relying on a filename extension.
 RELATIONS:
 - TYPE: Parent
   VALUE: APLLSR-011
+  ROLE: Verifies
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Audio Stream Metadata Retrieval
+
+[TEST]
+UID: APLLSR-012-T01
+TITLE: FLAC Channel Count Extraction
+TEST_TYPE: Functional
+TEST_LEVEL: Unit
+PRECONDITIONS: >>>
+A FLAC audio track with valid codec parameters and a defined channel layout is 
+available.
+<<<
+INPUTS: >>>
+FLAC audio track information containing a channel layout representing 
+two channels.
+<<<
+PROCEDURE: >>>
+1. Supply the FLAC audio track information to the audio metadata extraction
+procedure 
+2. Execute the audio metadata extraction procedure.
+3. Examine the returned channel count.
+<<<
+EXPECTED_RESULT: >>>
+The software successfully extracts the channel count and returns a value of
+two.
+<<<
+STATEMENT: >>>
+The test shall verify that the software correctly extracts the channel count 
+from FLAC audio stream metadata.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: APLLSR-012
+  ROLE: Verifies
+
+[TEST]
+UID: APLLSR-014-T01
+TITLE: FLAC Sample Rate Extraction
+TEST_TYPE: Functional
+TEST_LEVEL: Unit
+PRECONDITIONS: >>>
+A FLAC audio track with valid codec parameters and a defined sample rate is 
+available.
+<<<
+INPUTS: >>>
+FLAC audio track information containing a sample rate of 44100 Hz.
+<<<
+PROCEDURE: >>>
+1. Supply the FLAC audio track information to the audio metadata extraction
+procedure 
+2. Execute the audio metadata extraction procedure.
+3. Examine the returned sample rate.
+<<<
+EXPECTED_RESULT: >>>
+The software successfully extracts the channel count and returns a value of
+two.
+<<<
+STATEMENT: >>>
+The test shall verify that the software correctly extracts the sample rate from 
+FLAC audio stream metadata.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: APLLSR-014
+  ROLE: Verifies
+
+[TEST]
+UID: APLLSR-016-T01
+TITLE: FLAC Bits per Sample Extraction
+TEST_TYPE: Functional
+TEST_LEVEL: Unit
+PRECONDITIONS: >>>
+A FLAC audio track with valid codec parameters and a defined bits per sample is 
+available.
+<<<
+INPUTS: >>>
+FLAC audio track information containing a bits per sample value of 24.
+<<<
+PROCEDURE: >>>
+1. Supply the FLAC audio track information to the audio metadata extraction
+procedure 
+2. Execute the audio metadata extraction procedure.
+3. Examine the returned bits per sample.
+<<<
+EXPECTED_RESULT: >>>
+The software successfully extracts the bits per sample value and returns a 
+value of 24.
+<<<
+STATEMENT: >>>
+The test shall verify that the software correctly extracts the bits per sample 
+from FLAC audio stream metadata.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: APLLSR-016
+  ROLE: Verifies
+
+[TEST]
+UID: APLLSR-018-T01
+TITLE: FLAC Sample Accurate Duration Calculation
+TEST_TYPE: Functional
+TEST_LEVEL: Unit
+PRECONDITIONS: >>>
+A FLAC audio track with a defined total sample frame count and sample rate is 
+available.
+<<<
+INPUTS: >>>
+FLAC audio track information containing 44100 sample frames and a sample rate 
+of 44100Hz.
+<<<
+PROCEDURE: >>>
+1. Supply the FLAC audio track information to the audio metadata extraction
+procedure 
+2. Execute the audio metadata extraction procedure.
+3. Examine the returned duration.
+<<<
+EXPECTED_RESULT: >>>
+The software successfully calculates the sample-based duration and returns a 
+duration of one second.
+<<<
+STATEMENT: >>>
+The test shall verify that the software correctly calculates the duration of a 
+FLAC audio stream using its total sample frame count and sample rate.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: APLLSR-018
+  ROLE: Verifies
+
+[TEST]
+UID: APLLSR-019-T01
+TITLE: FLAC Duration Calculation Using Time Base
+TEST_TYPE: Functional
+TEST_LEVEL: Unit
+PRECONDITIONS: >>>
+A FLAC audio track with a defined time base and tick count is available.
+<<<
+INPUTS: >>>
+FLAC audio track information containing a time base of 1/1000 and a tick count 
+of 5000.
+<<<
+PROCEDURE: >>>
+1. Supply the FLAC audio track information to the audio metadata extraction
+procedure 
+2. Execute the audio metadata extraction procedure.
+3. Examine the returned duration.
+<<<
+EXPECTED_RESULT: >>>
+The software successfully calculates the duration using the time base and tick 
+count and returns a duration of five second.
+<<<
+STATEMENT: >>>
+The test shall verify that the software correctly calculates the duration of a 
+FLAC audio stream using its time base and tick count.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: APLLSR-018
   ROLE: Verifies
 
 [[/SECTION]]
