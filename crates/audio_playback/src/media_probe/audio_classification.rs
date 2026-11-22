@@ -2,6 +2,12 @@ use symphonia::core::{codecs::{CodecParameters, audio::AudioCodecId}, errors::Er
 
 use crate::media_probe::{errors::{AudioEncodingError, AudioFormatError, AudioStreamError}, prober::AudioProber, reader::{AudioTrackInfo, AudioTrackSelection, ProbedAudioReader}};
 
+pub struct IdentifiedAudioStream<'a> {
+    pub classification: AudioStreamClassification,
+    pub track_id: u32,
+    pub reader: Box<dyn FormatReader + 'a>,
+}
+
 #[derive(Debug, PartialEq, Eq)]
 pub struct AudioStreamClassification {
     pub format: String,
@@ -44,12 +50,6 @@ pub fn map_probe_error(error: SymphoniaError) -> AudioStreamError {
         SymphoniaError::IoError(error) => AudioStreamError::Io(error),
         other => AudioStreamError::Symphonia(other),
     }
-}
-
-pub struct IdentifiedAudioStream<'a> {
-    pub classification: AudioStreamClassification,
-    pub track_id: u32,
-    pub reader: Box<dyn FormatReader + 'a>,
 }
 
 pub fn identify_classification(
