@@ -2,6 +2,7 @@ mod media_probe {
     mod audio_classification;
     mod audio_error_mapping;
     mod audio_metadata;
+    mod audio_metadata_validation;
     mod audio_validation;
     mod integration;
 }

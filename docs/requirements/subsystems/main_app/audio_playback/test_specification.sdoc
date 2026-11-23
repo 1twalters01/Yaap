@@ -577,6 +577,97 @@ RELATIONS:
   ROLE: Verifies
 
 [TEST]
+UID: APLLSR-013-T01
+TITLE: FLAC Channel Count Too High Error Generation
+TEST_TYPE: Robustness
+TEST_LEVEL: Unit
+PRECONDITIONS: >>>
+Audio codec parameters containing a FLAC channel count higher than the permitted
+range are available.
+<<<
+INPUTS: >>>
+FLAC audio codec parameters containing a channel count that is too high.
+<<<
+PROCEDURE: >>>
+1. Supply the FLAC audio codec parameters to the channel count validation
+   procedure.
+2. Execute the channel count validation procedure.
+3. Examine the returned error.
+<<<
+EXPECTED_RESULT: >>>
+The software generates an Invalid Channel Count Error.
+<<<
+STATEMENT: >>>
+The test shall verify that the software generates an Invalid Channel Count
+Error when the channel count retrieved from a FLAC stream is higher than the
+range permitted by the FLAC format.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: APLLSR-013
+  ROLE: Verifies
+
+[TEST]
+UID: APLLSR-013-T02
+TITLE: FLAC Channel Count Too Low Error Generation
+TEST_TYPE: Robustness
+TEST_LEVEL: Unit
+PRECONDITIONS: >>>
+Audio codec parameters containing a FLAC channel count lower than the permitted
+range are available.
+<<<
+INPUTS: >>>
+FLAC audio codec parameters containing a channel count that is too low.
+<<<
+PROCEDURE: >>>
+1. Supply the FLAC audio codec parameters to the channel count validation
+   procedure.
+2. Execute the channel count validation procedure.
+3. Examine the returned error.
+<<<
+EXPECTED_RESULT: >>>
+The software generates an Invalid Channel Count Error.
+<<<
+STATEMENT: >>>
+The test shall verify that the software generates an Invalid Channel Count
+Error when the channel count retrieved from a FLAC stream is lower than the
+range permitted by the FLAC format.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: APLLSR-013
+  ROLE: Verifies
+
+[TEST]
+UID: APLLSR-013-T03
+TITLE: FLAC Channel Count Is Empty Error Generation
+TEST_TYPE: Robustness
+TEST_LEVEL: Unit
+PRECONDITIONS: >>>
+Audio codec parameters containing a FLAC channel count that is empty.
+<<<
+INPUTS: >>>
+FLAC audio codec parameters containing a channel count that is empty.
+<<<
+PROCEDURE: >>>
+1. Supply the FLAC audio codec parameters to the channel count validation
+   procedure.
+2. Execute the channel count validation procedure.
+3. Examine the returned error.
+<<<
+EXPECTED_RESULT: >>>
+The software generates an Invalid Channel Count Error.
+<<<
+STATEMENT: >>>
+The test shall verify that the software generates an Invalid Channel Count
+Error when the channel count retrieved from a FLAC stream is empty.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: APLLSR-013
+  ROLE: Verifies
+
+[TEST]
 UID: APLLSR-014-T01
 TITLE: FLAC Sample Rate Extraction
 TEST_TYPE: Functional

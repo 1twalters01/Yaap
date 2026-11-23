@@ -1,4 +1,4 @@
-use std::{num::NonZero, time::Duration};
+use std::time::Duration;
 
 use audio_playback::media_probe::audio_metadata::extract_audio_metadata;
 use symphonia::core::{
@@ -147,6 +147,7 @@ fn returns_unknown_duration_when_neither_duration_source_is_available() {
     assert_eq!(metadata.duration, None);
 }
 
+/// @relation(APLLSR-020-T01, scope=function)
 #[test]
 fn returns_default_metadata_when_codec_parameters_are_missing() {
     let track = stub_track(None, None, None, None);
