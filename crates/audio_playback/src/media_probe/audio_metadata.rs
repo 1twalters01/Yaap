@@ -87,7 +87,8 @@ fn extract_sample_accurate_duration(
         u128::from(total_frames) * 1_000_000_000 / u128::from(sample_rate);
 
     let seconds = u64::try_from(duration_nanoseconds / 1_000_000_000).ok()?;
-    let nanoseconds = u32::try_from(duration_nanoseconds % 1_000_000_000).ok()?;
+    let nanoseconds =
+        u32::try_from(duration_nanoseconds % 1_000_000_000).ok()?;
 
     Some(Duration::new(seconds, nanoseconds))
 }
