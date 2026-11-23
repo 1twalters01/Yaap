@@ -110,10 +110,7 @@ fn calculates_flac_duration_using_time_base_when_sample_duration_is_unavailable(
     let track = stub_track(
         Some(codec_params),
         None,
-        Some(TimeBase::new(
-            NonZero::try_from(1).unwrap(),
-            NonZero::try_from(1_000).unwrap(),
-        )),
+        TimeBase::try_new(1, 1_000),
         Some(5_000),
     );
 
@@ -129,10 +126,7 @@ fn prefers_sample_based_duration_when_both_duration_sources_are_available() {
     let track = stub_track(
         Some(codec_params),
         Some(44_100),
-        Some(TimeBase::new(
-            NonZero::try_from(1).unwrap(),
-            NonZero::try_from(1_000).unwrap(),
-        )),
+        TimeBase::try_new(1, 1_000),
         Some(5_000),
     );
 

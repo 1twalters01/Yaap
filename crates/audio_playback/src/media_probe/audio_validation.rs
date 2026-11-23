@@ -1,3 +1,5 @@
+use std::num::NonZero;
+
 use symphonia::core::codecs::audio::{
     AudioCodecId, CODEC_ID_NULL_AUDIO, well_known::CODEC_ID_FLAC,
 };
@@ -6,7 +8,7 @@ use crate::media_probe::{
     audio_classification::AudioStreamClassification,
     errors::{
         AudioEncodingError, AudioFormatAndEncodingError, AudioFormatError,
-        AudioStreamError,
+        AudioStreamError, AudioStreamMetadataError, ChannelError,
     },
 };
 
@@ -79,5 +81,36 @@ pub fn validate_format_encoding_combination(
                 "Audio encoding '{encoding}' is not supported in audio format '{format}'"
             )),
         )),
+    }
+}
+
+pub fn validate_channels(
+    classification: &AudioStreamClassification,
+    channels: Option<usize>,
+) -> Result<(), AudioStreamError> {
+    let channels = channels.ok_or(AudioStreamError::Metadata(
+        AudioStreamMetadataError::InvalidChannels(ChannelError::NotFound),
+    ))?;
+
+    let channels =
+        NonZero::new(channels).ok_or(AudioStreamError::Metadata(
+            AudioStreamMetadataError::InvalidChannels(ChannelError::TooFew),
+        ))?;
+
+    match classification.encoding {
+        CODEC_ID_FLAC => validate_flac_channels(channels),
+        _ => Ok(()),
+    }
+}
+
+fn validate_flac_channels(
+    channels: NonZero<usize>,
+) -> Result<(), AudioStreamError> {
+    if channels.get() <= 8 {
+        Ok(())
+    } else {
+        Err(AudioStreamError::Metadata(
+            AudioStreamMetadataError::InvalidChannels(ChannelError::TooMany),
+        ))
     }
 }

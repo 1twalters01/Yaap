@@ -671,6 +671,39 @@ RELATIONS:
   ROLE: Verifies
 
 [TEST]
+UID: APLLSR-018-T02
+TITLE: FLAC Sample Accurate Duration Calculation Priority
+TEST_TYPE: Functional
+TEST_LEVEL: Unit
+PRECONDITIONS: >>>
+A FLAC audio track with a defined total sample frame count, sample rate, time 
+base and tick count is available.
+<<<
+INPUTS: >>>
+FLAC audio track information containing 44100 sample frames, a sample rate 
+of 44100Hz, a time base of 1/1000 and a tick count of 5000.
+<<<
+PROCEDURE: >>>
+1. Supply the FLAC audio track information to the audio metadata extraction
+procedure 
+2. Execute the audio metadata extraction procedure.
+3. Examine the returned duration.
+<<<
+EXPECTED_RESULT: >>>
+The software calculates the duration using the total sample frame count and 
+sample rate and returns a duration of ten second.
+<<<
+STATEMENT: >>>
+The test shall verify that the software prioritises sample-based duration 
+calculation over time-base-based duration calculation when both methods are 
+available.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: APLLSR-018
+  ROLE: Verifies
+
+[TEST]
 UID: APLLSR-019-T01
 TITLE: FLAC Duration Calculation Using Time Base
 TEST_TYPE: Functional
@@ -698,7 +731,39 @@ FLAC audio stream using its time base and tick count.
 <<<
 RELATIONS:
 - TYPE: Parent
-  VALUE: APLLSR-018
+  VALUE: APLLSR-019
+  ROLE: Verifies
+
+[TEST]
+UID: APLLSR-020-T01
+TITLE: FLAC Unknown Duration Handling
+TEST_TYPE: Functional
+TEST_LEVEL: Unit
+PRECONDITIONS: >>>
+A FLAC audio track without sufficient information to calculate its duration is 
+available.
+<<<
+INPUTS: >>>
+FLAC audio track information without a total sample frame count, sample rate, 
+time base or tick count.
+<<<
+PROCEDURE: >>>
+1. Supply the FLAC audio track information to the audio metadata extraction 
+procedure.
+2. Execute the audio metadata extraction procedure.
+3. Examine the returned duration.
+<<<
+EXPECTED_RESULT: >>>
+The software indicates that the duration of the FLAC audio stream is unknown by 
+returning None.
+<<<
+STATEMENT: >>>
+The test shall verify that the software correctly indicates an unknown duration 
+when neither sample-based nor time-base-based duration calculation is possible.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: APLLSR-020
   ROLE: Verifies
 
 [[/SECTION]]
