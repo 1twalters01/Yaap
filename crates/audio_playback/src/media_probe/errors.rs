@@ -93,6 +93,9 @@ pub enum SampleRateError {
     #[error("Sample rate too low")]
     TooLow,
 
+    #[error("Unknown sample rate")]
+    Unknown,
+
     #[error("No sample rate found")]
     NotFound,
 }

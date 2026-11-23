@@ -8,7 +8,8 @@ use crate::media_probe::{
     audio_classification::AudioStreamClassification,
     errors::{
         AudioEncodingError, AudioFormatAndEncodingError, AudioFormatError,
-        AudioStreamError, AudioStreamMetadataError, ChannelError,
+        AudioStreamError, AudioStreamMetadataError, BitsPerSampleError,
+        ChannelError, SampleRateError,
     },
 };
 
@@ -103,6 +104,7 @@ pub fn validate_channels(
     }
 }
 
+/// @relation(APLLSR-013, scope=function)
 fn validate_flac_channels(
     channels: NonZero<usize>,
 ) -> Result<(), AudioStreamError> {
@@ -112,5 +114,74 @@ fn validate_flac_channels(
         Err(AudioStreamError::Metadata(
             AudioStreamMetadataError::InvalidChannels(ChannelError::TooMany),
         ))
+    }
+}
+
+pub fn validate_sample_rate(
+    classification: &AudioStreamClassification,
+    sample_rate: Option<u32>,
+) -> Result<(), AudioStreamError> {
+    let sample_rate = sample_rate.ok_or(AudioStreamError::Metadata(
+        AudioStreamMetadataError::InvalidSampleRate(SampleRateError::NotFound),
+    ))?;
+
+    match classification.encoding {
+        CODEC_ID_FLAC => validate_flac_sample_rate(sample_rate),
+        _ => Ok(()),
+    }
+}
+
+/// @relation(APLLSR-015, scope=function)
+fn validate_flac_sample_rate(
+    sample_rate: u32,
+) -> Result<(), AudioStreamError> {
+    match sample_rate {
+        1..=655_350 => Ok(()),
+        0 => Err(AudioStreamError::Metadata(
+            AudioStreamMetadataError::InvalidSampleRate(
+                SampleRateError::Unknown,
+            ),
+        )),
+        655_351.. => Err(AudioStreamError::Metadata(
+            AudioStreamMetadataError::InvalidSampleRate(
+                SampleRateError::TooHigh,
+            ),
+        )),
+    }
+}
+
+pub fn validate_bits_per_sample(
+    classification: &AudioStreamClassification,
+    bits_per_sample: Option<u32>,
+) -> Result<(), AudioStreamError> {
+    let bits_per_sample =
+        bits_per_sample.ok_or(AudioStreamError::Metadata(
+            AudioStreamMetadataError::InvalidBitsPerSample(
+                BitsPerSampleError::NotFound,
+            ),
+        ))?;
+
+    match classification.encoding {
+        CODEC_ID_FLAC => validate_flac_bits_per_sample(bits_per_sample),
+        _ => Ok(()),
+    }
+}
+
+/// @relation(APLLSR-017, scope=function)
+fn validate_flac_bits_per_sample(
+    bits_per_sample: u32,
+) -> Result<(), AudioStreamError> {
+    match bits_per_sample {
+        4..=32 => Ok(()),
+        33.. => Err(AudioStreamError::Metadata(
+            AudioStreamMetadataError::InvalidBitsPerSample(
+                BitsPerSampleError::TooHigh,
+            ),
+        )),
+        0..4 => Err(AudioStreamError::Metadata(
+            AudioStreamMetadataError::InvalidBitsPerSample(
+                BitsPerSampleError::TooLow,
+            ),
+        )),
     }
 }
