@@ -1,6 +1,12 @@
 use audio_playback::media_probe::{
-    audio_classification::AudioStreamClassification, audio_metadata::extract_audio_metadata, audio_validation::{validate_bits_per_sample, validate_channels, validate_sample_rate}, errors::{
-        AudioStreamError, AudioStreamMetadataError, BitsPerSampleError, ChannelError, SampleRateError,
+    audio_classification::AudioStreamClassification,
+    audio_metadata::extract_audio_metadata,
+    audio_validation::{
+        validate_bits_per_sample, validate_channels, validate_sample_rate,
+    },
+    errors::{
+        AudioStreamError, AudioStreamMetadataError, BitsPerSampleError,
+        ChannelError, SampleRateError,
     },
 };
 use symphonia::core::{
@@ -226,10 +232,7 @@ fn flac_sample_rate_is_valid() {
 
     let result = validate_sample_rate(&classification, metadata.sample_rate);
 
-    assert!(matches!(
-        result,
-        Ok(()),
-    ));
+    assert!(matches!(result, Ok(()),));
 }
 
 #[test]
@@ -239,18 +242,18 @@ fn flac_sample_rate_is_upper_boundary() {
         encoding: CODEC_ID_FLAC,
     };
 
-    let codec_params =
-        flac_codec_params(Some(Channels::Discrete(6)), Some(655_350), Some(16));
+    let codec_params = flac_codec_params(
+        Some(Channels::Discrete(6)),
+        Some(655_350),
+        Some(16),
+    );
     let track = stub_track(Some(codec_params));
 
     let metadata = extract_audio_metadata(&track).unwrap();
 
     let result = validate_sample_rate(&classification, metadata.sample_rate);
 
-    assert!(matches!(
-        result,
-        Ok(()),
-    ));
+    assert!(matches!(result, Ok(()),));
 }
 
 #[test]
@@ -268,10 +271,7 @@ fn flac_sample_rate_is_lower_boundary() {
 
     let result = validate_sample_rate(&classification, metadata.sample_rate);
 
-    assert!(matches!(
-        result,
-        Ok(()),
-    ));
+    assert!(matches!(result, Ok(()),));
 }
 
 #[test]
@@ -281,8 +281,11 @@ fn flac_sample_rate_is_too_high() {
         encoding: CODEC_ID_FLAC,
     };
 
-    let codec_params =
-        flac_codec_params(Some(Channels::Discrete(6)), Some(655_351), Some(16));
+    let codec_params = flac_codec_params(
+        Some(Channels::Discrete(6)),
+        Some(655_351),
+        Some(16),
+    );
     let track = stub_track(Some(codec_params));
 
     let metadata = extract_audio_metadata(&track).unwrap();
@@ -306,8 +309,11 @@ fn flac_sample_rate_is_way_too_high() {
         encoding: CODEC_ID_FLAC,
     };
 
-    let codec_params =
-        flac_codec_params(Some(Channels::Discrete(6)), Some(1_655_351), Some(16));
+    let codec_params = flac_codec_params(
+        Some(Channels::Discrete(6)),
+        Some(1_655_351),
+        Some(16),
+    );
     let track = stub_track(Some(codec_params));
 
     let metadata = extract_audio_metadata(&track).unwrap();
@@ -389,12 +395,10 @@ fn flac_bits_per_sample_is_valid() {
 
     let metadata = extract_audio_metadata(&track).unwrap();
 
-    let result = validate_bits_per_sample(&classification, metadata.bits_per_sample);
+    let result =
+        validate_bits_per_sample(&classification, metadata.bits_per_sample);
 
-    assert!(matches!(
-        result,
-        Ok(()),
-    ));
+    assert!(matches!(result, Ok(()),));
 }
 
 #[test]
@@ -410,12 +414,10 @@ fn flac_bits_per_sample_is_upper_boundary() {
 
     let metadata = extract_audio_metadata(&track).unwrap();
 
-    let result = validate_bits_per_sample(&classification, metadata.bits_per_sample);
+    let result =
+        validate_bits_per_sample(&classification, metadata.bits_per_sample);
 
-    assert!(matches!(
-        result,
-        Ok(()),
-    ));
+    assert!(matches!(result, Ok(()),));
 }
 
 #[test]
@@ -431,12 +433,10 @@ fn flac_bits_per_sample_is_lower_boundary() {
 
     let metadata = extract_audio_metadata(&track).unwrap();
 
-    let result = validate_bits_per_sample(&classification, metadata.bits_per_sample);
+    let result =
+        validate_bits_per_sample(&classification, metadata.bits_per_sample);
 
-    assert!(matches!(
-        result,
-        Ok(()),
-    ));
+    assert!(matches!(result, Ok(()),));
 }
 
 #[test]
@@ -452,7 +452,8 @@ fn flac_bits_per_sample_is_too_high() {
 
     let metadata = extract_audio_metadata(&track).unwrap();
 
-    let result = validate_bits_per_sample(&classification, metadata.bits_per_sample);
+    let result =
+        validate_bits_per_sample(&classification, metadata.bits_per_sample);
 
     assert!(matches!(
         result,
@@ -471,13 +472,17 @@ fn flac_bits_per_sample_is_way_too_high() {
         encoding: CODEC_ID_FLAC,
     };
 
-    let codec_params =
-        flac_codec_params(Some(Channels::Discrete(6)), Some(55_350), Some(3_035));
+    let codec_params = flac_codec_params(
+        Some(Channels::Discrete(6)),
+        Some(55_350),
+        Some(3_035),
+    );
     let track = stub_track(Some(codec_params));
 
     let metadata = extract_audio_metadata(&track).unwrap();
 
-    let result = validate_bits_per_sample(&classification, metadata.bits_per_sample);
+    let result =
+        validate_bits_per_sample(&classification, metadata.bits_per_sample);
 
     assert!(matches!(
         result,
@@ -502,7 +507,8 @@ fn flac_bits_per_sample_is_too_low() {
 
     let metadata = extract_audio_metadata(&track).unwrap();
 
-    let result = validate_bits_per_sample(&classification, metadata.bits_per_sample);
+    let result =
+        validate_bits_per_sample(&classification, metadata.bits_per_sample);
 
     assert!(matches!(
         result,
@@ -527,7 +533,8 @@ fn flac_bits_per_sample_is_zero() {
 
     let metadata = extract_audio_metadata(&track).unwrap();
 
-    let result = validate_bits_per_sample(&classification, metadata.bits_per_sample);
+    let result =
+        validate_bits_per_sample(&classification, metadata.bits_per_sample);
 
     assert!(matches!(
         result,
@@ -552,7 +559,8 @@ fn flac_bits_per_sample_is_none() {
 
     let metadata = extract_audio_metadata(&track).unwrap();
 
-    let result = validate_bits_per_sample(&classification, metadata.bits_per_sample);
+    let result =
+        validate_bits_per_sample(&classification, metadata.bits_per_sample);
 
     assert!(matches!(
         result,
