@@ -761,14 +761,14 @@ RELATIONS:
 
 [TEST]
 UID: APLLSR-013-T07
-TITLE: FLAC Channel Count Is Empty Error Generation
+TITLE: Missing FLAC Channel Count Error Generation
 TEST_TYPE: Robustness
 TEST_LEVEL: Unit
 PRECONDITIONS: >>>
-Audio codec parameters containing a FLAC channel count that is empty.
+Audio codec parameters containing no FLAC channel count.
 <<<
 INPUTS: >>>
-FLAC audio codec parameters containing a channel count that is empty.
+FLAC audio codec parameters containing no channel count.
 <<<
 PROCEDURE: >>>
 1. Supply the FLAC audio codec parameters to the channel count validation
@@ -932,7 +932,7 @@ The software generates an Invalid Sample Rate Error.
 <<<
 STATEMENT: >>>
 The test shall verify that the software generates an Invalid Sample Rate Error 
-when the channel count retrieved from a FLAC stream is one higher than the 
+when the sample rate retrieved from a FLAC stream is one higher than the 
 range permitted by the FLAC format.
 <<<
 RELATIONS:
@@ -963,7 +963,7 @@ The software generates an Invalid Sample Rate Error.
 <<<
 STATEMENT: >>>
 The test shall verify that the software generates an Invalid Sample Rate
-Error when the channel count retrieved from a FLAC stream is higher than the
+Error when the sample rate retrieved from a FLAC stream is higher than the
 range permitted by the FLAC format.
 <<<
 RELATIONS:
@@ -994,7 +994,7 @@ The software generates an Invalid Sample Rate Error.
 <<<
 STATEMENT: >>>
 The test shall verify that the software generates an Invalid Sample Rate Error 
-when the channel count retrieved from a FLAC stream is lower than the range 
+when the sample rate retrieved from a FLAC stream is lower than the range 
 permitted by the FLAC format.
 <<<
 RELATIONS:
@@ -1004,14 +1004,14 @@ RELATIONS:
 
 [TEST]
 UID: APLLSR-015-T07
-TITLE: FLAC Sample Rate Is Empty Error Generation
+TITLE: Missing FLAC Sample Rate Error Generation
 TEST_TYPE: Robustness
 TEST_LEVEL: Unit
 PRECONDITIONS: >>>
-Audio codec parameters containing a FLAC sample rate that is empty.
+Audio codec parameters containing no FLAC sample rate.
 <<<
 INPUTS: >>>
-FLAC audio codec parameters containing a sample rate that is empty.
+FLAC audio codec parameters containing no sample rate.
 <<<
 PROCEDURE: >>>
 1. Supply the FLAC audio codec parameters to the sample rate validation
@@ -1024,7 +1024,7 @@ The software generates an Invalid Sampe Rate Error.
 <<<
 STATEMENT: >>>
 The test shall verify that the software generates an Invalid Sample Rate Error 
-when the channel count retrieved from a FLAC stream is empty.
+when the sample rate retrieved from a FLAC stream is empty.
 <<<
 RELATIONS:
 - TYPE: Parent
@@ -1060,6 +1060,247 @@ from FLAC audio stream metadata.
 RELATIONS:
 - TYPE: Parent
   VALUE: APLLSR-016
+  ROLE: Verifies
+
+[TEST]
+UID: APLLSR-017-T01
+TITLE: Valid FLAC Bits Per Sample
+TEST_TYPE: Robustness
+TEST_LEVEL: Unit
+PRECONDITIONS: >>>
+Audio codec parameters containing a FLAC bits per sample within the permitted
+range are available.
+<<<
+INPUTS: >>>
+FLAC audio codec parameters containing a valid bits per sample.
+<<<
+PROCEDURE: >>>
+1. Supply the FLAC audio codec parameters to the bits per sample validation
+   procedure.
+2. Execute the bits per sample validation procedure.
+3. Examine the returned result.
+<<<
+EXPECTED_RESULT: >>>
+The software returns a success.
+<<<
+STATEMENT: >>>
+The test shall verify that the software generates a success when the bits per 
+sample retrieved from a FLAC stream is within the range permitted by the FLAC 
+format.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: APLLSR-017
+  ROLE: Verifies
+
+[TEST]
+UID: APLLSR-017-T02
+TITLE: Upper Boundary FLAC Bits Per Sample
+TEST_TYPE: Robustness
+TEST_LEVEL: Unit
+PRECONDITIONS: >>>
+Audio codec parameters containing a FLAC bits per sample of 32 are available.
+<<<
+INPUTS: >>>
+FLAC audio codec parameters containing a bits per sample of 32.
+<<<
+PROCEDURE: >>>
+1. Supply the FLAC audio codec parameters to the bits per sample validation
+   procedure.
+2. Execute the bits per sample validation procedure.
+3. Examine the returned result.
+<<<
+EXPECTED_RESULT: >>>
+The software returns a success.
+<<<
+STATEMENT: >>>
+The test shall verify that the software generates a success when the bits per 
+sample retrieved from a FLAC stream is the upper boundary of the range 
+permitted by the FLAC format.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: APLLSR-017
+  ROLE: Verifies
+
+[TEST]
+UID: APLLSR-017-T03
+TITLE: Lower Boundary FLAC Bits Per Sample
+TEST_TYPE: Robustness
+TEST_LEVEL: Unit
+PRECONDITIONS: >>>
+Audio codec parameters containing a FLAC bits per sample of 4 are available.
+<<<
+INPUTS: >>>
+FLAC audio codec parameters containing a sample rate of 4.
+<<<
+PROCEDURE: >>>
+1. Supply the FLAC audio codec parameters to the bits per sample validation
+   procedure.
+2. Execute the bits per sample validation procedure.
+3. Examine the returned result.
+<<<
+EXPECTED_RESULT: >>>
+The software returns a success.
+<<<
+STATEMENT: >>>
+The test shall verify that the software generates a success when the bits per 
+sample retrieved from a FLAC stream is the lower boundary of the range permitted 
+by the FLAC format.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: APLLSR-017
+  ROLE: Verifies
+
+[TEST]
+UID: APLLSR-017-T04
+TITLE: FLAC Bits Per Sample One Above Upper Boundary Error Generation
+TEST_TYPE: Robustness
+TEST_LEVEL: Unit
+PRECONDITIONS: >>>
+Audio codec parameters containing a FLAC bits per sample of 33 are available.
+<<<
+INPUTS: >>>
+FLAC audio codec parameters containing a bits per sample of 33.
+<<<
+PROCEDURE: >>>
+1. Supply the FLAC audio codec parameters to the bits per sample validation
+   procedure.
+2. Execute the bits per sample validation procedure.
+3. Examine the returned error.
+<<<
+EXPECTED_RESULT: >>>
+The software generates an Invalid Bits Per Sample Error.
+<<<
+STATEMENT: >>>
+The test shall verify that the software generates an Invalid Bits Per Sample 
+Error when the channel count retrieved from a FLAC stream is one higher than the 
+range permitted by the FLAC format.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: APLLSR-017
+  ROLE: Verifies
+
+[TEST]
+UID: APLLSR-017-T05
+TITLE: FLAC Bits Per Sample Too High Error Generation
+TEST_TYPE: Robustness
+TEST_LEVEL: Unit
+PRECONDITIONS: >>>
+Audio codec parameters containing a FLAC bits per sample higher than the 
+permitted range are available.
+<<<
+INPUTS: >>>
+FLAC audio codec parameters containing a bits per sample that is too high.
+<<<
+PROCEDURE: >>>
+1. Supply the FLAC audio codec parameters to the bits per sample validation
+   procedure.
+2. Execute the bits per sample validation procedure.
+3. Examine the returned error.
+<<<
+EXPECTED_RESULT: >>>
+The software generates an Invalid Bits Per Sample Error.
+<<<
+STATEMENT: >>>
+The test shall verify that the software generates an Invalid Bits Per Sample
+Error when the bits per sample retrieved from a FLAC stream is higher than the
+range permitted by the FLAC format.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: APLLSR-017
+  ROLE: Verifies
+
+[TEST]
+UID: APLLSR-017-T06
+TITLE: FLAC Bits Per Sample Too Low Error Generation
+TEST_TYPE: Robustness
+TEST_LEVEL: Unit
+PRECONDITIONS: >>>
+Audio codec parameters containing a FLAC bits per sample lower than the permitted
+range are available.
+<<<
+INPUTS: >>>
+FLAC audio codec parameters containing a bits per sample that is too low.
+<<<
+PROCEDURE: >>>
+1. Supply the FLAC audio codec parameters to the bits per sample validation
+   procedure.
+2. Execute the bits per sample validation procedure.
+3. Examine the returned error.
+<<<
+EXPECTED_RESULT: >>>
+The software generates an Invalid Bits Per Sample Error.
+<<<
+STATEMENT: >>>
+The test shall verify that the software generates an Invalid Bits Per Sample 
+Error when the bits per sample retrieved from a FLAC stream is lower than the 
+range permitted by the FLAC format.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: APLLSR-017
+  ROLE: Verifies
+
+[TEST]
+UID: APLLSR-017-T07
+TITLE: FLAC Bits Per Sample Is Zero Error Generation
+TEST_TYPE: Robustness
+TEST_LEVEL: Unit
+PRECONDITIONS: >>>
+Audio codec parameters containing a FLAC bits per sample that is zero.
+<<<
+INPUTS: >>>
+FLAC audio codec parameters containing a bites per sample that is zero.
+<<<
+PROCEDURE: >>>
+1. Supply the FLAC audio codec parameters to the bits per sample validation
+   procedure.
+2. Execute the bits per sample validation procedure.
+3. Examine the returned error.
+<<<
+EXPECTED_RESULT: >>>
+The software generates an Invalid Bits Per Sample Error.
+<<<
+STATEMENT: >>>
+The test shall verify that the software generates an Invalid Sample Rate Error 
+when the bits per sample retrieved from a FLAC stream is zero.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: APLLSR-015
+  ROLE: Verifies
+
+[TEST]
+UID: APLLSR-017-T08
+TITLE: FLAC Bits Per Sample Is Empty Error Generation
+TEST_TYPE: Robustness
+TEST_LEVEL: Unit
+PRECONDITIONS: >>>
+Audio codec parameters containing a FLAC bits per sample that is empty.
+<<<
+INPUTS: >>>
+FLAC audio codec parameters containing a bites per sample that is empty.
+<<<
+PROCEDURE: >>>
+1. Supply the FLAC audio codec parameters to the bits per sample validation
+   procedure.
+2. Execute the bits per sample validation procedure.
+3. Examine the returned error.
+<<<
+EXPECTED_RESULT: >>>
+The software generates an Invalid Bits Per Sample Error.
+<<<
+STATEMENT: >>>
+The test shall verify that the software generates an Invalid Sample Rate Error 
+when the bits per sample retrieved from a FLAC stream is empty.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: APLLSR-015
   ROLE: Verifies
 
 [TEST]

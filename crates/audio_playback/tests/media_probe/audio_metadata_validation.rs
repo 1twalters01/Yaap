@@ -288,6 +288,7 @@ fn validate_flac_bits_per_sample(
     validate_bits_per_sample(&classification, metadata.bits_per_sample)
 }
 
+/// @relation(APLLSR-017-T01, scope=function)
 #[test]
 fn flac_bits_per_sample_is_valid() {
     let valid_bits_per_sample = Some(16);
@@ -296,6 +297,7 @@ fn flac_bits_per_sample_is_valid() {
     assert!(matches!(result, Ok(()),));
 }
 
+/// @relation(APLLSR-017-T02, scope=function)
 #[test]
 fn flac_bits_per_sample_is_upper_boundary() {
     let upper_boundary_bits_per_sample = Some(32);
@@ -304,14 +306,16 @@ fn flac_bits_per_sample_is_upper_boundary() {
     assert!(matches!(result, Ok(()),));
 }
 
+/// @relation(APLLSR-017-T03, scope=function)
 #[test]
 fn flac_bits_per_sample_is_lower_boundary() {
-    let lower_boundary_bits_per_sample = Some(32);
+    let lower_boundary_bits_per_sample = Some(4);
     let result = validate_flac_bits_per_sample(lower_boundary_bits_per_sample);
 
     assert!(matches!(result, Ok(()),));
 }
 
+/// @relation(APLLSR-017-T04, scope=function)
 #[test]
 fn flac_bits_per_sample_is_too_high() {
     let too_high_bits_per_sample = Some(33);
@@ -327,6 +331,7 @@ fn flac_bits_per_sample_is_too_high() {
     ));
 }
 
+/// @relation(APLLSR-017-T05, scope=function)
 #[test]
 fn flac_bits_per_sample_is_way_too_high() {
     let too_high_bits_per_sample = Some(3_035);
@@ -342,6 +347,7 @@ fn flac_bits_per_sample_is_way_too_high() {
     ));
 }
 
+/// @relation(APLLSR-017-T06, scope=function)
 #[test]
 fn flac_bits_per_sample_is_too_low() {
     let too_low_bits_per_sample = Some(3);
@@ -357,6 +363,7 @@ fn flac_bits_per_sample_is_too_low() {
     ));
 }
 
+/// @relation(APLLSR-017-T07, scope=function)
 #[test]
 fn flac_bits_per_sample_is_zero() {
     let zero_bits_per_sample = Some(3);
@@ -372,6 +379,7 @@ fn flac_bits_per_sample_is_zero() {
     ));
 }
 
+/// @relation(APLLSR-017-T08, scope=function)
 #[test]
 fn flac_bits_per_sample_is_none() {
     let no_bits_per_sample = None;
