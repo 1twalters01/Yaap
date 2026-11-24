@@ -116,7 +116,7 @@ fn flac_channel_count_is_too_high() {
     ));
 }
 
-/// @relation(APLLSR-013-T04, scope=function)
+/// @relation(APLLSR-013-T05, scope=function)
 #[test]
 fn flac_channel_count_is_way_too_high() {
     let too_many_channels = Some(Channels::Discrete(9_200));
@@ -130,7 +130,7 @@ fn flac_channel_count_is_way_too_high() {
     ));
 }
 
-/// @relation(APLLSR-013-T05, scope=function)
+/// @relation(APLLSR-013-T06, scope=function)
 #[test]
 fn flac_channel_count_is_too_low() {
     let too_few_channels = Some(Channels::Discrete(0));
@@ -144,7 +144,7 @@ fn flac_channel_count_is_too_low() {
     ));
 }
 
-/// @relation(APLLSR-013-T06, scope=function)
+/// @relation(APLLSR-013-T07, scope=function)
 #[test]
 fn flac_channel_count_is_none() {
     let no_channels = None;
@@ -159,6 +159,22 @@ fn flac_channel_count_is_none() {
 }
 
 // Sample Rate
+fn validate_flac_sample_rate(
+    sample_rate: Option<u32>,
+) -> Result<(), AudioStreamError> {
+    let classification = AudioStreamClassification {
+        format: "flac".to_owned(),
+        encoding: CODEC_ID_FLAC,
+    };
+
+    let codec_params =
+        flac_codec_params(Some(Channels::Discrete(6)), sample_rate, Some(16));
+    let track = stub_track(Some(codec_params));
+
+    let metadata = extract_audio_metadata(&track).unwrap();
+
+    validate_channels(&classification, metadata.channels)
+}
 
 #[test]
 fn flac_sample_rate_is_valid() {
@@ -324,6 +340,25 @@ fn flac_sample_rate_is_none() {
 }
 
 // Bits per sample
+fn validate_flac_bits_per_sample(
+    bits_per_sample: Option<u32>,
+) -> Result<(), AudioStreamError> {
+    let classification = AudioStreamClassification {
+        format: "flac".to_owned(),
+        encoding: CODEC_ID_FLAC,
+    };
+
+    let codec_params = flac_codec_params(
+        Some(Channels::Discrete(6)),
+        Some(44_100),
+        bits_per_sample,
+    );
+    let track = stub_track(Some(codec_params));
+
+    let metadata = extract_audio_metadata(&track).unwrap();
+
+    validate_channels(&classification, metadata.channels)
+}
 
 #[test]
 fn flac_bits_per_sample_is_valid() {

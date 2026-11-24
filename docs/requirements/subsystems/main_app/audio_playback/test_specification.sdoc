@@ -669,6 +669,36 @@ RELATIONS:
 
 [TEST]
 UID: APLLSR-013-T04
+TITLE: FLAC Channel Count One Above Upper Boundary Error Generation
+TEST_TYPE: Robustness
+TEST_LEVEL: Unit
+PRECONDITIONS: >>>
+Audio codec parameters containing a FLAC channel count of 9 are available.
+<<<
+INPUTS: >>>
+FLAC audio codec parameters containing a channel count of 9.
+<<<
+PROCEDURE: >>>
+1. Supply the FLAC audio codec parameters to the channel count validation
+   procedure.
+2. Execute the channel count validation procedure.
+3. Examine the returned error.
+<<<
+EXPECTED_RESULT: >>>
+The software generates an Invalid Channel Count Error.
+<<<
+STATEMENT: >>>
+The test shall verify that the software generates an Invalid Channel Count
+Error when the channel count retrieved from a FLAC stream is one higher than 
+the range permitted by the FLAC format.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: APLLSR-013
+  ROLE: Verifies
+
+[TEST]
+UID: APLLSR-013-T05
 TITLE: FLAC Channel Count Too High Error Generation
 TEST_TYPE: Robustness
 TEST_LEVEL: Unit
@@ -699,7 +729,7 @@ RELATIONS:
   ROLE: Verifies
 
 [TEST]
-UID: APLLSR-013-T05
+UID: APLLSR-013-T06
 TITLE: FLAC Channel Count Too Low Error Generation
 TEST_TYPE: Robustness
 TEST_LEVEL: Unit
@@ -730,7 +760,7 @@ RELATIONS:
   ROLE: Verifies
 
 [TEST]
-UID: APLLSR-013-T06
+UID: APLLSR-013-T07
 TITLE: FLAC Channel Count Is Empty Error Generation
 TEST_TYPE: Robustness
 TEST_LEVEL: Unit
