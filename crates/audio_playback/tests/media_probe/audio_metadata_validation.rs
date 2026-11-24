@@ -59,130 +59,82 @@ fn flac_codec_params(
 }
 
 // Channel Count
+fn validate_flac_channel_count(
+    channels: Option<Channels>,
+) -> Result<(), AudioStreamError> {
+    let classification = AudioStreamClassification {
+        format: "flac".to_owned(),
+        encoding: CODEC_ID_FLAC,
+    };
+
+    let codec_params = flac_codec_params(channels, Some(44_100), Some(16));
+    let track = stub_track(Some(codec_params));
+
+    let metadata = extract_audio_metadata(&track).unwrap();
+
+    validate_channels(&classification, metadata.channels)
+}
 
 /// @relation(APLLSR-013-T01, scope=function)
 #[test]
 fn flac_channel_count_is_valid() {
-    let classification = AudioStreamClassification {
-        format: "flac".to_owned(),
-        encoding: CODEC_ID_FLAC,
-    };
-
-    let codec_params =
-        flac_codec_params(Some(Channels::Discrete(6)), Some(44_100), Some(16));
-    let track = stub_track(Some(codec_params));
-
-    let metadata = extract_audio_metadata(&track).unwrap();
-
-    let result = validate_channels(&classification, metadata.channels);
+    let valid_channels = Some(Channels::Discrete(6));
+    let result = validate_flac_channel_count(valid_channels);
 
     assert!(matches!(result, Ok(()),));
 }
 
-/// @relation(APLLSR-013-T01, scope=function)
+/// @relation(APLLSR-013-T02, scope=function)
 #[test]
 fn flac_channel_count_is_upper_boundary() {
-    let classification = AudioStreamClassification {
-        format: "flac".to_owned(),
-        encoding: CODEC_ID_FLAC,
-    };
-
-    let codec_params =
-        flac_codec_params(Some(Channels::Discrete(8)), Some(44_100), Some(16));
-    let track = stub_track(Some(codec_params));
-
-    let metadata = extract_audio_metadata(&track).unwrap();
-
-    let result = validate_channels(&classification, metadata.channels);
+    let upper_boundary_channels = Some(Channels::Discrete(8));
+    let result = validate_flac_channel_count(upper_boundary_channels);
 
     assert!(matches!(result, Ok(()),));
-}
-
-/// @relation(APLLSR-013-T01, scope=function)
-#[test]
-fn flac_channel_count_is_lower_boundary() {
-    let classification = AudioStreamClassification {
-        format: "flac".to_owned(),
-        encoding: CODEC_ID_FLAC,
-    };
-
-    let codec_params =
-        flac_codec_params(Some(Channels::Discrete(1)), Some(44_100), Some(16));
-    let track = stub_track(Some(codec_params));
-
-    let metadata = extract_audio_metadata(&track).unwrap();
-
-    let result = validate_channels(&classification, metadata.channels);
-
-    assert!(matches!(result, Ok(()),));
-}
-
-/// @relation(APLLSR-013-T02, scope=function)
-#[test]
-fn flac_channel_count_is_too_high() {
-    let classification = AudioStreamClassification {
-        format: "flac".to_owned(),
-        encoding: CODEC_ID_FLAC,
-    };
-
-    let codec_params =
-        flac_codec_params(Some(Channels::Discrete(9)), Some(44_100), Some(16));
-    let track = stub_track(Some(codec_params));
-
-    let metadata = extract_audio_metadata(&track).unwrap();
-
-    let result = validate_channels(&classification, metadata.channels);
-
-    assert!(matches!(
-        result,
-        Err(AudioStreamError::Metadata(
-            AudioStreamMetadataError::InvalidChannels(ChannelError::TooMany)
-        )),
-    ));
-}
-
-/// @relation(APLLSR-013-T02, scope=function)
-#[test]
-fn flac_channel_count_is_way_too_high() {
-    let classification = AudioStreamClassification {
-        format: "flac".to_owned(),
-        encoding: CODEC_ID_FLAC,
-    };
-
-    let codec_params = flac_codec_params(
-        Some(Channels::Discrete(9_200)),
-        Some(44_100),
-        Some(16),
-    );
-    let track = stub_track(Some(codec_params));
-
-    let metadata = extract_audio_metadata(&track).unwrap();
-
-    let result = validate_channels(&classification, metadata.channels);
-
-    assert!(matches!(
-        result,
-        Err(AudioStreamError::Metadata(
-            AudioStreamMetadataError::InvalidChannels(ChannelError::TooMany)
-        )),
-    ));
 }
 
 /// @relation(APLLSR-013-T03, scope=function)
 #[test]
+fn flac_channel_count_is_lower_boundary() {
+    let lower_boundary_channels = Some(Channels::Discrete(1));
+    let result = validate_flac_channel_count(lower_boundary_channels);
+
+    assert!(matches!(result, Ok(()),));
+}
+
+/// @relation(APLLSR-013-T04, scope=function)
+#[test]
+fn flac_channel_count_is_too_high() {
+    let too_many_channels = Some(Channels::Discrete(9));
+    let result = validate_flac_channel_count(too_many_channels);
+
+    assert!(matches!(
+        result,
+        Err(AudioStreamError::Metadata(
+            AudioStreamMetadataError::InvalidChannels(ChannelError::TooMany)
+        )),
+    ));
+}
+
+/// @relation(APLLSR-013-T04, scope=function)
+#[test]
+fn flac_channel_count_is_way_too_high() {
+    let too_many_channels = Some(Channels::Discrete(9_200));
+    let result = validate_flac_channel_count(too_many_channels);
+
+    assert!(matches!(
+        result,
+        Err(AudioStreamError::Metadata(
+            AudioStreamMetadataError::InvalidChannels(ChannelError::TooMany)
+        )),
+    ));
+}
+
+/// @relation(APLLSR-013-T05, scope=function)
+#[test]
 fn flac_channel_count_is_too_low() {
-    let classification = AudioStreamClassification {
-        format: "flac".to_owned(),
-        encoding: CODEC_ID_FLAC,
-    };
-
-    let codec_params =
-        flac_codec_params(Some(Channels::Discrete(0)), Some(44_100), Some(16));
-    let track = stub_track(Some(codec_params));
-
-    let metadata = extract_audio_metadata(&track).unwrap();
-
-    let result = validate_channels(&classification, metadata.channels);
+    let too_few_channels = Some(Channels::Discrete(0));
+    let result = validate_flac_channel_count(too_few_channels);
 
     assert!(matches!(
         result,
@@ -192,20 +144,11 @@ fn flac_channel_count_is_too_low() {
     ));
 }
 
-/// @relation(APLLSR-013-T04, scope=function)
+/// @relation(APLLSR-013-T06, scope=function)
 #[test]
 fn flac_channel_count_is_none() {
-    let classification = AudioStreamClassification {
-        format: "flac".to_owned(),
-        encoding: CODEC_ID_FLAC,
-    };
-
-    let codec_params = flac_codec_params(None, Some(44_100), Some(16));
-    let track = stub_track(Some(codec_params));
-
-    let metadata = extract_audio_metadata(&track).unwrap();
-
-    let result = validate_channels(&classification, metadata.channels);
+    let no_channels = None;
+    let result = validate_flac_channel_count(no_channels);
 
     assert!(matches!(
         result,
