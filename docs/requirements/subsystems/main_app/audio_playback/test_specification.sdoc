@@ -820,6 +820,218 @@ RELATIONS:
   ROLE: Verifies
 
 [TEST]
+UID: APLLSR-015-T01
+TITLE: Valid FLAC Sample Rate
+TEST_TYPE: Robustness
+TEST_LEVEL: Unit
+PRECONDITIONS: >>>
+Audio codec parameters containing a FLAC sample rate within the permitted
+range are available.
+<<<
+INPUTS: >>>
+FLAC audio codec parameters containing a valid sample rate.
+<<<
+PROCEDURE: >>>
+1. Supply the FLAC audio codec parameters to the sample rate validation
+   procedure.
+2. Execute the sample rate validation procedure.
+3. Examine the returned result.
+<<<
+EXPECTED_RESULT: >>>
+The software returns a success.
+<<<
+STATEMENT: >>>
+The test shall verify that the software generates a success when the sample 
+rate retrieved from a FLAC stream is within the range permitted by the FLAC 
+format.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: APLLSR-015
+  ROLE: Verifies
+
+[TEST]
+UID: APLLSR-015-T02
+TITLE: Upper Boundary FLAC Sample Rate
+TEST_TYPE: Robustness
+TEST_LEVEL: Unit
+PRECONDITIONS: >>>
+Audio codec parameters containing a FLAC sample rate of 655,350 are available.
+<<<
+INPUTS: >>>
+FLAC audio codec parameters containing a sample rate of 655,350.
+<<<
+PROCEDURE: >>>
+1. Supply the FLAC audio codec parameters to the sample rate validation
+   procedure.
+2. Execute the sample rate validation procedure.
+3. Examine the returned result.
+<<<
+EXPECTED_RESULT: >>>
+The software returns a success.
+<<<
+STATEMENT: >>>
+The test shall verify that the software generates a success when the sample 
+rate retrieved from a FLAC stream is the upper boundary of the range permitted 
+by the FLAC format.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: APLLSR-015
+  ROLE: Verifies
+
+[TEST]
+UID: APLLSR-015-T03
+TITLE: Lower Boundary FLAC Sample Rate
+TEST_TYPE: Robustness
+TEST_LEVEL: Unit
+PRECONDITIONS: >>>
+Audio codec parameters containing a FLAC sample rate of 1 are available.
+<<<
+INPUTS: >>>
+FLAC audio codec parameters containing a sample rate of 1.
+<<<
+PROCEDURE: >>>
+1. Supply the FLAC audio codec parameters to the sample rate validation
+   procedure.
+2. Execute the sample rate validation procedure.
+3. Examine the returned result.
+<<<
+EXPECTED_RESULT: >>>
+The software returns a success.
+<<<
+STATEMENT: >>>
+The test shall verify that the software generates a success when the sample 
+rate retrieved from a FLAC stream is the lower boundary of the range permitted 
+by the FLAC format.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: APLLSR-015
+  ROLE: Verifies
+
+[TEST]
+UID: APLLSR-015-T04
+TITLE: FLAC Sample Rate One Above Upper Boundary Error Generation
+TEST_TYPE: Robustness
+TEST_LEVEL: Unit
+PRECONDITIONS: >>>
+Audio codec parameters containing a FLAC sample rate of 655,351 are available.
+<<<
+INPUTS: >>>
+FLAC audio codec parameters containing a sample rate of 655,351.
+<<<
+PROCEDURE: >>>
+1. Supply the FLAC audio codec parameters to the sample rate validation
+   procedure.
+2. Execute the sample rate validation procedure.
+3. Examine the returned error.
+<<<
+EXPECTED_RESULT: >>>
+The software generates an Invalid Sample Rate Error.
+<<<
+STATEMENT: >>>
+The test shall verify that the software generates an Invalid Sample Rate Error 
+when the channel count retrieved from a FLAC stream is one higher than the 
+range permitted by the FLAC format.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: APLLSR-015
+  ROLE: Verifies
+
+[TEST]
+UID: APLLSR-015-T05
+TITLE: FLAC Sample Rate Too High Error Generation
+TEST_TYPE: Robustness
+TEST_LEVEL: Unit
+PRECONDITIONS: >>>
+Audio codec parameters containing a FLAC sample rate higher than the permitted
+range are available.
+<<<
+INPUTS: >>>
+FLAC audio codec parameters containing a sample rate that is too high.
+<<<
+PROCEDURE: >>>
+1. Supply the FLAC audio codec parameters to the sample rate validation
+   procedure.
+2. Execute the sample rate validation procedure.
+3. Examine the returned error.
+<<<
+EXPECTED_RESULT: >>>
+The software generates an Invalid Sample Rate Error.
+<<<
+STATEMENT: >>>
+The test shall verify that the software generates an Invalid Sample Rate
+Error when the channel count retrieved from a FLAC stream is higher than the
+range permitted by the FLAC format.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: APLLSR-015
+  ROLE: Verifies
+
+[TEST]
+UID: APLLSR-015-T06
+TITLE: FLAC Sample Rate Too Low Error Generation
+TEST_TYPE: Robustness
+TEST_LEVEL: Unit
+PRECONDITIONS: >>>
+Audio codec parameters containing a FLAC sample rate lower than the permitted
+range are available.
+<<<
+INPUTS: >>>
+FLAC audio codec parameters containing a sample rate that is too low.
+<<<
+PROCEDURE: >>>
+1. Supply the FLAC audio codec parameters to the sample rate validation
+   procedure.
+2. Execute the sample rate validation procedure.
+3. Examine the returned error.
+<<<
+EXPECTED_RESULT: >>>
+The software generates an Invalid Sample Rate Error.
+<<<
+STATEMENT: >>>
+The test shall verify that the software generates an Invalid Sample Rate Error 
+when the channel count retrieved from a FLAC stream is lower than the range 
+permitted by the FLAC format.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: APLLSR-015
+  ROLE: Verifies
+
+[TEST]
+UID: APLLSR-015-T07
+TITLE: FLAC Sample Rate Is Empty Error Generation
+TEST_TYPE: Robustness
+TEST_LEVEL: Unit
+PRECONDITIONS: >>>
+Audio codec parameters containing a FLAC sample rate that is empty.
+<<<
+INPUTS: >>>
+FLAC audio codec parameters containing a sample rate that is empty.
+<<<
+PROCEDURE: >>>
+1. Supply the FLAC audio codec parameters to the sample rate validation
+   procedure.
+2. Execute the sample rate validation procedure.
+3. Examine the returned error.
+<<<
+EXPECTED_RESULT: >>>
+The software generates an Invalid Sampe Rate Error.
+<<<
+STATEMENT: >>>
+The test shall verify that the software generates an Invalid Sample Rate Error 
+when the channel count retrieved from a FLAC stream is empty.
+<<<
+RELATIONS:
+- TYPE: Parent
+  VALUE: APLLSR-015
+  ROLE: Verifies
+
+[TEST]
 UID: APLLSR-016-T01
 TITLE: FLAC Bits per Sample Extraction
 TEST_TYPE: Functional

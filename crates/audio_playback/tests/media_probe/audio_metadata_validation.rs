@@ -176,6 +176,7 @@ fn validate_flac_sample_rate(
     validate_sample_rate(&classification, metadata.sample_rate)
 }
 
+/// @relation(APLLSR-015-T01, scope=function)
 #[test]
 fn flac_sample_rate_is_valid() {
     let valid_sample_rate = Some(55_350);
@@ -184,6 +185,7 @@ fn flac_sample_rate_is_valid() {
     assert!(matches!(result, Ok(()),));
 }
 
+/// @relation(APLLSR-015-T02, scope=function)
 #[test]
 fn flac_sample_rate_is_upper_boundary() {
     let upper_boundary_sample_rate = Some(655_350);
@@ -192,6 +194,7 @@ fn flac_sample_rate_is_upper_boundary() {
     assert!(matches!(result, Ok(()),));
 }
 
+/// @relation(APLLSR-015-T03, scope=function)
 #[test]
 fn flac_sample_rate_is_lower_boundary() {
     let lower_boundary_sample_rate = Some(1);
@@ -200,6 +203,7 @@ fn flac_sample_rate_is_lower_boundary() {
     assert!(matches!(result, Ok(()),));
 }
 
+/// @relation(APLLSR-015-T04, scope=function)
 #[test]
 fn flac_sample_rate_is_too_high() {
     let too_high_sample_rate = Some(655_351);
@@ -215,6 +219,7 @@ fn flac_sample_rate_is_too_high() {
     ));
 }
 
+/// @relation(APLLSR-015-T05, scope=function)
 #[test]
 fn flac_sample_rate_is_way_too_high() {
     let too_high_sample_rate = Some(1_655_351);
@@ -230,6 +235,7 @@ fn flac_sample_rate_is_way_too_high() {
     ));
 }
 
+/// @relation(APLLSR-015-T06, scope=function)
 #[test]
 fn flac_sample_rate_is_too_low() {
     let too_low_sample_rate = Some(0);
@@ -245,6 +251,7 @@ fn flac_sample_rate_is_too_low() {
     ));
 }
 
+/// @relation(APLLSR-015-T07, scope=function)
 #[test]
 fn flac_sample_rate_is_none() {
     let no_sample_rate = None;
