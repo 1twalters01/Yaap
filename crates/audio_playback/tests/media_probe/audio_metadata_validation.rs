@@ -173,83 +173,37 @@ fn validate_flac_sample_rate(
 
     let metadata = extract_audio_metadata(&track).unwrap();
 
-    validate_channels(&classification, metadata.channels)
+    validate_sample_rate(&classification, metadata.sample_rate)
 }
 
 #[test]
 fn flac_sample_rate_is_valid() {
-    let classification = AudioStreamClassification {
-        format: "flac".to_owned(),
-        encoding: CODEC_ID_FLAC,
-    };
-
-    let codec_params =
-        flac_codec_params(Some(Channels::Discrete(6)), Some(55_350), Some(16));
-    let track = stub_track(Some(codec_params));
-
-    let metadata = extract_audio_metadata(&track).unwrap();
-
-    let result = validate_sample_rate(&classification, metadata.sample_rate);
+    let valid_sample_rate = Some(55_350);
+    let result = validate_flac_sample_rate(valid_sample_rate);
 
     assert!(matches!(result, Ok(()),));
 }
 
 #[test]
 fn flac_sample_rate_is_upper_boundary() {
-    let classification = AudioStreamClassification {
-        format: "flac".to_owned(),
-        encoding: CODEC_ID_FLAC,
-    };
-
-    let codec_params = flac_codec_params(
-        Some(Channels::Discrete(6)),
-        Some(655_350),
-        Some(16),
-    );
-    let track = stub_track(Some(codec_params));
-
-    let metadata = extract_audio_metadata(&track).unwrap();
-
-    let result = validate_sample_rate(&classification, metadata.sample_rate);
+    let upper_boundary_sample_rate = Some(655_350);
+    let result = validate_flac_sample_rate(upper_boundary_sample_rate);
 
     assert!(matches!(result, Ok(()),));
 }
 
 #[test]
 fn flac_sample_rate_is_lower_boundary() {
-    let classification = AudioStreamClassification {
-        format: "flac".to_owned(),
-        encoding: CODEC_ID_FLAC,
-    };
-
-    let codec_params =
-        flac_codec_params(Some(Channels::Discrete(6)), Some(1), Some(16));
-    let track = stub_track(Some(codec_params));
-
-    let metadata = extract_audio_metadata(&track).unwrap();
-
-    let result = validate_sample_rate(&classification, metadata.sample_rate);
+    let lower_boundary_sample_rate = Some(1);
+    let result = validate_flac_sample_rate(lower_boundary_sample_rate);
 
     assert!(matches!(result, Ok(()),));
 }
 
 #[test]
 fn flac_sample_rate_is_too_high() {
-    let classification = AudioStreamClassification {
-        format: "flac".to_owned(),
-        encoding: CODEC_ID_FLAC,
-    };
-
-    let codec_params = flac_codec_params(
-        Some(Channels::Discrete(6)),
-        Some(655_351),
-        Some(16),
-    );
-    let track = stub_track(Some(codec_params));
-
-    let metadata = extract_audio_metadata(&track).unwrap();
-
-    let result = validate_sample_rate(&classification, metadata.sample_rate);
+    let too_high_sample_rate = Some(655_351);
+    let result = validate_flac_sample_rate(too_high_sample_rate);
 
     assert!(matches!(
         result,
@@ -263,21 +217,8 @@ fn flac_sample_rate_is_too_high() {
 
 #[test]
 fn flac_sample_rate_is_way_too_high() {
-    let classification = AudioStreamClassification {
-        format: "flac".to_owned(),
-        encoding: CODEC_ID_FLAC,
-    };
-
-    let codec_params = flac_codec_params(
-        Some(Channels::Discrete(6)),
-        Some(1_655_351),
-        Some(16),
-    );
-    let track = stub_track(Some(codec_params));
-
-    let metadata = extract_audio_metadata(&track).unwrap();
-
-    let result = validate_sample_rate(&classification, metadata.sample_rate);
+    let too_high_sample_rate = Some(1_655_351);
+    let result = validate_flac_sample_rate(too_high_sample_rate);
 
     assert!(matches!(
         result,
@@ -291,18 +232,8 @@ fn flac_sample_rate_is_way_too_high() {
 
 #[test]
 fn flac_sample_rate_is_too_low() {
-    let classification = AudioStreamClassification {
-        format: "flac".to_owned(),
-        encoding: CODEC_ID_FLAC,
-    };
-
-    let codec_params =
-        flac_codec_params(Some(Channels::Discrete(6)), Some(0), Some(16));
-    let track = stub_track(Some(codec_params));
-
-    let metadata = extract_audio_metadata(&track).unwrap();
-
-    let result = validate_sample_rate(&classification, metadata.sample_rate);
+    let too_low_sample_rate = Some(0);
+    let result = validate_flac_sample_rate(too_low_sample_rate);
 
     assert!(matches!(
         result,
@@ -316,18 +247,8 @@ fn flac_sample_rate_is_too_low() {
 
 #[test]
 fn flac_sample_rate_is_none() {
-    let classification = AudioStreamClassification {
-        format: "flac".to_owned(),
-        encoding: CODEC_ID_FLAC,
-    };
-
-    let codec_params =
-        flac_codec_params(Some(Channels::Discrete(6)), None, Some(16));
-    let track = stub_track(Some(codec_params));
-
-    let metadata = extract_audio_metadata(&track).unwrap();
-
-    let result = validate_sample_rate(&classification, metadata.sample_rate);
+    let no_sample_rate = None;
+    let result = validate_flac_sample_rate(no_sample_rate);
 
     assert!(matches!(
         result,
@@ -357,81 +278,37 @@ fn validate_flac_bits_per_sample(
 
     let metadata = extract_audio_metadata(&track).unwrap();
 
-    validate_channels(&classification, metadata.channels)
+    validate_bits_per_sample(&classification, metadata.bits_per_sample)
 }
 
 #[test]
 fn flac_bits_per_sample_is_valid() {
-    let classification = AudioStreamClassification {
-        format: "flac".to_owned(),
-        encoding: CODEC_ID_FLAC,
-    };
-
-    let codec_params =
-        flac_codec_params(Some(Channels::Discrete(6)), Some(55_350), Some(16));
-    let track = stub_track(Some(codec_params));
-
-    let metadata = extract_audio_metadata(&track).unwrap();
-
-    let result =
-        validate_bits_per_sample(&classification, metadata.bits_per_sample);
+    let valid_bits_per_sample = Some(16);
+    let result = validate_flac_bits_per_sample(valid_bits_per_sample);
 
     assert!(matches!(result, Ok(()),));
 }
 
 #[test]
 fn flac_bits_per_sample_is_upper_boundary() {
-    let classification = AudioStreamClassification {
-        format: "flac".to_owned(),
-        encoding: CODEC_ID_FLAC,
-    };
-
-    let codec_params =
-        flac_codec_params(Some(Channels::Discrete(6)), Some(55_350), Some(32));
-    let track = stub_track(Some(codec_params));
-
-    let metadata = extract_audio_metadata(&track).unwrap();
-
-    let result =
-        validate_bits_per_sample(&classification, metadata.bits_per_sample);
+    let upper_boundary_bits_per_sample = Some(32);
+    let result = validate_flac_bits_per_sample(upper_boundary_bits_per_sample);
 
     assert!(matches!(result, Ok(()),));
 }
 
 #[test]
 fn flac_bits_per_sample_is_lower_boundary() {
-    let classification = AudioStreamClassification {
-        format: "flac".to_owned(),
-        encoding: CODEC_ID_FLAC,
-    };
-
-    let codec_params =
-        flac_codec_params(Some(Channels::Discrete(6)), Some(55_350), Some(4));
-    let track = stub_track(Some(codec_params));
-
-    let metadata = extract_audio_metadata(&track).unwrap();
-
-    let result =
-        validate_bits_per_sample(&classification, metadata.bits_per_sample);
+    let lower_boundary_bits_per_sample = Some(32);
+    let result = validate_flac_bits_per_sample(lower_boundary_bits_per_sample);
 
     assert!(matches!(result, Ok(()),));
 }
 
 #[test]
 fn flac_bits_per_sample_is_too_high() {
-    let classification = AudioStreamClassification {
-        format: "flac".to_owned(),
-        encoding: CODEC_ID_FLAC,
-    };
-
-    let codec_params =
-        flac_codec_params(Some(Channels::Discrete(6)), Some(55_350), Some(33));
-    let track = stub_track(Some(codec_params));
-
-    let metadata = extract_audio_metadata(&track).unwrap();
-
-    let result =
-        validate_bits_per_sample(&classification, metadata.bits_per_sample);
+    let too_high_bits_per_sample = Some(33);
+    let result = validate_flac_bits_per_sample(too_high_bits_per_sample);
 
     assert!(matches!(
         result,
@@ -445,22 +322,8 @@ fn flac_bits_per_sample_is_too_high() {
 
 #[test]
 fn flac_bits_per_sample_is_way_too_high() {
-    let classification = AudioStreamClassification {
-        format: "flac".to_owned(),
-        encoding: CODEC_ID_FLAC,
-    };
-
-    let codec_params = flac_codec_params(
-        Some(Channels::Discrete(6)),
-        Some(55_350),
-        Some(3_035),
-    );
-    let track = stub_track(Some(codec_params));
-
-    let metadata = extract_audio_metadata(&track).unwrap();
-
-    let result =
-        validate_bits_per_sample(&classification, metadata.bits_per_sample);
+    let too_high_bits_per_sample = Some(3_035);
+    let result = validate_flac_bits_per_sample(too_high_bits_per_sample);
 
     assert!(matches!(
         result,
@@ -474,19 +337,8 @@ fn flac_bits_per_sample_is_way_too_high() {
 
 #[test]
 fn flac_bits_per_sample_is_too_low() {
-    let classification = AudioStreamClassification {
-        format: "flac".to_owned(),
-        encoding: CODEC_ID_FLAC,
-    };
-
-    let codec_params =
-        flac_codec_params(Some(Channels::Discrete(6)), Some(55_350), Some(3));
-    let track = stub_track(Some(codec_params));
-
-    let metadata = extract_audio_metadata(&track).unwrap();
-
-    let result =
-        validate_bits_per_sample(&classification, metadata.bits_per_sample);
+    let too_low_bits_per_sample = Some(3);
+    let result = validate_flac_bits_per_sample(too_low_bits_per_sample);
 
     assert!(matches!(
         result,
@@ -500,19 +352,8 @@ fn flac_bits_per_sample_is_too_low() {
 
 #[test]
 fn flac_bits_per_sample_is_zero() {
-    let classification = AudioStreamClassification {
-        format: "flac".to_owned(),
-        encoding: CODEC_ID_FLAC,
-    };
-
-    let codec_params =
-        flac_codec_params(Some(Channels::Discrete(6)), Some(55_350), Some(0));
-    let track = stub_track(Some(codec_params));
-
-    let metadata = extract_audio_metadata(&track).unwrap();
-
-    let result =
-        validate_bits_per_sample(&classification, metadata.bits_per_sample);
+    let zero_bits_per_sample = Some(3);
+    let result = validate_flac_bits_per_sample(zero_bits_per_sample);
 
     assert!(matches!(
         result,
@@ -526,19 +367,8 @@ fn flac_bits_per_sample_is_zero() {
 
 #[test]
 fn flac_bits_per_sample_is_none() {
-    let classification = AudioStreamClassification {
-        format: "flac".to_owned(),
-        encoding: CODEC_ID_FLAC,
-    };
-
-    let codec_params =
-        flac_codec_params(Some(Channels::Discrete(6)), Some(55_350), None);
-    let track = stub_track(Some(codec_params));
-
-    let metadata = extract_audio_metadata(&track).unwrap();
-
-    let result =
-        validate_bits_per_sample(&classification, metadata.bits_per_sample);
+    let no_bits_per_sample = None;
+    let result = validate_flac_bits_per_sample(no_bits_per_sample);
 
     assert!(matches!(
         result,
