@@ -26,7 +26,7 @@ linear integer PCM audio:
 32 bits = Valid, 33 bits = Invalid
 
 ## API
-```
+```rust
 pub fn extract_audio_metadata(
     track: &Track,
 ) -> Result<AudioStreamMetadata, AudioStreamError> {}
